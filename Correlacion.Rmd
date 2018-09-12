@@ -1,0 +1,84 @@
+---
+title: "Pruebas"
+output: html_notebook
+---
+
+
+## load
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(forecast)
+library(ggrepel)
+library(rvest)
+library(plotly)
+```
+
+
+```{r, message=FALSE}
+dja <- read_csv("data/DJA.csv",skip = 4)
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
+interest_rate <- read_csv("data/INTERESTRATE_1857-2018.csv",skip = 1)
+sap <- read_csv("data/SAP_1871-2018.csv", skip=1)
+cpi <- read_csv("data/USCPI_1774-2018.csv", skip=4)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+```
+
+
+función de autocorrelación sobre ruido blanco
+```{r}
+y <- ts(rnorm(161)) #le pongo la misma cantidad de observaciones que nuestra serie
+autoplot(y)
+ggAcf(y)
+```
+
+
+Autocorrelación sobre una función periodica
+
+```{r}
+seno <- ts(sin(1:161)) 
+autoplot(seno)
+ggAcf(seno)
+```
+
+
+
+Autocorrelación sobre la tasa de largo plazo
+
+```{r}
+ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857) %>% 
+  autoplot()
+```
+Hay que sacarle la tendencia a la serie
+
+
+
+```{r}
+ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857) %>%
+  diff(.) %>% 
+  ggAcf(.)
+```
+
+
+
+```{r}
+ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order = 3) %>% 
+  autoplot()
+
+ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order = 10) %>% 
+  autoplot()
+
+
+ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order = 50) %>% 
+  autoplot()
+
+```
+
+
+```{r}
+plot(Mod(fft(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857))))
+```
+
+
