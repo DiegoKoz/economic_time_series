@@ -26,8 +26,30 @@ gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
 wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
 ```
 
+```{r, echo=FALSE}
+# Corrijo los encabezados de los csv, que no quedan bien en R. Paso los nombres de los encabezados originales a labels de las columnas (metadata)
+change_header = function(tabla, nuevos_enc) {
+  if (is.data.frame(tabla)) {
+    for (i in names(tabla)) {
+      attr(tabla[[i]], "label") = i
+    }
+    names(tabla) = nuevos_enc
+  } else {
+    stop("Se tiene que pasar un data frame o similar objeto al campo tabla")
+  }
+  return(tabla)
+}
+cpi = change_header(cpi, c("year", "cpi"))
+dja = change_header(dja, c("date", "value"))
+gold = change_header(gold, c("year", "value"))
+interest_rate = change_header(interest_rate, c("year", "short_term_ord", "short_term_surp", "long_term"))
+sap = change_header(sap, c("year", "avg_jan", "annual_yield", "accum_avg_jan"))
+gdp = change_header(gdp, c("year", "nominal", "real_2012_base", "gdp_deflator", "pop", "nominal_per_cap", "real_per_cap_2012_base"))
+wage = change_header(wage, c("year", "cost_unsk", "prod_work_hourly_comp"))
+```
 
-función de autocorrelación sobre ruido blanco
+
+Función de autocorrelación sobre ruido blanco
 ```{r}
 y <- ts(rnorm(161)) #le pongo la misma cantidad de observaciones que nuestra serie
 autoplot(y)
@@ -81,4 +103,11 @@ ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order 
 plot(Mod(fft(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857))))
 ```
 
+Pruebo la cross-correlation entre la serie del oro y la inflación de los EE.UU.
+```{r}
+gold_ts = ts(gold)
+gold_ts_diff = diff(gold_ts)
+cpi_ts_diff = diff(cpi_ts)
 
+ccf(gold_ts_diff, window(cpi_ts_diff,1791,2017))
+```
