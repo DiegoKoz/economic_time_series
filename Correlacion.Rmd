@@ -6,7 +6,7 @@ output: html_notebook
 
 ## load
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(lubridate)
 library(forecast)
@@ -16,7 +16,7 @@ library(plotly)
 ```
 
 
-```{r, message=FALSE}
+```{r, echo=FALSE, message=FALSE}
 dja <- read_csv("data/DJA.csv",skip = 4)
 gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
 interest_rate <- read_csv("data/INTERESTRATE_1857-2018.csv",skip = 1)
@@ -26,7 +26,7 @@ gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
 wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 # Corrijo los encabezados de los csv, que no quedan bien en R. Paso los nombres de los encabezados originales a labels de las columnas (metadata)
 change_header = function(tabla, nuevos_enc) {
   if (is.data.frame(tabla)) {
@@ -50,7 +50,7 @@ wage = change_header(wage, c("year", "cost_unsk", "prod_work_hourly_comp"))
 
 
 Función de autocorrelación sobre ruido blanco
-```{r}
+```{r, echo=FALSE}
 y <- ts(rnorm(161)) #le pongo la misma cantidad de observaciones que nuestra serie
 autoplot(y)
 ggAcf(y)
@@ -59,7 +59,7 @@ ggAcf(y)
 
 Autocorrelación sobre una función periodica
 
-```{r}
+```{r, echo=FALSE}
 seno <- ts(sin(1:161)) 
 autoplot(seno)
 ggAcf(seno)
@@ -69,45 +69,60 @@ ggAcf(seno)
 
 Autocorrelación sobre la tasa de largo plazo
 
-```{r}
-ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857) %>% 
+```{r, echo=FALSE}
+ts(interest_rate$long_term, start = 1857) %>% 
   autoplot()
 ```
 Hay que sacarle la tendencia a la serie
 
 
 
-```{r}
-ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857) %>%
+```{r, echo=FALSE}
+ts(interest_rate$long_term, start = 1857) %>%
   diff(.) %>% 
   ggAcf(.)
 ```
 
 
 
-```{r}
-ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order = 3) %>% 
+```{r, echo=FALSE}
+ma(ts(interest_rate$long_term, start = 1857),order = 3) %>% 
   autoplot()
-
-ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order = 10) %>% 
+ma(ts(interest_rate$long_term, start = 1857),order = 10) %>% 
   autoplot()
-
-
-ma(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857),order = 50) %>% 
+ma(ts(interest_rate$long_term, start = 1857),order = 50) %>% 
   autoplot()
 
 ```
 
 
-```{r}
-plot(Mod(fft(ts(interest_rate$`US Long-Term Rate: Consistent Series`, start = 1857))))
+```{r, echo=FALSE}
+plot(Mod(fft(ts(interest_rate$long_term, start = 1857))))
 ```
+
+Centrando la serie de la tasa de interés de largo plazo.
+
+```{r, echo=FALSE}
+ir_long     = ts(interest_rate$long_term, start = 1857)
+ir_long_cnt = ir_long - ma(ir_long, 10, centre = TRUE) %>% na.omit()
+autoplot(ir_long_cnt) + geom_abline(slope = 0, intercept = 0)
+```
+
+Serie de inflación
+
+```{r, echo=FALSE}
+cpi_ts = ts(cpi$cpi, start = min(cpi$year))
+cpi_ts_diff = diff(cpi_ts)
+```
+
 
 Pruebo la cross-correlation entre la serie del oro y la inflación de los EE.UU.
-```{r}
-gold_ts = ts(gold)
+```{r, echo=FALSE}
+gold_ts = ts(gold$value, start = min(gold$year))
 gold_ts_diff = diff(gold_ts)
 cpi_ts_diff = diff(cpi_ts)
 
 ccf(gold_ts_diff, window(cpi_ts_diff,1791,2017))
 ```
+
+Tenemos la teoría de que hay que mirar las series antes y después de 1970 o aproximadamente por esa fecha, ya que es cuando los EE.UU abandonan el patrón oro
