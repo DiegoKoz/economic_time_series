@@ -1,0 +1,339 @@
+---
+title: "GDP y salario en Oro"
+output: html_notebook
+---
+
+Me quedo con el __GDP__ y el __Salario__, lo normalizo para que este expresado en __oro__
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lubridate)
+library(forecast)
+library(magrittr)
+library(broom)
+library(sweep)
+library(ggthemes)
+
+```
+
+
+```{r load and basic changes}
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+
+gdp_in_gold <- left_join(gold, gdp, by = "Year") %>% 
+  transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         year = parse_date_time(Year,"y")) 
+wg_in_gold <- wage %>% 
+  filter(Year>=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+            year = parse_date_time(Year,"y")) %>%
+  na.omit()
+
+
+#lo paso a serie de tiempo
+wg_in_gold$value <- ts(wg_in_gold$value,start = min(year(wg_in_gold$year)))
+gdp_in_gold$value <- ts(gdp_in_gold$value,start = min(year(gdp_in_gold$year)))
+
+```
+
+
+```{r}
+range(gdp_in_gold$year)
+range(wg_in_gold$year)
+```
+
+Agrupo las series antes y después de 1971
+
+```{r}
+
+df <- wg_in_gold %>% 
+  mutate(tipo = "wage") %>% 
+  bind_rows(gdp_in_gold %>% 
+              mutate(tipo = "gdp")) %>% 
+    mutate(group=case_when(year< parse_date_time(1971,orders = 'y')~0,
+                         TRUE ~ 1))
+```
+
+
+## Autocorrelación, todo el período
+
+```{r}
+ggAcf(diff(df %>% 
+             filter(tipo=="gdp") %$% value ))+
+  labs(title= "GDP. Todo el período")
+
+ggAcf(diff(df %>% 
+             filter(tipo=="wage") %$% value ))+
+  labs(title= "Salario. Todo el período")
+```
+
+
+#### GDP
+la serie en diferencias tiene una autocorrelación importante con el primer lag (tipo random walk) y una correlación negativa con 10 años atrás.
+
+
+#### Salarios
+Con la serie entera, además del período anterior, tiene una relación positiva con lo que sucede 6 años atrás (ídem GDP)
+
+
+
+## Antes y después del 71
+
+
+```{r}
+diferencio <- function(df){diff(df$value)}
+
+nested_df <- df %>% 
+  group_by(tipo,group) %>%
+  nest() %>% 
+  mutate(diferencias  = map(data,diferencio))
+  
+nested_df
+```
+
+
+```{r}
+nested_df %>% 
+  filter(tipo == "gdp", group==0) %$%
+  ggAcf(diferencias[[1]])+
+  labs(title = "GDP. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "gdp", group==1) %$%
+  ggAcf(diferencias[[1]])+
+  labs(title = "GDP. Después de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==0) %$%
+  ggAcf(diferencias[[1]])+
+  labs(title = "Salario. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==1) %$%
+  ggAcf(diferencias[[1]])+
+  labs(title = "Salario. Después de 1971")
+
+```
+
+__GDP__: Es como si con el patrón oro se pudiera ver una autocorrealción para el ciclo corto (3-5 años, _real business cycle_) pero a partir de los 70 es un Random Walk
+
+__Salario__:
+- Antes de los 70' no tiene autocorrelación significativa con ningún período (¿aleatorio puro??)
+- Post 70' es un Random Walk
+
+
+## Arima
+
+```{r}
+
+fit.arima <- function(df,order){
+  Arima(df$value, order = order)
+}
+
+
+nested_df <- nested_df %>% 
+  group_by(tipo, group) %>% 
+  mutate(fitted_arima_2_1_0 = map(data,fit.arima, order=c(2,1,0)),
+         fitted_arima_5_1_0 = map(data,fit.arima, order=c(5,1,0)),
+         fitted_arima_10_1_0 = map(data,fit.arima, order=c(10,1,0)),
+         fitted_arima_1_1_1 = map(data,fit.arima, order=c(1,1,1)))
+
+nested_df <- nested_df %>% 
+  mutate(tdy_2_1_0 = map(fitted_arima_2_1_0,sw_tidy),
+         tdy_5_1_0 = map(fitted_arima_5_1_0,sw_tidy),
+         tdy_10_1_0 = map(fitted_arima_10_1_0,sw_tidy),
+         tdy_1_1_1 = map(fitted_arima_1_1_1,sw_tidy))
+  
+nested_df %>% 
+unnest(tdy_2_1_0, .drop=TRUE)
+nested_df %>% 
+unnest(tdy_5_1_0, .drop=TRUE)
+nested_df %>% 
+unnest(tdy_10_1_0, .drop=TRUE)
+nested_df %>% 
+unnest(tdy_1_1_1, .drop=TRUE)
+
+```
+
+
+```{r}
+nested_df %>%
+  mutate(glance = map(fitted_arima_2_1_0,sw_glance)) %>% 
+  unnest(glance, .drop = TRUE)
+
+nested_df %>%
+  mutate(glance = map(fitted_arima_5_1_0,sw_glance)) %>% 
+  unnest(glance, .drop = TRUE)
+
+nested_df %>%
+  mutate(glance = map(fitted_arima_10_1_0,sw_glance)) %>% 
+  unnest(glance, .drop = TRUE)
+
+nested_df %>%
+  mutate(glance = map(fitted_arima_1_1_1,sw_glance)) %>% 
+  unnest(glance, .drop = TRUE)
+
+```
+
+
+### chequeo unit roots
+
+ARIMA(2,1,0)
+
+```{r}
+
+nested_df %>% 
+  filter(tipo == "gdp", group==0) %$%
+  autoplot(fitted_arima_2_1_0[[1]])+
+  labs(title = "GDP. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "gdp", group==1) %$%
+  autoplot(fitted_arima_2_1_0[[1]])+
+  labs(title = "GDP. Después de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==0) %$%
+  autoplot(fitted_arima_2_1_0[[1]])+
+  labs(title = "Salario. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==1) %$%
+  autoplot(fitted_arima_2_1_0[[1]])+
+  labs(title = "Salario. Después de 1971")
+
+```
+
+
+
+ARIMA(5,1,0)
+
+```{r}
+
+nested_df %>% 
+  filter(tipo == "gdp", group==0) %$%
+  autoplot(fitted_arima_5_1_0[[1]])+
+  labs(title = "GDP. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "gdp", group==1) %$%
+  autoplot(fitted_arima_5_1_0[[1]])+
+  labs(title = "GDP. Después de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==0) %$%
+  autoplot(fitted_arima_5_1_0[[1]])+
+  labs(title = "Salario. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==1) %$%
+  autoplot(fitted_arima_5_1_0[[1]])+
+  labs(title = "Salario. Después de 1971")
+
+```
+
+
+ARIMA(10,1,0)
+
+```{r}
+
+nested_df %>% 
+  filter(tipo == "gdp", group==0) %$%
+  autoplot(fitted_arima_10_1_0[[1]])+
+  labs(title = "GDP. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "gdp", group==1) %$%
+  autoplot(fitted_arima_10_1_0[[1]])+
+  labs(title = "GDP. Después de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==0) %$%
+  autoplot(fitted_arima_10_1_0[[1]])+
+  labs(title = "Salario. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==1) %$%
+  autoplot(fitted_arima_10_1_0[[1]])+
+  labs(title = "Salario. Después de 1971")
+
+```
+
+
+ARIMA(1,1,1)
+
+```{r}
+
+nested_df %>% 
+  filter(tipo == "gdp", group==0) %$%
+  autoplot(fitted_arima_1_1_1[[1]])+
+  labs(title = "GDP. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "gdp", group==1) %$%
+  autoplot(fitted_arima_1_1_1[[1]])+
+  labs(title = "GDP. Después de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==0) %$%
+  autoplot(fitted_arima_1_1_1[[1]])+
+  labs(title = "Salario. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group==1) %$%
+  autoplot(fitted_arima_1_1_1[[1]])+
+  labs(title = "Salario. Después de 1971")
+
+```
+
+
+TODO adentro del circulo unitario
+
+
+quiero ver cómo quedan los suavizados
+
+
+```{r}
+
+nested_df %>%
+  mutate(augment = map(fitted_arima_2_1_0,sw_augment)) %>% 
+  unnest(augment, .drop = TRUE)
+
+nested_df %>%
+  mutate(augment = map(fitted_arima_5_1_0,sw_augment)) %>% 
+  unnest(augment, .drop = TRUE)
+
+nested_df %>%
+  mutate(augment = map(fitted_arima_10_1_0,sw_augment)) %>% 
+  unnest(augment, .drop = TRUE)
+
+nested_df %>%
+  mutate(augment = map(fitted_arima_1_1_1,sw_augment)) %>% 
+  unnest(augment, .drop = TRUE)
+
+```
+
+```{r fig.height=10,fig.width=10}
+nested_df <- nested_df %>%
+  mutate(augment_2_1_0 = map(fitted_arima_2_1_0,sw_augment),
+         augment_5_1_0 = map(fitted_arima_5_1_0,sw_augment),
+         augment_10_1_0 = map(fitted_arima_10_1_0,sw_augment),
+         augment_1_1_1 = map(fitted_arima_1_1_1,sw_augment)) %>% 
+  select(tipo, group, data, augment_2_1_0, augment_5_1_0,  augment_10_1_0, augment_1_1_1)
+
+nested_df %>% gather(modelo, augment, 4:ncol(.)) %>% 
+  unnest() %>% 
+  ggplot(.,aes(year,.fitted, color = modelo))+
+  geom_line()+
+  facet_wrap(tipo~group, scales = "free")+
+  theme_tufte()+
+  theme(legend.position = "bottom")
+```
+
+
+¯\\_(ツ)_/¯
+
+
