@@ -1,0 +1,23 @@
+---
+title: "Wavelets"
+output: html_notebook
+---
+
+
+```{r}
+library(wavelets)
+```
+
+```{r}
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+
+```
+
+
+
+```{r}
+wt.filter()
+```
+

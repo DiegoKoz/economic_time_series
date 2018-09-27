@@ -158,6 +158,18 @@ unnest(tdy_1_1_1, .drop=TRUE)
 
 ```
 
+```{r}
+nested_df %>% 
+unnest(tdy_5_1_0, .drop=TRUE) %>% 
+  ggplot(.,aes(term,estimate, fill= term))+
+  geom_col()+
+  facet_wrap(tipo~group)+
+  theme_minimal()+
+  theme(legend.position = "none")
+
+```
+
+
 
 ```{r}
 nested_df %>%
