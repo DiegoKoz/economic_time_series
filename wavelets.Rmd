@@ -5,19 +5,57 @@ output: html_notebook
 
 
 ```{r}
-library(wavelets)
+library(WaveletComp)
+library(tidyverse)
+library(lubridate)
 ```
+
+[WaveletComp](http://www.hs-stat.com/projects/WaveletComp/WaveletComp_guided_tour.pdf)
 
 ```{r}
 gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
 gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
 wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
 
+gdp_in_gold <- left_join(gold, gdp, by = "Year") %>% 
+  transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         date = parse_date_time(Year,"y")) 
+wg_in_gold <- wage %>% 
+  filter(Year>=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+            date = parse_date_time(Year,"y")) %>%
+  na.omit()
+
+```
+
+
+```{r}
+wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+```
+
+```{r}
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         main = "Espectograma salario en oro")
 ```
 
 
 
 ```{r}
-wt.filter()
+
+gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+wt.image(gdp_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         main = "Espectograma PBI en oro")
 ```
+
 
