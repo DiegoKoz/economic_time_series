@@ -3,8 +3,7 @@ title: "Pruebas"
 output: html_notebook
 ---
 
-
-## load
+# Análisis de series de tiempo económicas
 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -13,6 +12,7 @@ library(forecast)
 library(ggrepel)
 library(rvest)
 library(plotly)
+library(tseries)
 ```
 
 
@@ -122,7 +122,155 @@ gold_ts = ts(gold$value, start = min(gold$year))
 gold_ts_diff = diff(gold_ts)
 cpi_ts_diff = diff(cpi_ts)
 
+plot(gold_ts)
+plot(gold_ts_diff)
 ccf(gold_ts_diff, window(cpi_ts_diff,1791,2017))
 ```
 
 Tenemos la teoría de que hay que mirar las series antes y después de 1970 o aproximadamente por esa fecha, ya que es cuando los EE.UU abandonan el patrón oro
+
+## Serie del pbi real
+
+Por lo que se puede apreciar en la figura, el pbi no parece ser un proceso estacionario, puesto que la varianza crece al limpiar la tendencia central (centrar la serie) luego de aplicar una media movil centrada de orden 10.
+```{r, echo=FALSE}
+real_gdp_ts = ts(gdp$real_gdp, start = min(gdp$year))
+real_gdp_ts_ma3 = ma(x = real_gdp_ts, order = 3, centre = TRUE)
+real_gdp_ts_ma10 = ma(x = real_gdp_ts, order = 10, centre = TRUE)
+
+plot(real_gdp_ts)
+plot(real_gdp_ts_ma3)
+plot(real_gdp_ts_ma10)
+real_gdp_ts_ma10_center = real_gdp_ts - real_gdp_ts_ma10
+plot(real_gdp_ts_ma10_center)
+abline(a = 0, b = 0)
+real_gdp_ts_ma3_center = real_gdp_ts - real_gdp_ts_ma3
+plot(real_gdp_ts_ma3_center)
+abline(a = 0, b = 0)
+```
+
+Revisando el histograma de esta serie de tiempo
+```{r, echo=TRUE}
+hist(real_gdp_ts_ma10_center, breaks="FD")
+```
+
+Su autocorrelacion: no parece ser puramente aleatoria
+```{r, echo=FALSE}
+acf(na.omit(real_gdp_ts_ma10_center))
+```
+
+Aunque esta idea podria no ser cierta debida a la falta de estacionariedad.
+```{r}
+adf.test(na.omit(real_gdp_ts_ma10_center))
+kpss.test(na.omit(real_gdp_ts_ma10_center))
+```
+
+Al probar los tests de Dickey-Fuller aumentado y KPSS, ambos rechazan su hipótesis nula, pero como ambos tests tienen una hipótesis nula intercambiada no se puede llegar a una conclusión sobre la estacionariedad de la serie. Esto puede deberse a la alta volatilidad de la serie en los últimos tiempos
+
+Vemos a continuación lo que pasa con la tasa de crecimiento del PBI de los EE.UU. en lugar de su nivel absoluto, como en el apartado anterior.
+
+```{r, echo=FALSE}
+# Tasas de crecimiento del PBI
+real_gdp_ts_d = round(diff(real_gdp_ts) / real_gdp_ts[1:(length(real_gdp_ts)-1)], 4)
+plot(diff(real_gdp_ts))
+plot(real_gdp_ts_d)
+abline(a=0,b=0)
+abline(a=mean(real_gdp_ts_d),b=0, lty=2)
+mean(real_gdp_ts_d)
+
+# Centrando la serie
+real_gdp_ts_d_cntr = real_gdp_ts_d - mean(real_gdp_ts_d)
+```
+
+La media de crecimiento durante todo este periodo es del 3,8% con distinta varianza a lo largo de la serie.
+
+Realizamos tests de estacionariedad.
+
+```{r}
+adf.test(real_gdp_ts_d)
+kpss.test(real_gdp_ts_d)
+```
+Ambos rechazan, por lo que no se pueden obtener conclusiones acerca de la estacionariedad del proceso.
+
+Vemos ahora la transformada de Fourier para la serie.
+
+```{r,echo=FALSE}
+real_gdp_ts_d_cntr_fft = fft(real_gdp_ts_d_cntr)
+plot(Mod(real_gdp_ts_d_cntr_fft))
+```
+
+La transformada de Fourier no es conclusiva acerca de ciclos de Kondratieff en la economía de los EE.UU.. Lo que se puede observar es que la economía de los EE.UU. es altamente estable en cuanto a producto, experimentando solo ciclos de baja intensidad y aleatorios alrededor de una media marcada de crecimiento. En el largo plazo (considerando la cantidad de años que estamos tomando para este análisis) las grandes crisis económicos (décadas del '30, '70, principios de los 2000, 2008) quedan diluidas en una gran regresión a la media de tasa de crecimiento de los EE.UU.
+
+## Tasas de interés de los EE.UU.
+
+Ahondaremos aún más en la búsqueda de ondas de Kondratieff en la serie de los EE.UU.
+
+```{r,echo=FALSE}
+ir_long_ma3  = ma(ir_long, order = 3, centre = TRUE)
+ir_long_ma5  = ma(ir_long, order = 3, centre = TRUE)
+ir_long_ma10 = ma(ir_long, order = 3, centre = TRUE)
+
+ir_long_cntr = na.omit(ir_long - ir_long_ma3)
+ir_long_cntr %>% autoplot() # Queda algo parecido al error de la serie
+ir_long %>% autoplot()
+ir_long_fft = fft(interest_rate$long_term)
+
+plot(Mod(ir_long_fft), type = "l")
+plot(Mod(ir_long_fft[1:10]), type = "l") # Filtro pasabajos
+
+# Analizo los primeros 10 puntos
+Re(fft(ir_long_fft[2:10], inverse = TRUE) / length(interest_rate$long_term)) %>% 
+  plot(type = "l")
+Re(fft(ir_long_fft[1:10], inverse = TRUE) / length(interest_rate$long_term)) %>% 
+  plot(type = "l")
+```
+
+Las primeras 10 items de la transformación discreta de Fourier de la serie de la tasa de interés de largo plazo del tesoro de los EE.UU. muestran ciclos cortos y largos que pesan en la determinación de la tasa de interés de los EE.UU.
+
+## Análisis de la serie del Dow Jones
+
+El índice de Dow Jones es uno de los índices más seguidos en el mundo financiero ya que nuclea importantes empresas del mercado mundial.
+
+La forma de construir el índice ha cambiado en el transcurso del tiempo, por lo que no se estan realmente observando las mismas empresas a lo largo de toda la serie.
+
+```{r,echo=FALSE}
+# TODO: revisar en la fuente de qué índice se está hablando cuando digo del Dow Jones, para incluir una breve descripción del índice observado en el informe.
+```
+
+```{r,echo=FALSE}
+dja_start=mdy(min(dja$date))
+dja_ts=ts(dja$value,start=dja_start)
+autoplot(dja_ts)
+```
+
+La serie del Dow Jones tiene un comportamiento exponencial en el tiempo con marcadas caídas en las épocas de crisis. Veamos las distintas medias móviles para la serie.
+
+```{r, echo=FALSE}
+dja_ts_ma3=ma(dja_ts,order=3,centre=TRUE)
+dja_ts_ma5=ma(dja_ts,order=5,centre=TRUE)
+dja_ts_ma10=ma(dja_ts,order=10,centre=TRUE)
+dja_ts_ma30=ma(dja_ts,order=30,centre=TRUE)
+dja_ts_ma60=ma(dja_ts,order=60,centre=TRUE)
+dja_ts_ma180=ma(dja_ts,order=180,centre=TRUE)
+
+plot(dja_ts_ma3)
+plot(dja_ts_ma5)
+plot(dja_ts_ma10)
+plot(dja_ts_ma30)
+plot(dja_ts_ma60)
+plot(dja_ts_ma180)
+```
+
+Centrando con una media movil de 180 días
+
+```{r,echo=FALSE}
+dja_ts_cntr=dja_ts-dja_ts_ma1809
+autoplot(dja_ts_cntr)
+```
+
+Nótese el fuerte incremento de la varianza del índice con el progreso del tiempo.
+
+A continuación intentamos realizar predicciones sobre el índice.
+
+```{r,echo=FALSE}
+
+```
