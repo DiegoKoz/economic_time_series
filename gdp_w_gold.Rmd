@@ -53,8 +53,8 @@ df <- wg_in_gold %>%
   mutate(tipo = "wage") %>% 
   bind_rows(gdp_in_gold %>% 
               mutate(tipo = "gdp")) %>% 
-    mutate(group=case_when(year< parse_date_time(1971,orders = 'y')~0,
-                         TRUE ~ 1))
+    mutate(group=case_when(year< parse_date_time(1971,orders = 'y')~"Antes del 71'",
+                         TRUE ~ "Despues del 71'"))
 ```
 
 
@@ -97,22 +97,22 @@ nested_df
 
 ```{r}
 nested_df %>% 
-  filter(tipo == "gdp", group==0) %$%
+  filter(tipo == "gdp", group=="Antes del 71'") %$%
   ggAcf(diferencias[[1]])+
   labs(title = "GDP. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "gdp", group==1) %$%
+  filter(tipo == "gdp", group=="Despues del 71'") %$%
   ggAcf(diferencias[[1]])+
   labs(title = "GDP. Después de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==0) %$%
+  filter(tipo == "wage", group=="Antes del 71'") %$%
   ggAcf(diferencias[[1]])+
   labs(title = "Salario. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==1) %$%
+  filter(tipo == "wage", group=="Despues del 71'") %$%
   ggAcf(diferencias[[1]])+
   labs(title = "Salario. Después de 1971")
 
@@ -158,26 +158,49 @@ unnest(tdy_1_1_1, .drop=TRUE)
 
 ```
 
-
 ```{r}
-nested_df %>%
-  mutate(glance = map(fitted_arima_2_1_0,sw_glance)) %>% 
-  unnest(glance, .drop = TRUE)
-
-nested_df %>%
-  mutate(glance = map(fitted_arima_5_1_0,sw_glance)) %>% 
-  unnest(glance, .drop = TRUE)
-
-nested_df %>%
-  mutate(glance = map(fitted_arima_10_1_0,sw_glance)) %>% 
-  unnest(glance, .drop = TRUE)
-
-nested_df %>%
-  mutate(glance = map(fitted_arima_1_1_1,sw_glance)) %>% 
-  unnest(glance, .drop = TRUE)
+nested_df %>% 
+unnest(tdy_5_1_0, .drop=TRUE) %>% 
+  ggplot(.,aes(term,estimate, fill= term))+
+  geom_col()+
+  facet_wrap(tipo~group)+
+  theme_minimal()+
+  theme(legend.position = "none")+
+  labs(title = "AR 5, Integrado de orden 1")
 
 ```
 
+
+
+```{r}
+glances <- nested_df %>%
+  mutate(g1 = map(fitted_arima_2_1_0,sw_glance), 
+         g2 = map(fitted_arima_5_1_0,sw_glance),
+         g3 = map(fitted_arima_10_1_0,sw_glance),
+         g4 = map(fitted_arima_1_1_1,sw_glance)) %>%
+  select(tipo, group, g1, g2,g3,g4) %>% 
+  gather(model, glance, 3:6) %>% 
+  unnest(glance, .drop = TRUE)
+
+
+glances
+```
+
+El __sigma__ es la raíz de la variabilidad estimada de los residuos. Puedo comparar por serie
+
+[MASE](https://en.wikipedia.org/wiki/Mean_absolute_scaled_error)
+
+
+```{r}
+ggplot(glances,aes(x=model.desc,y= sigma, color =group, size=MASE))+
+geom_point()+
+facet_wrap(tipo~., scales="free")+
+theme(axis.text.x = element_text(angle=35, vjust = 0.5))
+
+```
+
+- Tanto para el gdp como para wage, la variabilidad de los residuos estimados es mayor Después de 1971 que antes. 
+- En términos del poder predictivo de los modelos (MASE), el gdp antes del 71' pareciera ser lo menos predecible y luego el salario después del 71'. Para el gdp después del 71' el salario en el primer período, pareciera que el ARIMA(10,1,0) es el que logra una mejor capacidad de predicción. 
 
 ### chequeo unit roots
 
@@ -317,14 +340,13 @@ nested_df %>%
 ```
 
 ```{r fig.height=10,fig.width=10}
-nested_df <- nested_df %>%
+nested_df %>%
   mutate(augment_2_1_0 = map(fitted_arima_2_1_0,sw_augment),
          augment_5_1_0 = map(fitted_arima_5_1_0,sw_augment),
          augment_10_1_0 = map(fitted_arima_10_1_0,sw_augment),
          augment_1_1_1 = map(fitted_arima_1_1_1,sw_augment)) %>% 
-  select(tipo, group, data, augment_2_1_0, augment_5_1_0,  augment_10_1_0, augment_1_1_1)
-
-nested_df %>% gather(modelo, augment, 4:ncol(.)) %>% 
+  select(tipo, group, data, augment_2_1_0, augment_5_1_0,  augment_10_1_0, augment_1_1_1) %>%
+  PUEDE gather(modelo, augment, 4:ncol(.)) %>% 
   unnest() %>% 
   ggplot(.,aes(year,.fitted, color = modelo))+
   geom_line()+

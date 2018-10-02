@@ -1,0 +1,215 @@
+---
+title: "Wavelets"
+output: html_notebook
+---
+
+
+```{r}
+library(WaveletComp)
+library(tidyverse)
+library(lubridate)
+```
+
+[WaveletComp](http://www.hs-stat.com/projects/WaveletComp/WaveletComp_guided_tour.pdf)
+
+```{r}
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+
+gdp_in_gold <- left_join(gold, gdp, by = "Year") %>% 
+  transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         date = parse_date_time(Year,"y")) 
+wg_in_gold <- wage %>% 
+  filter(Year>=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+            date = parse_date_time(Year,"y")) %>%
+  na.omit()
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
+wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+```
+
+```{r}
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         main = "Espectograma salario en oro")
+```
+
+
+
+```{r}
+
+gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         label.time.axis = TRUE,
+         main = "Espectograma PBI en oro")
+```
+
+
+Hago algunas pruebas para ver como se verían señales puras:
+
+construyo el _modelo teórico_ de una economía cíclica con que se construye a partrir de:
+
+
+![periodo y amplitud](https://www.mathsisfun.com/algebra/images/period-amplitude.svg)
+
+
+- Una tendencia (x0)
+- Un ciclo corto (de periodo de 3 años y amplitud 10)
+- Un ciclo medio (de periodo de 10 años y amplitud 20)
+- Un ciclo largo (de periodo de 50 años y amplitud 30)
+
+```{r}
+nn = 1000
+cte= rep(100,nn)
+x0 = ts(c(1:nn)/2)
+x3 = ts(10*sin((2*pi/3)*c(1:nn)))
+x10 = ts(20*sin((2*pi/10)*c(1:nn)))
+x50 = ts(30*sin((2*pi/50)*c(1:nn)))
+x = cte+ x0+  x3 + x10 + x50
+
+df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50, x=x)
+
+df %>%
+  filter(period<100) %>% 
+  gather(componente,valor,2:7,factor_key=T) %>% 
+  ggplot(.,aes(period,valor))+
+  geom_line()+
+  facet_wrap(~componente, scales="free")
+
+
+```
+
+
+Ahora grafico los wavelets de cada componente y la composición.
+
+```{r message=FALSE, warning=FALSE}
+
+# analyze.wavelet(my.data = df,
+#                 my.series = "cte") %>% 
+# wt.image(.,color.key = "q", main = "cte")
+
+analyze.wavelet(my.data = df,
+                my.series = "x0",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x0")
+
+analyze.wavelet(my.data = df,
+                my.series = "x3",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x3")
+
+analyze.wavelet(my.data = df,
+                my.series = "x10",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x10")
+
+analyze.wavelet(my.data = df,
+                my.series = "x50",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x50")
+
+analyze.wavelet(my.data = df,
+                my.series = "x",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x")
+
+
+```
+
+
+
+- La tendencia muestra ruido, porque no es un ciclo. Deberíamos eliminar la tendencia en nuestra serie original
+- Cada uno de los 3 componentes cíclicos se representa a la altura  de su period ()
+- La amplitud del ciclo se representa con la intensidad (representado en la escala cromática)
+
+
+La resolución del espectograma depende de la cantidad de observaciones
+
+```{r message=FALSE, warning=FALSE}
+nn = 25
+cte= rep(100,nn)
+x0 = ts(c(1:nn)/2)
+x3 = ts(10*sin((2*pi/3)*c(1:nn)))
+x10 = ts(20*sin((2*pi/10)*c(1:nn)))
+x50 = ts(30*sin((2*pi/50)*c(1:nn)))
+x = cte+ x0+  x3 + x10 + x50
+
+df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50, x=x)
+
+
+analyze.wavelet(my.data = df,
+                my.series = "x0",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x0")
+
+analyze.wavelet(my.data = df,
+                my.series = "x3",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x3")
+
+analyze.wavelet(my.data = df,
+                my.series = "x10",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x10")
+
+analyze.wavelet(my.data = df,
+                my.series = "x50",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x50")
+
+analyze.wavelet(my.data = df,
+                my.series = "x",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "x")
+
+```
+
+
+
+- En x10 se ve que cuando el ciclo es demasiado grande respecto a la cantidad de observaciones, se satura en la parte superior de _period_
+
+
+
+### Series desestacionalizadas
+
+
+```{r}
+ gdp <- gdp %>% 
+  mutate(date = parse_date_time(Year,"y"),
+         real_pc_gdp = `Real GDP per capita (year 2012 dollars)`)
+
+
+df_gdp <- data.frame(date=gdp$date[-1],gdp_diff=diff(gdp$real_pc_gdp)) %>% 
+  mutate(scaled_diff = scale(gdp_diff))
+
+ggplot(df_gdp, aes(date,scaled_diff))+
+  geom_line()
+```
+
+
+```{r}
+
+analyze.wavelet(my.data = df_gdp,
+                my.series = "scaled_diff",verbose = F) %>% 
+wt.image(.,color.key = "q",
+         verbose = FALSE,
+         show.date = TRUE,
+         label.time.axis = TRUE,
+         main = "diferencias escaladas PBI real per cápita")
+
+```
+
+
+Se ve que:
+- la variabilidad amplitud (la variabilidad) aumenta mucho a partir de os 50'
+- Respecto al espectograma del PBI en oro, esta es una representación menos parsimoniosa. 
+- Siguiendo las isocuantas, pareciera que, a partir del 1900, hay 2 o 3 niveles donde la intensidad del ciclo es mayor (+-3 años, +-8 años y +- 90 años).
+- Habría que buscar la forma de eliminar la heterocedasticidad de la serie
+
+
+
