@@ -75,7 +75,8 @@ construyo el _modelo teórico_ de una economía cíclica con que se construye a 
 
 ```{r}
 nn = 1000
-cte= rep(100,nn)
+#cambio_nivel
+cte= c(rep(50,nn/2),rep(100,nn/2))
 x0 = ts(c(1:nn)/2)
 x3 = ts(10*sin((2*pi/3)*c(1:nn)))
 x10 = ts(20*sin((2*pi/10)*c(1:nn)))
@@ -99,9 +100,9 @@ Ahora grafico los wavelets de cada componente y la composición.
 
 ```{r message=FALSE, warning=FALSE}
 
-# analyze.wavelet(my.data = df,
-#                 my.series = "cte") %>% 
-# wt.image(.,color.key = "q", main = "cte")
+analyze.wavelet(my.data = df,
+                my.series = "cte") %>%
+wt.image(.,color.key = "q", main = "cte")
 
 analyze.wavelet(my.data = df,
                 my.series = "x0",verbose = F) %>% 
