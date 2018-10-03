@@ -34,7 +34,7 @@ wg_in_gold <- wage %>%
 wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
                                 my.series = "value",
                                 date.format = "%Y-%m-%d",
-                                date.tz = "UTC")
+                                date.tz = "UTC", verbose = F)
 
 ```
 
@@ -57,21 +57,53 @@ wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
          label.time.axis = TRUE,
          main = "Espectograma PBI en oro")
+
+
 ```
 
 
 Hago algunas pruebas para ver como se verían señales puras:
+
+
+### Escala log
+
+
+```{r}
+
+gdp_wavelet <- gdp_in_gold %>%
+  mutate(logvalue = log(value,base = 10)) %>% 
+  analyze.wavelet(my.data = .,
+                  my.series = "logvalue",
+                  date.format = "%Y-%m-%d",
+                  date.tz = "UTC")  
+wt.image(gdp_wavelet,color.key = "q",
+         periodlab="Frecuencia de ciclo",
+         label.period.axis =TRUE,
+         spec.period.axis = list(at = c(3,7,20,50), labels = TRUE),
+         n.levels = 100,
+         show.date = TRUE,
+         label.time.axis = TRUE, 
+         main = "Espectograma log(PBI en oro)")
+
+```
+
+
+observaciones:
+
+- En escala logarítima se reduce la heterocedasticidad de la serie, y sue puede observar los ciclos en un período más extendido del tiempo. especialmente el de 50 años
+- Más allá de que hasta el 1900 la serie no tenga demasiada información, si filtarmos para quedarnos sólo con el último siglo, se perdería resolución y no se podría ver el ciclo de 50 años.
 
 construyo el _modelo teórico_ de una economía cíclica con que se construye a partrir de:
 
 
 ![periodo y amplitud](https://www.mathsisfun.com/algebra/images/period-amplitude.svg)
 
-
+- un cambio de nivel (cte)
 - Una tendencia (x0)
 - Un ciclo corto (de periodo de 3 años y amplitud 10)
 - Un ciclo medio (de periodo de 10 años y amplitud 20)
 - Un ciclo largo (de periodo de 50 años y amplitud 30)
+- Ruido normal
 
 ```{r}
 nn = 1000
@@ -81,13 +113,15 @@ x0 = ts(c(1:nn)/2)
 x3 = ts(10*sin((2*pi/3)*c(1:nn)))
 x10 = ts(20*sin((2*pi/10)*c(1:nn)))
 x50 = ts(30*sin((2*pi/50)*c(1:nn)))
-x = cte+ x0+  x3 + x10 + x50
+ruido <- rnorm(nn)
+x = cte+ x0+  x3 + x10 + x50+ruido
 
-df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50, x=x)
+
+df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50,ruido, x=x)
 
 df %>%
   filter(period<100) %>% 
-  gather(componente,valor,2:7,factor_key=T) %>% 
+  gather(componente,valor,2:8,factor_key=T) %>% 
   ggplot(.,aes(period,valor))+
   geom_line()+
   facet_wrap(~componente, scales="free")
@@ -121,15 +155,19 @@ analyze.wavelet(my.data = df,
 wt.image(.,color.key = "q", main = "x50")
 
 analyze.wavelet(my.data = df,
+                my.series = "ruido",verbose = F) %>% 
+wt.image(.,color.key = "q", main = "ruido")
+
+
+analyze.wavelet(my.data = df,
                 my.series = "x",verbose = F) %>% 
 wt.image(.,color.key = "q", main = "x")
 
 
 ```
 
-
-
-- La tendencia muestra ruido, porque no es un ciclo. Deberíamos eliminar la tendencia en nuestra serie original
+- _cte_, que representa un cambio de nivel en 500, muestra todas las frecuencias de onda sobre la vertical en el punto de cambio de nivel. 
+- La tendencia no se puede representar bien en el espectograma, porque el comportamiento ciclico es nulo. La diferencia con el ruido es que pasa de valores de intensidad más bajos al principio del período y tiempo (los ejes) a valores más altos. El ruido normal muestra mayores valores en las frecuencias mas altas (los periodos más bajos).
 - Cada uno de los 3 componentes cíclicos se representa a la altura  de su period ()
 - La amplitud del ciclo se representa con la intensidad (representado en la escala cromática)
 
@@ -173,44 +211,5 @@ wt.image(.,color.key = "q", main = "x")
 
 
 - En x10 se ve que cuando el ciclo es demasiado grande respecto a la cantidad de observaciones, se satura en la parte superior de _period_
-
-
-
-### Series desestacionalizadas
-
-
-```{r}
- gdp <- gdp %>% 
-  mutate(date = parse_date_time(Year,"y"),
-         real_pc_gdp = `Real GDP per capita (year 2012 dollars)`)
-
-
-df_gdp <- data.frame(date=gdp$date[-1],gdp_diff=diff(gdp$real_pc_gdp)) %>% 
-  mutate(scaled_diff = scale(gdp_diff))
-
-ggplot(df_gdp, aes(date,scaled_diff))+
-  geom_line()
-```
-
-
-```{r}
-
-analyze.wavelet(my.data = df_gdp,
-                my.series = "scaled_diff",verbose = F) %>% 
-wt.image(.,color.key = "q",
-         verbose = FALSE,
-         show.date = TRUE,
-         label.time.axis = TRUE,
-         main = "diferencias escaladas PBI real per cápita")
-
-```
-
-
-Se ve que:
-- la variabilidad amplitud (la variabilidad) aumenta mucho a partir de os 50'
-- Respecto al espectograma del PBI en oro, esta es una representación menos parsimoniosa. 
-- Siguiendo las isocuantas, pareciera que, a partir del 1900, hay 2 o 3 niveles donde la intensidad del ciclo es mayor (+-3 años, +-8 años y +- 90 años).
-- Habría que buscar la forma de eliminar la heterocedasticidad de la serie
-
 
 
