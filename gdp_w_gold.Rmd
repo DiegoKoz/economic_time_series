@@ -63,11 +63,18 @@ df <- wg_in_gold %>%
 ```{r}
 ggAcf(diff(df %>% 
              filter(tipo=="gdp") %$% value ))+
-  labs(title= "GDP. Todo el período")
+  labs(title= "GDP. Todo el período")+
+  theme_minimal()
+
+ggsave("plots/Autocorrelacion_gdp.png",dpi=300)
 
 ggAcf(diff(df %>% 
              filter(tipo=="wage") %$% value ))+
-  labs(title= "Salario. Todo el período")
+  labs(title= "Salario. Todo el período")+
+  theme_minimal()
+
+ggsave("plots/Autocorrelacion_wg.png",dpi=300)
+
 ```
 
 
@@ -99,22 +106,37 @@ nested_df
 nested_df %>% 
   filter(tipo == "gdp", group=="Antes del 71'") %$%
   ggAcf(diferencias[[1]])+
-  labs(title = "GDP. Antes de 1971")
+  labs(title = "GDP. Antes de 1971")+  
+  theme_minimal()
+
+
+ggsave("plots/Autocorrelacion_gdp_pre71.png",dpi=300)
 
 nested_df %>% 
   filter(tipo == "gdp", group=="Despues del 71'") %$%
   ggAcf(diferencias[[1]])+
-  labs(title = "GDP. Después de 1971")
+  labs(title = "GDP. Después de 1971")+
+  theme_minimal()
+
+ggsave("plots/Autocorrelacion_gdp_post71.png",dpi=300)
 
 nested_df %>% 
   filter(tipo == "wage", group=="Antes del 71'") %$%
   ggAcf(diferencias[[1]])+
-  labs(title = "Salario. Antes de 1971")
+  labs(title = "Salario. Antes de 1971")+
+  theme_minimal()
+
+
+ggsave("plots/Autocorrelacion_wg_pre71.png",dpi=300)
 
 nested_df %>% 
   filter(tipo == "wage", group=="Despues del 71'") %$%
   ggAcf(diferencias[[1]])+
-  labs(title = "Salario. Después de 1971")
+  labs(title = "Salario. Después de 1971")+
+  theme_minimal()
+
+
+ggsave("plots/Autocorrelacion_wg_post71.png",dpi=300)
 
 ```
 
@@ -209,22 +231,22 @@ ARIMA(2,1,0)
 ```{r}
 
 nested_df %>% 
-  filter(tipo == "gdp", group==0) %$%
+  filter(tipo == "gdp", group=="Antes del 71'") %$%
   autoplot(fitted_arima_2_1_0[[1]])+
   labs(title = "GDP. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "gdp", group==1) %$%
+  filter(tipo == "gdp", group=="Despues del 71'") %$%
   autoplot(fitted_arima_2_1_0[[1]])+
   labs(title = "GDP. Después de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==0) %$%
+  filter(tipo == "wage", group=="Antes del 71'") %$%
   autoplot(fitted_arima_2_1_0[[1]])+
   labs(title = "Salario. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==1) %$%
+  filter(tipo == "wage", group=="Despues del 71'") %$%
   autoplot(fitted_arima_2_1_0[[1]])+
   labs(title = "Salario. Después de 1971")
 
@@ -237,22 +259,22 @@ ARIMA(5,1,0)
 ```{r}
 
 nested_df %>% 
-  filter(tipo == "gdp", group==0) %$%
+  filter(tipo == "gdp", group=="Antes del 71'") %$%
   autoplot(fitted_arima_5_1_0[[1]])+
   labs(title = "GDP. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "gdp", group==1) %$%
+  filter(tipo == "gdp", group=="Despues del 71'") %$%
   autoplot(fitted_arima_5_1_0[[1]])+
   labs(title = "GDP. Después de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==0) %$%
+  filter(tipo == "wage", group=="Antes del 71'") %$%
   autoplot(fitted_arima_5_1_0[[1]])+
   labs(title = "Salario. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==1) %$%
+  filter(tipo == "wage", group=="Despues del 71'") %$%
   autoplot(fitted_arima_5_1_0[[1]])+
   labs(title = "Salario. Después de 1971")
 
@@ -264,22 +286,22 @@ ARIMA(10,1,0)
 ```{r}
 
 nested_df %>% 
-  filter(tipo == "gdp", group==0) %$%
+  filter(tipo == "gdp", group=="Antes del 71'") %$%
   autoplot(fitted_arima_10_1_0[[1]])+
   labs(title = "GDP. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "gdp", group==1) %$%
+  filter(tipo == "gdp", group=="Despues del 71'") %$%
   autoplot(fitted_arima_10_1_0[[1]])+
   labs(title = "GDP. Después de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==0) %$%
+  filter(tipo == "wage", group=="Antes del 71'") %$%
   autoplot(fitted_arima_10_1_0[[1]])+
   labs(title = "Salario. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==1) %$%
+  filter(tipo == "wage", group=="Despues del 71'") %$%
   autoplot(fitted_arima_10_1_0[[1]])+
   labs(title = "Salario. Después de 1971")
 
@@ -291,22 +313,22 @@ ARIMA(1,1,1)
 ```{r}
 
 nested_df %>% 
-  filter(tipo == "gdp", group==0) %$%
+  filter(tipo == "gdp", group=="Antes del 71'") %$%
   autoplot(fitted_arima_1_1_1[[1]])+
   labs(title = "GDP. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "gdp", group==1) %$%
+  filter(tipo == "gdp", group=="Despues del 71'") %$%
   autoplot(fitted_arima_1_1_1[[1]])+
   labs(title = "GDP. Después de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==0) %$%
+  filter(tipo == "wage", group=="Antes del 71'") %$%
   autoplot(fitted_arima_1_1_1[[1]])+
   labs(title = "Salario. Antes de 1971")
 
 nested_df %>% 
-  filter(tipo == "wage", group==1) %$%
+  filter(tipo == "wage", group=="Despues del 71'") %$%
   autoplot(fitted_arima_1_1_1[[1]])+
   labs(title = "Salario. Después de 1971")
 
@@ -346,7 +368,7 @@ nested_df %>%
          augment_10_1_0 = map(fitted_arima_10_1_0,sw_augment),
          augment_1_1_1 = map(fitted_arima_1_1_1,sw_augment)) %>% 
   select(tipo, group, data, augment_2_1_0, augment_5_1_0,  augment_10_1_0, augment_1_1_1) %>%
-  PUEDE gather(modelo, augment, 4:ncol(.)) %>% 
+   gather(modelo, augment, 4:ncol(.)) %>% 
   unnest() %>% 
   ggplot(.,aes(year,.fitted, color = modelo))+
   geom_line()+
@@ -357,5 +379,123 @@ nested_df %>%
 
 
 ¯\\_(ツ)_/¯
+
+
+## Auto.Arima
+
+
+```{r}
+
+nested_df <- df %>% 
+  group_by(tipo,group) %>%
+  nest() 
+
+fit_auto_arima <- function(df){
+  auto.arima(df$value)
+}
+
+
+nested_df <- nested_df %>% 
+  group_by(tipo, group) %>% 
+  mutate(fitted_auto_arima = map(data,fit_auto_arima),
+         tidy = map(fitted_auto_arima,sw_tidy),
+         glance = map(fitted_auto_arima,sw_glance),
+         augment = map(fitted_auto_arima,sw_augment))
+```
+
+
+```{r}
+nested_df %>% 
+unnest(glance, .drop=TRUE)
+```
+
+
+Antes del 71' para ambas variables el mejor modelo es un proceso integrado de orden dos, mientras que para las series después del 71' el mejor modelo no es integrado, pero tiene una media distinta a cero. 
+
+Además, antes de 71' los modelos tienen menor desvío y RMSE
+
+
+```{r}
+nested_df %>% 
+  filter(tipo == "gdp", group=="Antes del 71'") %$%
+  autoplot(fitted_auto_arima[[1]])+
+  labs(title = "GDP. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "gdp", group=="Despues del 71'") %$%
+  autoplot(fitted_auto_arima[[1]])+
+  labs(title = "GDP. Después de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group=="Antes del 71'") %$%
+  autoplot(fitted_auto_arima[[1]])+
+  labs(title = "Salario. Antes de 1971")
+
+nested_df %>% 
+  filter(tipo == "wage", group=="Despues del 71'") %$%
+  autoplot(fitted_auto_arima[[1]])+
+  labs(title = "Salario. Después de 1971")
+
+```
+
+
+
+```{r}
+nested_df %>% 
+  select(tipo, group, data, augment) %>%
+  unnest() %>% 
+  ggplot(.,aes(year))+
+  geom_line(aes(y=.fitted,color="fitted"))+
+  geom_line(aes(y=value,color="real"))+
+  facet_wrap(tipo~group, scales = "free")+
+  theme_tufte()+
+  theme(legend.position = "bottom")
+
+ggsave("plots/arima_groups.png", dpi = 300)
+```
+
+
+El modelo funciona mejor para antes de 71' que para después.
+
+
+Sin quebrar las series:
+
+
+
+```{r}
+
+nested_df <- df %>%
+  select(-group) %>% 
+  group_by(tipo) %>%
+  nest() 
+
+nested_df <- nested_df %>% 
+  group_by(tipo) %>% 
+  mutate(fitted_auto_arima = map(data,fit_auto_arima),
+         tidy = map(fitted_auto_arima,sw_tidy),
+         glance = map(fitted_auto_arima,sw_glance),
+         augment = map(fitted_auto_arima,sw_augment))
+
+nested_df %>% 
+  select(tipo, data, augment) %>%
+  unnest() %>% 
+  ggplot(.,aes(year))+
+  geom_line(aes(y=.fitted,color="fitted"))+
+  geom_line(aes(y=value,color="real"))+
+  facet_grid(tipo~., scales = "free")+
+  theme_tufte()+
+  theme(legend.position = "bottom")
+
+ggsave("plots/arima_tot.png", dpi = 300)
+
+```
+
+
+```{r}
+nested_df %>% 
+  unnest(glance)
+```
+
+El RMSE queda en el medio entre ambos. No pareciera mejorar la predicción general separando. 
 
 

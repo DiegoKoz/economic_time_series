@@ -8,6 +8,7 @@ output: html_notebook
 library(WaveletComp)
 library(tidyverse)
 library(lubridate)
+library(glue)
 ```
 
 [WaveletComp](http://www.hs-stat.com/projects/WaveletComp/WaveletComp_guided_tour.pdf)
@@ -39,11 +40,37 @@ wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
 ```
 
 ```{r}
+
+png("plots/espectograma_wg.png", width = 1600, height = 1000, units = "p", pointsize = 40)
 wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
          label.time.axis = TRUE,
+         plot.legend = FALSE,
          main = "Espectograma salario en oro")
+
+dev.off()
 ```
 
+log wage
+
+
+```{r message=FALSE, warning=FALSE}
+wage_wavelet <- wg_in_gold %>% 
+  mutate(logvalue = log(value,base = 10)) %>% 
+  analyze.wavelet(my.data = .,
+                  my.series = "logvalue",
+                  date.format = "%Y-%m-%d",
+                  date.tz = "UTC", verbose = F)
+
+
+png("plots/espectograma_log_wg.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma salario en log(oro)")
+
+dev.off()
+
+```
 
 
 ```{r}
@@ -53,11 +80,13 @@ gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
                                 date.format = "%Y-%m-%d",
                                 date.tz = "UTC")
 
+png("plots/espectograma_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
 wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
+         plot.legend = FALSE,
          label.time.axis = TRUE,
          main = "Espectograma PBI en oro")
-
+dev.off()
 
 ```
 
@@ -76,14 +105,19 @@ gdp_wavelet <- gdp_in_gold %>%
                   my.series = "logvalue",
                   date.format = "%Y-%m-%d",
                   date.tz = "UTC")  
+
+png("plots/espectograma_log_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+
 wt.image(gdp_wavelet,color.key = "q",
          periodlab="Frecuencia de ciclo",
          label.period.axis =TRUE,
+         plot.legend = FALSE,
          spec.period.axis = list(at = c(3,7,20,50), labels = TRUE),
          n.levels = 100,
          show.date = TRUE,
          label.time.axis = TRUE, 
          main = "Espectograma log(PBI en oro)")
+dev.off()
 
 ```
 
@@ -108,23 +142,27 @@ construyo el _modelo teórico_ de una economía cíclica con que se construye a 
 ```{r}
 nn = 1000
 #cambio_nivel
-cte= c(rep(50,nn/2),rep(100,nn/2))
+impulso= c(rep(50,(nn/2-1)),100,rep(50,nn/2))
 x0 = ts(c(1:nn)/2)
 x3 = ts(10*sin((2*pi/3)*c(1:nn)))
 x10 = ts(20*sin((2*pi/10)*c(1:nn)))
 x50 = ts(30*sin((2*pi/50)*c(1:nn)))
 ruido <- rnorm(nn)
-x = cte+ x0+  x3 + x10 + x50+ruido
+x = impulso+ x0+  x3 + x10 + x50+ruido
 
 
-df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50,ruido, x=x)
+df <- data_frame(periodo=1:nn,impulso=impulso,tendencia=x0, ciclo_3=x3,ciclo_10=x10, ciclo_50=x50,ruido, composicion_series=x)
 
 df %>%
-  filter(period<100) %>% 
+  filter(periodo %in% c(450:550)) %>% 
   gather(componente,valor,2:8,factor_key=T) %>% 
-  ggplot(.,aes(period,valor))+
+  ggplot(.,aes(periodo,valor))+
   geom_line()+
-  facet_wrap(~componente, scales="free")
+  labs(title= "Elementos de la serie teórica")+
+  facet_wrap(~componente, scales="free")+
+  theme_minimal()
+
+ggsave("plots/serie_teorica.PNG")
 
 
 ```
@@ -134,34 +172,23 @@ Ahora grafico los wavelets de cada componente y la composición.
 
 ```{r message=FALSE, warning=FALSE}
 
-analyze.wavelet(my.data = df,
-                my.series = "cte") %>%
-wt.image(.,color.key = "q", main = "cte")
-
-analyze.wavelet(my.data = df,
-                my.series = "x0",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x0")
-
-analyze.wavelet(my.data = df,
-                my.series = "x3",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x3")
-
-analyze.wavelet(my.data = df,
-                my.series = "x10",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x10")
-
-analyze.wavelet(my.data = df,
-                my.series = "x50",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x50")
-
-analyze.wavelet(my.data = df,
-                my.series = "ruido",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "ruido")
+analyze_and_save <- function(var){
+  png(glue("plots/espectograma_teorico_{var}.png"), width = 1600, height = 1000, units = "p", pointsize = 40)
+  analyze.wavelet(my.data = df,
+                my.series = var,
+                verbose = F) %>%
+  wt.image(.,color.key = "q",periodlab = "Largo del ciclo",timelab = "Tiempo calendario",
+           plot.legend = FALSE)
+  dev.off()
+}
 
 
-analyze.wavelet(my.data = df,
-                my.series = "x",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x")
+variables <- c("impulso","tendencia", "ciclo_3","ciclo_10", "ciclo_50","ruido", "composicion_series")
+
+
+for (var in variables) {
+  analyze_and_save(var)
+}
 
 
 ```
@@ -185,26 +212,6 @@ x = cte+ x0+  x3 + x10 + x50
 
 df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50, x=x)
 
-
-analyze.wavelet(my.data = df,
-                my.series = "x0",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x0")
-
-analyze.wavelet(my.data = df,
-                my.series = "x3",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x3")
-
-analyze.wavelet(my.data = df,
-                my.series = "x10",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x10")
-
-analyze.wavelet(my.data = df,
-                my.series = "x50",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x50")
-
-analyze.wavelet(my.data = df,
-                my.series = "x",verbose = F) %>% 
-wt.image(.,color.key = "q", main = "x")
 
 ```
 
