@@ -26,7 +26,7 @@ gdp_in_gold <- left_join(gold, gdp, by = "Year") %>%
   transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
          year = parse_date_time(Year,"y")) 
 wg_in_gold <- wage %>% 
-  filter(Year>=1900) %>% 
+  #filter(Year>=1900) %>% 
   left_join(gold, gdp, by = "Year") %>% 
   transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
             year = parse_date_time(Year,"y")) %>%
@@ -406,7 +406,11 @@ nested_df <- nested_df %>%
 
 ```{r}
 nested_df %>% 
-unnest(glance, .drop=TRUE)
+unnest(glance, .drop=TRUE) %>% 
+  select(tipo, group, model.desc, sigma,RMSE) %>% 
+  xtable::xtable(.)
+
+
 ```
 
 

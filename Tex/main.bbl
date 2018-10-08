@@ -1,0 +1,92 @@
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Harrod(1936)]{harrod1936trade}
+Roy~Forbes Harrod.
+\newblock \emph{{The trade cycle}}.
+\newblock Clarendon Press, 1936.
+
+\bibitem[Hayek(1933)]{hayek1933}
+Friedrich Hayek.
+\newblock \emph{{Monetary Theory and the Trade Cyle}}.
+\newblock 1933.
+
+\bibitem[Kaldor(1940)]{kaldor1940model}
+Nicholas Kaldor.
+\newblock {A model of the trade cycle}.
+\newblock \emph{The Economic Journal}, pages 78--92, 1940.
+
+\bibitem[Kalecki(2013)]{kalecki2013essays}
+Michal Kalecki.
+\newblock \emph{{Essays in the theory of economic fluctuations}}.
+\newblock Routledge, 2013.
+
+\bibitem[Keynes(2018)]{keynes2018general}
+John~Maynard Keynes.
+\newblock \emph{{The general theory of employment, interest, and money}}.
+\newblock Springer, 2018.
+
+\bibitem[Kondratieff(1979)]{kondratieff1979long}
+Nikolai~D Kondratieff.
+\newblock {The long waves in economic life}.
+\newblock \emph{Review (Fernand Braudel Center)}, pages 519--562, 1979.
+
+\bibitem[Kuznets and Others(1930)]{kuznets1930secular}
+Simon~Smith Kuznets and Others.
+\newblock {Secular movements in production and prices}.
+\newblock 1930.
+
+\bibitem[Kydland and Prescott(1982)]{kydland1982time}
+Finn~E Kydland and Edward~C Prescott.
+\newblock {Time to build and aggregate fluctuations}.
+\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
+  1345--1370, 1982.
+
+\bibitem[{Lucas Jr}(1975)]{lucas1975equilibrium}
+Robert~E {Lucas Jr}.
+\newblock {An equilibrium model of the business cycle}.
+\newblock \emph{Journal of political economy}, 83\penalty0 (6):\penalty0
+  1113--1144, 1975.
+
+\bibitem[Officer and Williamson(2018{\natexlab{a}})]{officer2018gdp}
+Lawrence~H Officer and Samuel~H Williamson.
+\newblock {What was the US GDP then?}
+\newblock \emph{Measuring Worth}, 2018{\natexlab{a}}.
+
+\bibitem[Officer and Williamson(2018{\natexlab{b}})]{officer2018gold}
+Lawrence~H Officer and Samuel~H Williamson.
+\newblock {The Price of Gold, 1257-2014}.
+\newblock \emph{MeasuringWorth. com}, 2018{\natexlab{b}}.
+
+\bibitem[Officer and Williamson(2018{\natexlab{c}})]{officer2018wage}
+Lawrence~H Officer and Samuel~H Williamson.
+\newblock {Annual Wages in the United States, 1774-Present},
+  2018{\natexlab{c}}.
+
+\bibitem[Plosser(1989)]{plosser1989understanding}
+Charles~I Plosser.
+\newblock {Understanding real business cycles}.
+\newblock \emph{Journal of Economic Perspectives}, 3\penalty0 (3):\penalty0
+  51--77, 1989.
+
+\bibitem[Samuelson(1939)]{samuelson1939synthesis}
+Paul~A Samuelson.
+\newblock {A Synthesis of the Principle of Acceleration and the Multiplier}.
+\newblock \emph{Journal of Political Economy}, 47\penalty0 (6):\penalty0
+  786--797, 1939.
+
+\bibitem[Schumpeter and Others(1939)]{schumpeter1939business}
+Joseph~Alois Schumpeter and Others.
+\newblock \emph{{Business cycles}}, volume~1.
+\newblock McGraw-Hill New York, 1939.
+
+\bibitem[von Mises(1943)]{von1943elastic}
+Ludwig von Mises.
+\newblock {" Elastic Expectations" and the Austrian Theory of the Trade Cycle}.
+\newblock \emph{Economica}, 10\penalty0 (39):\penalty0 251--252, 1943.
+
+\end{thebibliography}

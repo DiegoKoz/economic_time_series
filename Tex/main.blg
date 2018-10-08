@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: plainnat.bst
+Database file #1: bibliography.bib.bib
+Warning--empty publisher in hayek1933
+Warning--empty journal in kuznets1930secular
+You've used 16 entries,
+            2773 wiz_defined-function locations,
+            680 strings with 6593 characters,
+and the built_in function-call counts, 6087 in all, are:
+= -- 548
+> -- 226
+< -- 20
++ -- 84
+- -- 66
+* -- 388
+:= -- 922
+add.period$ -- 47
+call.type$ -- 16
+change.case$ -- 65
+chr.to.int$ -- 14
+cite$ -- 34
+duplicate$ -- 339
+empty$ -- 578
+format.name$ -- 94
+if$ -- 1298
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 20
+newline$ -- 87
+num.names$ -- 64
+pop$ -- 163
+preamble$ -- 1
+purify$ -- 54
+quote$ -- 0
+skip$ -- 256
+stack$ -- 0
+substring$ -- 228
+swap$ -- 46
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 151
+warning$ -- 2
+while$ -- 65
+width$ -- 0
+write$ -- 203
+(There were 2 warnings)

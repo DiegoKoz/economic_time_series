@@ -124,7 +124,11 @@ gold %>%
   ggplot(., aes(Year, `New York Market Price (U.S. dollars per fine ounce)`))+
   geom_line()+
   geom_vline(xintercept = 1971, color = "red")+
-  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10)
+  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10)+
+  theme_minimal()+
+  labs(y="Dólares por onza de oro, mercado de Nueva York", x="Año")
+
+ggsave("plots/oro.png", dpi=300, width = 10, height = 7)
 ```
 
 
