@@ -49,7 +49,7 @@ Desde todas las escuelas del pensamiento económico se han buscado explicaciones
 Desde una escuela distinta \cite{schumpeter1939business} parte del rol de los empresarios innovadores para llegar a un “modelo tricíclico” donde opera una superposición de ondas cortas, medias y largas. 
 La teoría austríaca del ciclo, encabezada por \cite{hayek1933} y \cite{von1943elastic}, considera un origen puramente monetario, basado en la creación endógena de poder adquisitivo y variaciones de los precios relativos. 
 Por último, se encuentra la teoría neoclásica del ciclo, que surge a partir de la crítica de Lucas a la macroeconomía keynesiana. En los modelos de esta teoría se prioriza la microfundmentación de los supuestos de comportamiento, y por lo tanto, que los individuos sean agentes racionales, y que en todo momento existan equilibrios competitivos. Estos modelos se dividen entre los planteados por el propio \cite{lucas1975equilibrium}, dónde el shock inicial es monetario, y los modelos del real business cycle \cite{plosser1989understanding}, dónde el impulso original está dado por cambios aleatorios en la tecnología.
-
+Desde el punto de vista del análisis empírico, existen múltiples autores que han encontrado evidencia, ya sea mediante el estudio de las series sin aplicarles alguna transformación particular \citep{kuznets1930secular,kondratieff1979long,schumpeter1939business}, utilizando el modelos autorregresivos, de medias moviles, y ARIMA \citep{hamilton1989new,kaiser2012measuring}, o más recientemente mediante el uso de wavelets \citep{yogo2008measuring,soares2011business}.
 
 \section{Análisis Exploratorio de Datos}
 
@@ -137,7 +137,41 @@ Se observa tanto un mayor desvío como un mayor error cuadrático medio para amb
 
 \section{Wavelets}
 
-Por lo anterior, se decidió explorar nuevas herramientas del análisis de series de tiempo para poder caracterizar el ciclo económico. En particular, los espectogramas producidos mediante \textit{wavelets} parecen ser una herramienta propicia para encontrar ciclos bien definidos a lo largo del período analizado. Para ello, comenzamos definiendo un modelo teórico de una economía cíclica, con los diferentes componentes vistos de por separado y en su composición, para observar las características del espectograma en este modelo,  y luego compararlo con los datos reales. 
+Por lo anterior, se decidió explorar nuevas herramientas del análisis de series de tiempo para poder caracterizar el ciclo económico. En particular, los espectogramas producidos mediante \textit{wavelets} parecen ser una herramienta propicia para encontrar ciclos bien definidos a lo largo del período analizado. Las wavelets son un tipo de transformación sobre la serie original que puede pensarse como una rotación de un espacio de funciones a un dominio diferente. A diferencia de la transformada de fourier, que tiene como base de funciones los senos y cosenos, la transformada Wavelet tiene como base de funciones una base de Wavelets \cite{castro1995wavelets}. Una base de este tipo se construye a partir de una función madre, que es una onda corta, de duración finita, a diferencia de las funciones seno y coseno que se extienden infinitamente, es decir, tienen \textit{soporte compacto}. Otra característica de las funciones wavelet es que el área debajo de la curva debe ser igual a cero, es decir que esta centrada en cero.  
+
+
+que se traslada y dilata para construir una base ortonormal.  Si denominamos a la función madre como $\psi(x)\in L^2(R)$, la misma se puede expandir en escalas que son potencia de dos mediante:
+$$
+\psi_{a,b}(x)=2^{-a/2}\psi(2^{-a} x-b) \ \ a,b \in Z
+$$
+
+En general, mientras la transformada de Fourier de una serie del dominio del tiempo al dominio de la frecuencia toma la forma de:
+
+$$
+X(F)=\int_{-\infty}^{\infty} x(t) \mathcal{e}^{-j2\pi Ft}dt
+$$
+
+La transformada wavelet lleva del dominio del tiempo al dominio de escala y traslación:
+
+$$
+X(a,b)=\int_{-\infty}^{\infty} x(t) \psi^*_{a,b}(t)dt
+$$
+
+La escala describe la frecuencia (inversa de la extensión o período) del ciclo, mientras que la traslación describe el movimiento a lo largo de la serie. Dado que las series de baja frecuencia (más ciclos largos) ocupan una porción mayor de la serie, son más difíciles de ubicar en un momento particular del tiempo. El wavelet logra definir la presencia de una determinada frecuencia en un determinado momento del tiempo. Por lo mencionado, la resolución en bajas frecuencias es mala en el dominio del tiempo, pero buena en el dominio de la frecuencia, mientras que los ciclos de alta frecuencia tienen alta resolución en el dominio del tiempo, pero menos resolución en el dominio de la frecuencia. Si lo comparamos con las transformadas de fourier, podríamos pensar que ésta tiene muy alta resolución en el dominio de la frecuencia, pero ninguna resolución en el dominio del tiempo. 
+Otra forma de pensar los Wavelets es que lo que se hace es analizar la correlación entre la serie de tiempo y una función base (el wavelet), para cada momento del tiempo (el efecto de la traslación). Luego, se modifica la función base reescalandola para que tenga una frecuencia más baja, y se vuelve a calcular la correlación entre esta y la serie. Finalmente lo que obtenemos es un valor de la asociación lineal entre la serie original y la función base, para cada valor del tiempo y la frecuencia.  
+La función base que utilizamos para el presente trabajo es la denominada \textit{Morlet Wavelet}, que tal como se implementa en la librería WaveletComp \citep{Roesch2018} tiene la siguiente forma:
+$$
+\psi(t)=\pi^{-1/4}e^{i\omega t}e^{-t^2/2}
+$$
+
+Donde $\omega$ es la frecuencia angular (tasa de rotación en radianes por unidad de tiempo). Esta es una función continua, compleja, frecuentemente utilizada en la literatura \citep{conraria2011continuous}. Por su parte, las base a partir de la traslación, $a$, y el escalado, $b$, implementada es:
+
+$$
+X(a,b)=\sum_{t} x(t)   \frac{1}{b} \psi^*(\frac{t-a}{b})dt
+$$
+
+
+Para visualizar las wavelets en el análisis del ciclo económico es propicio definir un modelo teórico de una economía cíclica, con los diferentes componentes vistos de por separado y en su composición, para observar las características del espectograma en este modelo,  y luego compararlo con los datos reales. 
 En la figura \ref{fig:serie_teorica} se observan 100 valores de los distintos componentes con los que construiremos la serie:
 
 \begin{itemize}
