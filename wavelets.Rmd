@@ -10,6 +10,7 @@ library(tidyverse)
 library(lubridate)
 library(glue)
 library(ggthemes)
+library(cowplot)
 ```
 
 [WaveletComp](http://www.hs-stat.com/projects/WaveletComp/WaveletComp_guided_tour.pdf)
@@ -253,9 +254,6 @@ ejemplo_traslacion= data.frame(ejemplo_1,ejemplo_2,ejemplo_3, time =1:length(eje
       facet_grid(wavelet~.)+
  theme(legend.position = "none",
         strip.text = element_blank())
-
-# library(cowplot)
-
 
 plot_grid(ejemplo_traslacion,ejemplo_escala,ncol=1)
 

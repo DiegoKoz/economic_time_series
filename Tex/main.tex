@@ -42,7 +42,7 @@ La teoría económica no existe una posición inequívoca respecto de las formas
 El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las características de la serie del precio del oro y los efectos sobre las demás series, así como se contrastan las series de tiempo con las crisis conocidas en la historiografía económica. En la cuarta sección se presentan los resultados de la econometría de serie de tiempo, en las funciones de autocorrelación y el modelo ARIMA. En la sección quinta se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la sexta y última sección se presentan las conclusiones y futuras líneas de investigación.
 
 
-\section{Debates teóricos}
+\section{Debates en torno al ciclo económico}
 
 No abundan en la literatura económica polémicas en las cuales se haya sentado posición desde prácticamente el conjunto de las escuelas del pensamiento económico, y en dónde, a la vez, se pueda vislumbrar la estructura lógica subyacente a las mismas. La discusión en torno a ¿qué es el ciclo económico?, ¿cómo se origina?  y ¿qué implicancias tiene a nivel de política económica? es, definitivamente, una de esas polémicas.
 Desde todas las escuelas del pensamiento económico se han buscado explicaciones a estos interrogantes. Por un lado, encontramos las explicaciones que se centran en el rol de la demanda, en particular de los bienes de inversión, como punto de partida del ciclo económico. Allí, en la obra de \cite{kalecki2013essays} el ciclo surge por la dinámica particular que tiene la demanda de bienes de inversión a partir de las diferencias temporales entre que se toman las decisiones de demanda de dichos bienes y el momento en que estos son finalmente puestos en marcha. Luego \cite{keynes2018general} plantea que los \textit{animal spirits} dominan la escena, siendo la eficiencia marginal del capital la que guía el trayecto del ciclo. También pertenecen a esta escuela \cite{harrod1936trade}, \cite{kaldor1940model} y \cite{samuelson1939synthesis}, quienes proponen modelos donde hay una interacción entre el multiplicador keynesiano y el principio de aceleración, es decir, donde el producto define la demanda de bienes de consumo, y ésta a la demanda de bienes de inversión, que finalmente terminan por operar sobre el producto, generando una espiral de sobre-determinaciones que terminan por generar un ciclo. 
@@ -148,7 +148,7 @@ $$
 En general, mientras la transformada de Fourier de una serie del dominio del tiempo al dominio de la frecuencia toma la forma de:
 
 $$
-X(F)=\int_{-\infty}^{\infty} x(t) \mathcal{e}^{-j2\pi Ft}dt
+X(F)=\int_{-\infty}^{\infty} x(t) e^{-j2\pi Ft}dt
 $$
 
 La transformada wavelet lleva del dominio del tiempo al dominio de escala y traslación:
