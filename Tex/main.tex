@@ -170,6 +170,13 @@ $$
 X(a,b)=\sum_{t} x(t)   \frac{1}{b} \psi^*(\frac{t-a}{b})dt
 $$
 
+Visualmente, las traslaciones y reescalados de la función base se pueden observar en la figura \ref{fig:morlet}. Allí se aprecia que las traslaciones se definen en el dominio del tiempo, mientras que los reescalados lo hacen en el dominio de la frecuencia. Luego, si se reconstruye el plano tiempo-frecuencia y se calcula la correlación de cada punto del dicho plano con la serie original, se obtiene una nueva dimensión que representa el grado de ajuste de nuestra serie a cada frecuencia, para los distintos momentos del tiempo. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{morelt.png}
+	\caption{Traslaciones y reescalados de la función base Morlet} \label{fig:morlet}
+\end{figure}
 
 Para visualizar las wavelets en el análisis del ciclo económico es propicio definir un modelo teórico de una economía cíclica, con los diferentes componentes vistos de por separado y en su composición, para observar las características del espectograma en este modelo,  y luego compararlo con los datos reales. 
 En la figura \ref{fig:serie_teorica} se observan 100 valores de los distintos componentes con los que construiremos la serie:
