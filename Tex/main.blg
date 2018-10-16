@@ -7,34 +7,34 @@ Warning--empty publisher in hayek1933
 Warning--empty journal in kuznets1930secular
 You've used 23 entries,
             2773 wiz_defined-function locations,
-            722 strings with 7747 characters,
-and the built_in function-call counts, 8947 in all, are:
-= -- 814
-> -- 351
+            722 strings with 7736 characters,
+and the built_in function-call counts, 8882 in all, are:
+= -- 808
+> -- 340
 < -- 29
-+ -- 127
-- -- 102
-* -- 586
-:= -- 1350
++ -- 124
+- -- 99
+* -- 578
+:= -- 1341
 add.period$ -- 68
 call.type$ -- 23
-change.case$ -- 96
+change.case$ -- 95
 chr.to.int$ -- 21
 cite$ -- 48
 duplicate$ -- 488
 empty$ -- 836
-format.name$ -- 147
-if$ -- 1909
+format.name$ -- 142
+if$ -- 1895
 int.to.chr$ -- 3
 int.to.str$ -- 1
 missing$ -- 27
 newline$ -- 122
 num.names$ -- 92
-pop$ -- 229
+pop$ -- 228
 preamble$ -- 1
-purify$ -- 80
+purify$ -- 79
 quote$ -- 0
-skip$ -- 374
+skip$ -- 371
 stack$ -- 0
 substring$ -- 340
 swap$ -- 65
