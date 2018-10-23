@@ -135,13 +135,14 @@ Este gráfico me da la sensación de que todo estuviera corrido a la derecha (mi
 ```{r}
 gold %>% 
   ggplot(., aes(Year, `New York Market Price (U.S. dollars per fine ounce)`))+
-  geom_line()+
+  geom_line(size=1)+
   geom_vline(xintercept = 1971, color = "red")+
-  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10)+
+  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10,size=7)+
   theme_minimal()+
-  labs(y="Dólares por onza de oro, mercado de Nueva York", x="Año")
+  labs(y="Dólares por onza de oro", x="Año")+
+  theme(text = element_text(size = 20))
 
-ggsave("plots/oro.png", dpi=300, width = 10, height = 7)
+ggsave("plots/oro.png", dpi=300, width = 10, height = 7, scale=1)
 ```
 
 
