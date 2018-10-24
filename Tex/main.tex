@@ -19,9 +19,28 @@
 \usepackage{subfigure} 
 \usepackage{float}
 
+
+\addtolength{\subfigcapskip}{-10pt}
+\addtolength{\subfigbottomskip}{-30pt}
+%\addtolength{\subfigcapmargin}{-30pt}
+
+
+%\addtolength{\subfigtopskip}{-25pt}
+
 \graphicspath{{../plots/}}
 
 \usepackage{listings,xcolor}
+
+
+\lstset{language=R,
+	basicstyle=\small\ttfamily,
+	stringstyle=\color{DarkGreen},
+	otherkeywords={0,1,2,3,4,5,6,7,8,9},
+	morekeywords={TRUE,FALSE},
+	deletekeywords={data,frame,length,as,character},
+	keywordstyle=\color{blue},
+	commentstyle=\color{DarkGreen},
+}
 
 \title{Análisis de series de tiempo para el reconocimiento de ciclos económicos.}
 \author{Pablo Santoro, Diego Kozlowski}
@@ -196,10 +215,11 @@ $$
 
 La escala describe la frecuencia (inversa de la extensión o período) del ciclo, mientras que la traslación describe el movimiento a lo largo de la serie. Dado que las series de baja frecuencia (ciclos más largos) ocupan una porción mayor de la serie, son más difíciles de ubicar en un momento particular del tiempo. El wavelet logra definir la presencia de una determinada frecuencia en un determinado momento del tiempo. Por lo mencionado, la resolución en bajas frecuencias es mala en el dominio del tiempo, pero buena en el dominio de la frecuencia, mientras que los ciclos de alta frecuencia tienen alta resolución en el dominio del tiempo, pero menos resolución en el dominio de la frecuencia. Si lo comparamos con las transformadas de fourier, podríamos pensar que ésta tiene muy alta resolución en el dominio de la frecuencia, pero ninguna resolución en el dominio del tiempo. 
 
-Otra forma de pensar los Wavelets es que lo que se hace es analizar la correlación entre la serie de tiempo y una función base (el wavelet), para cada momento del tiempo (el efecto de la traslación) en una cierta frecuencia. Luego, se modifica la función base reescalandola para que tenga una frecuencia más baja o alta, y se vuelve a calcular la correlación entre esta y la serie. Finalmente lo que obtenemos es un valor de la asociación lineal entre la serie original y la función base, para cada valor del tiempo y la frecuencia.  
-La función base que utilizamos para el presente trabajo es la denominada \textit{Morlet Wavelet}, que tal como se implementa en la librería WaveletComp \citep{Roesch2018} tiene la siguiente forma:
+También es posible entender a los Wavelets como un análisis de la correlación entre una serie de tiempo, y una cierta función ondulatoria compacta, en un momento del tiempo y una frecuencia determinada. Las traslaciones lo generan es un corrimiento de la función ondulatoria, y por lo tanto podemos calcular la correlación para todo el rango temporal. El reescalado modifica la frecuencia de la función ondulatoria, lo que permite calcular la correlación para varias frecuencias de onda diferentes. La cantidad de datos disponibles es la que define la capacidad de reescalar la función base, es decir, cuan bajas son las frecuencias mínimas que se puede analizar. Finalmente lo que obtenemos es un valor de la asociación lineal entre la serie original y la función base, para cada valor del tiempo y la frecuencia.  
+
+La función base que utilizamos para el presente trabajo es la denominada \textit{Morlet Wavelet}, que tal como se implementa en la librería WaveletComp \citep{Roesch2018} tiene la siguiente forma funcional:
 $$
-\psi(t)=\pi^{-1/4}e^{i\omega t}e^{-t^2/2}
+\psi(t)=\pi^{-\frac{1}{4}}e^{i\omega t}e^{\frac{-t^2}{2}}
 $$
 
 Donde $\omega$ es la frecuencia angular (tasa de rotación en radianes por unidad de tiempo). Esta es una función continua, compleja, frecuentemente utilizada en la literatura \citep{conraria2011continuous}. Por su parte, las base a partir de la traslación, $a$, y el escalado, $b$, implementada es:
@@ -228,6 +248,20 @@ En la figura \ref{fig:serie_teorica} se observan 100 valores de los distintos co
 	\item \textbf{ruido}: Ruido generado a partir de una distribución normal, poco significativo respecto a la amplitud de los ciclos y la pendiente de la tendencia.
 \end{itemize}
 
+En código R, los elementos de la serie teórica se pueden expresar de la siguiente manera:
+
+\begin{lstlisting}
+n = 1000
+impulso= c(rep(50,(n/2-1)),100,rep(50,n/2))
+tendencia = c(1:n)/2
+corto = 10 * sin(( 2 * pi/3 ) * c(1:n))
+medio = 20 * sin(( 2 * pi/10) * c(1:n))
+largo = 30 * sin(( 2 * pi/50) * c(1:n))
+ruido <- rnorm(n)
+serie_compuesta = impulso + tendencia + corto + medio + largo + ruido
+\end{lstlisting}
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{serie_teorica.PNG}
@@ -236,27 +270,35 @@ En la figura \ref{fig:serie_teorica} se observan 100 valores de los distintos co
 
 En la figura \ref{fig:espect_teo} se observa el espectograma de cada uno de los elementos mencionados. Dicho gráfico muestra en el eje vertical el período, la inversa de la frecuencia de onda, que corresponde a la distancia entre los valles o picos de un ciclo. La escala cromática (de los azules para los valores más bajos a los rojos en los valores más altos) representa la amplitud del ciclo. el eje horizontal representa el tiempo calendario. Es decir, para cada tiempo calendario podemos observar la amplitud del ciclo en cada una de las posibles frecuencias de onda. 
 
-El impulso se presenta como un ciclo de amplitud grande en todas las frecuencias, en el momento correspondiente. La tendencia, por su parte, se presenta básicamente como ruido, dado que es estrictamente un comportamiento no cíclico. Sin embargo, presenta la particularidad de presentar valores de amplitud mayores hacia el final del período para frecuencias bajas, y valores de amplitud particularmente bajos en las frecuencias altas de los primeros momentos.
+\begin{figure}[H]
+	\centering
+	\subfigure[impulso]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_impulso.png}}
+	    \vspace{0.00mm}
+	\subfigure[tendencia]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_tendencia.png}}
+	    \vspace{0.00mm}
+	\subfigure[ciclo de 3 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_3.png}}
+	    \vspace{0.00mm}
+	\subfigure[ciclo de 10 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_10.png}}
+	    \vspace{0.00mm}
+	\subfigure[ciclo de 50 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_50.png}}
+	    \vspace{0.00mm}
+	\subfigure[ruido normal]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ruido.png}}
+	    \vspace{0.00mm}
+	\subfigure[composición de series]{\includegraphics[width=0.75\linewidth]{espectograma_teorico_composicion_series.png}}
+	\caption{Espectogramas Teóricos} \label{fig:espect_teo}
+\end{figure}
 
-Los tres ciclos definidos marcan claramente una línea horizontal en el correspondiente período, que luego se diluye hacia las demás frecuencias. Finalmente, el normal presenta un comportamiento muy particular, mostrando mayores amplitudes, de forma irregular, en las frecuencias altas, y homogeneizándose hacia un valor de amplitud baja en los ciclos más largos. Esto se debe a que el ruido normal se puede parecer a un ciclo de períodos muy cortos debido a una sucesión de subas y bajas, pero dado que es un proceso aleatorio, es cada vez más improbable que se asemeje a ciclos de períodos mayores, dado que ello implicaría una mayor cantidad de sucesiones de subas y bajas consecutivas. A su vez, tanto en el espectograma del ruido normal como en el de la tendencia se puede apreciar como el gráfico pierde resolución para periodos más largos, como se mencionó anteriormente. 
+Como se observa en la figura \ref{fig:espect_teo} el impulso se presenta como un ciclo de amplitud grande en todas las frecuencias, en el momento correspondiente. La tendencia, por su parte, se presenta básicamente como ruido, dado que es estrictamente un comportamiento no cíclico. Sin embargo, presenta la particularidad de presentar valores de amplitud mayores hacia el final del período para frecuencias bajas, y valores de amplitud particularmente bajos en las frecuencias altas de los primeros momentos.
+
+Los tres ciclos definidos marcan claramente una línea horizontal en el correspondiente período, que luego se diluye hacia las demás frecuencias. Finalmente, el ruido normal presenta un comportamiento muy particular, mostrando mayores amplitudes, de forma irregular, en las frecuencias altas, y homogeneizándose hacia un valor de amplitud baja en los ciclos más largos. Esto se debe a que el ruido normal se puede parecer a un ciclo de períodos muy cortos debido a una sucesión de subas y bajas, pero dado que es un proceso aleatorio, es cada vez más improbable que se asemeje a ciclos de períodos mayores, dado que ello implicaría una mayor cantidad de sucesiones de subas y bajas consecutivas. A su vez, tanto en el espectograma del ruido normal como en el de la tendencia se puede apreciar como el gráfico pierde resolución para periodos más largos, como se mencionó anteriormente. 
 
 Por último, en la composición se series se observa como los ciclos de mayor amplitud y frecuencia se expresan en la escala cromática de forma más nítida que los ciclos de menor amplitud y frecuencia. Es importante resaltar que la concordancia entre amplitud y frecuencia es producto de la forma en que construimos las series, dado que esperamos que los ciclos económicos más largos se correspondan también con movimientos de mayor amplitud.
 
 Vale mencionar que la elección para el modelo teórico de estos tres niveles y amplitudes cíclicas no es arbitraria, sino que se corresponde a grandes rasgos con lo considerado por la literatura: \cite{kondratieff1979long} estudia las series largas, de unos 50 años, mientras que \cite{kuznets1930secular} propone movimientos seculares de entre 15 y 25 años. Finalmente el Real business cycle \citep{kydland1982time} considera un ciclo corto.
 
-\begin{figure}[H]
-	\centering
-	\subfigure[impulso]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_impulso.png}}
-	\subfigure[tendencia]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_tendencia.png}}
-	\subfigure[ciclo de 3 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_3.png}}
-	\subfigure[ciclo de 10 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_10.png}}
-	\subfigure[ciclo de 50 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_50.png}}
-	\subfigure[ruido normal]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ruido.png}}
-	\subfigure[composición de series]{\includegraphics[width=0.75\linewidth]{espectograma_teorico_composicion_series.png}}
-	\caption{Espectogramas Teóricos} \label{fig:espect_teo}
-\end{figure}
 
-Con lo analizado de la figura \ref{fig:espect_teo} podemos observar los resultados de las series originales. En la figura \ref{fig:espect_PBI_a} se puede observar el espectograma correspondiente al PBI de estados unidos expresado en oro. Allí se marca claramente la diferencia en la serie antes y después del 1900, y en particular también se marca el quiebre estudiado de los años 70'. No obstante lo cual, para ese período se observan 3 frecuencias donde se registra un comportamiento cíclico, en los períodos aproximados de 8 y 50 años, y un ciclo diferenciado de este último, de aproximadamente 30 años. Dada la heterocedasticidad de las series, en \ref{fig:espect_PBI_b} se propone el espectograma de la misma serie tomada en logaritmo de base 10. De esta forma lo que se observa es que el ciclo de 50 años se extiende más allá en el tiempo, hasta mediados del Siglo XIX. Por su parte, aparece brevemente un ciclo más corto, de aproximadamente tres años, en la década del 70.
+
+Con lo analizado de la figura \ref{fig:espect_teo} podemos observar los resultados de las series originales. En la figura \ref{fig:espect_PBI_a} se puede observar el espectograma correspondiente al PBI de Estados Unidos expresado en oro. Allí se marca claramente la diferencia en la serie antes y después del 1900, y en particular también se marca el quiebre estudiado de los años 70'. No obstante lo cual, para ese período se observan 3 frecuencias donde se registra un comportamiento cíclico, en los períodos aproximados de 8 y 50 años, y un ciclo diferenciado de este último, de aproximadamente 30 años. Dada la heterocedasticidad de las series, en \ref{fig:espect_PBI_b} se propone el espectograma de la misma serie tomada en logaritmo de base 10. De esta forma lo que se observa es que el ciclo de 50 años se extiende más allá en el tiempo, hasta mediados del Siglo XIX. Por su parte, aparece brevemente un ciclo más corto, de aproximadamente tres años, en la década del 70.
 
 \begin{figure}[H]
 	\centering
@@ -267,7 +309,7 @@ Con lo analizado de la figura \ref{fig:espect_teo} podemos observar los resultad
 	\caption{Espectograma PBI en oro} \label{fig:espect_PBI}
 \end{figure}
 
-las figuras \ref{fig:espect_wg} muestran los espectogramas de la serie del salario expresado en oro \ref{fig:espect_wg_a} y el mismo tomado en logaritmo en \ref{fig:espect_wg_b}. Para esta serie nuevamente se observa un ciclo largo bien definido en torno a los 50 años, especialmente si se observa la serie tomada en base logarítmica. Este ciclo largo parece oscilar entre las frecuencias de $1/32$ y $1/64$, cayendo en el tiempo. Pos su parte, se delimita un segundo ciclo, en torno a los 16 años de extensión, y finalmente un ciclo corto de entre 6 y 8 años.  Al tomar la escala logarítmica, también aparece un ciclo de mayor frecuencia, de unos 3 años de duración. En consecuencia, ambas series parecen arrojar resultados en concordancia, sean o no tomadas en logaritmo. 
+las figuras \ref{fig:espect_wg} muestran los espectogramas de la serie del salario expresado en oro \ref{fig:espect_wg_a} y el mismo tomado en logaritmo en \ref{fig:espect_wg_b}. Para esta serie nuevamente se observa un ciclo largo bien definido en torno a los 50 años, especialmente si se observa la serie tomada en base logarítmica. Este ciclo largo parece oscilar entre las frecuencias de $1/32$ y $1/64$, cayendo en el tiempo. Por su parte, se delimita un segundo ciclo, en torno a los 16 años de extensión, y finalmente un ciclo corto de entre 6 y 8 años.  Al tomar la escala logarítmica, también aparece un ciclo de mayor frecuencia, de unos 3 años de duración. En consecuencia, ambas series parecen arrojar resultados en concordancia, sean o no tomadas en logaritmo. 
 
 \begin{figure}[H]
 	\centering
@@ -282,10 +324,17 @@ las figuras \ref{fig:espect_wg} muestran los espectogramas de la serie del salar
 
 \section{Conclusiones}
 
-\todo{falta}
+En el presente trabajo se realizó un recorrido por las principales aproximaciones teóricas respecto al ciclo económico, y se planteó la importancia de un análisis empírico respecto a dicho fenómeno. Para ello, se utilizaron las series de PBI y Salario de Estados Unidos entre 1790 y 2017, expresadas en oro, por los efectos distorsivos que podría generar dicha variable. 
+
+En el análisis exploratorio de datos se encontró una fuerte correspondencia entre los quiebres de estas series, y las crisis conocidas por la historiografía económica, así como un movimiento oscilatorio aparente que pareciera corresponderse con las ondas largas de kondratieff.
+
+Luego se realizó un análisis con las herramientas clásicas de la econometría de series de tiempo, en particular con funciones de autocorrelación y modelos ARIMA, tomando el recaudo de distinguir las series antes y después de la caída del patrón oro en 1971. Allí se encontró que la variabilidad de la serie luego de este punto es sustancialmente mayor, y presenta esencialmente un comportamiento de tipo \textit{random walk}. Sin embargo, no se consiguió evidencia consistente respecto del ciclo económico.
+
+Por ello se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite decir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
 
 Es interesante remarcar el siguiente punto: el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900.
 
+El presente trabajo plantea sendas lineas de investigación, especialmente respecto de la utilización de la técnica Wavelets en nuevas series, tanto para series de variables financieras, como series de PBI y salario de otros países.
 
 \bibliography{bibliography.bib}
 

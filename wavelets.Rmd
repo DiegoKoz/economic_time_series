@@ -174,26 +174,38 @@ Ahora grafico los wavelets de cada componente y la composición.
 
 ```{r message=FALSE, warning=FALSE}
 
-analyze_and_save <- function(var){
-  png(glue("plots/espectograma_teorico_{var}.png"), width = 1600, height = 1000, units = "p", pointsize = 40)
+analyze_and_save <- function(var, save = T){
+
+  if (save) {
+    png(glue("plots/espectograma_teorico_{var}.png"), width = 1600, height = 1000, units = "p", pointsize = 40)
+  }
   analyze.wavelet(my.data = df,
                 my.series = var,
                 verbose = F) %>%
   wt.image(.,color.key = "q",periodlab = "Largo del ciclo",timelab = "Tiempo calendario",
-           plot.legend = FALSE)
-  dev.off()
+           plot.legend = FALSE,
+           graphics.reset = FALSE)
+  if (save) {
+    dev.off()
+  }
 }
 
 
 variables <- c("impulso","tendencia", "ciclo_3","ciclo_10", "ciclo_50","ruido", "composicion_series")
-
-
 for (var in variables) {
   analyze_and_save(var)
+
 }
 
 
+
+
+
+
 ```
+
+
+
 
 - _cte_, que representa un cambio de nivel en 500, muestra todas las frecuencias de onda sobre la vertical en el punto de cambio de nivel. 
 - La tendencia no se puede representar bien en el espectograma, porque el comportamiento ciclico es nulo. La diferencia con el ruido es que pasa de valores de intensidad más bajos al principio del período y tiempo (los ejes) a valores más altos. El ruido normal muestra mayores valores en las frecuencias mas altas (los periodos más bajos).
