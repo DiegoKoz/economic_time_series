@@ -324,6 +324,9 @@ plot(log10(real_gdp_ts))
 
 tend = lm(log10(real_gdp_ts) ~ gdp$year)
 summary(tend) # El r2 ajustado es excelente
+plot(tend) # pareciera haber algo de estructura en los residuos, no obstante estan muy cerca de cero.
+# Esto es porque (observar el gráfico siguiente de la recta generada) hay zonas donde la recta
+# está consistentemente por debajo o encima de la curva
 
 plot(log10(real_gdp_ts))
 abline(reg = tend)
@@ -335,6 +338,7 @@ plot(real_gdp_ts_ma10)
 real_gdp_ts_center = log10(real_gdp_ts) - predict(tend, newdata = log10(real_gdp_ts))
 
 plot(real_gdp_ts_center)
+abline(a = 0, b = 0)
 
 real_gdp_ts_ma10_center = real_gdp_ts - real_gdp_ts_ma10
 plot(real_gdp_ts_ma10_center)
@@ -344,8 +348,13 @@ plot(real_gdp_ts_ma3_center)
 abline(a = 0, b = 0)
 ```
 
+```{r, echo=FALSE}
+
+```
+
+
 Revisando el histograma de esta serie de tiempo
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 hist(real_gdp_ts_ma10_center, breaks="FD")
 ```
 
