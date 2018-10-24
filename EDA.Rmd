@@ -12,6 +12,7 @@ library(forecast)
 library(ggrepel)
 library(rvest)
 library(plotly)
+library(xtable)
 ```
 
 
@@ -59,6 +60,8 @@ ggplot(.,aes(Date, dif))+
 
 armo una lista de las crisis conocidas
 
+# Crisis
+
 ```{r}
 url <- "https://www.caproasia.com/2016/04/12/economic-crisis-since-1900-2015/"
 crisis <- url %>%
@@ -90,6 +93,16 @@ crisis <- crisis %>%
 ```
 
 
+```{r}
+# tabla <- crisis[[1]] %>% 
+#   filter(Affected %in% c("United States","Global")) %>% 
+#   select(-Region, - Affected) %>% 
+#   xtable(.)
+
+#En la consola
+# print(tabla, include.rownames = F)
+
+```
 
 
 ```{r}
@@ -122,13 +135,14 @@ Este gráfico me da la sensación de que todo estuviera corrido a la derecha (mi
 ```{r}
 gold %>% 
   ggplot(., aes(Year, `New York Market Price (U.S. dollars per fine ounce)`))+
-  geom_line()+
+  geom_line(size=1)+
   geom_vline(xintercept = 1971, color = "red")+
-  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10)+
+  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10,size=7)+
   theme_minimal()+
-  labs(y="Dólares por onza de oro, mercado de Nueva York", x="Año")
+  labs(y="Dólares por onza de oro", x="Año")+
+  theme(text = element_text(size = 20))
 
-ggsave("plots/oro.png", dpi=300, width = 10, height = 7)
+ggsave("plots/oro.png", dpi=300, width = 10, height = 7, scale=1)
 ```
 
 
@@ -230,7 +244,8 @@ geom_rect(data= crisis_largas,
             ymin=-Inf,
             ymax=Inf,
             alpha=0.5)+
-  geom_line(data = gdp %>% 
+  geom_line(size=1,
+    data = gdp %>% 
               filter(Year>parse_date_time(1900,"y"))
             ,aes(Year, gdp_in_gold))+
   geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
@@ -239,7 +254,7 @@ geom_rect(data= crisis_largas,
   theme_minimal()
 
 
-ggsave("plots/gdp_in_gold_eda.PNG", dpi = 300, width = 10,height = 7)
+ggsave("plots/gdp_in_gold_eda.PNG", dpi = 300, width = 10,height = 6)
 ```
 
 La guerra de sesesión de EEUU fué entre el 12 de abril de 1861 y el 9 de abril de 1865 
@@ -286,14 +301,14 @@ geom_rect(data= crisis_largas,
             ymin=-Inf,
             ymax=Inf,
             alpha=0.5)+
-  geom_line(data = wg_gold, aes(Year, wg_in_gold))+
+  geom_line(size=1,data = wg_gold, aes(Year, wg_in_gold))+
   geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
   geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
   scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
   theme_minimal()
 
 
-ggsave("plots/wg_in_gold_eda.PNG", dpi = 300, width = 10,height = 7)
+ggsave("plots/wg_in_gold_eda.PNG", dpi = 300, width = 10,height = 6)
 
 ```
 
