@@ -13,6 +13,9 @@ library(ggrepel)
 library(rvest)
 library(plotly)
 library(tseries)
+library(fpp)
+
+set.seed(1)
 ```
 
 
@@ -48,34 +51,31 @@ gdp = change_header(gdp, c("year", "nominal", "real_2012_base", "gdp_deflator", 
 wage = change_header(wage, c("year", "cost_unsk", "prod_work_hourly_comp"))
 ```
 
-
-Función de autocorrelación sobre ruido blanco
+Función de autocorrelación sobre ruido blanco. Se puede ver que la serie está centrada en cero y que su autocorrelación sólo tiene una correlación alta para el _lag_ 0, mientras que es baja para el resto de los puntos.
 ```{r, echo=FALSE}
 y <- ts(rnorm(161)) #le pongo la misma cantidad de observaciones que nuestra serie
-autoplot(y)
-ggAcf(y)
+autoplot(ts(y))
+acf(y)
 ```
 
 
-Autocorrelación sobre una función periodica
+Autocorrelación sobre una función periodica (seno). Puede verse la fuerte autocorrelación entre los ciclos.
 
 ```{r, echo=FALSE}
-seno <- ts(sin(1:161)) 
+seno <- ts(sin(pi*seq(-7, 7, length.out = 161))) 
 autoplot(seno)
-ggAcf(seno)
+acf(seno)
 ```
 
 
 
-Autocorrelación sobre la tasa de largo plazo
-
+## Autocorrelación sobre la tasa de largo plazo
+El siguiente grafico muestra la serie de la tasa de interés de largo plazo de los EE.UU. desde el año 1857 como una serie anual.
 ```{r, echo=FALSE}
 ts(interest_rate$long_term, start = 1857) %>% 
   autoplot()
 ```
 Hay que sacarle la tendencia a la serie
-
-
 
 ```{r, echo=FALSE}
 ts(interest_rate$long_term, start = 1857) %>%
@@ -95,26 +95,127 @@ ma(ts(interest_rate$long_term, start = 1857),order = 50) %>%
 
 ```
 
+En la siguente transformación de fourier de la serie de la tasa de interés de largo plazo, se puede observar una componente de largo plazo de gran amplitud.
 
 ```{r, echo=FALSE}
-plot(Mod(fft(ts(interest_rate$long_term, start = 1857))))
+fft_ir = fft(interest_rate$long_term)
+plot(Mod(fft_ir), type = "l", ylab = "Amplitud", xlab = "Frecuencia")
 ```
 
-Centrando la serie de la tasa de interés de largo plazo.
+Para que la transformada de Fourier no quede distorsionada por la tendencia, se debe centrar la serie primero. Para ello, luego de varias pruebas, usamos una media movil de 10 lags, por capturar las tendencias de un plazo no tan largo en el periodo considerado y que obtiene un suavizado aceptable. Vemos cómo queda a continuación las diferentes medias móviles consideradas, todas sin centrar. Los órdenes más grandes de media móvil suavizan mucho la serie, aunque esto es subjetivo.
 
 ```{r, echo=FALSE}
-ir_long     = ts(interest_rate$long_term, start = 1857)
-ir_long_cnt = ir_long - ma(ir_long, 10, centre = TRUE) %>% na.omit()
-autoplot(ir_long_cnt) + geom_abline(slope = 0, intercept = 0)
+ir_ma = interest_rate %>% 
+  select(long_term) %>% 
+  mutate(
+    ma2 = ma(x = long_term, order = 2, centre = FALSE),
+    ma5 = ma(x = long_term, order = 5, centre = FALSE),
+    ma10 = ma(x = long_term, order = 10, centre = FALSE),
+    ma15 = ma(x = long_term, order = 15, centre = FALSE),
+    ma25 = ma(x = long_term, order = 25, centre = FALSE),
+    ma50 = ma(x = long_term, order = 50, centre = FALSE),
+    tiempo = 1:nrow(.)
+    ) %>%
+  select(-long_term) %>% 
+  gather(key = "orden", value = "media_movil", -tiempo) %>% 
+  mutate(orden = factor(x = orden,
+                        levels = c("ma2", "ma5", "ma10", "ma15", "ma25", "ma50"),
+                        ordered = TRUE)
+         ) %>% 
+ggplot(aes(x = tiempo, y = media_movil)) +
+geom_line() +
+facet_wrap(~orden)
+
+ir_ma
 ```
 
-Serie de inflación
+Centrando la serie:
+
+```{r, echo=FALSE}
+ir_cntr = interest_rate %>% 
+  select(year, long_term) %>% 
+  mutate(ma10 = ma(long_term, order = 10, centre = FALSE),
+         ir_cntr = long_term - ma10)
+
+ir_cntr %>%
+  ggplot(aes(x = year, y = ir_cntr)) +
+  geom_line() +
+  geom_abline(intercept = 0, slope = 0)
+```
+
+La serie tiene distinta varianza según el período, por lo que aplicamos logaritmo en base 10 para poder corregir la heterocedasticidad. Vemos a continuación el resultado de los tests de estacionariedad de la serie resultante (Dickey-Fuller aumentado y test KPSS), ya que es requisito para el correcto resultado de las transformaciones de Fourier.
+
+```{r, include=FALSE}
+kpss.test(na.omit(ir_cntr[["ir_cntr"]])) # Dice que el p valor es mayor al mostrado
+adf.test(na.omit(ir_cntr[["ir_cntr"]])) # Dice que el p valor es menor al mostrado
+```
+
+
+Ambos tests resultan que la serie es estacionaria, por lo que se pueden hacer las transformaciones de Fourier pertinentes
+
+
+Veamos cómo queda la descomposición de la serie de acuerdo con las transformaciones de Fourier.
+
+```{r, echo=FALSE}
+plot(ir_cntr[["ir_cntr"]],
+     type = "l",
+     ylab = "Valores centrados tasa de interés de largo plazo",
+     xlab = "Tiempo",
+     main = "Serie sin tendencia de la tasa de interés de largo plazo de los EE.UU.")
+abline(0,0)
+
+ir_cntr_fft = fft(na.omit(ir_cntr[["ir_cntr"]]))
+plot(Mod(ir_cntr_fft),
+     type = "l",
+     xaxt = "n") # Parece haber algo de aliasing dentro de la transformada.
+axis(side = 1, at=1:160)
+```
+
+Al descomponer las tendencias largas podemos apreciar las oscilaciones de menor amplitud dentro de la serie de tasas de interés. Se puede observar que las oscilaciones de mayor frecuencia tienen poca amplitud, por lo que son oscilaciones ruidosas, que quitaremos de la serie, quedándonos sólo con las oscilaciones de menor frecuencia.
+
+```{r, echo=FALSE}
+plot(as.vector(na.omit(ir_cntr[["ir_cntr"]])),
+     type = "l",
+     ylab = "Tasa de interés centrada",
+     xlab = "Tiempo")
+abline(0,0)
+lines(
+  Re(
+    fft(
+      c(rep(0,10), ir_cntr_fft[11:30], rep(0, length(ir_cntr_fft) - 60), ir_cntr_fft[30:11], rep(0,10)),
+      inverse = TRUE
+      ) / length(ir_cntr_fft)
+    ),
+      col = "red"
+  )
+```
+
+En este tipo de series no parece haber series de muy largo plazo que abarquen los siglos XIX y XX, sobre todo se introduce una distorsión en el siglo XX en el período de mayor inflación de los EE.UU.
+
+```{r, echo=FALSE}
+plot(interest_rate$long_term, type = "l", ylim = c(-3, 14))
+# Antitransformada de la primera, gran frecuencia.
+# lines(Re(fft(fft_ir[1] * c(1, rep(0, length(fft_ir) - 2),1), inverse = TRUE) / nrow(interest_rate)),
+#       col = "red")
+# Antitransformada de la segunda frecuencia de mayor amplitud.
+# lines(Re(fft(fft_ir[2] * c(0, 1, rep(0, length(fft_ir) - 3), 1), inverse = TRUE) / nrow(interest_rate)),
+#       col = "blue")
+
+# Antitransformada de las primeras frecuencias más altas
+fft_ir_frec_altas = c(fft_ir[1:4], rep(0, length(fft_ir) - 8), fft_ir[c(4:1)])
+lines(Re(fft(fft_ir_frec_altas, inverse = TRUE) / nrow(interest_rate)),
+      col = "red")
+# Antitransformada del resto de las frecuencias
+lines(Re(fft(fft_ir * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3)), inverse = TRUE) / nrow(interest_rate)),
+      col = "green")
+```
+
+### Nivel de precios
 
 ```{r, echo=FALSE}
 cpi_ts = ts(cpi$cpi, start = min(cpi$year))
-cpi_ts_diff = diff(cpi_ts)
+infl_ts = diff(cpi_ts)
 ```
-
 
 Pruebo la cross-correlation entre la serie del oro y la inflación de los EE.UU.
 ```{r, echo=FALSE}
@@ -127,19 +228,114 @@ plot(gold_ts_diff)
 ccf(gold_ts_diff, window(cpi_ts_diff,1791,2017))
 ```
 
-Tenemos la teoría de que hay que mirar las series antes y después de 1970 o aproximadamente por esa fecha, ya que es cuando los EE.UU abandonan el patrón oro
+Veamos la cómo se compone la serie del nivel general de precios de los EE.UU., con base en 1983.
+
+```{r, echo=FALSE}
+plot(cpi[["cpi"]],
+     type = "l",
+     ylab = "Nivel de precios",
+     xlab = "Tiempo")
+```
+
+Naturalmente, la inflación describe una curva exponencial en el nivel de precios, por lo que se debe centrar la serie. Para ello, probamos varias combinaciones de medias móviles no centradas.
+
+```{r, echo=FALSE}
+medias = c(2,5,10,25,50)
+medias %>%
+  set_names(nm = paste0("ma", .)) %>%
+  map_dfc(., 
+          ma,
+          x = cpi[["cpi"]],
+          centre = FALSE) %>%
+  mutate(tiempo = seq_len(length.out = nrow(.))) %>% 
+  gather(key = "lag", value = "valor", -tiempo) %>% 
+  mutate(lag = factor(lag, levels = paste0("ma", medias), ordered = TRUE)) %>% 
+  ggplot(aes(x=tiempo, y=valor)) +
+  geom_line() +
+  facet_wrap(~lag)
+```
+
+Centrando la serie con una media movil de 10
+
+```{r, echo=TRUE}
+cpi_new_vars = . %>%
+  mutate(
+    cpi_ma10 = ma(cpi, order = 10, centre = FALSE),
+    cpi_cntr = cpi - cpi_ma10,
+    cpi_fft  = c(rep(NA, 4), fft(na.omit(cpi_cntr)), rep(NA, 5))
+    )
+cpi = cpi %>% cpi_new_vars
+
+plot(cpi_cntr ~ year,
+     data = cpi,
+     type = "l",
+     ylab = "Índice de precios centrado",
+     xlab = "Año")
+abline(a = 0, b = 0)
+abline(v = 1971, lty = 2, col = "red")
+```
+
+Puede observarse que en los años en torno a 1971, año en que EE.UU. abandona definitivamente el patrón oro, la serie cambia completamente, por lo que habría que analizar la serie antes y después de esa fecha, ya que el índice de precios, bajo la teoría monetarista de la inflación, puede estar directamente ligada a la emisión de dinero, que desde 1971 puede darse sin respaldo en oro en los EE.UU.
+
+```{r, echo=FALSE}
+cpi_prior_1971 = cpi %>%
+  filter(year < 1971) %>% 
+  cpi_new_vars
+cpi_post_1971  = cpi %>%
+  filter(year >= 1971) %>% 
+  cpi_new_vars
+
+old_par = par("mfrow")
+par(mfrow = c(1, 2))
+plot(Mod(cpi_prior_1971$cpi_fft), type="l")
+plot(Mod(cpi_post_1971$cpi_fft), type="l")
+```
+
+```{r, echo=FALSE}
+
+cpi_fft1 = na.omit(cpi_prior_1971[["cpi_fft"]])
+cpi_fft2 = na.omit(cpi_post_1971[["cpi_fft"]])
+plot(x = index(cpi[["cpi_cntr"]]),
+     y = cpi[["cpi_cntr"]],
+     type = "l",
+     ylab = "cpi",
+     xlab = "tiempo")
+plot(c(
+  Re(fft(cpi_fft1 * c(
+    rep(0, 20), rep(1, 10), rep(0, length(cpi_fft1) - 60), rep(1,10), rep(0,20)
+  ), inverse = TRUE) / length(cpi_fft1)),
+  Re(fft(cpi_fft2 * c(
+    rep(1, 10), rep(0, length(cpi_fft2) - 20), rep(1,10)
+  ), inverse = TRUE) / length(cpi_fft2)
+  )
+), col = "red", lwd = 3, type = "l", ylab = "Indice de precios")
+```
 
 ## Serie del pbi real
-
 Por lo que se puede apreciar en la figura, el pbi no parece ser un proceso estacionario, puesto que la varianza crece al limpiar la tendencia central (centrar la serie) luego de aplicar una media movil centrada de orden 10.
+
 ```{r, echo=FALSE}
-real_gdp_ts = ts(gdp$real_gdp, start = min(gdp$year))
+real_gdp_ts = ts(gdp$real_2012_base, start = min(gdp$year))
 real_gdp_ts_ma3 = ma(x = real_gdp_ts, order = 3, centre = TRUE)
 real_gdp_ts_ma10 = ma(x = real_gdp_ts, order = 10, centre = TRUE)
 
 plot(real_gdp_ts)
+plot(log10(real_gdp_ts))
+
+tend = lm(log10(real_gdp_ts) ~ gdp$year)
+summary(tend) # El r2 ajustado es excelente
+
+plot(log10(real_gdp_ts))
+abline(reg = tend)
+
 plot(real_gdp_ts_ma3)
 plot(real_gdp_ts_ma10)
+
+# Centrando la serie con la regresión
+real_gdp_ts_center = log10(real_gdp_ts) - predict(tend, newdata = log10(real_gdp_ts))
+
+plot(real_gdp_ts_center)
+
 real_gdp_ts_ma10_center = real_gdp_ts - real_gdp_ts_ma10
 plot(real_gdp_ts_ma10_center)
 abline(a = 0, b = 0)
@@ -238,7 +434,7 @@ La forma de construir el índice ha cambiado en el transcurso del tiempo, por lo
 
 ```{r,echo=FALSE}
 dja_start=mdy(min(dja$date))
-dja_ts=ts(dja$value,start=dja_start)
+dja_ts=ts(dja$value,start=dja_start,frequency = 365)
 autoplot(dja_ts)
 ```
 
@@ -263,7 +459,7 @@ plot(dja_ts_ma180)
 Centrando con una media movil de 180 días
 
 ```{r,echo=FALSE}
-dja_ts_cntr=dja_ts-dja_ts_ma1809
+dja_ts_cntr=dja_ts-dja_ts_ma180
 autoplot(dja_ts_cntr)
 ```
 
@@ -272,5 +468,14 @@ Nótese el fuerte incremento de la varianza del índice con el progreso del tiem
 A continuación intentamos realizar predicciones sobre el índice.
 
 ```{r,echo=FALSE}
-
+dja_decomp = decompose(dja_ts)
+autoplot(dja_decomp)
+BoxCox(dja_ts_cntr, "auto") %>% head(150)
+dja_ts_cntr %>% head(150)
 ```
+
+```{r}
+dja_modelo = auto.arima(y = dja_ts)
+plot(forecast(dja_modelo,h=10), include = c(80, 95))
+```
+
