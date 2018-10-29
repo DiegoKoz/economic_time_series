@@ -70,17 +70,20 @@ acf(seno)
 
 
 ## Autocorrelación sobre la tasa de largo plazo
-El siguiente grafico muestra la serie de la tasa de interés de largo plazo de los EE.UU. desde el año 1857 como una serie anual.
+El siguiente grafico muestra la serie de la tasa de interés de largo plazo de los EE.UU. desde el año 1857 como una serie anual.\centering
+	\includegraphics[width=0.8\linewidth]{oro.png}
+	\caption{Precios del oro por onza en el mercado de Nueva York} \label{fig:oro}
 ```{r, echo=FALSE}
-ts(interest_rate$long_term, start = 1857) %>% 
-  autoplot()
+ts(interest_rate$long_term, start = 1857) %>%
+  autoplot() +
+  labs(x = "Año", y = "Tasa de interés")
 ```
 Hay que sacarle la tendencia a la serie
 
 ```{r, echo=FALSE}
-ts(interest_rate$long_term, start = 1857) %>%
+plot(ts(interest_rate$long_term, start = 1857) %>%
   diff(.) %>% 
-  ggAcf(.)
+  acf(.))
 ```
 
 
@@ -109,7 +112,7 @@ ir_ma = interest_rate %>%
   select(long_term) %>% 
   mutate(
     ma2 = ma(x = long_term, order = 2, centre = FALSE),
-    ma5 = ma(x = long_term, order = 5, centre = FALSE),
+    ma5 = ma(x = long_term, order = 5, centre = FALthatSE),
     ma10 = ma(x = long_term, order = 10, centre = FALSE),
     ma15 = ma(x = long_term, order = 15, centre = FALSE),
     ma25 = ma(x = long_term, order = 25, centre = FALSE),
@@ -194,6 +197,14 @@ En este tipo de series no parece haber series de muy largo plazo que abarquen lo
 
 ```{r, echo=FALSE}
 plot(interest_rate$long_term, type = "l", ylim = c(-3, 14))
+# lines(predict(lm(data = interest_rate, long_term ~ year), newdata = interest_rate[, "year"]), type = "l")
+
+# Centrando la serie restando por la media (una regresion lineal tiene pendiente casi cero)
+interest_rate$long_term_cntr = interest_rate$long_term - mean(interest_rate$long_term)
+
+fft_ir2 = fft(interest_rate$long_term_cntr)
+
+plot(Mod(fft_ir2), type = "l")
 # Antitransformada de la primera, gran frecuencia.
 # lines(Re(fft(fft_ir[1] * c(1, rep(0, length(fft_ir) - 2),1), inverse = TRUE) / nrow(interest_rate)),
 #       col = "red")
@@ -202,12 +213,38 @@ plot(interest_rate$long_term, type = "l", ylim = c(-3, 14))
 #       col = "blue")
 
 # Antitransformada de las primeras frecuencias más altas
-fft_ir_frec_altas = c(fft_ir[1:4], rep(0, length(fft_ir) - 8), fft_ir[c(4:1)])
-lines(Re(fft(fft_ir_frec_altas, inverse = TRUE) / nrow(interest_rate)),
+plot(interest_rate$long_term_cntr, type = "l")
+fft_ir_frec_bajas = c(0,fft_ir2[2], rep(0, length(fft_ir2) - 3), fft_ir[2])
+abline(h=0)
+lines(Re(fft(fft_ir_frec_bajas, inverse = TRUE) / nrow(interest_rate)),
       col = "red")
-# Antitransformada del resto de las frecuencias
-lines(Re(fft(fft_ir * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3)), inverse = TRUE) / nrow(interest_rate)),
+lines(Re(fft(
+  c(rep(0, 2), fft_ir2[3], rep(0, length(fft_ir) - 5), 
+    fft_ir[3], rep(0, 1)),
+  inverse = TRUE
+  ) / nrow(interest_rate)),
+      col = "blue")
+lines(Re(fft(
+  c(rep(0, 3), fft_ir2[4], rep(0, length(fft_ir) - 7), 
+    fft_ir[4], rep(0, 2)),
+  inverse = TRUE
+  ) / nrow(interest_rate)),
       col = "green")
+
+# Antitransformada del resto de las frecuencias
+lines(Re(fft(fft_ir2 * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3)), inverse = TRUE) / nrow(interest_rate)),
+      col = "orange")
+abline(h=0)
+
+# Guardo esta antitransformada del resto de las frecuencias
+ir_short_freq_time = Re(fft(fft_ir2 * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3)), inverse = TRUE) / nrow(interest_rate))
+fft_ir_short_freq_time = fft_ir2 * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3))
+
+lines(Re(fft(c(fft_ir_short_freq_time[1:10],
+                        rep(0, length(fft_ir_short_freq_time) - 20),
+                        fft_ir_short_freq_time [c(10:1)]),
+             inverse = TRUE) / nrow(interest_rate)),
+      col = "blue", type = "l")
 ```
 
 ### Nivel de precios
@@ -262,9 +299,21 @@ cpi_new_vars = . %>%
   mutate(
     cpi_ma10 = ma(cpi, order = 10, centre = FALSE),
     cpi_cntr = cpi - cpi_ma10,
+    cpi_log  = log10(cpi),
     cpi_fft  = c(rep(NA, 4), fft(na.omit(cpi_cntr)), rep(NA, 5))
     )
 cpi = cpi %>% cpi_new_vars
+plot(y = cpi$cpi_log, x = cpi$year, type = "l")
+abline(h = 1, lty = 3)
+abline(v = c(1971, 1945, 1929), col = "red", lty = 3)
+text(x = 1910, y = 2.0, labels = "Crisis '30")
+text(x = 1945, y = 2.2, labels = "Fin SGM")
+text(x = 1971, y = 2.3, labels = "Fin patrón\noro")
+
+# Descomponiendo la serie logaritmica de precios antes y despues de 1900
+# Suponiendo frecuencia de 50 años
+plot(decompose(ts(cpi$cpi_log[cpi$year < 1900], frequency = 5), type = "additive"))
+abline(h=rep(0,4))
 
 plot(cpi_cntr ~ year,
      data = cpi,
@@ -338,7 +387,7 @@ plot(real_gdp_ts_ma10)
 real_gdp_ts_center = log10(real_gdp_ts) - predict(tend, newdata = log10(real_gdp_ts))
 
 plot(real_gdp_ts_center)
-abline(a = 0, b = 0)
+abline(h = 0)
 
 real_gdp_ts_ma10_center = real_gdp_ts - real_gdp_ts_ma10
 plot(real_gdp_ts_ma10_center)
@@ -348,8 +397,53 @@ plot(real_gdp_ts_ma3_center)
 abline(a = 0, b = 0)
 ```
 
-```{r, echo=FALSE}
+Una vez centrada la serie podemos buscar ciclos en la serie usando la transformada de Fourier.
 
+```{r, echo=FALSE}
+fft_real_gdp_ts_center = fft(real_gdp_ts_center)
+plot(Mod(fft_real_gdp_ts_center))
+```
+
+Descomponiendo la serie
+```{r, echo=FALSE}
+plot(real_gdp_ts_center, type = "l")
+lines(Re(fft(
+  fft_real_gdp_ts_center * c(rep(1,10),
+                             rep(0, length(fft_real_gdp_ts_center) - 19),
+                             rep(1,9)),
+             inverse = TRUE) / length(fft_real_gdp_ts_center)),
+  , col = "red", lwd = 3)
+
+plot(Re(fft(
+  fft_real_gdp_ts_center * c(rep(1,2),
+                             rep(0, length(fft_real_gdp_ts_center) - 3),
+                             rep(1,1)),
+             inverse = TRUE) / length(fft_real_gdp_ts_center)),
+  , col = "red", lwd = 3, ylab = "PBI centrado")
+lines(Re(fft(
+  fft_real_gdp_ts_center * c(rep(0,2), 1,
+                             rep(0, length(fft_real_gdp_ts_center) - 5),
+                             1, rep(0,1)),
+             inverse = TRUE) / length(fft_real_gdp_ts_center)),
+  , col = "blue", lwd = 3, ylab = "PBI centrado")
+lines(Re(fft(
+  fft_real_gdp_ts_center * c(rep(0,3), 1,
+                             rep(0, length(fft_real_gdp_ts_center) - 7),
+                             1, rep(0,2)),
+             inverse = TRUE) / length(fft_real_gdp_ts_center)),
+  , col = "green", lwd = 3, ylab = "PBI centrado")
+lines(Re(fft(
+  fft_real_gdp_ts_center * c(rep(0,4), 1,
+                             rep(0, length(fft_real_gdp_ts_center) - 9),
+                             1, rep(0,3)),
+             inverse = TRUE) / length(fft_real_gdp_ts_center)),
+  , lwd = 3, ylab = "PBI centrado", col = "orange")
+lines(Re(fft(
+  fft_real_gdp_ts_center * c(rep(0,5), 1,
+                             rep(0, length(fft_real_gdp_ts_center) - 11),
+                             1, rep(0,4)),
+             inverse = TRUE) / length(fft_real_gdp_ts_center)),
+  , lwd = 3, ylab = "PBI centrado")
 ```
 
 
