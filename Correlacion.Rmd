@@ -303,12 +303,6 @@ cpi_new_vars = . %>%
     cpi_fft  = c(rep(NA, 4), fft(na.omit(cpi_cntr)), rep(NA, 5))
     )
 cpi = cpi %>% cpi_new_vars
-plot(y = cpi$cpi_log, x = cpi$year, type = "l")
-abline(h = 1, lty = 3)
-abline(v = c(1971, 1945, 1929), col = "red", lty = 3)
-text(x = 1910, y = 2.0, labels = "Crisis '30")
-text(x = 1945, y = 2.2, labels = "Fin SGM")
-text(x = 1971, y = 2.3, labels = "Fin patrón\noro")
 
 # Descomponiendo la serie logaritmica de precios antes y despues de 1900
 # Suponiendo frecuencia de 50 años
@@ -322,6 +316,25 @@ plot(cpi_cntr ~ year,
      xlab = "Año")
 abline(a = 0, b = 0)
 abline(v = 1971, lty = 2, col = "red")
+
+# Hay que dividir el análisis en dos etapas. Hasta y después del 1900
+cpi_log_lm_pre  = lm(cpi_log ~ year, data = cpi[cpi$year <= 1900,])
+cpi_log_lm_post = lm(cpi_log ~ year, data = cpi[cpi$year > 1900,])
+plot(y = cpi$cpi_log, x = cpi$year, type = "l")
+# abline(h = 1, lty = 3)
+abline(v = c(1971, 1945, 1929), col = "red", lty = 3)
+text(x = 1910, y = 2.0, labels = "Crisis '30")
+text(x = 1945, y = 2.2, labels = "Fin SGM")
+text(x = 1971, y = 2.3, labels = "Fin patrón\noro")
+abline(reg = cpi_log_lm_pre, col = "blue")
+abline(reg = cpi_log_lm_post, col = "blue")
+
+cpi_log_cntr_pre = cpi$cpi_log[cpi$year <= 1900] - predict(cpi_log_lm_pre,
+                                                           newdata = cpi[cpi$year <= 1900, "year"])
+cpi_log_cntr_post = cpi$cpi_log[cpi$year > 1900] - predict(cpi_log_lm_post,
+                                                           newdata = cpi[cpi$year > 1900, "year"])
+fft_cpi_log_cntr_pre  = fft(cpi_log_cntr_pre)
+fft_cpi_log_cntr_post = fft(cpi_log_cntr_post)
 ```
 
 Puede observarse que en los años en torno a 1971, año en que EE.UU. abandona definitivamente el patrón oro, la serie cambia completamente, por lo que habría que analizar la serie antes y después de esa fecha, ya que el índice de precios, bajo la teoría monetarista de la inflación, puede estar directamente ligada a la emisión de dinero, que desde 1971 puede darse sin respaldo en oro en los EE.UU.
