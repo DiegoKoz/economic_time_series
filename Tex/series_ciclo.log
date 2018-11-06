@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.30)  2 NOV 2018 20:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.30)  6 NOV 2018 09:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**series_ciclo.tex
+(./series_ciclo.tex
 LaTeX2e <2018-04-01> patch level 5
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -644,8 +644,9 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2015/06/04 1.6 listings language file
-) (./main.aux)
-\openout1 = `main.aux'.
+)
+(./series_ciclo.aux)
+\openout1 = `series_ciclo.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
 LaTeX Font Info:    ... okay on input line 48.
@@ -661,8 +662,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
 LaTeX Font Info:    ... okay on input line 48.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
 LaTeX Font Info:    ... okay on input line 48.
-
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
+ (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -711,9 +711,9 @@ LaTeX Info: Redefining \ref on input line 48.
 LaTeX Info: Redefining \pageref on input line 48.
 LaTeX Info: Redefining \nameref on input line 48.
 
-(./main.out) (./main.out)
+(./series_ciclo.out) (./series_ciclo.out)
 \@outlinefile=\write4
-\openout4 = `main.out'.
+\openout4 = `series_ciclo.out'.
 
 \c@lstlisting=\count158
 
@@ -1209,7 +1209,7 @@ er (name{figure.26}) has been already used, duplicate ignored
                                                   
 l.491 
        <../plots/espectograma_wg.png (PNG copy)> <../plots/espectograma_log_wg.
-png (PNG copy)>] (./main.bbl [26]
+png (PNG copy)>] (./series_ciclo.bbl [26]
 Underfull \hbox (badness 1910) in paragraph at lines 101--104
 []\T1/cmr/m/n/10 Angi Roesch and Har-ald Schmid-bauer.  \T1/cmr/m/it/10 Wavelet
 -Comp: Com-pu-ta-tional
@@ -1218,21 +1218,21 @@ Underfull \hbox (badness 1910) in paragraph at lines 101--104
 [27]) [28]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 503.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 503.
- (./main.aux)
+ (./series_ciclo.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 503.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 503.
-Package rerunfilecheck Info: File `main.out' has not changed.
+Package rerunfilecheck Info: File `series_ciclo.out' has not changed.
 (rerunfilecheck)             Checksum: C2CF3923E0EF63ECDCD6412C4767CE3D;692.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 503.
  ) 
 Here is how much of TeX's memory you used:
  21002 strings out of 492641
- 370681 string characters out of 6131786
+ 370801 string characters out of 6131786
  483470 words of memory out of 5000000
  24342 multiletter control sequences out of 15000+600000
  18358 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,72p,1342b,1745s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,8n,72p,1350b,1745s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1256,7 +1256,7 @@ ype1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super
 share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/ty
 pe1/public/cm-super/sftt0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (28 pages, 3570299 bytes).
+Output written on series_ciclo.pdf (28 pages, 3570492 bytes).
 PDF statistics:
  565 PDF objects out of 1000 (max. 8388607)
  443 compressed objects within 5 object streams

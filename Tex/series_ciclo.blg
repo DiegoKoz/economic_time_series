@@ -1,13 +1,13 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2019/dev/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: main.aux
+The top-level auxiliary file: series_ciclo.aux
 The style file: plainnat.bst
-Database file #1: bibliography.bib.bib
+Database file #1: bibliography.bib
 Warning--empty publisher in hayek1933
 Warning--empty journal in kuznets1930secular
 You've used 23 entries,
             2773 wiz_defined-function locations,
-            722 strings with 7736 characters,
+            722 strings with 7752 characters,
 and the built_in function-call counts, 8882 in all, are:
 = -- 808
 > -- 340
