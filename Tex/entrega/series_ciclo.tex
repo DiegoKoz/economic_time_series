@@ -18,7 +18,7 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{subfigure} 
 \usepackage{float}
-\usepackage{verbatim}
+
 
 \addtolength{\subfigcapskip}{-10pt}
 \addtolength{\subfigbottomskip}{-30pt}
@@ -81,9 +81,8 @@ Desde el punto de vista del análisis empírico, existen múltiples autores que 
 
 En la presente sección realizaremos un breve análisis exploratorio de datos, para observar las características generales de las series.
 
-Todas las series utilizadas fueron tomadas de la web \todo{modificar fuentes + agregar las fuentes de las otras series (IPC)}\textit{Measuring worth}\footnote{\url{https://www.measuringworth.com/}} y corresponden a \cite{officer2018gdp} para la serie anual del PBI de Estados Unidos entre 1790 y 2017, \cite{officer2018gold} para el la serie anual del oro en el mercado de Nueva York entre 1791 y 2017, y \cite{officer2018wage} para la serie anual del salario horario nominal de obreros de la producción, entre 1791 y 2017.
-
-\todo{Hay muchos comentarios justificando porqué mirar PBI y salario. Quedaron desactualizados con la incorporación de las nuevas series.}
+Todas las series utilizadas fueron tomadas de la web \textit{Measuring worth}\footnote{\url{https://www.measuringworth.com/}} y corresponden a \cite{officer2018gdp} para la serie anual del PBI de Estados Unidos entre 1790 y 2017, \cite{officer2018gold} para el la serie anual del oro en el mercado de Nueva York entre 1791 y 2017, y \cite{officer2018wage} para la serie anual del salario horario nominal de obreros de la producción, entre 1791 y 2017.
+ 
 Dos de las series más relevantes para estudiar el desenvolvimiento cíclico de la economía son el Producto Bruto interno (PBI) y el salario. Sin embargo, es importante reconocer el fenómeno que se observa en la figura \ref{fig:oro}. Allí se marca la salida del patrón oro de la economía mundial en 1971. Luego de la segunda guerra mundial y hasta ese punto, la estructura monetaria global se basaba en la paridad con el dólar, y el \textit{ancla nominal} del mismo con las reservas de oro de la \textit{FED} (Federal Reserve Board). Esto quiere decir que Estados Unidos no podía emitir dólares que no estuvieran respaldados por su equivalente en oro en las reservas del banco central de dicho país. Por ello, la relación dólar-oro se mantuvo prácticamente inamovible hasta 1971. Luego de que eliminó este ancla, la capacidad de emisión libre de respaldo implicó que la FED emita por encima de las reservas, y en general del oro en circulación, lo cual implicó un aumento del precio del oro expresado en dólares, o lo que es equivalente, una caída del dólar estadounidense expresado en oro.
 
 \begin{figure}[H]
@@ -136,7 +135,7 @@ De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI d
 \caption{Principales crisis en EEUU y el mundo. Fuente: Instituto Caproasia}
 \label{tabla_crisis}
 \end{table}
-\todo{ver de cambiar fuente}
+
 
 
 
@@ -144,23 +143,6 @@ En primer lugar lo que se observa es la similitud de ambas series, en términos 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Análisis de ciclos de baja frecuencia en series de tiempo de variables macroeconómicas}
-\todo{ver comentario}
-\begin{comment}
-Habría que buscar integrar más ambas partes del trabajo. 
-El título este pareciera más un título para el Artículo que para una sección. Creo que lo que distingue a esta parte es que usas Fourier. 
-
-Creo que quedaría bien si fusionamos la sección 3 de AED con esta y queda:
-
-1. intro
-2. Debates previos
-3. AED (oro+PBI+W + lo que mirás acá de la tasa de interes, IPC, etc)
-4. Fourier
-5. Wavelets
-
-
-\end{comment}
-
-
 \subsection{Tasa de interés de largo plazo}
 
 En el siguiente apartado se analizan los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
@@ -319,61 +301,61 @@ Nuevamente observamos los residuos explicados de la serie y la autocorrelación 
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\section{Autocorrelación y ARIMA}
-%
-%En la presente sección se analizará la autocorrelación de las series anteriores, para observar su comportamientos desde un punto de vista sistemático. Para ello también se observará un modelo ARIMA. 
-%
-%En primer lugar, se calculó la autocorrelación para el total del período en ambas series. Esto se puede observar en la figura \ref{fig:autocorrelacion_tot}. Ambas series tienen un comportamiento similar, con una fuerte correlación con el período anterior, una correlación positiva con respecto a 6 lags, y una relación negativa con 10 lags. 
-%
-%\begin{figure}[H]
-%	\centering
-%	\subfigure[PBI expresado en Oro]{\includegraphics[width=0.75\linewidth]{Autocorrelacion_gdp.png}}
-%	\subfigure[Salario expresado en Oro]{\includegraphics[width=0.75\linewidth]{Autocorrelacion_wg.png}}
-%	\caption{Autocorrelación de las series} \label{fig:autocorrelacion_tot}
-%\end{figure}
-%
-%Sin embargo, dada la importancia de la caída del patrón oro en el 71', se decidió recalcular las autocorrelaciones para antes y después de dicho año. Esto puede observarse en la figura \ref{fig:autocorrelacion_grp}. Aquí nuevamente las series presentan un comportamiento similar entre sí, y sin embargo muy distinto antes y después del período. En particular, antes de 1971 se observa una fuerte correlación positiva con períodos anteriores, en particular para el PBI, que mantiene una relación positiva con hasta los 12 primeros lags. Esto esta reflejando una fuerte tendencia ascendente. Es importante considerar que el quiebre de la serie se realiza en un pico, por lo que antes del 71' queda un fuerte crecimiento observado desde la segunda guerra mundial hasta dicho punto. Lo notable es que ambas series luego de este punto sólo muestran una correlación significativa con el período anterior, es decir parecieran ser un \textit{random walk}.
-%
-%
-%\begin{figure}[H]
-%	\centering
-%	\subfigure[PBI antes 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_gdp_pre71.png}}
-%	\subfigure[PBI después 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_gdp_post71.png}}
-%	\subfigure[Salario antes 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_wg_pre71.png}}
-%	\subfigure[Salario después 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_wg_post71.png}}
-%	\caption{Autocorrelación de las series} \label{fig:autocorrelacion_grp}
-%\end{figure}
-%
-%En la figura \ref{fig:arima} se observa el modelo ajustado por ARIMA para las series en su conjunto y divididas por períodos. 
-%Los modelos reflejados en \ref{fig:arima_tot} son en ambos casos un modelo ARIMA(1,1,2). Es decir, un modelo autoregresivo de orden 1, integrado de orden uno y Media Móvil de orden 2. Este modelo pareciera ser más volátil que la serie original, en particular para el período posterior a 1971.
-%
-%\begin{figure}[H]
-%	\centering
-%	\subfigure[ARIMA total]{\includegraphics[width=0.8\linewidth]{arima_tot.png}
-%	\label{fig:arima_tot}}
-%	\subfigure[ARIMA por grupos]{\includegraphics[width=0.8\linewidth]{arima_groups.png}
-%	\label{fig:arima_grp}}
-%	\caption{Predicción ARIMA} \label{fig:arima}
-%\end{figure}
-%
-%Lo observado en \ref{fig:arima_grp} son los siguientes cuatro modelos: 
-%
-%\begin{table}[ht]
-%	\centering
-%	\begin{tabular}{rlllrr}
-%		\hline
-%		& tipo & group & model.desc & sigma & RMSE \\ 
-%		\hline
-%		1 & wage & Antes del 71' & ARIMA(2,2,1) & 0.00 & 0.00 \\ 
-%		2 & wage & Despues del 71' & ARIMA(1,0,2) with non-zero mean & 0.01 & 0.01 \\ 
-%		3 & gdp & Antes del 71' & ARIMA(0,2,2) & 2.48 & 2.45 \\ 
-%		4 & gdp & Despues del 71' & ARIMA(2,0,0) with non-zero mean & 9.59 & 9.27 \\ 
-%		\hline
-%	\end{tabular}
-%\end{table}
-%
-%Se observa tanto un mayor desvío como un mayor error cuadrático medio para ambas series después de 1971. A su vez, las series antes del 71' son integradas de orden dos, producto de lo mencionado arriba de que hasta este punto se toma la fuerte fase ascendente del ciclo en la posguerra, lo que la convierte en una serie divergente. Al contrario, los ARIMA óptimos para las series posteriores a 1971 no requieren ser integrados, sino simplemente tener un término de nivel (\textit{non-zero mean}). A su vez, el modelo también pareciera ser más volátil que las observaciones en este período. Como conclusión, estas herramientas tradicionales de la econometría no bastan para dar cuenta del fenómeno cíclico. 
-%
+\section{Autocorrelación y ARIMA}
+
+En la presente sección se analizará la autocorrelación de las series anteriores, para observar su comportamientos desde un punto de vista sistemático. Para ello también se observará un modelo ARIMA. 
+
+En primer lugar, se calculó la autocorrelación para el total del período en ambas series. Esto se puede observar en la figura \ref{fig:autocorrelacion_tot}. Ambas series tienen un comportamiento similar, con una fuerte correlación con el período anterior, una correlación positiva con respecto a 6 lags, y una relación negativa con 10 lags. 
+
+\begin{figure}[H]
+	\centering
+	\subfigure[PBI expresado en Oro]{\includegraphics[width=0.75\linewidth]{Autocorrelacion_gdp.png}}
+	\subfigure[Salario expresado en Oro]{\includegraphics[width=0.75\linewidth]{Autocorrelacion_wg.png}}
+	\caption{Autocorrelación de las series} \label{fig:autocorrelacion_tot}
+\end{figure}
+
+Sin embargo, dada la importancia de la caída del patrón oro en el 71', se decidió recalcular las autocorrelaciones para antes y después de dicho año. Esto puede observarse en la figura \ref{fig:autocorrelacion_grp}. Aquí nuevamente las series presentan un comportamiento similar entre sí, y sin embargo muy distinto antes y después del período. En particular, antes de 1971 se observa una fuerte correlación positiva con períodos anteriores, en particular para el PBI, que mantiene una relación positiva con hasta los 12 primeros lags. Esto esta reflejando una fuerte tendencia ascendente. Es importante considerar que el quiebre de la serie se realiza en un pico, por lo que antes del 71' queda un fuerte crecimiento observado desde la segunda guerra mundial hasta dicho punto. Lo notable es que ambas series luego de este punto sólo muestran una correlación significativa con el período anterior, es decir parecieran ser un \textit{random walk}.
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure[PBI antes 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_gdp_pre71.png}}
+	\subfigure[PBI después 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_gdp_post71.png}}
+	\subfigure[Salario antes 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_wg_pre71.png}}
+	\subfigure[Salario después 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_wg_post71.png}}
+	\caption{Autocorrelación de las series} \label{fig:autocorrelacion_grp}
+\end{figure}
+
+En la figura \ref{fig:arima} se observa el modelo ajustado por ARIMA para las series en su conjunto y divididas por períodos. 
+Los modelos reflejados en \ref{fig:arima_tot} son en ambos casos un modelo ARIMA(1,1,2). Es decir, un modelo autoregresivo de orden 1, integrado de orden uno y Media Móvil de orden 2. Este modelo pareciera ser más volátil que la serie original, en particular para el período posterior a 1971.
+
+\begin{figure}[H]
+	\centering
+	\subfigure[ARIMA total]{\includegraphics[width=0.8\linewidth]{arima_tot.png}
+	\label{fig:arima_tot}}
+	\subfigure[ARIMA por grupos]{\includegraphics[width=0.8\linewidth]{arima_groups.png}
+	\label{fig:arima_grp}}
+	\caption{Predicción ARIMA} \label{fig:arima}
+\end{figure}
+
+Lo observado en \ref{fig:arima_grp} son los siguientes cuatro modelos: 
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{rlllrr}
+		\hline
+		& tipo & group & model.desc & sigma & RMSE \\ 
+		\hline
+		1 & wage & Antes del 71' & ARIMA(2,2,1) & 0.00 & 0.00 \\ 
+		2 & wage & Despues del 71' & ARIMA(1,0,2) with non-zero mean & 0.01 & 0.01 \\ 
+		3 & gdp & Antes del 71' & ARIMA(0,2,2) & 2.48 & 2.45 \\ 
+		4 & gdp & Despues del 71' & ARIMA(2,0,0) with non-zero mean & 9.59 & 9.27 \\ 
+		\hline
+	\end{tabular}
+\end{table}
+
+Se observa tanto un mayor desvío como un mayor error cuadrático medio para ambas series después de 1971. A su vez, las series antes del 71' son integradas de orden dos, producto de lo mencionado arriba de que hasta este punto se toma la fuerte fase ascendente del ciclo en la posguerra, lo que la convierte en una serie divergente. Al contrario, los ARIMA óptimos para las series posteriores a 1971 no requieren ser integrados, sino simplemente tener un término de nivel (\textit{non-zero mean}). A su vez, el modelo también pareciera ser más volátil que las observaciones en este período. Como conclusión, estas herramientas tradicionales de la econometría no bastan para dar cuenta del fenómeno cíclico. 
+
 \section{Wavelets}
 
 Dado que en las secciones previas no se encontró evidencia concluyente en ningún sentido, se decidió explorar nuevas herramientas del análisis de series de tiempo para poder caracterizar el ciclo económico. Los espectogramas producidos mediante \textit{wavelets} parecen ser una herramienta propicia para encontrar ciclos bien definidos a lo largo del período analizado. Las wavelets son un tipo de transformación sobre la serie original que puede pensarse como una rotación de un espacio de funciones a un dominio diferente. A diferencia de la transformada de fourier, que tiene como base de funciones los senos y cosenos, la transformada Wavelet tiene como base de funciones una función particular, con su mismo nombre, Wavelets \cite{castro1995wavelets}. Una base de este tipo se construye a partir de una función madre, que es una onda corta, de duración finita. Es decir, a diferencia de las funciones seno y coseno que se extienden infinitamente,los wavelets tienen \textit{soporte compacto}. Otra característica de las funciones wavelet es que el área debajo de la curva debe ser igual a cero, es decir que esta centrada en cero. Esta función madre se traslada y dilata para construir una base ortonormal. 
