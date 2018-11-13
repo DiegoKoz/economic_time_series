@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -70,26 +70,42 @@ Finn~E Kydland and Edward~C Prescott.
 \newblock \emph{Econometrica: Journal of the Econometric Society}, pages
   1345--1370, 1982.
 
+\bibitem[{Lawrence H.}(2018)]{officer2018ir}
+Officer {Lawrence H.}
+\newblock {What Was the Interest Rate Then?}
+\newblock \emph{MeasuringWorth}, 2018.
+
+\bibitem[{Lawrence H.} and {Samuel H.}(2018{\natexlab{a}})]{officer2018cpi}
+Officer {Lawrence H.} and Williamson {Samuel H.}
+\newblock {he Annual Consumer Price Index for the United States, 1774-Present}.
+\newblock \emph{MeasuringWorth}, 2018{\natexlab{a}}.
+
+\bibitem[{Lawrence H.} and {Samuel H.}(2018{\natexlab{b}})]{officer2018gold}
+Officer {Lawrence H.} and Williamson {Samuel H.}
+\newblock {The Price of Gold, 1257- Present}.
+\newblock \emph{MeasuringWorth}, 2018{\natexlab{b}}.
+
+\bibitem[{Lawrence H.} and {Samuel H.}(2018{\natexlab{c}})]{officer2018wage}
+Officer {Lawrence H.} and Williamson {Samuel H.}
+\newblock {Annual Wages in the United States, 1774-Present},
+  2018{\natexlab{c}}.
+
+\bibitem[Louis and {Samuel H.}(2018)]{johnston2018us}
+Johnston Louis and Williamson {Samuel H.}
+\newblock {What was the US GDP then?}
+\newblock \emph{MeasuringWorth}, 2018.
+
 \bibitem[{Lucas Jr}(1975)]{lucas1975equilibrium}
 Robert~E {Lucas Jr}.
 \newblock {An equilibrium model of the business cycle}.
 \newblock \emph{Journal of political economy}, 83\penalty0 (6):\penalty0
   1113--1144, 1975.
 
-\bibitem[Officer and Williamson(2018{\natexlab{a}})]{officer2018gdp}
-Lawrence~H Officer and Samuel~H Williamson.
-\newblock {What was the US GDP then?}
-\newblock \emph{Measuring Worth}, 2018{\natexlab{a}}.
-
-\bibitem[Officer and Williamson(2018{\natexlab{b}})]{officer2018gold}
-Lawrence~H Officer and Samuel~H Williamson.
-\newblock {The Price of Gold, 1257-2014}.
-\newblock \emph{MeasuringWorth. com}, 2018{\natexlab{b}}.
-
-\bibitem[Officer and Williamson(2018{\natexlab{c}})]{officer2018wage}
-Lawrence~H Officer and Samuel~H Williamson.
-\newblock {Annual Wages in the United States, 1774-Present},
-  2018{\natexlab{c}}.
+\bibitem[Officer(2009)]{officer2009two}
+Lawrence Officer.
+\newblock \emph{{Two centuries of compensation for US production workers in
+  manufacturing}}.
+\newblock Springer, 2009.
 
 \bibitem[Plosser(1989)]{plosser1989understanding}
 Charles~I Plosser.
