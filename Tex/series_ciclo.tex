@@ -81,13 +81,13 @@ Desde el punto de vista del análisis empírico, existen múltiples autores que 
 En la presente sección realizaremos un breve análisis exploratorio de datos, para observar las características generales de las series.
 
 
-\subsection{fuentes de información}
+\subsection{Fuentes de información}
 
 Dado que el objetivo del presente trabajo es realizar un análisis del ciclo económico que tenga en consideración las ondas largas de Kondratieff, es necesario contar con información lo más extendida en el tiempo posible, y por lo tanto utilizar diversas fuentes. 
 
 Para el Producto Bruto Interno, para los datos desde 1929 al presente, se utilizó la información provista por el \textit{Bureau of Economic Analysis} de Estados Unidos. De 1790 a 1929 se utilizó la serie elaborada por \cite{johnston2018us}
 
-Para la serie anual del salario horario nominal de los obreros de la producción, se utilizó \citep{officer2009two}, complementado por \cite{officer2018wage}. En la actualidad esta serie se corresponde con la serie del \textit{Bureau of Labour Statistics} de Estados Unidos, con el rubro \textit{Employer Costs for Employee Compensation, Total Compensation, Manufacturing, Private Industry}.
+Para la serie anual del salario horario nominal de los obreros de la producción, se utilizó \citep{officer2009two}, complementado por \citep{Roesch2018}. En la actualidad esta serie se corresponde con la serie del \textit{Bureau of Labour Statistics} de Estados Unidos, con el rubro \textit{Employer Costs for Employee Compensation, Total Compensation, Manufacturing, Private Industry}.
 
 La serie anual del precio del oro en el mercado de Nueva York entre 1791 y 2017 se basa en \cite{officer2018gold}
 
@@ -111,6 +111,7 @@ Dos de las series más relevantes para estudiar el desenvolvimiento cíclico de 
 Dado que lo que se busca en el presente trabajo es realizar un análisis de largo plazo del ciclo económico, esta perturbación nominal oscurece el fenómeno subyacente que se esta buscando. Es por ello que se opto por normalizar las series del PBI y el salario por el precio del oro. De esta forma las series se leen como el producto y el salario expresado en su capacidad de compra de oro. Una alternativa a esto sería dividir por el Indice de Precios al Consumidor, de forma tal que ambas series se expresen en capacidad de poder adquisitivo constante. 
 
 \todo{acá hay una justificación de porqué usar PBI en oro y no PBI real. Habría que ver cómo compatibilizar esto con después analizar el IPC y el PBI real}
+\todo{creo que puede compatibilizarse ya que el oro es un precio más de la economía, que sufre fluctuaciones a veces violentas por otras causas. Es una vía de análisis pero no la única.}
 La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo
 
 De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI de Estados Unidos entre el 1900 y 2017, expresado en oro. Por su parte la figura \ref{fig:salario} muestra la serie del salario horario de un obrero de la producción en Estados Unidos entre 1900 y 2017, expresado en Oro.
@@ -161,7 +162,7 @@ En primer lugar lo que se observa es la similitud de ambas series, en términos 
 \subsection{Tasa de interés e Indice de precios al consumidor}
 
 
-\section{Análisis de ciclos de baja frecuencia en series de tiempo de variables macroeconómicas}
+\section{Fourier}
 
 \todo{ver comentario}
 
@@ -177,9 +178,8 @@ Creo que quedaría bien si fusionamos la sección 3 de AED con esta y queda:
 4. Fourier
 5. Wavelets
 
-
+Pablo: perfecto, renombrémoslo como Fourier para que no sea un artículo aparte.
 \end{comment}
-
 
 \subsection{Tasa de interés de largo plazo}
 
@@ -214,7 +214,7 @@ Si bien no se observan tendencias de largo plazo en las diferencias y estas sirv
 	\label{fig:ir_fft}
 \end{figure}
 
-Se observa que hay frecuencias bajas con gran amplitud. Si descomponemos la serie por las frecuencias más bajas, se puede observar la serie en rojo de la figura \ref{fig:ir_orig_resid} que resulta de la descomposición de la serie original por las frecuencias más bajas. Puede observarse que la serie aún presenta autocorrelación (en detalle la autocorrelación de la figura \ref{fig:ir_resid_acf})
+Se observa que hay frecuencias bajas con gran amplitud. Si descomponemos la serie por las frecuencias más bajas, se puede observar la serie en rojo de la figura \ref{fig:ir_orig_resid} que resulta de la descomposición de la serie original por las frecuencias más bajas. Puede observarse que la serie aún presenta autocorrelación (en detalle la autocorrelación de la figura \ref{fig:ir_resid_acf}), aunque las ondas bajas encontradas mediante la transformación de Fourier explican el 89,24\% de la varianza total de la serie.
 
 \begin{figure}[H]
 	\centering
@@ -271,7 +271,7 @@ Pasamos ahora al análisis de los residuos: la serie centrada por las tendencias
 	\label{fig:cpi_log10_cntr_fft}
 \end{figure}
 
-Ahora podemos tomar las frecuencias más bajas y descomponer la serie centrada por ellas, analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie de tiempo. En la figura \ref{fig:cpi_cntr_acf} puede observarse también que aún puede continuar explicándose los residuos en azul debido a que hay rezagos que tienen correlación entre sí. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
+Ahora podemos tomar las frecuencias más bajas y descomponer la serie centrada por ellas, analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie de tiempo. En la figura \ref{fig:cpi_cntr_acf} puede observarse también que aún puede continuar explicándose los residuos en azul debido a que hay rezagos que tienen correlación entre sí. Aún así, la varianza explicada por las frecuencias bajas halladas por Fourier es de 89,52\% en el caso de la serie previa a 1900 y 97,12\% luego del año 1900. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
 
 \begin{figure}[H]
 	\centering
@@ -328,7 +328,7 @@ Luego podemos observar el ajuste de la transformada de Fourier a los datos. Para
 	\label{fig:PBI_cntr_antifft}
 \end{figure}
 
-Nuevamente observamos los residuos explicados de la serie y la autocorrelación de esos residuos en \ref{fig:PBI_fft_resid}. Puede observarse que aún queda estructura por explicar en los residuos dado por ciclos de más baja frecuencia. Esto demuestra que se puede descomponer la serie en ciclos de baja y alta frecuencia, si bien en este estudio estamos mayormente interesados en ciclos de largo plazo (señales de baja frecuencia y alta amplitud).
+Nuevamente observamos los residuos explicados de la serie y la autocorrelación de esos residuos en \ref{fig:PBI_fft_resid}. Puede observarse que aún queda estructura por explicar en los residuos dado por ciclos de más baja frecuencia. Esto demuestra que se puede descomponer la serie en ciclos de baja y alta frecuencia, si bien en este estudio estamos mayormente interesados en ciclos de largo plazo (señales de baja frecuencia y alta amplitud). Asimismo, usando sólo las frecuencias bajas se logra explicar el 86,24\% de la varianza de los residuos de la tendencia linea
 
 \begin{figure}[H]
 	\centering

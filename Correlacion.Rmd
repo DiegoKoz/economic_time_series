@@ -182,15 +182,22 @@ plot(as.vector(na.omit(ir_cntr[["ir_cntr"]])),
      ylab = "Tasa de interés centrada",
      xlab = "Tiempo")
 abline(0,0)
-lines(
-  Re(
+ir_antifft20 = Re(
     fft(
-      c(rep(0,10), ir_cntr_fft[11:30], rep(0, length(ir_cntr_fft) - 60), ir_cntr_fft[30:11], rep(0,10)),
+      c(rep(0,10), ir_cntr_fft[11:40], rep(0, length(ir_cntr_fft) - 80), ir_cntr_fft[40:11], rep(0,10)),
       inverse = TRUE
       ) / length(ir_cntr_fft)
-    ),
+    )
+lines(
+  ir_antifft20,
       col = "red"
   )
+
+ir_rsq_antifft20 = 1 - (sum((na.omit(ir_cntr[["ir_cntr"]]) - ir_antifft20) ^ 2, na.rm = TRUE) /
+                          sum((na.omit(ir_cntr[["ir_cntr"]]) - mean(ir_cntr[["ir_cntr"]], na.rm = TRUE)) ^ 2,
+                              na.rm = TRUE))
+
+# El R squared que se puede explicar por movimientos cíclicos es del orden del 42% de la varianza total de los datos centrados
 ```
 
 En este tipo de series no parece haber series de muy largo plazo que abarquen los siglos XIX y XX, sobre todo se introduce una distorsión en el siglo XX en el período de mayor inflación de los EE.UU.
@@ -215,7 +222,7 @@ plot(Mod(fft_ir2), type = "l")
 # Antitransformada de las primeras frecuencias más altas
 plot(interest_rate$long_term_cntr, type = "l")
 fft_ir_frec_bajas = c(0,fft_ir2[2], rep(0, length(fft_ir2) - 3), fft_ir[2])
-abline(h=0)
+abline(h=0, lty=3)
 lines(Re(fft(fft_ir_frec_bajas, inverse = TRUE) / nrow(interest_rate)),
       col = "red")
 lines(Re(fft(
@@ -234,7 +241,7 @@ lines(Re(fft(
 # Antitransformada del resto de las frecuencias
 lines(Re(fft(fft_ir2 * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3)), inverse = TRUE) / nrow(interest_rate)),
       col = "orange")
-abline(h=0)
+abline(h=0, lty=3)
 
 # Guardo esta antitransformada del resto de las frecuencias
 ir_short_freq_time = Re(fft(fft_ir2 * c(rep(0,4), rep(1, length(fft_ir) - 7), rep(0,3)), inverse = TRUE) / nrow(interest_rate))
@@ -245,6 +252,36 @@ lines(Re(fft(c(fft_ir_short_freq_time[1:10],
                         fft_ir_short_freq_time [c(10:1)]),
              inverse = TRUE) / nrow(interest_rate)),
       col = "blue", type = "l")
+```
+
+Revisando la capacidad explicativa de las primeras componentes de la transformada de Fourier
+```{r, echo=FALSE}
+plot(interest_rate$long_term_cntr, type = "l")
+abline(h=0, lty=3)
+
+fft_freqs_explicativas = fft_ir2 * c(0, rep(1, 6), rep(0, length(fft_ir2) - 13), rep(1, 6))
+
+ir_antifft = Re(fft(fft_freqs_explicativas, inverse = TRUE) / nrow(interest_rate))
+lines(ir_antifft, col = "blue", type = "l")
+
+ir_rsq_antifft = 1 - (sum((na.omit(interest_rate$long_term_cntr) - ir_antifft) ^ 2,
+                          na.rm = TRUE) /
+                          sum(
+                            (na.omit(interest_rate$long_term_cntr) - mean(interest_rate$long_term_cntr, na.rm = TRUE)) ^ 2, na.rm = TRUE))
+ir_rsq_antifft
+
+# En este caso explica mucho más la serie, centrando previamente solo por la media.
+
+# Pruebo las primeras 4 componentes, como en el apartado anterior.
+plot(interest_rate$long_term_cntr, type = "l")
+fft_freqs_explicativas_4 = fft_ir2 * c(0, rep(1, 4), rep(0, length(fft_ir2) - 9), rep(1, 4))
+ir_antifft_4 = Re(fft(fft_freqs_explicativas_4, inverse = TRUE) / nrow(interest_rate))
+lines(ir_antifft_4, col = "blue", type = "l")
+ir_rsq_antifft_4 = 1 - (sum((na.omit(interest_rate$long_term_cntr) - ir_antifft_4) ^ 2,
+                          na.rm = TRUE) /
+                          sum(
+                            (na.omit(interest_rate$long_term_cntr) - mean(interest_rate$long_term_cntr, na.rm = TRUE)) ^ 2, na.rm = TRUE))
+ir_rsq_antifft_4
 ```
 
 ### Nivel de precios
@@ -318,6 +355,7 @@ abline(a = 0, b = 0)
 abline(v = 1971, lty = 2, col = "red")
 
 # Hay que dividir el análisis en dos etapas. Hasta y después del 1900
+
 cpi_log_lm_pre  = lm(cpi_log ~ year, data = cpi[cpi$year <= 1900,])
 cpi_log_lm_post = lm(cpi_log ~ year, data = cpi[cpi$year > 1900,])
 plot(y = cpi$cpi_log, x = cpi$year, type = "l")
@@ -333,11 +371,77 @@ cpi_log_cntr_pre = cpi$cpi_log[cpi$year <= 1900] - predict(cpi_log_lm_pre,
                                                            newdata = cpi[cpi$year <= 1900, "year"])
 cpi_log_cntr_post = cpi$cpi_log[cpi$year > 1900] - predict(cpi_log_lm_post,
                                                            newdata = cpi[cpi$year > 1900, "year"])
+
 fft_cpi_log_cntr_pre  = fft(cpi_log_cntr_pre)
 fft_cpi_log_cntr_post = fft(cpi_log_cntr_post)
+
+plot(Mod(fft_cpi_log_cntr_pre), type = "l", xlab = "Frecuencias", ylab = "Modulo", main = "Pre-1900")
+plot(Mod(fft_cpi_log_cntr_post), type = "l", xlab = "Frecuencias", ylab = "Modulo", main = "Post-1900")
+
+cpi_antifft_10_pre = Re(
+    fft(
+      fft_cpi_log_cntr_pre * c(rep(1,10), rep(0, length(fft_cpi_log_cntr_pre) - 19), rep(1,9)),
+      inverse = TRUE
+    ) / length(fft_cpi_log_cntr_pre)
+  )
+
+cpi_antifft_10_post = Re(
+    fft(
+      fft_cpi_log_cntr_post * c(rep(1,10), rep(0, length(fft_cpi_log_cntr_post) - 19), rep(1,9)),
+      inverse = TRUE
+    ) / length(fft_cpi_log_cntr_post)
+  )
+
+plot(y=c(cpi_log_cntr_pre, cpi_log_cntr_post), x=cpi$year, type="l")
+lines(y=c(cpi_antifft_10_pre, cpi_antifft_10_post), x=cpi$year, col="red")
+abline(v=1900,col="blue",lty=3)
+
+cpi_rsq_antifft10 = 1 - (sum((na.omit(c(cpi_log_cntr_pre, cpi_log_cntr_post)) - c(cpi_antifft_10_pre, cpi_antifft_10_post)) ^ 2,
+                          na.rm = TRUE) /
+                          sum((na.omit(c(cpi_log_cntr_pre, cpi_log_cntr_post)) - mean(c(cpi_log_cntr_pre, cpi_log_cntr_post),
+                                                                            na.rm = TRUE)) ^ 2,
+                              na.rm = TRUE))
+
+plot(
+  x = cpi$year[cpi$year <= 1900],
+  y = cpi_antifft_10_pre,
+  type = "l", ylab = "CPI centrado", xlab = "Años", lwd = 2
+)
+lines(
+  x = cpi$year[cpi$year <= 1900],
+  y = Re(
+    fft(
+      fft_cpi_log_cntr_pre * c(rep(0,10), rep(1, length(fft_cpi_log_cntr_pre) - 19), rep(0,9)),
+      inverse = TRUE
+    ) / nrow(cpi)
+  ),
+  type = "l", col = "blue", lwd = 2
+)
+abline(h = 0, lty = 3, lwd = 2)
+
+acf(Re(
+    fft(
+      fft_cpi_log_cntr_pre * c(rep(0,10), rep(1, length(fft_cpi_log_cntr_pre) - 19), rep(0,9)),
+      inverse = TRUE
+    ) / length(fft_cpi_log_cntr_pre)
+  ))
+
+# Con un filtro pasaaltos todavía queda estructura de corto plazo, pero tenemos una buena aproximación de las ondas de largo plazo.
 ```
 
 Puede observarse que en los años en torno a 1971, año en que EE.UU. abandona definitivamente el patrón oro, la serie cambia completamente, por lo que habría que analizar la serie antes y después de esa fecha, ya que el índice de precios, bajo la teoría monetarista de la inflación, puede estar directamente ligada a la emisión de dinero, que desde 1971 puede darse sin respaldo en oro en los EE.UU.
+
+Midiendo el R cuadrado que podemos obtener de estos componentes.
+
+```{r, echo=FALSE}
+cpi_rsq_fft_pre = 1 - (sum((cpi_log_cntr_pre - cpi_antifft_10_pre) ^ 2, na.rm = TRUE) /
+                     sum((cpi_log_cntr_pre - mean(cpi_log_cntr_pre, na.rm = TRUE)) ^ 2, na.rm = TRUE))
+cpi_rsq_fft_post = 1 - (sum((cpi_log_cntr_post - cpi_antifft_10_post) ^ 2, na.rm = TRUE) /
+                     sum((cpi_log_cntr_post - mean(cpi_log_cntr_post, na.rm = TRUE)) ^ 2, na.rm = TRUE))
+cpi_rsq_fft_pre
+cpi_rsq_fft_post
+```
+
 
 ```{r, echo=FALSE}
 cpi_prior_1971 = cpi %>%
@@ -420,12 +524,12 @@ plot(Mod(fft_real_gdp_ts_center))
 Descomponiendo la serie
 ```{r, echo=FALSE}
 plot(real_gdp_ts_center, type = "l")
-lines(Re(fft(
+gdp_antifft_9 = Re(fft(
   fft_real_gdp_ts_center * c(rep(1,10),
                              rep(0, length(fft_real_gdp_ts_center) - 19),
                              rep(1,9)),
-             inverse = TRUE) / length(fft_real_gdp_ts_center)),
-  , col = "red", lwd = 3)
+             inverse = TRUE) / length(fft_real_gdp_ts_center))
+lines(gdp_antifft_9, col = "red", lwd = 3)
 
 plot(Re(fft(
   fft_real_gdp_ts_center * c(rep(1,2),
@@ -457,6 +561,11 @@ lines(Re(fft(
                              1, rep(0,4)),
              inverse = TRUE) / length(fft_real_gdp_ts_center)),
   , lwd = 3, ylab = "PBI centrado")
+
+# R cuadrado explicado por las primeras 9 frecuencias.
+gdp_rsq_fft = 1 - (sum((real_gdp_ts_center - gdp_antifft_9) ^ 2, na.rm = TRUE) /
+                     sum((real_gdp_ts_center - mean(real_gdp_ts_center, na.rm = TRUE)) ^ 2, na.rm = TRUE))
+gdp_rsq_fft
 ```
 
 
