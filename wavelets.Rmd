@@ -15,119 +15,7 @@ library(cowplot)
 
 [WaveletComp](http://www.hs-stat.com/projects/WaveletComp/WaveletComp_guided_tour.pdf)
 
-```{r}
-gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
-gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
-wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
-
-gdp_in_gold <- left_join(gold, gdp, by = "Year") %>% 
-  transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
-         date = parse_date_time(Year,"y")) 
-wg_in_gold <- wage %>% 
-  # filter(Year>=1900) %>% 
-  left_join(gold, gdp, by = "Year") %>% 
-  transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
-            date = parse_date_time(Year,"y")) %>%
-  na.omit()
-
-```
-
-
-```{r message=FALSE, warning=FALSE}
-wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
-                                my.series = "value",
-                                date.format = "%Y-%m-%d",
-                                date.tz = "UTC", verbose = F)
-
-```
-
-```{r}
-
-png("plots/espectograma_wg.png", width = 1600, height = 1000, units = "p", pointsize = 40)
-wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
-         label.time.axis = TRUE,
-         plot.legend = FALSE,
-         main = "Espectograma salario en oro")
-
-dev.off()
-```
-
-log wage
-
-
-```{r message=FALSE, warning=FALSE}
-wage_wavelet <- wg_in_gold %>% 
-  mutate(logvalue = log(value,base = 10)) %>% 
-  analyze.wavelet(my.data = .,
-                  my.series = "logvalue",
-                  date.format = "%Y-%m-%d",
-                  date.tz = "UTC", verbose = F)
-
-
-png("plots/espectograma_log_wg.png", width = 1600, height = 1000, units = "p", pointsize = 40)
-wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
-         label.time.axis = TRUE,
-         plot.legend = FALSE,
-         main = "Espectograma salario en log(oro)")
-
-dev.off()
-
-```
-
-
-```{r}
-
-gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
-                                my.series = "value",
-                                date.format = "%Y-%m-%d",
-                                date.tz = "UTC")
-
-png("plots/espectograma_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
-wt.image(gdp_wavelet,color.key = "q",
-         show.date = TRUE,
-         plot.legend = FALSE,
-         label.time.axis = TRUE,
-         main = "Espectograma PBI en oro")
-dev.off()
-
-```
-
-
-Hago algunas pruebas para ver como se verían señales puras:
-
-
-### Escala log
-
-
-```{r}
-
-gdp_wavelet <- gdp_in_gold %>%
-  mutate(logvalue = log(value,base = 10)) %>% 
-  analyze.wavelet(my.data = .,
-                  my.series = "logvalue",
-                  date.format = "%Y-%m-%d",
-                  date.tz = "UTC")  
-
-png("plots/espectograma_log_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
-
-wt.image(gdp_wavelet,color.key = "q",
-         periodlab="Frecuencia de ciclo",
-         label.period.axis =TRUE,
-         plot.legend = FALSE,
-         spec.period.axis = list(at = c(3,7,20,50), labels = TRUE),
-         n.levels = 100,
-         show.date = TRUE,
-         label.time.axis = TRUE, 
-         main = "Espectograma log(PBI en oro)")
-dev.off()
-
-```
-
-
-observaciones:
-
-- En escala logarítima se reduce la heterocedasticidad de la serie, y sue puede observar los ciclos en un período más extendido del tiempo. especialmente el de 50 años
-- Más allá de que hasta el 1900 la serie no tenga demasiada información, si filtarmos para quedarnos sólo con el último siglo, se perdería resolución y no se podría ver el ciclo de 50 años.
+# Modelo teórico
 
 construyo el _modelo teórico_ de una economía cíclica con que se construye a partrir de:
 
@@ -234,7 +122,7 @@ df <- data_frame(period=1:nn,cte=cte,x0=x0, x3=x3,x10=x10, x50=x50, x=x)
 - En x10 se ve que cuando el ciclo es demasiado grande respecto a la cantidad de observaciones, se satura en la parte superior de _period_
 
 
-# Wavelet Base
+## Wavelet Base
 
 ```{r}
 # install.packages("Rwave")
@@ -283,4 +171,223 @@ ggsave("plots/morelt.png",dpi = 300)
 
 
 
+
+
+
+
+
+# Datos
+
+### pbi y W en oro
+
+```{r}
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+
+gdp_in_gold <- left_join(gold, gdp, by = "Year") %>% 
+  transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         date = parse_date_time(Year,"y")) 
+wg_in_gold <- wage %>% 
+  # filter(Year>=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+            date = parse_date_time(Year,"y")) %>%
+  na.omit()
+
+```
+
+### salario
+
+```{r message=FALSE, warning=FALSE}
+wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC", verbose = F)
+
+```
+
+```{r}
+
+png("plots/espectograma_wg.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma salario en oro")
+
+dev.off()
+```
+
+log wage
+
+
+```{r message=FALSE, warning=FALSE}
+wage_wavelet <- wg_in_gold %>% 
+  mutate(logvalue = log(value,base = 10)) %>% 
+  analyze.wavelet(my.data = .,
+                  my.series = "logvalue",
+                  date.format = "%Y-%m-%d",
+                  date.tz = "UTC", verbose = F)
+
+
+png("plots/espectograma_log_wg.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma salario en log(oro)")
+
+dev.off()
+
+```
+
+### PBI
+
+```{r}
+
+gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+png("plots/espectograma_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE,
+         main = "Espectograma PBI en oro")
+dev.off()
+
+```
+
+
+Hago algunas pruebas para ver como se verían señales puras:
+
+
+#### Escala log
+
+
+```{r}
+
+gdp_wavelet <- gdp_in_gold %>%
+  mutate(logvalue = log(value,base = 10)) %>% 
+  analyze.wavelet(my.data = .,
+                  my.series = "logvalue",
+                  date.format = "%Y-%m-%d",
+                  date.tz = "UTC")  
+
+png("plots/espectograma_log_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+
+wt.image(gdp_wavelet,color.key = "q",
+         periodlab="Frecuencia de ciclo",
+         label.period.axis =TRUE,
+         plot.legend = FALSE,
+         spec.period.axis = list(at = c(3,7,20,50), labels = TRUE),
+         n.levels = 100,
+         show.date = TRUE,
+         label.time.axis = TRUE, 
+         main = "Espectograma log(PBI en oro)")
+dev.off()
+
+```
+
+
+observaciones:
+
+- En escala logarítima se reduce la heterocedasticidad de la serie, y sue puede observar los ciclos en un período más extendido del tiempo. especialmente el de 50 años
+- Más allá de que hasta el 1900 la serie no tenga demasiada información, si filtarmos para quedarnos sólo con el último siglo, se perdería resolución y no se podría ver el ciclo de 50 años.
+
+
+
+
+
+
+## otras series
+
+### Tasa de interés de largo plazo
+
+```{r}
+ir <- read_csv("data/INTERESTRATE_1857-2018.csv", skip=1)
+ir <- ir %>% 
+  mutate(date = parse_date_time(Year,"y")) %>% 
+  select(date, value = `US Long-Term Rate: Consistent Series`)
+
+ir_wavelet <- analyze.wavelet(my.data = ir,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC", verbose = F)
+
+png("plots/espectograma_ir.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(ir_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma Tasa de interés de largo plazo")
+
+dev.off()
+
+```
+
+### IPC
+
+```{r}
+ipc <- read_csv("data/USCPI_1774-2018.csv", skip=4)
+ipc <- ipc %>% 
+  mutate(date = parse_date_time(Year,"y")) %>% 
+  select(date, value = `U.S. Consumer Price Index *`)
+ipc_wavelet <- analyze.wavelet(my.data = ipc,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC", verbose = F)
+
+png("plots/espectograma_ipc.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(ipc_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma indice de precios al consumidor")
+
+dev.off()
+```
+
+### PBI real p/c
+
+```{r}
+real_gdp <- gdp %>% 
+  mutate(date = parse_date_time(Year,"y")) %>% 
+  select(date, value = `Real GDP per capita (year 2012 dollars)`)
+real_gdp_wavelet <- analyze.wavelet(my.data = real_gdp,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC", verbose = F)
+
+png("plots/espectograma_real_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(ipc_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma PBI real per cápita")
+
+dev.off()
+```
+
+
+
+
+#### pib real
+```{r}
+real_gdp <- gdp %>% 
+  mutate(date = parse_date_time(Year,"y")) %>% 
+  select(date, value = `Real GDP (millions of 2012 dollars)`)
+real_gdp_wavelet <- analyze.wavelet(my.data = real_gdp,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC", verbose = F)
+
+
+
+wt.image(ipc_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE,
+         main = "Espectograma PBI real")
+
+
+
+```
 
