@@ -42,13 +42,13 @@ change_header = function(tabla, nuevos_enc) {
   }
   return(tabla)
 }
-cpi = change_header(cpi, c("year", "cpi"))
-dja = change_header(dja, c("date", "value"))
-gold = change_header(gold, c("year", "value"))
+cpi           = change_header(cpi, c("year", "cpi"))
+dja           = change_header(dja, c("date", "value"))
+gold          = change_header(gold, c("year", "value"))
 interest_rate = change_header(interest_rate, c("year", "short_term_ord", "short_term_surp", "long_term"))
-sap = change_header(sap, c("year", "avg_jan", "annual_yield", "accum_avg_jan"))
-gdp = change_header(gdp, c("year", "nominal", "real_2012_base", "gdp_deflator", "pop", "nominal_per_cap", "real_per_cap_2012_base"))
-wage = change_header(wage, c("year", "cost_unsk", "prod_work_hourly_comp"))
+sap           = change_header(sap, c("year", "avg_jan", "annual_yield", "accum_avg_jan"))
+gdp           = change_header(gdp, c("year", "nominal", "real_2012_base", "gdp_deflator", "pop", "nominal_per_cap", "real_per_cap_2012_base"))
+wage          = change_header(wage, c("year", "cost_unsk", "prod_work_hourly_comp"))
 ```
 
 Función de autocorrelación sobre ruido blanco. Se puede ver que la serie está centrada en cero y que su autocorrelación sólo tiene una correlación alta para el _lag_ 0, mientras que es baja para el resto de los puntos.
@@ -66,8 +66,6 @@ seno <- ts(sin(pi*seq(-7, 7, length.out = 161)))
 autoplot(seno)
 acf(seno)
 ```
-
-
 
 ## Autocorrelación sobre la tasa de largo plazo
 El siguiente grafico muestra la serie de la tasa de interés de largo plazo de los EE.UU. desde el año 1857 como una serie anual.\centering
