@@ -98,7 +98,7 @@ Finalmente, la serie de la tasa de interés de largo plazo se basa en \cite{offi
 \subsection{Producto Bruto Interno, Salario y Oro}
 
 \todo{Hay muchos comentarios justificando porqué mirar PBI y salario. Quedaron desactualizados con la incorporación de las nuevas series.}
-
+\todo{Hay un problema grave con mirar las cosas expresadas en oro: encontré un paper que afirma que la mayor producción de oro de la historia se dio más recientemente en el siglo XX que en otro momento de la historia. Esto justificaría también usar las variables reales}
 
 Dos de las series más relevantes para estudiar el desenvolvimiento cíclico de la economía son el Producto Bruto interno (PBI) y el salario. Sin embargo, es importante reconocer el fenómeno que se observa en la figura \ref{fig:oro}. Allí se marca la salida del patrón oro de la economía mundial en 1971. Luego de la segunda guerra mundial y hasta ese punto, la estructura monetaria global se basaba en la paridad con el dólar, y el \textit{ancla nominal} del mismo con las reservas de oro de la \textit{FED} (Federal Reserve Board). Esto quiere decir que Estados Unidos no podía emitir dólares que no estuvieran respaldados por su equivalente en oro en las reservas del banco central de dicho país. Por ello, la relación dólar-oro se mantuvo prácticamente inamovible hasta 1971. Luego de que eliminó este ancla, la capacidad de emisión libre de respaldo implicó que la FED emita por encima de las reservas, y en general del oro en circulación, lo cual implicó un aumento del precio del oro expresado en dólares, o lo que es equivalente, una caída del dólar estadounidense expresado en oro.
 
@@ -108,11 +108,11 @@ Dos de las series más relevantes para estudiar el desenvolvimiento cíclico de 
 	\caption{Precios del oro por onza en el mercado de Nueva York} \label{fig:oro}
 \end{figure}
 
-Dado que lo que se busca en el presente trabajo es realizar un análisis de largo plazo del ciclo económico, esta perturbación nominal oscurece el fenómeno subyacente que se esta buscando. Es por ello que se opto por normalizar las series del PBI y el salario por el precio del oro. De esta forma las series se leen como el producto y el salario expresado en su capacidad de compra de oro. Una alternativa a esto sería dividir por el Indice de Precios al Consumidor, de forma tal que ambas series se expresen en capacidad de poder adquisitivo constante. 
+Dado que lo que se busca en el presente trabajo es realizar un análisis de largo plazo del ciclo económico, esta perturbación nominal oscurece el fenómeno subyacente que se esta buscando. Es por ello que se opto tanto por normalizar las series del PBI nominal y el salario por el precio del oro. De esta forma las series se leen como el producto y el salario expresado en su capacidad de compra de oro. Una alternativa a esto sería dividir por el Indice de Precios al Consumidor, de forma tal que ambas series se expresen en capacidad de poder adquisitivo constante (en términos reales). 
 
 \todo{acá hay una justificación de porqué usar PBI en oro y no PBI real. Habría que ver cómo compatibilizar esto con después analizar el IPC y el PBI real}
 \todo{creo que puede compatibilizarse ya que el oro es un precio más de la economía, que sufre fluctuaciones a veces violentas por otras causas. Es una vía de análisis pero no la única.}
-La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo
+La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico \todo{acá falta una referencia, encontré evidencia un paper que cita se comportaría independientemente del ciclo. Para tener cuidado con esta afirmación}, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo.
 
 De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI de Estados Unidos entre el 1900 y 2017, expresado en oro. Por su parte la figura \ref{fig:salario} muestra la serie del salario horario de un obrero de la producción en Estados Unidos entre 1900 y 2017, expresado en Oro.
 
@@ -126,8 +126,6 @@ De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI d
 	\label{fig:salario}}
 	\caption{Series Expresadas en Oro. Destacado de crisis conocidas} \label{fig:series_crisis}
 \end{figure}
-
-
 
 % latex table generated in R 3.5.1 by xtable 1.8-3 package
 % Tue Oct 16 20:07:52 2018
@@ -157,16 +155,15 @@ De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI d
 
 En primer lugar lo que se observa es la similitud de ambas series, en términos generales. Ambas muestran tres picos, durante los 20', en 1970 y el 2000, seguidos de caídas profundas. La normalización por el precio del oro permite ver un gran ciclo con tres oscilaciones, por lo menos de manera aparente, durante el siglo XX. Las crisis revisadas por la literatura de historia económica parecen tener su correlato en los movimientos observados en ambas series. Por su parte, también es interesante resaltar que el tercer movimiento ascendente, cuyo punto álgido se encuentra en el año 2000, lleva a un valor similar al del movimiento oscilatorio previo para el caso del PBI, pero no para el salario. Esto expresa que la distribución del PBI en salario y ganancia se modificó en el último período. 
 
+En las secciones siguientes se profundizará el análsis usando técnicas poco habituales en el análisis de datos económicos y pertenecientes más a campos tales como el procesamiento de señales como son la transformada 
+de Fourier y los wavelets.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{comment}
 \subsection{Tasa de interés e Indice de precios al consumidor}
-
-
-\section{Fourier}
 
 \todo{ver comentario}
 
-\begin{comment}
 Habría que buscar integrar más ambas partes del trabajo. 
 El título este pareciera más un título para el Artículo que para una sección. Creo que lo que distingue a esta parte es que usas Fourier. 
 
@@ -181,9 +178,11 @@ Creo que quedaría bien si fusionamos la sección 3 de AED con esta y queda:
 Pablo: perfecto, renombrémoslo como Fourier para que no sea un artículo aparte.
 \end{comment}
 
-\subsection{Tasa de interés de largo plazo}
+\section{Transformada de Fourier}
+Las transformadas de Fourier permiten analizar una serie de tiempo pasando del plano del tiempo al plano de la frecuencia, evidenciando las distintas amplitudes y frecuencias de onda en la serie analizada. Esto permite descomponer las series como una suma de componentes sinusoidales que, en conjunto, reconstruyen la serie original. Esto es útil para discriminar las componentes más importantes y de diversa frecuencia (series \textit{cortas} y \textit{largas}) en el análisis de los ciclos económicos. A tal fin, analizaremos a continuación las series propuestas por este trabajo bajo la técnica de la transformada de Fourier.
 
-En el siguiente apartado se analizan los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
+\subsection{Tasa de interés de largo plazo}
+En este apartado se analizan los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
 
 En la figura \ref{fig:ir_orig} se puede observar la serie de tasas de interés de largo plazo por año. En la misma se puede observar una diferencia significativa en el nivel de tasas de la segunda mitad del siglo XX respecto de los años anteriores, sobre todo posteriores a 1970. Esto corresponde a niveles altos de inflación en los EE.UU. en este periodo y la siguiente paulatina baja de la inflación llegando al siglo XXI.
 
@@ -205,7 +204,7 @@ A continuación (Figura \ref{fig:ir_diff_acf}) se muestran el gráficos de difer
 	\label{fig:ir_diff_acf}
 \end{figure}
 
-Si bien no se observan tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. Para poder investigar ciclos de mayor duración se investiga la transformada de Fourier de la serie, que permite observar las frecuencias y amplitudes que componen la serie. En la figura \ref{fig:ir_fft} puede observarse el espectro de frecuencias de la serie de tasas de interés centrada en su media.
+Si bien no se observan tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. Para poder investigar ciclos de mayor duración se investiga la transformada de Fourier de la serie. En la figura \ref{fig:ir_fft} puede observarse el espectro de frecuencias de la serie de tasas de interés centrada en su media.
 
 \begin{figure}[H]
 	\centering
