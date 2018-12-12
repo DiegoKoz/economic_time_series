@@ -19,6 +19,7 @@
 \usepackage{subfigure} 
 \usepackage{float}
 \usepackage{verbatim}
+\usepackage{appendix}
 
 \addtolength{\subfigcapskip}{-10pt}
 \addtolength{\subfigbottomskip}{-30pt}
@@ -183,7 +184,6 @@ Las transformadas de Fourier permiten analizar una serie de tiempo pasando del p
 
 \subsection{Tasa de interés de largo plazo}
 En este apartado se analizan los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
-
 En la figura \ref{fig:ir_orig} se puede observar la serie de tasas de interés de largo plazo por año. En la misma se puede observar una diferencia significativa en el nivel de tasas de la segunda mitad del siglo XX respecto de los años anteriores, sobre todo posteriores a 1970. Esto corresponde a niveles altos de inflación en los EE.UU. en este periodo y la siguiente paulatina baja de la inflación llegando al siglo XXI.
 
 \begin{figure}[H]
@@ -194,25 +194,7 @@ En la figura \ref{fig:ir_orig} se puede observar la serie de tasas de interés d
 	\label{fig:ir_orig}
 \end{figure}
 
-A continuación (Figura \ref{fig:ir_diff_acf}) se muestran el gráficos de diferencias (cambios absolutos, en puntos porcentuales, de la tasa de interés de largo plazo, por año) y la autocorrelación de las diferencias. Se observa que hay una leve correlación con el periodo siguiente al lag 0, pero en general la autocorrelación es muy similar a un random walk.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\linewidth]{ir_diff.png}
-	\includegraphics[width=0.75\linewidth]{ir_diff_acf.png}
-	\caption{Diferencias (arriba) y autocorrelación de las diferencias (abajo) de las tasas de interes.} 	
-	\label{fig:ir_diff_acf}
-\end{figure}
-
-Si bien no se observan tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. Para poder investigar ciclos de mayor duración se investiga la transformada de Fourier de la serie. En la figura \ref{fig:ir_fft} puede observarse el espectro de frecuencias de la serie de tasas de interés centrada en su media.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{ir_fft.png}
-	\caption{Transformada de Fourier de la tasa de interés} 	
-	\label{fig:ir_fft}
-\end{figure}
-
+En la figura \ref{fig:ir_diff_acf} se muestran el gráficos de diferencias (cambios absolutos, en puntos porcentuales, de la tasa de interés de largo plazo, por año) y la autocorrelación de las diferencias. Realizando las diferencias de la serie (diferencias en terminos absolutos) se observa que hay una leve correlación con el periodo siguiente al lag 0, pero en general la autocorrelación es muy similar a un random walk. Si bien no se observan tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. Para poder investigar ciclos de mayor duración se investiga la transformada de Fourier de la serie. En la figura \ref{fig:ir_fft} puede observarse el espectro de frecuencias de la serie de tasas de interés centrada en su media.
 Se observa que hay frecuencias bajas con gran amplitud. Si descomponemos la serie por las frecuencias más bajas, se puede observar la serie en rojo de la figura \ref{fig:ir_orig_resid} que resulta de la descomposición de la serie original por las frecuencias más bajas. Puede observarse que la serie aún presenta autocorrelación (en detalle la autocorrelación de la figura \ref{fig:ir_resid_acf}), aunque las ondas bajas encontradas mediante la transformación de Fourier explican el 89,24\% de la varianza total de la serie.
 
 \begin{figure}[H]
@@ -220,13 +202,6 @@ Se observa que hay frecuencias bajas con gran amplitud. Si descomponemos la seri
 	\includegraphics[width=0.8\linewidth]{ir_orig_resid.png}
 	\caption{Serie original y residuos (en rojo) de descomponer por las frecuencias más bajas} 	
 	\label{fig:ir_orig_resid}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{ir_resid_acf.png}
-	\caption{Autocorrelación de la parte no explicada por la descomposición de las frecuencias más bajas} 	
-	\label{fig:ir_resid_acf}
 \end{figure}
 
 \subsection{Índice de precios al consumidor}
@@ -239,38 +214,9 @@ La serie de nivel de precios al consumidor(\textit{"Consumer Price Index"}, Índ
 	\label{fig:cpi_orig}
 \end{figure}
 
-
 Este hecho de diferencias seculares en el nivel de precios puede observarse con mayor detalle en la figura \ref{fig:cpi_log10_tend} donde se observa el logaritmo en base diez de los datos originales con tendencias lineales calculadas para los años previos y posteriores a 1900, apreciandose el cambio de tendencia del crecimiento del nivel de precios. En este último gráfico se han marcado también con líneas punteadas rojas acontecimientos notables de la historia de los EE.UU. y mundiales para tomar como referencia en los cambios de estas variables macroeconómicas.
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{cpi_log10_tend.png}
-	\caption{Log 10 y tendencias ajustadas antes y después del año 1900} 	
-	\label{fig:cpi_log10_tend}
-\end{figure}
-
-Se elige centrar la serie de precios por las tendencias lineales para poder evitar que se distorsione el ciclo usando técnicas que ajusten mejor a datos no lineales, debido a que se analizarán los residuos de estas series con transformaciones de Fourier en busca de poder explicarlos y de buscar la existencia de ciclos alrededor de estas tendencias. Se pueden observar las tendencias centradas y la alternancia alrededor de cero en la figura \ref{fig:cpi_log10_cntr}.
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_pre.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_post.png}}
-	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
-	\label{fig:cpi_log10_cntr}
-\end{figure}
-
-Pasamos ahora al análisis de los residuos: la serie centrada por las tendencias. Realizamos las transformadas de Fourier sobre estas nuevas series. El resultado puede observarse en la figura \ref{fig:cpi_log10_cntr_fft}, en la que puede verse que las frecuencias más bajas son las que cuentan con mayor amplitud.
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_pre1900.png}	}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_post1900.png}}
-	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
-	\label{fig:cpi_log10_cntr_fft}
-\end{figure}
-
-Ahora podemos tomar las frecuencias más bajas y descomponer la serie centrada por ellas, analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie de tiempo. En la figura \ref{fig:cpi_cntr_acf} puede observarse también que aún puede continuar explicándose los residuos en azul debido a que hay rezagos que tienen correlación entre sí. Aún así, la varianza explicada por las frecuencias bajas halladas por Fourier es de 89,52\% en el caso de la serie previa a 1900 y 97,12\% luego del año 1900. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
+Centramos luego la serie del índice de precios por las tendencias lineales de las mismas antes y posterior al año 1900, para evitar que se distorsione el ciclo usando técnicas que ajusten mejor a datos no lineales, debido a que se analizarán los residuos de estas series con transformaciones de Fourier en busca de poder explicarlos y de buscar la existencia de ciclos alrededor de estas tendencias. Se pueden observar las tendencias centradas y la alternancia alrededor de cero en la figura \ref{fig:cpi_log10_cntr}.
+Luego de centradas las dos mitades de la serie realizamos las transformadas de Fourier sobre los residuos. El resultado puede observarse en la figura \ref{fig:cpi_log10_cntr_fft}, en la que puede verse que las frecuencias más bajas son las que cuentan con mayor amplitud. Posteriormente se tomaron las frecuencias más bajas y se descompuso la serie centrada por ellas por las múltiples componentes de frecuencia, para luego analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie de tiempo. En la figura \ref{fig:cpi_cntr_acf} puede observarse también que aún puede continuar explicándose los residuos en azul debido a que hay rezagos que tienen correlación entre sí. Aún así, la varianza explicada por las frecuencias bajas halladas por Fourier es de 89,52\% en el caso de la serie previa a 1900 y 97,12\% luego del año 1900. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
 
 \begin{figure}[H]
 	\centering
@@ -278,14 +224,6 @@ Ahora podemos tomar las frecuencias más bajas y descomponer la serie centrada p
 	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_antifft_post1900.png}}
 	\caption{Residuos (en azul) luego de quitar las bajas frecuencias} 	
 	\label{fig:cpi_cntr_antifft}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_pre1900.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_post1900.png}}
-	\caption{Autocorrelación de los residuos}
-	\label{fig:cpi_cntr_acf}
 \end{figure}
 
 \subsection{PBI real}
@@ -299,26 +237,7 @@ Estados Unidos se ha convertido en la economía más poderosa del mundo con el t
 	\label{fig:PBI_orig}
 \end{figure}
 
-A pesar de lo enormemente explicativa que es la tendencia lineal sobre el logaritmo de la serie, hay zonas en las que el residuo es estrictamente positivo o negativo, por lo que puede analizarse si hay ciclos en estos residiuos, es decir, alrededor de la tendencia lineal. Los residuos pueden visualizarse en la figura \ref{fig:PBI_cntr}.
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado.png}}
-	\caption{PBI centrado por la tendencia lineal} 	
-	\label{fig:PBI_cntr}
-\end{figure}
-
-
-Nuevamente, aplicamos la transformada de Fourier sobre los residuos. Puede observarse el módulo de los vectores formados con respecto a la frecuencia en la figura \ref{fig:PBI_cntr_fft}.
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado_fft.png}}
-	\caption{Transformada de Fourier del PBI centrado} 	
-	\label{fig:PBI_cntr_fft}
-\end{figure}
-
-Luego podemos observar el ajuste de la transformada de Fourier a los datos. Para ello graficamos nuevamente los residuos y la anti-transformada de las frecuencias más bajas de la transformada de Fourier expuesta previamente. Esto se puede observar en \ref{fig:PBI_cntr_antifft}
+A pesar de lo enormemente explicativa que es la tendencia lineal sobre el logaritmo de la serie, hay zonas en las que el residuo es estrictamente positivo o negativo, por lo que puede analizarse si hay ciclos en estos residuos, es decir, alrededor de la tendencia lineal. Los residuos pueden visualizarse en la figura \ref{fig:PBI_cntr}. Nuevamente, aplicamos la transformada de Fourier sobre los residuos. Puede observarse el módulo de los vectores formados con respecto a la frecuencia en la figura \ref{fig:PBI_cntr_fft}. Luego podemos observar el ajuste de la transformada de Fourier a los datos. Para ello graficamos nuevamente los residuos y la anti-transformada de las frecuencias más bajas de la transformada de Fourier. Esto se puede observar en \ref{fig:PBI_cntr_antifft}
 
 \begin{figure}[H]
 	\centering
@@ -327,15 +246,8 @@ Luego podemos observar el ajuste de la transformada de Fourier a los datos. Para
 	\label{fig:PBI_cntr_antifft}
 \end{figure}
 
-Nuevamente observamos los residuos explicados de la serie y la autocorrelación de esos residuos en \ref{fig:PBI_fft_resid}. Puede observarse que aún queda estructura por explicar en los residuos dado por ciclos de más baja frecuencia. Esto demuestra que se puede descomponer la serie en ciclos de baja y alta frecuencia, si bien en este estudio estamos mayormente interesados en ciclos de largo plazo (señales de baja frecuencia y alta amplitud). Asimismo, usando sólo las frecuencias bajas se logra explicar el 86,24\% de la varianza de los residuos de la tendencia linea
+Nuevamente observamos los residuos explicados de la serie y la autocorrelación de esos residuos en \ref{fig:PBI_fft_resid}. Puede observarse que aún queda estructura por explicar en los residuos dado por ciclos de más baja frecuencia. Esto demuestra que se puede descomponer la serie en ciclos de baja y alta frecuencia, si bien en este estudio estamos mayormente interesados en ciclos de largo plazo (señales de baja frecuencia y alta amplitud). Asimismo, usando sólo las frecuencias bajas se logra explicar el 86,24\% de la varianza de los residuos de la tendencia linea.
 
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{PBI_fft_resid.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_resid_acf.png}}
-	\caption{PBI centrado con residuos en azul (izquierda) y ACF de los residuos (derecha)}
-	\label{fig:PBI_fft_resid}
-\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\section{Autocorrelación y ARIMA}
@@ -393,6 +305,7 @@ Nuevamente observamos los residuos explicados de la serie y la autocorrelación 
 %
 %Se observa tanto un mayor desvío como un mayor error cuadrático medio para ambas series después de 1971. A su vez, las series antes del 71' son integradas de orden dos, producto de lo mencionado arriba de que hasta este punto se toma la fuerte fase ascendente del ciclo en la posguerra, lo que la convierte en una serie divergente. Al contrario, los ARIMA óptimos para las series posteriores a 1971 no requieren ser integrados, sino simplemente tener un término de nivel (\textit{non-zero mean}). A su vez, el modelo también pareciera ser más volátil que las observaciones en este período. Como conclusión, estas herramientas tradicionales de la econometría no bastan para dar cuenta del fenómeno cíclico. 
 %
+
 \section{Wavelets}
 
 Dado que en las secciones previas no se encontró evidencia concluyente en ningún sentido, se decidió explorar nuevas herramientas del análisis de series de tiempo para poder caracterizar el ciclo económico. Los espectogramas producidos mediante \textit{wavelets} parecen ser una herramienta propicia para encontrar ciclos bien definidos a lo largo del período analizado. Las wavelets son un tipo de transformación sobre la serie original que puede pensarse como una rotación de un espacio de funciones a un dominio diferente. A diferencia de la transformada de fourier, que tiene como base de funciones los senos y cosenos, la transformada Wavelet tiene como base de funciones una función particular, con su mismo nombre, Wavelets \cite{castro1995wavelets}. Una base de este tipo se construye a partir de una función madre, que es una onda corta, de duración finita. Es decir, a diferencia de las funciones seno y coseno que se extienden infinitamente,los wavelets tienen \textit{soporte compacto}. Otra característica de las funciones wavelet es que el área debajo de la curva debe ser igual a cero, es decir que esta centrada en cero. Esta función madre se traslada y dilata para construir una base ortonormal. 
@@ -533,6 +446,88 @@ Por ello se realizó un análisis en base a \textit{Wavelets}, una herramienta p
 Es interesante remarcar el siguiente punto: el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900.
 
 El presente trabajo plantea sendas lineas de investigación, especialmente respecto de la utilización de la técnica Wavelets en nuevas series, tanto para series de variables financieras, como series de PBI y salario de otros países.
+
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+
+\appendix
+
+\section{Anexo I: Imágenes}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\linewidth]{ir_diff.png}
+	\includegraphics[width=0.75\linewidth]{ir_diff_acf.png}
+	\caption{Diferencias (arriba) y autocorrelación de las diferencias (abajo) de las tasas de interes.} 	
+	\label{fig:ir_diff_acf}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{ir_fft.png}
+	\caption{Transformada de Fourier de la tasa de interés} 	
+	\label{fig:ir_fft}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{ir_resid_acf.png}
+	\caption{Autocorrelación de la parte no explicada por la descomposición de las frecuencias más bajas} 	
+	\label{fig:ir_resid_acf}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{cpi_log10_tend.png}
+	\caption{Log 10 y tendencias ajustadas antes y después del año 1900} 	
+	\label{fig:cpi_log10_tend}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_pre.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_post.png}}
+	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
+	\label{fig:cpi_log10_cntr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_pre1900.png}	}
+	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_post1900.png}}
+	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
+	\label{fig:cpi_log10_cntr_fft}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_pre1900.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_post1900.png}}
+	\caption{Autocorrelación de los residuos}
+	\label{fig:cpi_cntr_acf}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado.png}}
+	\caption{PBI centrado por la tendencia lineal} 	
+	\label{fig:PBI_cntr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado_fft.png}}
+	\caption{Transformada de Fourier del PBI centrado} 	
+	\label{fig:PBI_cntr_fft}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.49\linewidth]{PBI_fft_resid.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_resid_acf.png}}
+	\caption{PBI centrado con residuos en azul (izquierda) y ACF de los residuos (derecha)}
+	\label{fig:PBI_fft_resid}
+\end{figure}
 
 \bibliography{bibliography.bib}
 

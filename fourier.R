@@ -29,6 +29,14 @@ calculo_r2 = function(datos, prediccion) {
     1 - (sum((datos - prediccion) ^ 2, na.rm = TRUE) / sum((datos - mean(datos)) ^ 2, na.rm = TRUE))
 }
 
+antifft = function(fouriert, cant_freq) {
+    # cant_freq tiene que llevar las primeras frecuencias que se desean
+    largo_fourier = length(fouriert)
+    total_posiciones_freq = 2 * cant_freq + 1
+    vector_multiplicador = c(1, rep(1, cant_freq), rep(0, largo_fourier - total_posiciones_freq), rep(1, cant_freq))
+    Re(fft(fouriert * vector_multiplicador, inverse = TRUE) / largo_fourier)
+}
+
 # Programa
 cpi           = change_header(cpi, c("year", "cpi"))
 gold          = change_header(gold, c("year", "value"))
@@ -68,7 +76,96 @@ ir_rsq_antifft4 = calculo_r2(na.omit(interest_rate$long_term_cntr), ir_antifft4)
 ir_rsq_antifft4
 
 # Residuos explicativos usando las 4 primeras frecuencias
-ir_resid = 
+ir_resid_4 = interest_rate$long_term_cntr - ir_antifft4
+
+plot(y = interest_rate$long_term_cntr, interest_rate$year, type = "l")
+abline(h = 0, lty = 3)
+lines(y = ir_resid_4, interest_rate$year, type = "l", col = "red")
+
+#### Indice de precios al consumidor de los EEUU ####
+# Visualización de los datos
+plot(y = cpi[["cpi"]], x = cpi[["year"]], type = "l", ylab = "Nivel de precios", xlab = "Tiempo")
+
+cpi[["cpi_log"]] = log10(cpi[["cpi"]])
+
+# Armando las dos regresiones lineales por periodo
+cpi_log_lm_pre  = lm(cpi_log ~ year, data = cpi[cpi$year <= 1900,])
+cpi_log_lm_post = lm(cpi_log ~ year, data = cpi[cpi$year > 1900,])
+
+plot(cpi[["cpi_log"]], x = cpi[["year"]], type = "l", xlab = "Año", ylab = "Log10(CPI)")
+abline(v = c(1971, 1945, 1929), col = "red", lty = 3)
+text(x = 1910, y = 2.0, labels = "Crisis '30")
+text(x = 1945, y = 2.2, labels = "Fin SGM")
+text(x = 1971, y = 2.3, labels = "Fin patrón\noro")
+abline(reg = cpi_log_lm_pre, col = "blue")
+abline(reg = cpi_log_lm_post, col = "blue")
+
+# Residuos de tendencias lineales del IPC centrados antes y despues del 1900 
+cpi_log_cntr_pre = cpi$cpi_log[cpi$year <= 1900] - predict(cpi_log_lm_pre,
+                                                           newdata = cpi[cpi$year <= 1900, "year"])
+cpi_log_cntr_post = cpi$cpi_log[cpi$year > 1900] - predict(cpi_log_lm_post,
+                                                           newdata = cpi[cpi$year > 1900, "year"])
+
+plot(y = cpi_log_cntr_pre, x = cpi[["cpi_log"]][cpi[["year"]] <= 1900], xlab = "Año",
+     ylab = "Log10(CPI) centrado", type = "l")
+
+fft_cpi_log_cntr_pre  = fft(cpi_log_cntr_pre)
+fft_cpi_log_cntr_post = fft(cpi_log_cntr_post)
+
+plot(Mod(fft_cpi_log_cntr_pre), type = "l", xlab = "Frecuencias", ylab = "Modulo", main = "Pre-1900")
+plot(Mod(fft_cpi_log_cntr_post), type = "l", xlab = "Frecuencias", ylab = "Modulo", main = "Post-1900")
+
+cpi_antifft_9_pre = antifft(fft_cpi_log_cntr_pre, 9)
+cpi_antifft_9_post = antifft(fft_cpi_log_cntr_post, 9)
+
+plot(y=c(cpi_log_cntr_pre, cpi_log_cntr_post), x=cpi[["year"]], type="l")
+lines(y=c(cpi_antifft_9_pre, cpi_antifft_9_post), x=cpi[["year"]], col="red")
+abline(v=1900,col="blue",lty=3)
+
+# R cuadrado
+cpi_rsq_antifft_9 = calculo_r2(c(cpi_log_cntr_pre, cpi_log_cntr_post), c(cpi_antifft_9_pre, cpi_antifft_9_post))
+cpi_rsq_antifft_9 
+cpi_rsq_antifft_9_pre = calculo_r2(cpi_log_cntr_pre, cpi_antifft_9_pre)
+cpi_rsq_antifft_9_pre 
+cpi_rsq_antifft_9_post = calculo_r2(cpi_log_cntr_post, cpi_antifft_9_post)
+cpi_rsq_antifft_9_post 
+
+#### PBI Real de los EEUU ####
+# Centrando los datos
+real_gdp_lm   = lm(log10(real_2012_base) ~ year, data = gdp)
+real_gdp_cntr = log10(gdp[["real_2012_base"]]) - predict(object = real_gdp_lm, newdata = gdp[,"year"])
+
+plot(real_gdp_cntr, type = "l")
+abline(h=0, col="blue", lty=3)
+
+# Transformada de Fourier
+fft_real_gdp_cntr = fft(real_gdp_cntr)
+plot(Mod(fft_real_gdp_cntr), type = "l")
+
+# Antifft
+real_gdp_antifft_9 = antifft(fft_real_gdp_cntr, 9)
+plot(y=real_gdp_cntr, x=gdp[["year"]], type = "l", xlab="Año", ylab="Log10(PBI) centrado")
+lines(y=real_gdp_antifft_9, x=gdp[["year"]], col="red")
+abline(h=0,lty=3)
+
+real_gdp_antifft_10 = antifft(fft_real_gdp_cntr, 10)
+plot(y=real_gdp_cntr, x=gdp[["year"]], type = "l", xlab="Año", ylab="Log10(PBI) centrado")
+lines(y=real_gdp_antifft_10, x=gdp[["year"]], col="red")
+abline(h=0,lty=3)
+
+# R cuadrado
+real_gdp_r2_9 = calculo_r2(real_gdp_cntr, real_gdp_antifft_9)
+real_gdp_r2_10 = calculo_r2(real_gdp_cntr, real_gdp_antifft_10)
+
+# No cambia mucho al usar mas frecuencias 
+
+
+
+
+
+
+
+
 
 
 
