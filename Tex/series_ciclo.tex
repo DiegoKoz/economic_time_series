@@ -62,7 +62,7 @@ En la teoría económica no existe una posición inequívoca respecto de las for
 
 Estas complejidades para la medición del ciclo dificultan su comprensión. El objetivo del presente trabajo es hacer uso de nuevas herramientas cuantitativas del análisis de series de tiempo, para revisar la evidencia empírica respecto de la existencia del ciclo económico. Dadas las limitaciones arriba mencionadas, se optó por utilizar series de Estados Unidos por ser un país que por su envergadura logra, a partir del siglo XX, representar las tendencias generales de la economía. Por cuestiones metodológicas, es necesario que la información utilizada se remonte al siglo XIX, siglo en el cual no es claro que la generalidad de las características del desenvolvimiento económico se expresen al interior de este país. 
 
-El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las características de la serie del precio del oro y los efectos sobre las demás series, así como se contrastan las series de tiempo con las crisis conocidas en la historiografía económica. En la cuarta sección se realizan análisis sobre las series de la tasa de interés de largo plazo, el índice de precios al consumidor y el PBI real. En la quinta sección se presentan los resultados de la econometría de series de tiempo, en las funciones de autocorrelación y el modelo ARIMA. En la sección sexta se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la séptima y última sección se presentan las conclusiones y futuras líneas de investigación.
+El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las características de la serie del precio del oro y los efectos sobre las demás series, así como se contrastan las series de tiempo con las crisis conocidas en la historiografía económica. En la cuarta sección se realizan análisis sobre las series de la tasa de interés de largo plazo, el índice de precios al consumidor y el PBI real usando transformadas de Fourier sobre las series. En la quinta sección se presentan los resultados de la econometría de series de tiempo, en las funciones de autocorrelación y el modelo ARIMA. En la sección sexta se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la séptima y última sección se presentan las conclusiones y futuras líneas de investigación.
 
 
 \section{Debates en torno al ciclo económico}
@@ -81,7 +81,6 @@ Desde el punto de vista del análisis empírico, existen múltiples autores que 
 \section{Análisis Exploratorio de Datos}
 En la presente sección realizaremos un breve análisis exploratorio de datos, para observar las características generales de las series.
 
-
 \subsection{Fuentes de información}
 
 Dado que el objetivo del presente trabajo es realizar un análisis del ciclo económico que tenga en consideración las ondas largas de Kondratieff, es necesario contar con información lo más extendida en el tiempo posible, y por lo tanto utilizar diversas fuentes. 
@@ -95,6 +94,43 @@ La serie anual del precio del oro en el mercado de Nueva York entre 1791 y 2017 
 La serie del Indice de Precios al Consumidor para el corresponde a una extensión y reelaboración de la serie original (elaborada por el \textit{Bureau of Labour Statistics}) realizada por \cite{officer2018cpi}
 
 Finalmente, la serie de la tasa de interés de largo plazo se basa en \cite{officer2018ir}
+
+\subsection{Tasa de interés de largo plazo de los EE.UU.}
+En la figura \ref{fig:ir_orig} se puede observar la serie de tasas de interés de largo plazo por año. En la misma se puede observar una diferencia significativa en el nivel de tasas de la segunda mitad del siglo XX respecto de los años anteriores, sobre todo posteriores a 1970. Esto corresponde a niveles altos de inflación en los EE.UU. en este periodo y la siguiente paulatina baja de la inflación llegando al siglo XXI.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\linewidth]{ir_orig.png}
+	\caption{Tasa de interés de largo plazo de los EE.UU.}
+	\label{fig:ir_orig}
+\end{figure}
+
+La tasa de interés suele ser una de las herramientas predilectas de política económica junto con la monetaria, por lo que es de sumo interés en el análisis macroeconómico, en teorías del ciclo económico y a los ejemplos de aplicación de las técnicas mostradas en este trabajo.
+
+\subsection{Índice de precios al consumidor}
+La serie de nivel de precios al consumidor(\textit{"Consumer Price Index"}, Índice de precios al consumidor, \textit{CPI} por sus siglas en inglés, \textit{IPC} en español) de los EE.UU. está expresada en base 100, con base en el promedio anual de 1982-1984. La serie de tiempo original se puede observar en la figura \ref{fig:cpi_orig}, donde se observa el fenómeno exponencial de la inflación a través de los años. Asimismo, se puede observar una diferencia entre los siglos XIX y XX, especialmente tras el rompimiento con el sistema de patrón oro de 1971 durante la administración Nixon y los años previos al abandono de este sistema de respaldo de papel moneda.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{cpi_orig.png}
+	\caption{Índice de precios al consumidor en los EE.UU., base: promedio anual de 1982-1984} 	
+	\label{fig:cpi_orig}
+\end{figure}
+
+Las diferencias seculares en el nivel de precios se observa tomando el logaritmo de los datos originales con tendencias lineales calculadas para los años previos y posteriores a 1900, donde se observa un cambio de tendencia del crecimiento del nivel de precios (ver anexo).
+
+\subsection{PBI real}
+Estados Unidos se ha convertido en la economía más poderosa del mundo con el transcurrir de los años desde su independencia por diversos factores. Más allá de las crisis y eventos significativos como pueden ser las guerras mundiales, la Guerra Fría, el abandono del patrón oro y un sinfín de políticas económicas de diverso tenor, uno de los efectos más notables es la forma en que sostiene un crecimiento de muy largo plazo casi constante a lo largo de su historia reciente. Esto se puede visualizar en la figura \ref{fig:PBI_orig} en donde, a la izquierda se puede visualizar el PBI real de los EE.UU. y a la derecha, el logaritmo en base 10 de la serie de la izquierda en donde además se ajustó una linea mediante mínimos cuadrados (regresión lineal) ilustrando la tendencia. El ajuste es muy bueno, con un R cuadrado de 99.54\%, lo que demuestra que casi se mantiene constante la tasa de crecimiento a lo largo de todo el periodo considerado en la serie.
+
+\begin{figure}[H]
+	\centering
+    \subfigure{\includegraphics[width=0.49\linewidth]{PBI.png}	}
+	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_log_tend.png}}
+	\caption{PBI real (izquierda) y logaritmo en base 10 del PBI real (derecha)} 	
+	\label{fig:PBI_orig}
+\end{figure}
+
+Si bien una tendencia lineal ajusta muy bien el comportamiento de muy largo plazo de la economía de los EE.UU., los residuos exhiben todavía un patrón no lineal analizable, los cuales serán analizados más adelante en este trabajo.
 
 \subsection{Producto Bruto Interno, Salario y Oro}
 
@@ -183,19 +219,9 @@ Pablo: perfecto, renombrémoslo como Fourier para que no sea un artículo aparte
 Las transformadas de Fourier permiten analizar una serie de tiempo pasando del plano del tiempo al plano de la frecuencia, evidenciando las distintas amplitudes y frecuencias de onda en la serie analizada. Esto permite descomponer las series como una suma de componentes sinusoidales que, en conjunto, reconstruyen la serie original. Esto es útil para discriminar las componentes más importantes y de diversa frecuencia (series \textit{cortas} y \textit{largas}) en el análisis de los ciclos económicos. A tal fin, analizaremos a continuación las series propuestas por este trabajo bajo la técnica de la transformada de Fourier.
 
 \subsection{Tasa de interés de largo plazo}
-En este apartado se analizan los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
-En la figura \ref{fig:ir_orig} se puede observar la serie de tasas de interés de largo plazo por año. En la misma se puede observar una diferencia significativa en el nivel de tasas de la segunda mitad del siglo XX respecto de los años anteriores, sobre todo posteriores a 1970. Esto corresponde a niveles altos de inflación en los EE.UU. en este periodo y la siguiente paulatina baja de la inflación llegando al siglo XXI.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\linewidth]{ir_orig.png}
-	
-	\caption{Tasa de interés de largo plazo de los EE.UU.}
-	\label{fig:ir_orig}
-\end{figure}
-
-En la figura \ref{fig:ir_diff_acf} se muestran el gráficos de diferencias (cambios absolutos, en puntos porcentuales, de la tasa de interés de largo plazo, por año) y la autocorrelación de las diferencias. Realizando las diferencias de la serie (diferencias en terminos absolutos) se observa que hay una leve correlación con el periodo siguiente al lag 0, pero en general la autocorrelación es muy similar a un random walk. Si bien no se observan tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. Para poder investigar ciclos de mayor duración se investiga la transformada de Fourier de la serie. En la figura \ref{fig:ir_fft} puede observarse el espectro de frecuencias de la serie de tasas de interés centrada en su media.
-Se observa que hay frecuencias bajas con gran amplitud. Si descomponemos la serie por las frecuencias más bajas, se puede observar la serie en rojo de la figura \ref{fig:ir_orig_resid} que resulta de la descomposición de la serie original por las frecuencias más bajas. Puede observarse que la serie aún presenta autocorrelación (en detalle la autocorrelación de la figura \ref{fig:ir_resid_acf}), aunque las ondas bajas encontradas mediante la transformación de Fourier explican el 89,24\% de la varianza total de la serie.
+Retomamos en este apartado el análisis de los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
+Realizando las diferencias de la serie (diferencias en terminos absolutos entre distintos momentos del tiempo) se observa que hay una leve correlación con el periodo siguiente al lag 0, pero en general la autocorrelación es muy similar a un random walk (ver anexo). Si bien no se observan tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. Para poder investigar ciclos de mayor duración se investiga la transformada de Fourier de la serie. 
+Dicha transformación de Fourier muestra que hay frecuencias bajas con gran amplitud. Si descomponemos la serie por estas frecuencias más bajas, se puede observar la serie en rojo de la figura \ref{fig:ir_orig_resid} que resulta de la descomposición de la serie original por las frecuencias más bajas. Puede observarse que la serie aún presenta estructura, aunque las ondas bajas encontradas mediante la transformación de Fourier explican el 89,24\% de la varianza total de la serie.
 
 \begin{figure}[H]
 	\centering
@@ -205,18 +231,8 @@ Se observa que hay frecuencias bajas con gran amplitud. Si descomponemos la seri
 \end{figure}
 
 \subsection{Índice de precios al consumidor}
-La serie de nivel de precios al consumidor(\textit{"Consumer Price Index"}, Índice de precios al consumidor, \textit{CPI} por sus siglas en inglés, \textit{IPC} en español) de los EE.UU. está expresada en base 100, con base en el promedio anual de 1982-1984. La serie de tiempo original se puede observar en la figura \ref{fig:cpi_orig}, donde se observa el fenómeno exponencial de la inflación a través de los años. Asimismo, se puede observar una diferencia entre los siglos XIX y XX, especialmente tras el rompimiento con el sistema de patrón oro de 1971 durante la administración Nixon y los años previos al abandono de este sistema de respaldo de papel moneda.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{cpi_orig.png}
-	\caption{Índice de precios al consumidor en los EE.UU., base: promedio anual de 1982-1984} 	
-	\label{fig:cpi_orig}
-\end{figure}
-
-Este hecho de diferencias seculares en el nivel de precios puede observarse con mayor detalle en la figura \ref{fig:cpi_log10_tend} donde se observa el logaritmo en base diez de los datos originales con tendencias lineales calculadas para los años previos y posteriores a 1900, apreciandose el cambio de tendencia del crecimiento del nivel de precios. En este último gráfico se han marcado también con líneas punteadas rojas acontecimientos notables de la historia de los EE.UU. y mundiales para tomar como referencia en los cambios de estas variables macroeconómicas.
-Centramos luego la serie del índice de precios por las tendencias lineales de las mismas antes y posterior al año 1900, para evitar que se distorsione el ciclo usando técnicas que ajusten mejor a datos no lineales, debido a que se analizarán los residuos de estas series con transformaciones de Fourier en busca de poder explicarlos y de buscar la existencia de ciclos alrededor de estas tendencias. Se pueden observar las tendencias centradas y la alternancia alrededor de cero en la figura \ref{fig:cpi_log10_cntr}.
-Luego de centradas las dos mitades de la serie realizamos las transformadas de Fourier sobre los residuos. El resultado puede observarse en la figura \ref{fig:cpi_log10_cntr_fft}, en la que puede verse que las frecuencias más bajas son las que cuentan con mayor amplitud. Posteriormente se tomaron las frecuencias más bajas y se descompuso la serie centrada por ellas por las múltiples componentes de frecuencia, para luego analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie de tiempo. En la figura \ref{fig:cpi_cntr_acf} puede observarse también que aún puede continuar explicándose los residuos en azul debido a que hay rezagos que tienen correlación entre sí. Aún así, la varianza explicada por las frecuencias bajas halladas por Fourier es de 89,52\% en el caso de la serie previa a 1900 y 97,12\% luego del año 1900. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
+Como se ha mostrado en secciones anteriores, hay un cambio de tendencia secular en el nivel de precios. Por ello, centramos la serie del índice de precios por las tendencias lineales de las mismas antes y posterior al año 1900 para evitar que se distorsione el ciclo usando técnicas que ajusten mejor a datos no lineales, debido a que luego se analizarán los residuos de este ajuste con transformadas de Fourier en busca de poder explicarlos y de buscar la existencia de ciclos alrededor de estas tendencias.
+Luego de centradas las dos mitades de la serie realizamos las transformadas de Fourier sobre los residuos (ver anexo). Nuevamente, las frecuencias más bajas son las que cuentan con mayor amplitud. Posteriormente se tomaron las frecuencias más bajas y se descompuso la serie centrada por ellas por las múltiples componentes de frecuencia, para luego analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie de tiempo. Aún pueden explicarse los residuos en azul debido a que hay rezagos que tienen correlación entre sí. Aún así, la varianza explicada por las frecuencias bajas halladas por Fourier es de 89,52\% en el caso de la serie previa a 1900 y 97,12\% luego del año 1900. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
 
 \begin{figure}[H]
 	\centering
@@ -227,17 +243,7 @@ Luego de centradas las dos mitades de la serie realizamos las transformadas de F
 \end{figure}
 
 \subsection{PBI real}
-Estados Unidos se ha convertido en la economía más poderosa del mundo con el transcurrir de los años desde su independencia por diversos factores. Más allá de las crisis y eventos significativos como pueden ser las guerras mundiales, la Guerra Fría, el abandono del patrón oro y un sinfín de políticas económicas de diverso tenor, uno de los efectos más notables es la forma en que sostiene un crecimiento de muy largo plazo casi constante a lo largo de su historia reciente. Esto se puede visualizar en la figura \ref{fig:PBI_orig} en donde, a la izquierda se puede visualizar el PBI real de los EE.UU. y a la derecha, el logaritmo en base 10 de la serie de la izquierda en donde además se ajustó una linea mediante mínimos cuadrados (regresión lineal) ilustrando la tendencia. El ajuste es muy bueno, con un R cuadrado de 99.54\%, lo que demuestra que casi se mantiene constante la tasa de crecimiento a lo largo de todo el periodo considerado en la serie.
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{PBI.png}	}
-	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_log_tend.png}}
-	\caption{PBI real (izquierda) y logaritmo en base 10 del PBI real (derecha)} 	
-	\label{fig:PBI_orig}
-\end{figure}
-
-A pesar de lo enormemente explicativa que es la tendencia lineal sobre el logaritmo de la serie, hay zonas en las que el residuo es estrictamente positivo o negativo, por lo que puede analizarse si hay ciclos en estos residuos, es decir, alrededor de la tendencia lineal. Los residuos pueden visualizarse en la figura \ref{fig:PBI_cntr}. Nuevamente, aplicamos la transformada de Fourier sobre los residuos. Puede observarse el módulo de los vectores formados con respecto a la frecuencia en la figura \ref{fig:PBI_cntr_fft}. Luego podemos observar el ajuste de la transformada de Fourier a los datos. Para ello graficamos nuevamente los residuos y la anti-transformada de las frecuencias más bajas de la transformada de Fourier. Esto se puede observar en \ref{fig:PBI_cntr_antifft}
+Como vimos, a pesar de lo enormemente explicativa que es la tendencia lineal sobre el logaritmo de la serie, hay zonas en las que el residuo resultante del ajuste es estrictamente positivo o negativo, dando lugar a una estructura no lineal de los residuos que pueden analizarse en busca de componentes cíclicos. Entonces aplicamos la transformada de Fourier sobre los residuos, obteniendo frecuencias bajas de gran amplitud respecto de frecuencias más altas (ver anexo). Tomando la antitransformada de Fourier a frecuencias bajas logramos el ajuste buscado a los datos. Esto se puede observar en \ref{fig:PBI_cntr_antifft}
 
 \begin{figure}[H]
 	\centering
@@ -246,7 +252,7 @@ A pesar de lo enormemente explicativa que es la tendencia lineal sobre el logari
 	\label{fig:PBI_cntr_antifft}
 \end{figure}
 
-Nuevamente observamos los residuos explicados de la serie y la autocorrelación de esos residuos en \ref{fig:PBI_fft_resid}. Puede observarse que aún queda estructura por explicar en los residuos dado por ciclos de más baja frecuencia. Esto demuestra que se puede descomponer la serie en ciclos de baja y alta frecuencia, si bien en este estudio estamos mayormente interesados en ciclos de largo plazo (señales de baja frecuencia y alta amplitud). Asimismo, usando sólo las frecuencias bajas se logra explicar el 86,24\% de la varianza de los residuos de la tendencia linea.
+La estructura que queda por explicar en los residuos dado por ciclos de más baja frecuencia es relativamente pequeña pero permite ahondar en ciclos aún más cortos, aunque nuevamente nos encontramos con un coeficiente de determinación elevado, del 86,24\% de varianza explicada de los residuos de la tendencia lineal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -435,13 +441,13 @@ las figuras \ref{fig:espect_wg} muestran los espectogramas de la serie del salar
 
 En el presente trabajo se realizó un recorrido por las principales aproximaciones teóricas respecto al ciclo económico, y se planteó la importancia de un análisis empírico respecto a dicho fenómeno. Para ello, se utilizaron las series de PBI y Salario de Estados Unidos entre 1790 y 2017, expresadas en oro, por los efectos distorsivos que podría generar dicha variable. 
 
-En el análisis exploratorio de datos se encontró una fuerte correspondencia entre los quiebres de estas series, y las crisis conocidas por la historiografía económica, así como un movimiento oscilatorio aparente que pareciera corresponderse con las ondas largas de Kondratieff.
+En el análisis exploratorio de datos se encontró una fuerte correspondencia entre los quiebres de estas series, y las crisis conocidas por la historiografía económica, así como un movimiento oscilatorio aparente que pareciera corresponderse con las ondas largas de Kondratieff, junto con las particularidades que exhiben las distintas series según el período de tiempo considerado.
 
-Como se pueden observar ciclos en muchas de las variables macroeconómicas se procedió a continuar con un análisis usando transformaciones de Fourier para descubrir frecuencias bajas de gran amplitud como ciclos de largo plazo en dichas variables, pudiendo también observar series de más corto plazo en los residuos de la descomposición de las series por las ondas largas. Allí se demuestra la utilidad de esta técnica como forma de descomponer las series centradas alrededor de tendencias no cíclicas. Como punto particular para avanzar con la investigación es la continuación de la descomposición de los residuos no explicados hallados de la descomposición con ondas más cortas y medir la capacidad de las ondas resultantes para poder explicar las series con alguna medida estadística, como ser la suma de las diferencias al cuadrado de los datos respecto a un modelo nulo y a la serie cíclica hallada	.
+Como se pueden observar ciclos en muchas de las variables macroeconómicas se procedió a continuar con un análisis usando transformaciones de Fourier para descubrir frecuencias bajas de gran amplitud como ciclos de largo plazo en dichas variables, pudiendo también observar series de más corto plazo en los residuos de la descomposición de las series por las ondas largas. Allí se demuestra la utilidad de esta técnica como forma de descomponer las series centradas alrededor de tendencias no cíclicas. Como punto particular para avanzar con la investigación es la continuación de la descomposición de los residuos no explicados hallados de la descomposición con ondas más cortas.
 
-Luego se realizó un análisis con las herramientas clásicas de la econometría de series de tiempo, en particular con funciones de autocorrelación y modelos ARIMA, tomando el recaudo de distinguir las series antes y después de la caída del patrón oro en 1971. Allí se encontró que la variabilidad de la serie luego de este punto es sustancialmente mayor, y presenta esencialmente un comportamiento de tipo \textit{random walk}. Sin embargo, no se consiguió evidencia consistente respecto del ciclo económico.
+% Luego se realizó un análisis con las herramientas clásicas de la econometría de series de tiempo, en particular con funciones de autocorrelación y modelos ARIMA, tomando el recaudo de distinguir las series antes y después de la caída del patrón oro en 1971. Allí se encontró que la variabilidad de la serie luego de este punto es sustancialmente mayor, y presenta esencialmente un comportamiento de tipo \textit{random walk}. Sin embargo, no se consiguió evidencia consistente respecto del ciclo económico.
 
-Por ello se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite decir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
+Luego se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite decir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
 
 Es interesante remarcar el siguiente punto: el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900.
 

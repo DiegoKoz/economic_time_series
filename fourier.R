@@ -159,26 +159,3 @@ real_gdp_r2_10 = calculo_r2(real_gdp_cntr, real_gdp_antifft_10)
 
 # No cambia mucho al usar mas frecuencias 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
