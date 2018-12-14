@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -84,11 +84,6 @@ Officer {Lawrence H.} and Williamson {Samuel H.}
 Officer {Lawrence H.} and Williamson {Samuel H.}
 \newblock {The Price of Gold, 1257- Present}.
 \newblock \emph{MeasuringWorth}, 2018{\natexlab{b}}.
-
-\bibitem[{Lawrence H.} and {Samuel H.}(2018{\natexlab{c}})]{officer2018wage}
-Officer {Lawrence H.} and Williamson {Samuel H.}
-\newblock {Annual Wages in the United States, 1774-Present},
-  2018{\natexlab{c}}.
 
 \bibitem[Louis and {Samuel H.}(2018)]{johnston2018us}
 Johnston Louis and Williamson {Samuel H.}

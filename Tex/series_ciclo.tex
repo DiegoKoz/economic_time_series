@@ -43,8 +43,20 @@
 	commentstyle=\color{DarkGreen},
 }
 
+%% authors
+\usepackage{authblk}
 \title{Análisis de series de tiempo para el reconocimiento de ciclos económicos.}
-\author{Pablo Santoro, Diego Kozlowski}
+\author[1]{Diego Kozlowski}
+\author[2]{Pablo Santoro}
+\affil[1,2]{Maestr\'ia en Data Mining \& Knowledge Discovery, FCEN-UBA}
+\affil[1]{diegokoz92@gmail.com}
+\affil[2]{pablorsantoro@gmail.com}
+\date{}                     %% if you don't need date to appear
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+
+%\author{Pablo Santoro, Diego Kozlowski}
 
 \begin{document}
 
@@ -62,7 +74,7 @@ En la teoría económica no existe una posición inequívoca respecto de las for
 
 Estas complejidades para la medición del ciclo dificultan su comprensión. El objetivo del presente trabajo es hacer uso de nuevas herramientas cuantitativas del análisis de series de tiempo, para revisar la evidencia empírica respecto de la existencia del ciclo económico. Dadas las limitaciones arriba mencionadas, se optó por utilizar series de Estados Unidos por ser un país que por su envergadura logra, a partir del siglo XX, representar las tendencias generales de la economía. Por cuestiones metodológicas, es necesario que la información utilizada se remonte al siglo XIX, siglo en el cual no es claro que la generalidad de las características del desenvolvimiento económico se expresen al interior de este país. 
 
-El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las características de la serie del precio del oro y los efectos sobre las demás series, así como se contrastan las series de tiempo con las crisis conocidas en la historiografía económica. En la cuarta sección se realizan análisis sobre las series de la tasa de interés de largo plazo, el índice de precios al consumidor y el PBI real usando transformadas de Fourier sobre las series. En la quinta sección se presentan los resultados de la econometría de series de tiempo, en las funciones de autocorrelación y el modelo ARIMA. En la sección sexta se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la séptima y última sección se presentan las conclusiones y futuras líneas de investigación.
+El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las diferentes series utilizadas en el resto del trabajo, así como las características de la serie del precio del oro y los efectos sobre las demás series, y finalmente se contrastan las series  con las crisis conocidas en la historiografía económica. En la cuarta sección se realizan análisis sobre las series de la tasa de interés de largo plazo, el índice de precios al consumidor y el PBI real usando transformadas de Fourier sobre las series. En la quinta sección se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la séptima y última sección se presentan las conclusiones y futuras líneas de investigación.
 
 
 \section{Debates en torno al ciclo económico}
@@ -134,9 +146,6 @@ Si bien una tendencia lineal ajusta muy bien el comportamiento de muy largo plaz
 
 \subsection{Producto Bruto Interno, Salario y Oro}
 
-\todo{Hay muchos comentarios justificando porqué mirar PBI y salario. Quedaron desactualizados con la incorporación de las nuevas series.}
-\todo{Hay un problema grave con mirar las cosas expresadas en oro: encontré un paper que afirma que la mayor producción de oro de la historia se dio más recientemente en el siglo XX que en otro momento de la historia. Esto justificaría también usar las variables reales}
-
 Dos de las series más relevantes para estudiar el desenvolvimiento cíclico de la economía son el Producto Bruto interno (PBI) y el salario. Sin embargo, es importante reconocer el fenómeno que se observa en la figura \ref{fig:oro}. Allí se marca la salida del patrón oro de la economía mundial en 1971. Luego de la segunda guerra mundial y hasta ese punto, la estructura monetaria global se basaba en la paridad con el dólar, y el \textit{ancla nominal} del mismo con las reservas de oro de la \textit{FED} (Federal Reserve Board). Esto quiere decir que Estados Unidos no podía emitir dólares que no estuvieran respaldados por su equivalente en oro en las reservas del banco central de dicho país. Por ello, la relación dólar-oro se mantuvo prácticamente inamovible hasta 1971. Luego de que eliminó este ancla, la capacidad de emisión libre de respaldo implicó que la FED emita por encima de las reservas, y en general del oro en circulación, lo cual implicó un aumento del precio del oro expresado en dólares, o lo que es equivalente, una caída del dólar estadounidense expresado en oro.
 
 \begin{figure}[H]
@@ -147,9 +156,7 @@ Dos de las series más relevantes para estudiar el desenvolvimiento cíclico de 
 
 Dado que lo que se busca en el presente trabajo es realizar un análisis de largo plazo del ciclo económico, esta perturbación nominal oscurece el fenómeno subyacente que se esta buscando. Es por ello que se opto tanto por normalizar las series del PBI nominal y el salario por el precio del oro. De esta forma las series se leen como el producto y el salario expresado en su capacidad de compra de oro. Una alternativa a esto sería dividir por el Indice de Precios al Consumidor, de forma tal que ambas series se expresen en capacidad de poder adquisitivo constante (en términos reales). 
 
-\todo{acá hay una justificación de porqué usar PBI en oro y no PBI real. Habría que ver cómo compatibilizar esto con después analizar el IPC y el PBI real}
-\todo{creo que puede compatibilizarse ya que el oro es un precio más de la economía, que sufre fluctuaciones a veces violentas por otras causas. Es una vía de análisis pero no la única.}
-La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico \todo{acá falta una referencia, encontré evidencia un paper que cita se comportaría independientemente del ciclo. Para tener cuidado con esta afirmación}, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo.
+La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo. 
 
 De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI de Estados Unidos entre el 1900 y 2017, expresado en oro. Por su parte la figura \ref{fig:salario} muestra la serie del salario horario de un obrero de la producción en Estados Unidos entre 1900 y 2017, expresado en Oro.
 
@@ -194,26 +201,6 @@ En primer lugar lo que se observa es la similitud de ambas series, en términos 
 
 En las secciones siguientes se profundizará el análsis usando técnicas poco habituales en el análisis de datos económicos y pertenecientes más a campos tales como el procesamiento de señales como son la transformada 
 de Fourier y los wavelets.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-\subsection{Tasa de interés e Indice de precios al consumidor}
-
-\todo{ver comentario}
-
-Habría que buscar integrar más ambas partes del trabajo. 
-El título este pareciera más un título para el Artículo que para una sección. Creo que lo que distingue a esta parte es que usas Fourier. 
-
-Creo que quedaría bien si fusionamos la sección 3 de AED con esta y queda:
-
-1. intro
-2. Debates previos
-3. AED (oro+PBI+W + lo que mirás acá de la tasa de interes, IPC, etc)
-4. Fourier
-5. Wavelets
-
-Pablo: perfecto, renombrémoslo como Fourier para que no sea un artículo aparte.
-\end{comment}
 
 \section{Transformada de Fourier}
 Las transformadas de Fourier permiten analizar una serie de tiempo pasando del plano del tiempo al plano de la frecuencia, evidenciando las distintas amplitudes y frecuencias de onda en la serie analizada. Esto permite descomponer las series como una suma de componentes sinusoidales que, en conjunto, reconstruyen la serie original. Esto es útil para discriminar las componentes más importantes y de diversa frecuencia (series \textit{cortas} y \textit{largas}) en el análisis de los ciclos económicos. A tal fin, analizaremos a continuación las series propuestas por este trabajo bajo la técnica de la transformada de Fourier.
@@ -253,64 +240,6 @@ Como vimos, a pesar de lo enormemente explicativa que es la tendencia lineal sob
 \end{figure}
 
 La estructura que queda por explicar en los residuos dado por ciclos de más baja frecuencia es relativamente pequeña pero permite ahondar en ciclos aún más cortos, aunque nuevamente nos encontramos con un coeficiente de determinación elevado, del 86,24\% de varianza explicada de los residuos de la tendencia lineal.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\section{Autocorrelación y ARIMA}
-%
-%En la presente sección se analizará la autocorrelación de las series anteriores, para observar su comportamientos desde un punto de vista sistemático. Para ello también se observará un modelo ARIMA. 
-%
-%En primer lugar, se calculó la autocorrelación para el total del período en ambas series. Esto se puede observar en la figura \ref{fig:autocorrelacion_tot}. Ambas series tienen un comportamiento similar, con una fuerte correlación con el período anterior, una correlación positiva con respecto a 6 lags, y una relación negativa con 10 lags. 
-%
-%\begin{figure}[H]
-%	\centering
-%	\subfigure[PBI expresado en Oro]{\includegraphics[width=0.75\linewidth]{Autocorrelacion_gdp.png}}
-%	\subfigure[Salario expresado en Oro]{\includegraphics[width=0.75\linewidth]{Autocorrelacion_wg.png}}
-%	\caption{Autocorrelación de las series} \label{fig:autocorrelacion_tot}
-%\end{figure}
-%
-%Sin embargo, dada la importancia de la caída del patrón oro en el 71', se decidió recalcular las autocorrelaciones para antes y después de dicho año. Esto puede observarse en la figura \ref{fig:autocorrelacion_grp}. Aquí nuevamente las series presentan un comportamiento similar entre sí, y sin embargo muy distinto antes y después del período. En particular, antes de 1971 se observa una fuerte correlación positiva con períodos anteriores, en particular para el PBI, que mantiene una relación positiva con hasta los 12 primeros lags. Esto esta reflejando una fuerte tendencia ascendente. Es importante considerar que el quiebre de la serie se realiza en un pico, por lo que antes del 71' queda un fuerte crecimiento observado desde la segunda guerra mundial hasta dicho punto. Lo notable es que ambas series luego de este punto sólo muestran una correlación significativa con el período anterior, es decir parecieran ser un \textit{random walk}.
-%
-%
-%\begin{figure}[H]
-%	\centering
-%	\subfigure[PBI antes 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_gdp_pre71.png}}
-%	\subfigure[PBI después 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_gdp_post71.png}}
-%	\subfigure[Salario antes 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_wg_pre71.png}}
-%	\subfigure[Salario después 1971]{\includegraphics[width=0.49\linewidth]{Autocorrelacion_wg_post71.png}}
-%	\caption{Autocorrelación de las series} \label{fig:autocorrelacion_grp}
-%\end{figure}
-%
-%En la figura \ref{fig:arima} se observa el modelo ajustado por ARIMA para las series en su conjunto y divididas por períodos. 
-%Los modelos reflejados en \ref{fig:arima_tot} son en ambos casos un modelo ARIMA(1,1,2). Es decir, un modelo autoregresivo de orden 1, integrado de orden uno y Media Móvil de orden 2. Este modelo pareciera ser más volátil que la serie original, en particular para el período posterior a 1971.
-%
-%\begin{figure}[H]
-%	\centering
-%	\subfigure[ARIMA total]{\includegraphics[width=0.8\linewidth]{arima_tot.png}
-%	\label{fig:arima_tot}}
-%	\subfigure[ARIMA por grupos]{\includegraphics[width=0.8\linewidth]{arima_groups.png}
-%	\label{fig:arima_grp}}
-%	\caption{Predicción ARIMA} \label{fig:arima}
-%\end{figure}
-%
-%Lo observado en \ref{fig:arima_grp} son los siguientes cuatro modelos: 
-%
-%\begin{table}[ht]
-%	\centering
-%	\begin{tabular}{rlllrr}
-%		\hline
-%		& tipo & group & model.desc & sigma & RMSE \\ 
-%		\hline
-%		1 & wage & Antes del 71' & ARIMA(2,2,1) & 0.00 & 0.00 \\ 
-%		2 & wage & Despues del 71' & ARIMA(1,0,2) with non-zero mean & 0.01 & 0.01 \\ 
-%		3 & gdp & Antes del 71' & ARIMA(0,2,2) & 2.48 & 2.45 \\ 
-%		4 & gdp & Despues del 71' & ARIMA(2,0,0) with non-zero mean & 9.59 & 9.27 \\ 
-%		\hline
-%	\end{tabular}
-%\end{table}
-%
-%Se observa tanto un mayor desvío como un mayor error cuadrático medio para ambas series después de 1971. A su vez, las series antes del 71' son integradas de orden dos, producto de lo mencionado arriba de que hasta este punto se toma la fuerte fase ascendente del ciclo en la posguerra, lo que la convierte en una serie divergente. Al contrario, los ARIMA óptimos para las series posteriores a 1971 no requieren ser integrados, sino simplemente tener un término de nivel (\textit{non-zero mean}). A su vez, el modelo también pareciera ser más volátil que las observaciones en este período. Como conclusión, estas herramientas tradicionales de la econometría no bastan para dar cuenta del fenómeno cíclico. 
-%
 
 \section{Wavelets}
 
@@ -445,13 +374,17 @@ En el análisis exploratorio de datos se encontró una fuerte correspondencia en
 
 Como se pueden observar ciclos en muchas de las variables macroeconómicas se procedió a continuar con un análisis usando transformaciones de Fourier para descubrir frecuencias bajas de gran amplitud como ciclos de largo plazo en dichas variables, pudiendo también observar series de más corto plazo en los residuos de la descomposición de las series por las ondas largas. Allí se demuestra la utilidad de esta técnica como forma de descomponer las series centradas alrededor de tendencias no cíclicas. Como punto particular para avanzar con la investigación es la continuación de la descomposición de los residuos no explicados hallados de la descomposición con ondas más cortas.
 
-% Luego se realizó un análisis con las herramientas clásicas de la econometría de series de tiempo, en particular con funciones de autocorrelación y modelos ARIMA, tomando el recaudo de distinguir las series antes y después de la caída del patrón oro en 1971. Allí se encontró que la variabilidad de la serie luego de este punto es sustancialmente mayor, y presenta esencialmente un comportamiento de tipo \textit{random walk}. Sin embargo, no se consiguió evidencia consistente respecto del ciclo económico.
-
 Luego se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite decir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
 
 Es interesante remarcar el siguiente punto: el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900.
 
 El presente trabajo plantea sendas lineas de investigación, especialmente respecto de la utilización de la técnica Wavelets en nuevas series, tanto para series de variables financieras, como series de PBI y salario de otros países.
+
+
+\bibliography{bibliography.bib}
+
+
+
 
 \renewcommand{\appendixname}{Anexos}
 \renewcommand{\appendixtocname}{Anexos}
@@ -459,7 +392,7 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 
 \appendix
 
-\section{Anexo I: Imágenes}
+\section{Anexo I: Figuras complementarias}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\linewidth]{ir_diff.png}
@@ -491,7 +424,7 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 
 \begin{figure}[H]
 	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_pre.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_pre.png}}
 	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_post.png}}
 	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
 	\label{fig:cpi_log10_cntr}
@@ -499,7 +432,7 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 
 \begin{figure}[H]
 	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_pre1900.png}	}
+	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_pre1900.png}	}
 	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_post1900.png}}
 	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
 	\label{fig:cpi_log10_cntr_fft}
@@ -507,7 +440,7 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 
 \begin{figure}[H]
 	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_pre1900.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_pre1900.png}}
 	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_post1900.png}}
 	\caption{Autocorrelación de los residuos}
 	\label{fig:cpi_cntr_acf}
@@ -515,27 +448,37 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 
 \begin{figure}[H]
 	\centering
-    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado.png}}
+	\subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado.png}}
 	\caption{PBI centrado por la tendencia lineal} 	
 	\label{fig:PBI_cntr}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado_fft.png}}
+	\subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado_fft.png}}
 	\caption{Transformada de Fourier del PBI centrado} 	
 	\label{fig:PBI_cntr_fft}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{PBI_fft_resid.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_fft_resid.png}}
 	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_resid_acf.png}}
 	\caption{PBI centrado con residuos en azul (izquierda) y ACF de los residuos (derecha)}
 	\label{fig:PBI_fft_resid}
 \end{figure}
 
-\bibliography{bibliography.bib}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_ipc.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_ir.png}}
+	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_real_gdp.png}}
+	\caption{Espectogramas indice de precios, tasa de interés y PBI real per cápita}
+	\label{fig:spectogram_IPC_IR_real_GDP}
+\end{figure}
+
 
 
 \end{document}
