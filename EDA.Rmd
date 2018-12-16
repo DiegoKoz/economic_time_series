@@ -198,16 +198,32 @@ ts(sap$`Annual Yield`, start=min(sap$Year), frequency = 1) %>%
 ## CPI
 
 ```{r}
+
 cpi %>% 
-  ggplot(aes(Year,`U.S. Consumer Price Index *`))+
-  geom_line()
+  ggplot(., aes(Year, `U.S. Consumer Price Index *`))+
+  geom_line(size=1)+
+  geom_vline(xintercept = 1971, color = "red")+
+  geom_label_repel(data=data_frame(),aes(x=1971,y=100,label="Fin del patrón oro"),nudge_x = -5,force=10,size=7)+
+  theme_minimal()+
+  labs(y="IPC", x="Año")+
+  theme(text = element_text(size = 20))
+
+ggsave("plots/cpi_orig.png", scale = 1)
 ```
 
 ## gdp
 ```{r}
 gdp %>% 
-  ggplot(aes(Year,`Real GDP per capita (year 2012 dollars)`))+
-  geom_line()
+  ggplot(., aes(Year, `Real GDP (millions of 2012 dollars)`))+
+  geom_line(size=1)+
+  # geom_vline(xintercept = 1971, color = "red")+
+  # geom_label_repel(data=data_frame(),aes(x=1971,y=100,label="Fin del patrón oro"),nudge_x = -5,force=10,size=7)+
+  theme_minimal()+
+  labs(y="Real GDP", x="Año")+
+  theme(text = element_text(size = 30))
+
+ggsave("plots/PBI.png", scale = 1)
+
 ```
 
 
