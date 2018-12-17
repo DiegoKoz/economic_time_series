@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.30)  16 DEC 2018 21:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.30)  17 DEC 2018 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -668,20 +668,20 @@ Package: authblk 2001/02/27 1.3 (PWD)
 (./series_ciclo.aux)
 \openout1 = `series_ciclo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
  (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
@@ -717,7 +717,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box44
-Package hyperref Info: Link coloring ON on input line 62.
+Package hyperref Info: Link coloring ON on input line 60.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -727,9 +727,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count163
 )
-LaTeX Info: Redefining \ref on input line 62.
-LaTeX Info: Redefining \pageref on input line 62.
-LaTeX Info: Redefining \nameref on input line 62.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
 
 (./series_ciclo.out) (./series_ciclo.out)
 \@outlinefile=\write4
@@ -741,466 +741,234 @@ LaTeX Info: Redefining \nameref on input line 62.
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-)
-Overfull \hbox (6.21979pt too wide) in paragraph at lines 99--100
+) [2]
+Overfull \hbox (6.21979pt too wide) in paragraph at lines 97--98
 \T1/cmr/m/n/10 Dado que el ob-je-tivo del pre-sente tra-bajo es re-alizar un an
 áli-sis del ci-clo económico
  []
 
 [3]
-<../plots/cpi_orig.png, id=140, 526.8483pt x 325.215pt>
-File: ../plots/cpi_orig.png Graphic file (type png)
-<use ../plots/cpi_orig.png>
-Package pdftex.def Info: ../plots/cpi_orig.png  used on input line 138.
-(pdftex.def)             Requested size: 155.24895pt x 95.82841pt.
-<../plots/ir_orig.png, id=141, 677.53125pt x 526.96875pt>
-File: ../plots/ir_orig.png Graphic file (type png)
-<use ../plots/ir_orig.png>
-Package pdftex.def Info: ../plots/ir_orig.png  used on input line 140.
-(pdftex.def)             Requested size: 155.24895pt x 120.74997pt.
-<../plots/PBI.png, id=145, 526.8483pt x 325.215pt>
-File: ../plots/PBI.png Graphic file (type png)
-<use ../plots/PBI.png>
-Package pdftex.def Info: ../plots/PBI.png  used on input line 155.
-(pdftex.def)             Requested size: 155.24895pt x 95.82841pt.
-<../plots/PBI_log_tend.png, id=146, 677.53125pt x 451.6875pt>
-File: ../plots/PBI_log_tend.png Graphic file (type png)
-<use ../plots/PBI_log_tend.png>
-Package pdftex.def Info: ../plots/PBI_log_tend.png  used on input line 157.
-(pdftex.def)             Requested size: 155.24895pt x 103.49997pt.
+<../plots/oro.png, id=131, 722.7pt x 505.89pt>
+File: ../plots/oro.png Graphic file (type png)
+<use ../plots/oro.png>
+Package pdftex.def Info: ../plots/oro.png  used on input line 112.
+(pdftex.def)             Requested size: 276.00105pt x 193.19737pt.
+<../plots/gdp_in_gold_eda.PNG, id=135, 722.7pt x 433.62pt>
+File: ../plots/gdp_in_gold_eda.PNG Graphic file (type png)
+<use ../plots/gdp_in_gold_eda.PNG>
+Package pdftex.def Info: ../plots/gdp_in_gold_eda.PNG  used on input line 130.
+(pdftex.def)             Requested size: 165.59853pt x 99.35997pt.
+<../plots/wg_in_gold_eda.PNG, id=136, 722.7pt x 433.62pt>
+File: ../plots/wg_in_gold_eda.PNG Graphic file (type png)
+<use ../plots/wg_in_gold_eda.PNG>
+Package pdftex.def Info: ../plots/wg_in_gold_eda.PNG  used on input line 132.
+(pdftex.def)             Requested size: 165.59853pt x 99.35997pt.
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.161 
-       <../plots/cpi_orig.png (PNG copy)> <../plots/ir_orig.png>]
-<../plots/oro.png, id=163, 722.7pt x 505.89pt>
-File: ../plots/oro.png Graphic file (type png)
-<use ../plots/oro.png>
-Package pdftex.def Info: ../plots/oro.png  used on input line 168.
-(pdftex.def)             Requested size: 276.00105pt x 193.19737pt.
- [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
- has been already used, duplicate ignored
+l.135 
+       <../plots/oro.png (PNG copy)>] [5pdfTeX warning (ext4): destination with
+ the same identifier (name{figure.2}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.173 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-3}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.173 
-       <../plots/PBI.png> <../plots/PBI_log_tend.png> <../plots/oro.png (PNG co
-py)>]
-<../plots/gdp_in_gold_eda.PNG, id=175, 722.7pt x 433.62pt>
-File: ../plots/gdp_in_gold_eda.PNG Graphic file (type png)
-<use ../plots/gdp_in_gold_eda.PNG>
-Package pdftex.def Info: ../plots/gdp_in_gold_eda.PNG  used on input line 185.
-(pdftex.def)             Requested size: 165.59853pt x 99.35997pt.
-<../plots/wg_in_gold_eda.PNG, id=176, 722.7pt x 433.62pt>
-File: ../plots/wg_in_gold_eda.PNG Graphic file (type png)
-<use ../plots/wg_in_gold_eda.PNG>
-Package pdftex.def Info: ../plots/wg_in_gold_eda.PNG  used on input line 187.
-(pdftex.def)             Requested size: 165.59853pt x 99.35997pt.
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.218 
+l.170 
       pdfTeX warning (ext4): destination with the same identifier (name{table.1
 }) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.218 
+l.170 
        <../plots/gdp_in_gold_eda.PNG (PNG copy)> <../plots/wg_in_gold_eda.PNG (
-PNG copy)>]
-<../plots/ir_orig_resid.png, id=186, 677.53125pt x 526.96875pt>
-File: ../plots/ir_orig_resid.png Graphic file (type png)
-<use ../plots/ir_orig_resid.png>
-Package pdftex.def Info: ../plots/ir_orig_resid.png  used on input line 236.
-(pdftex.def)             Requested size: 276.00105pt x 214.67555pt.
- [7]
-<../plots/cpi_antifft_pre1900.png, id=194, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_antifft_pre1900.png Graphic file (type png)
-<use ../plots/cpi_antifft_pre1900.png>
-Package pdftex.def Info: ../plots/cpi_antifft_pre1900.png  used on input line 2
-48.
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
-<../plots/cpi_antifft_post1900.png, id=195, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_antifft_post1900.png Graphic file (type png)
-<use ../plots/cpi_antifft_post1900.png>
-Package pdftex.def Info: ../plots/cpi_antifft_post1900.png  used on input line 
-249.
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.253 
-       <../plots/ir_orig_resid.png (PNG copy)>]
-<../plots/PBI_centrado_antifft.png, id=202, 677.53125pt x 451.6875pt>
-File: ../plots/PBI_centrado_antifft.png Graphic file (type png)
-<use ../plots/PBI_centrado_antifft.png>
-Package pdftex.def Info: ../plots/PBI_centrado_antifft.png  used on input line 
-259.
-(pdftex.def)             Requested size: 276.00105pt x 184.00761pt.
- [9pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.269 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-7}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.269 
-       <../plots/cpi_antifft_pre1900.png (PNG copy)> <../plots/cpi_antifft_post
-1900.png (PNG copy)> <../plots/PBI_centrado_antifft.png (PNG copy)>] [10]
-<../plots/morelt.png, id=227, 526.8483pt x 325.215pt>
+PNG copy)>] [6]
+<../plots/morelt.png, id=172, 526.8483pt x 325.215pt>
 File: ../plots/morelt.png Graphic file (type png)
 <use ../plots/morelt.png>
-Package pdftex.def Info: ../plots/morelt.png  used on input line 301.
+Package pdftex.def Info: ../plots/morelt.png  used on input line 202.
 (pdftex.def)             Requested size: 345.0pt x 212.96031pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 210.
 
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.309 	\item \textbf
-                    {impulso}: Una serie con un valor constante de 50, que e...
- <../plots/morelt.png (PNG copy)>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 309.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 309.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 319.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 210.
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
+has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.215 	\item \textbf
+                    {ruido}: Ruido generado a partir de una distribuciÃ³n no...
+ <../plots/morelt.png (PNG copy)>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 220.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (46.13828pt too wide) in paragraph at lines 327--328
+Overfull \hbox (46.13828pt too wide) in paragraph at lines 228--229
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<../plots/serie_teorica.PNG, id=240, 526.8483pt x 325.215pt>
+<../plots/serie_teorica.PNG, id=184, 526.8483pt x 325.215pt>
 File: ../plots/serie_teorica.PNG Graphic file (type png)
 <use ../plots/serie_teorica.PNG>
-Package pdftex.def Info: ../plots/serie_teorica.PNG  used on input line 333.
+Package pdftex.def Info: ../plots/serie_teorica.PNG  used on input line 234.
 (pdftex.def)             Requested size: 345.0pt x 212.96031pt.
-[12pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.338 
-       <../plots/serie_teorica.PNG>]
-<../plots/espectograma_teorico_impulso.png, id=260, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_impulso.png, id=186, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_impulso.png Graphic file (type png)
 <use ../plots/espectograma_teorico_impulso.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_impulso.png  used on inp
-ut line 341.
+ut line 242.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_tendencia.png, id=261, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_tendencia.png, id=187, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_tendencia.png Graphic file (type png)
 <use ../plots/espectograma_teorico_tendencia.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_tendencia.png  used on i
-nput line 343.
+nput line 244.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_3.png, id=262, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ciclo_3.png, id=188, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_3.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_3.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_3.png  used on inp
-ut line 345.
+ut line 246.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_10.png, id=263, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ciclo_10.png, id=189, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_10.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_10.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_10.png  used on in
-put line 347.
+put line 248.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_50.png, id=264, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ciclo_50.png, id=190, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_50.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_50.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_50.png  used on in
-put line 349.
+put line 250.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ruido.png, id=265, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ruido.png, id=191, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ruido.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ruido.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ruido.png  used on input
- line 351.
+ line 252.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_composicion_series.png, id=266, 1606.0pt x 1003.
+<../plots/espectograma_teorico_composicion_series.png, id=192, 1606.0pt x 1003.
 75pt>
 File: ../plots/espectograma_teorico_composicion_series.png Graphic file (type p
 ng)
 <use ../plots/espectograma_teorico_composicion_series.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_composicion_series.png  
-used on input line 353.
+used on input line 254.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
- [13pdfTeX warning (ext4): destination with the same identifier (name{figure.10
-}) has been already used, duplicate ignored
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) 
+has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.358 
+l.257 
+       <../plots/serie_teorica.PNG>] [9pdfTeX warning (ext4): destination with 
+the same identifier (name{figure.5}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.259 
        <../plots/espectograma_teorico_impulso.png (PNG copy)> <../plots/especto
 grama_teorico_tendencia.png (PNG copy)> <../plots/espectograma_teorico_ciclo_3.
 png (PNG copy)> <../plots/espectograma_teorico_ciclo_10.png (PNG copy)> <../plo
 ts/espectograma_teorico_ciclo_50.png (PNG copy)> <../plots/espectograma_teorico
 _ruido.png (PNG copy)> <../plots/espectograma_teorico_composicion_series.png (P
 NG copy)>]
-<../plots/espectograma_gdp.png, id=289, 1606.0pt x 1003.75pt>
+<../plots/espectograma_gdp.png, id=230, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp.png Graphic file (type png)
 <use ../plots/espectograma_gdp.png>
-Package pdftex.def Info: ../plots/espectograma_gdp.png  used on input line 372.
+Package pdftex.def Info: ../plots/espectograma_gdp.png  used on input line 273.
 
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_gdp.png, id=290, 1606.0pt x 1003.75pt>
+<../plots/espectograma_log_gdp.png, id=231, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_gdp.png Graphic file (type png)
 <use ../plots/espectograma_log_gdp.png>
 Package pdftex.def Info: ../plots/espectograma_log_gdp.png  used on input line 
-374.
+275.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
- [14]
-<../plots/espectograma_wg.png, id=302, 1606.0pt x 1003.75pt>
+ [10]
+<../plots/espectograma_wg.png, id=243, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_wg.png Graphic file (type png)
 <use ../plots/espectograma_wg.png>
-Package pdftex.def Info: ../plots/espectograma_wg.png  used on input line 383.
+Package pdftex.def Info: ../plots/espectograma_wg.png  used on input line 284.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_wg.png, id=303, 1606.0pt x 1003.75pt>
+<../plots/espectograma_log_wg.png, id=244, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_wg.png Graphic file (type png)
 <use ../plots/espectograma_log_wg.png>
-Package pdftex.def Info: ../plots/espectograma_log_wg.png  used on input line 3
-85.
+Package pdftex.def Info: ../plots/espectograma_log_wg.png  used on input line 2
+86.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
- [15pdfTeX warning (ext4): destination with the same identifier (name{figure.11
-}) has been already used, duplicate ignored
+ [11pdfTeX warning (ext4): destination with the same identifier (name{figure.6}
+) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.388 
+l.289 
        <../plots/espectograma_gdp.png (PNG copy)> <../plots/espectograma_log_gd
-p.png (PNG copy)>] [16pdfTeX warning (ext4): destination with the same identifi
-er (name{figure.12}) has been already used, duplicate ignored
+p.png (PNG copy)>] [12pdfTeX warning (ext4): destination with the same identifi
+er (name{figure.7}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.398 
+l.299 
        <../plots/espectograma_wg.png (PNG copy)> <../plots/espectograma_log_wg.
-png (PNG copy)>] (./series_ciclo.bbl [17]
+png (PNG copy)>] (./series_ciclo.bbl [13]
 Underfull \hbox (badness 1910) in paragraph at lines 112--115
 []\T1/cmr/m/n/10 Angi Roesch and Har-ald Schmid-bauer.  \T1/cmr/m/it/10 Wavelet
 -Comp: Com-pu-ta-tional
  []
 
 )
-<../plots/ir_diff.png, id=325, 677.53125pt x 451.6875pt>
-File: ../plots/ir_diff.png Graphic file (type png)
-<use ../plots/ir_diff.png>
-Package pdftex.def Info: ../plots/ir_diff.png  used on input line 420.
-(pdftex.def)             Requested size: 258.75pt x 172.50455pt.
-<../plots/ir_diff_acf.png, id=326, 677.53125pt x 451.6875pt>
-File: ../plots/ir_diff_acf.png Graphic file (type png)
-<use ../plots/ir_diff_acf.png>
-Package pdftex.def Info: ../plots/ir_diff_acf.png  used on input line 421.
-(pdftex.def)             Requested size: 258.75pt x 172.50455pt.
- [18]
-<../plots/ir_fft.png, id=333, 677.53125pt x 451.6875pt>
-File: ../plots/ir_fft.png Graphic file (type png)
-<use ../plots/ir_fft.png>
-Package pdftex.def Info: ../plots/ir_fft.png  used on input line 428.
-(pdftex.def)             Requested size: 276.00105pt x 184.00761pt.
- [19pdfTeX warning (ext4): destination with the same identifier (name{figure.13
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.432 
-       <../plots/ir_diff.png> <../plots/ir_diff_acf.png (PNG copy)>]
-<../plots/ir_resid_acf.png, id=341, 677.53125pt x 451.6875pt>
-File: ../plots/ir_resid_acf.png Graphic file (type png)
-<use ../plots/ir_resid_acf.png>
-Package pdftex.def Info: ../plots/ir_resid_acf.png  used on input line 435.
-(pdftex.def)             Requested size: 276.00105pt x 184.00761pt.
-<../plots/cpi_log10_tend.png, id=342, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_log10_tend.png Graphic file (type png)
-<use ../plots/cpi_log10_tend.png>
-Package pdftex.def Info: ../plots/cpi_log10_tend.png  used on input line 442.
-(pdftex.def)             Requested size: 276.00105pt x 214.67555pt.
- [20pdfTeX warning (ext4): destination with the same identifier (name{figure.14
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.446 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-15}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.446 
-       <../plots/ir_fft.png> <../plots/ir_resid_acf.png (PNG copy)>]
-<../plots/cpi_log10_cntr_pre.png, id=350, 451.6875pt x 451.6875pt>
-File: ../plots/cpi_log10_cntr_pre.png Graphic file (type png)
-<use ../plots/cpi_log10_cntr_pre.png>
-Package pdftex.def Info: ../plots/cpi_log10_cntr_pre.png  used on input line 44
-9.
-(pdftex.def)             Requested size: 169.0519pt x 169.05156pt.
-<../plots/cpi_log10_cntr_post.png, id=351, 451.6875pt x 451.6875pt>
-File: ../plots/cpi_log10_cntr_post.png Graphic file (type png)
-<use ../plots/cpi_log10_cntr_post.png>
-Package pdftex.def Info: ../plots/cpi_log10_cntr_post.png  used on input line 4
-50.
-(pdftex.def)             Requested size: 169.0519pt x 169.05156pt.
-<../plots/cpi_fft_pre1900.png, id=352, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_fft_pre1900.png Graphic file (type png)
-<use ../plots/cpi_fft_pre1900.png>
-Package pdftex.def Info: ../plots/cpi_fft_pre1900.png  used on input line 457.
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
-<../plots/cpi_fft_post1900.png, id=353, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_fft_post1900.png Graphic file (type png)
-<use ../plots/cpi_fft_post1900.png>
-Package pdftex.def Info: ../plots/cpi_fft_post1900.png  used on input line 458.
-
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
- [21pdfTeX warning (ext4): destination with the same identifier (name{figure.16
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.462 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-17}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.462 
-       <../plots/cpi_log10_tend.png (PNG copy)> <../plots/cpi_log10_cntr_pre.pn
-g> <../plots/cpi_log10_cntr_post.png>]
-<../plots/cpi_acf_pre1900.png, id=364, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_acf_pre1900.png Graphic file (type png)
-<use ../plots/cpi_acf_pre1900.png>
-Package pdftex.def Info: ../plots/cpi_acf_pre1900.png  used on input line 465.
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
-<../plots/cpi_acf_post1900.png, id=365, 677.53125pt x 526.96875pt>
-File: ../plots/cpi_acf_post1900.png Graphic file (type png)
-<use ../plots/cpi_acf_post1900.png>
-Package pdftex.def Info: ../plots/cpi_acf_post1900.png  used on input line 466.
-
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
-<../plots/PBI_centrado.png, id=366, 677.53125pt x 451.6875pt>
-File: ../plots/PBI_centrado.png Graphic file (type png)
-<use ../plots/PBI_centrado.png>
-Package pdftex.def Info: ../plots/PBI_centrado.png  used on input line 473.
-(pdftex.def)             Requested size: 276.00105pt x 184.00761pt.
-<../plots/PBI_centrado_fft.png, id=367, 677.53125pt x 451.6875pt>
-File: ../plots/PBI_centrado_fft.png Graphic file (type png)
-<use ../plots/PBI_centrado_fft.png>
-Package pdftex.def Info: ../plots/PBI_centrado_fft.png  used on input line 480.
-
-(pdftex.def)             Requested size: 276.00105pt x 184.00761pt.
- [22pdfTeX warning (ext4): destination with the same identifier (name{figure.18
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.484 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-19}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.484 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-20}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.484 
-       <../plots/cpi_fft_pre1900.png> <../plots/cpi_fft_post1900.png> <../plots
-/cpi_acf_pre1900.png (PNG copy)> <../plots/cpi_acf_post1900.png (PNG copy)> <..
-/plots/PBI_centrado.png>]
-<../plots/PBI_fft_resid.png, id=383, 677.53125pt x 526.96875pt>
-File: ../plots/PBI_fft_resid.png Graphic file (type png)
-<use ../plots/PBI_fft_resid.png>
-Package pdftex.def Info: ../plots/PBI_fft_resid.png  used on input line 487.
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
-<../plots/PBI_resid_acf.png, id=384, 677.53125pt x 526.96875pt>
-File: ../plots/PBI_resid_acf.png Graphic file (type png)
-<use ../plots/PBI_resid_acf.png>
-Package pdftex.def Info: ../plots/PBI_resid_acf.png  used on input line 488.
-(pdftex.def)             Requested size: 169.0519pt x 131.48454pt.
-<../plots/espectograma_ipc.png, id=385, 1606.0pt x 1003.75pt>
+<../plots/espectograma_ipc.png, id=266, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_ipc.png Graphic file (type png)
 <use ../plots/espectograma_ipc.png>
-Package pdftex.def Info: ../plots/espectograma_ipc.png  used on input line 497.
+Package pdftex.def Info: ../plots/espectograma_ipc.png  used on input line 323.
 
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_ir.png, id=386, 1606.0pt x 1003.75pt>
+<../plots/espectograma_ir.png, id=267, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_ir.png Graphic file (type png)
 <use ../plots/espectograma_ir.png>
-Package pdftex.def Info: ../plots/espectograma_ir.png  used on input line 498.
+Package pdftex.def Info: ../plots/espectograma_ir.png  used on input line 324.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_real_gdp.png, id=387, 1606.0pt x 1003.75pt>
+<../plots/espectograma_real_gdp.png, id=268, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_real_gdp.png Graphic file (type png)
 <use ../plots/espectograma_real_gdp.png>
 Package pdftex.def Info: ../plots/espectograma_real_gdp.png  used on input line
- 499.
+ 325.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
- [23pdfTeX warning (ext4): destination with the same identifier (name{figure.21
-}) has been already used, duplicate ignored
+ [14] [15pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.8}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.503 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-22}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.503 
-       <../plots/PBI_centrado_fft.png> <../plots/PBI_fft_resid.png (PNG copy)> 
-<../plots/PBI_resid_acf.png (PNG copy)>] [24pdfTeX warning (ext4): destination 
-with the same identifier (name{figure.23}) has been already used, duplicate ign
-ored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.506 \end{document}
+l.332 \end{document}
                      <../plots/espectograma_ipc.png (PNG copy)> <../plots/espec
 tograma_ir.png (PNG copy)> <../plots/espectograma_real_gdp.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 506.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 506.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 332.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 332.
 
 (./series_ciclo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 506.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 506.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 332.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 332.
 Package rerunfilecheck Info: File `series_ciclo.out' has not changed.
-(rerunfilecheck)             Checksum: DF80E94EB2152A6E4BCEC2975709CD1A;547.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 506.
+(rerunfilecheck)             Checksum: 38F6A53964005F5463AAA2CEDCF1B88E;489.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 332.
  ) 
 Here is how much of TeX's memory you used:
- 21177 strings out of 492641
- 372680 string characters out of 6131786
- 485518 words of memory out of 5000000
- 24518 multiletter control sequences out of 15000+600000
+ 20996 strings out of 492641
+ 368575 string characters out of 6131786
+ 487518 words of memory out of 5000000
+ 24402 multiletter control sequences out of 15000+600000
  20471 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,8n,72p,1374b,1745s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1227,10 +995,10 @@ ype1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super
 share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/ty
 pe1/public/cm-super/sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sftt1000.pfb>
-Output written on series_ciclo.pdf (24 pages, 3314327 bytes).
+Output written on series_ciclo.pdf (15 pages, 2596923 bytes).
 PDF statistics:
- 518 PDF objects out of 1000 (max. 8388607)
- 407 compressed objects within 5 object streams
- 126 named destinations out of 1000 (max. 500000)
- 295 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 389 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

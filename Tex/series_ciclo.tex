@@ -48,10 +48,8 @@
 \usepackage{authblk}
 \title{Viejas series, nuevas miradas \\ {\large El ciclo económico a la luz de las técnicas de análisis de señales} }
 \author[1]{Diego Kozlowski}
-\author[2]{Pablo Santoro}
-\affil[1,2]{Maestr\'ia en Data Mining \& Knowledge Discovery, FCEN-UBA}
-\affil[1]{diegokoz92@gmail.com}
-\affil[2]{pablorsantoro@gmail.com}
+\affil[1]{Maestr\'ia en Data Mining \& Knowledge Discovery, FCEN-UBA \\ diegokoz92@gmail.com}
+
 \date{}                     %% if you don't need date to appear
 \setcounter{Maxaffil}{0}
 \renewcommand\Affilfont{\itshape\small}
@@ -66,7 +64,7 @@
 
 \begin{abstract}
 	
-	El desenvolvimiento cíclico económico es un tema de recurrente debate en la bibliografía especializada. Tanto desde el punto de vista conceptual como en el reconocimiento empírico, no existe un consenso generalizado respecto de las causas y formas concretas de esta característica de la economía. En particular, son fuente de debate las afirmaciones respecto a la existencia de ciclos definidos en períodos largos, propuestos por diferentes autores de principios del siglo XX. En el presente trabajo se propone una revisión empírica de series tradicionalmente utilizada en el análisis económico, como lo son las tasas de interés, Producto, salarios, precios y oro, para Estados Unidos, desde el siglo XIX a la actualidad, mediante diferentes técnicas recuperadas de la teoría de análisis de señales, para buscar nuevas evidencias respecto a la presencia de un ciclo bien definido en períodos largos de la historia económica. Para esto, se utilizan descomposiciones de Fourier y el análisis de Wavelets en busca de señales de baja frecuencia, o períodos largos. Los resultados muestran evidencia favorable a la existencia de tres ciclos bien definidos, uno de los cuales sería de una amplitud en torno a los 50 años.
+	El desenvolvimiento cíclico económico es un tema de recurrente debate en la bibliografía especializada. Tanto desde el punto de vista conceptual como en el reconocimiento empírico, no existe un consenso generalizado respecto de las causas y formas concretas de esta característica de la economía. En particular, son fuente de debate las afirmaciones respecto a la existencia de ciclos definidos en períodos largos, propuestos por diferentes autores de principios del siglo XX. En el presente trabajo se propone una revisión empírica de series tradicionalmente utilizada en el análisis económico, como lo son las tasas de interés, Producto, salarios, precios y oro, para Estados Unidos, desde el siglo XIX a la actualidad, mediante diferentes técnicas recuperadas de la teoría de análisis de señales, para buscar nuevas evidencias respecto a la presencia de un ciclo bien definido en períodos largos de la historia económica. Para esto, se utiliza el análisis de Wavelets en busca de señales de baja frecuencia, o períodos largos. Los resultados muestran evidencia favorable a la existencia de tres ciclos bien definidos, uno de los cuales sería de una amplitud en torno a los 50 años.
 \end{abstract}
 
 \section{Introducción}
@@ -75,7 +73,7 @@ En la teoría económica no existe una posición inequívoca respecto de las for
 
 Estas complejidades para la medición del ciclo dificultan su comprensión. El objetivo del presente trabajo es hacer uso de nuevas herramientas cuantitativas del análisis de series de tiempo, para revisar la evidencia empírica respecto de la existencia del ciclo económico. Dadas las limitaciones arriba mencionadas, se optó por utilizar series de Estados Unidos por ser un país que por su envergadura logra, a partir del siglo XX, representar, cuanto menos parcialmente, las tendencias generales de la economía. Por cuestiones metodológicas, es necesario que la información utilizada se remonte al siglo XIX, siglo en el cual no es claro que la generalidad de las características del desenvolvimiento económico se expresen al interior de este país. 
 
-El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las diferentes series utilizadas en el resto del trabajo, así como las características de la serie del precio del oro y los efectos sobre las demás, y finalmente se contrastan algunas de las series  con las crisis conocidas en la historiografía económica para Estados Unidos en el siglo XX. En la cuarta sección se realizan análisis sobre las series de la tasa de interés de largo plazo, el índice de precios al consumidor y el PBI real usando transformadas de Fourier sobre las series. En la quinta sección se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la séptima y última sección se presentan las conclusiones y futuras líneas de investigación.
+El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las diferentes series utilizadas en el resto del trabajo, así como las características de la serie del precio del oro y los efectos sobre las demás, y finalmente se contrastan algunas de las series con las crisis conocidas en la historiografía económica para Estados Unidos en el siglo XX. En la cuarta sección se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la quinta y última sección se presentan las conclusiones y futuras líneas de investigación.
 
 
 \section{Debates en torno al ciclo económico}
@@ -104,62 +102,8 @@ Para la serie anual del salario horario nominal de los obreros de la producción
 
 La serie anual del precio del oro en el mercado de Nueva York entre 1791 y 2017 se basa en \cite{officer2018gold}
 
-La serie del Indice de Precios al Consumidor para el corresponde a una extensión y reelaboración de la serie original (elaborada por el \textit{Bureau of Labour Statistics}) realizada por \cite{officer2018cpi}
-
-Finalmente, la serie de la tasa de interés de largo plazo se basa en \cite{officer2018ir}
 
 \subsection{Series originales}
-%\subsection{Tasa de interés de largo plazo de los EE.UU.}
-
-En la figura \ref{fig:ir_orig} se puede observar la serie de tasas de interés de largo plazo por año. En la misma se puede observar una diferencia significativa en el nivel de tasas de la segunda mitad del siglo XX respecto de los años anteriores, sobre a partir de 1970. Esto corresponde a niveles altos de inflación en los EE.UU. en este periodo y la siguiente paulatina baja de la inflación llegando al siglo XXI.
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.75\linewidth]{ir_orig.png}
-%	\caption{Tasa de interés de largo plazo de los EE.UU.}
-%	\label{fig:ir_orig}
-%\end{figure}
-
-La tasa de interés suele ser una de las herramientas predilectas de política económica junto con la monetaria, por lo que es de sumo interés en el análisis macroeconómico, en teorías del ciclo económico y a los ejemplos de aplicación de las técnicas mostradas en este trabajo.
-
-%\subsection{Índice de precios al consumidor}
-La serie de nivel de precios al consumidor(\textit{"Consumer Price Index"}, Índice de precios al consumidor, \textit{CPI} por sus siglas en inglés, \textit{IPC} en español) de los EE.UU. está expresada en base 100 en el promedio de 1982-1984. La serie de tiempo original se puede observar en la figura \ref{fig:cpi_orig}, donde puede observar una diferencia entre los siglos XIX y XX, especialmente tras el quiebre del patrón oro en 1971 durante la administración Nixon y los años previos al abandono de este sistema de respaldo de papel moneda.
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.8\linewidth]{cpi_orig.png}
-%	\caption{Índice de precios al consumidor en los EE.UU., base: promedio anual de 1982-1984} 	
-%	\label{fig:cpi_orig}
-%\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure[IPC]{\includegraphics[width=0.45\linewidth]{cpi_orig.png}
-	\label{fig:ir_orig}}
-	\subfigure[Tasa de interés]{\includegraphics[width=0.45\linewidth]{ir_orig.png}
-		\label{fig:cpi_orig}}
-	\caption{Tasa de interés e IPC} 	
-	\label{fig:cpi_ir}
-\end{figure}
-
-%
-%Las diferencias seculares en el nivel de precios se observa tomando el logaritmo de los datos originales con tendencias lineales calculadas para los años previos y posteriores a 1900, donde se observa un cambio de tendencia del crecimiento del nivel de precios (ver anexo).
-
-%\subsection{PBI real}
-
-Una de las características de la economía de Estados Unidos es el crecimiento de muy largo plazo casi constante. Esto se puede visualizar en la figura \ref{fig:PBI_orig} en donde, en \ref{fig:PBI_real} se puede observa el PBI en términos reales mientras que en \ref{fig:log_PBI} se expresa el mismo en base logarítmica. Para este último gráfico, además se ajustó una modelo lineal mediante mínimos cuadrados ilustrando la tendencia. El ajuste es muy bueno, con un $R^2$ cuadrado de 99.54\%, lo que demuestra que casi se mantiene constante la tasa de crecimiento a lo largo de todo el periodo considerado en la serie.
-
-\begin{figure}[H]
-	\centering
-    \subfigure[PBI real]{\includegraphics[width=0.45\linewidth]{PBI.png}
-    	\label{fig:PBI_real}}
-	\subfigure[logarítmo PBI]{\includegraphics[width=0.45\linewidth]{PBI_log_tend.png}
-		\label{fig:log_PBI}}
-	\caption{Producto Bruto Interno. Estados Unidos. 1790-2017} 	
-	\label{fig:PBI_orig}
-\end{figure}
-
-Si bien una tendencia lineal ajusta muy bien el comportamiento de muy largo plazo de la economía de los EE.UU., los residuos exhiben todavía un patrón no lineal, en donde se esconde la ciclicidad de dicha economía.
 
 Es importante reconocer el fenómeno que se observa en la figura \ref{fig:oro}. Allí se marca la salida del patrón oro de la economía mundial en 1971. Luego de la segunda guerra mundial y hasta ese punto, la estructura monetaria global se basaba en la paridad con el dólar, y el \textit{ancla nominal} del mismo con las reservas de oro de la \textit{FED} (Federal Reserve Board). Esto quiere decir que Estados Unidos no podía emitir dólares que no estuvieran respaldados por su equivalente en oro en las reservas del banco central de dicho país. Por ello, la relación dólar-oro se mantuvo prácticamente inamovible hasta 1971. Luego de que eliminó este ancla, la capacidad de emisión libre de respaldo implicó que la FED emita por encima de las reservas, y en general del oro en circulación, lo cual repecutió en un aumento del precio del oro expresado en dólares, o lo que es equivalente, una caída del dólar estadounidense expresado en oro.
 
@@ -169,11 +113,12 @@ Es importante reconocer el fenómeno que se observa en la figura \ref{fig:oro}. 
 	\caption{Precios del oro por onza en el mercado de Nueva York} \label{fig:oro}
 \end{figure}
 
-Dado que lo que se busca en el presente trabajo es realizar un análisis de largo plazo del ciclo económico, esta perturbación nominal oscurece el fenómeno subyacente que se esta buscando. Es por ello que se opto tanto por normalizar las series del PBI nominal y el salario nominal por el precio del oro, para el análisis de Wavelets de la sección quinta. De esta forma las series se leen como el producto y el salario expresado en su capacidad de compra de oro. Dado que el oro constituye un refugio de valor en las crisis su precio es contracíclico, a diferencia de lo que sucede con el Indice de Precios al Consumidor. De esta manera, al normalizar por el oro en lugar del IPC, se logra una mejor visualización del mismo en las series estudiadas y se facilita el análisis empírico. Alternativamente, para las descomposiciones de Fourier se utiliza el producto en términos reales. En el anexo se muestran también las descomposiciones de Fourier para las series expresadas en oro, así cómo el análisis de wavelets con las series normalizadas por el IPC.
+Dado que lo que se busca en el presente trabajo es realizar un análisis de largo plazo del ciclo económico, esta perturbación nominal oscurece el fenómeno subyacente que se esta buscando. Es por ello que se opto tanto por normalizar las series del PBI nominal y el salario nominal por el precio del oro, para el análisis de Wavelets. De esta forma las series se leen como el producto y el salario expresado en su capacidad de compra de oro.
+Dado que el oro constituye un refugio de valor en las crisis su precio es contracíclico, a diferencia de lo que sucede con el Indice de Precios al Consumidor. De esta manera, al normalizar por el oro en lugar del IPC, se logra una mejor visualización del mismo en las series estudiadas y se facilita el análisis empírico.
 
 % Una alternativa a esto sería dividir por el Indice de Precios al Consumidor, de forma tal que ambas series se expresen en capacidad de poder adquisitivo constante (en términos reales). 
 %
-%La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo. 
+%La decisión de expresar el PBI y el salario en capacidad constante de compra de oro y no de poder adquisitivo constante se fundamenta en qué, en tanto el desarrollo de la productividad implica un abaratamiento de la generalidad de las mercancías que componen un indice de precios, y el aumento de la productividad es un fenómeno tendencial de la economía, el PBI expresado en una capacidad de compra constante conserva de forma subyacente una tendencia creciente que oscurece el comportamiento cíclico. El oro, sin embargo, también expresa potencialmente una tendencia al aumento de la productividad en su extracción, no obstante lo cual su precio se encuentra fundamentalmente determinado por el ciclo económico, en tanto constituye un refugio de valor. Este comportamiento contracíclico del precio del oro lo que logra es visibilizar el ciclo en lugar de ocultarlo detrás de una tendencia al aumento de la productividad,y por lo tanto facilita el análisis empírico para el objetivo trazado por el presente trabajo. 
 
 De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI de Estados Unidos entre el 1900 y 2017, expresado en oro. Por su parte la figura \ref{fig:salario} muestra la serie del salario horario de un obrero de la producción en Estados Unidos entre 1900 y 2017, expresado en oro.
 
@@ -216,52 +161,8 @@ De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI d
 
 En primer lugar lo que se observa es la similitud de ambas series, en términos generales. Ambas muestran tres picos, durante los 20', en 1970 y el 2000, seguidos de caídas profundas. La normalización por el precio del oro permite ver un gran ciclo con tres oscilaciones, por lo menos de manera aparente, durante el siglo XX. Las crisis revisadas por la literatura de historia económica parecen tener su correlato en los movimientos observados en ambas series. Por su parte, también es interesante resaltar que el tercer movimiento ascendente, cuyo punto álgido se encuentra en el año 2000, lleva a un valor similar al del movimiento oscilatorio previo para el caso del PBI, pero no para el salario. Esto expresa que la distribución del PBI en salario y ganancia se modificó en el último período. 
 
-En las siguientes dos secciones se utilizaran las series descriptas como insumos para técnicas provenientes del campo de procesamientos de señales, tales como las descomposiciones de Fourier y el análisis de Wavelets.
+En las siguiente sección se utilizaran las series descriptas como insumos para una técnica provenientes del campo de procesamientos de señales, los Wavelets, que permiten destacar de forma automática las amplitudes cíclicas más importantes de la serie.
 
-\section{Transformada de Fourier}
-Las transformadas de Fourier permiten analizar una serie de tiempo pasando del plano del tiempo al plano de la frecuencia, evidenciando las distintas amplitudes y frecuencias de onda en la serie en cuestión. Esto permite descomponer las series como una suma de componentes sinusoidales que, en conjunto, reconstruyen la serie original. Esto es útil para discriminar las componentes más importantes y de diversa frecuencia (series \textit{cortas} y \textit{largas}) en el análisis de los ciclos económicos.
-
-%\subsection{Tasa de interés de largo plazo}
-%Retomamos en este apartado el análisis de los ciclos que se pueden detectar en la serie de tasas de interés de largo plazo de los bonos del Tesoro de los EE.UU.
-%Realizando las diferencias de la serie de la tasa de interés de largo plazo (diferencias en terminos absolutos entre distintos momentos del tiempo) se observa
-% que hay una leve correlación con el periodo siguiente al lag 0, pero 
-%en general que la autocorrelación es muy similar a un random walk (ver anexo). Si bien no se ven tendencias de largo plazo en las diferencias y estas sirven habitualmente para centrar las series, la diferenciación sólo captura las frecuencias más altas, dejando de lado las de largo plazo, por lo que con este análisis sólo se pueden investigar ciclos de corta duración. 
-La figura \ref{fig:ir_orig_resid} muestra en rojo el residuo de descomponer la serie de las diferencias de la tasa de interés de largo plazo y conservar aquellas componentes de menor frecuencia. Es decir, reconstruimos la serie a partir de las primeras sinusoidales, de mayor duración, y calculamos el residuo entre estas y la serie original. Se puede observar que aún conservando las primeras componentes de la descomposición, la serie mantiene una parte importante de su estructura original, en particular para aquellos años con cambios bruscos. El 89,24\% de la varianza total de la serie original se puede explicar a partir de estos primeros componentes.
-
-%Para poder investigar ciclos de mayor duración se realiza la transformada de Fourier de la serie. 
-%En ésta última se puede observar las frecuencias bajas, con gran amplitud. Si descomponemos la serie por estas frecuencias más bajas, se puede ver la serie en rojo de la figura \ref{fig:ir_orig_resid}. Puede observarse que la serie aún presenta estructura, aunque las ondas bajas encontradas mediante la transformación de Fourier explican el 89,24\% de la varianza total de la serie.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{ir_orig_resid.png}
-	\caption{Serie original y residuos (en rojo) de descomponer por las frecuencias más bajas} 	
-	\label{fig:ir_orig_resid}
-\end{figure}
-
-%\subsection{Índice de precios al consumidor}
-Como se ha mostrado en secciones anteriores, hay un cambio de tendencia secular en el nivel de precios. Por ello, centramos la serie del índice de precios por las tendencias lineales de las mismas antes y después del año 1900. 
-%para evitar que se distorsione el ciclo usando técnicas que ajusten mejor a datos no lineales, debido a que luego se analizarán los residuos de este ajuste con transformadas de Fourier en busca de poder explicarlos y de buscar la existencia de ciclos alrededor de estas tendencias.
-Luego de centradas las dos mitades de la serie realizamos las transformadas de Fourier sobre los residuos (ver anexo). Nuevamente, las frecuencias más bajas son las que cuentan con mayor amplitud. Posteriormente se tomaron las frecuencias más bajas y se descompuso la serie centrada por ellas por las múltiples componentes de frecuencia, para luego analizar el ajuste de estas nuevas series y visualizar la serie resultante de esta descomposición. En la figura \ref{fig:cpi_cntr_antifft} se pueden observar las primeras 9 componentes de más baja frecuencia de la transformada de Fourier y, en azul, el residuo de restar los valores de la transformación de la serie. La varianza explicada por las frecuencias bajas halladas por Fourier es de 89,52\% en el caso de la serie previa a 1900 y 97,12\% luego del año 1900. Esto demuestra que, si bien existen ciclos de bajas frecuencias pueden descomponerse series de más altas frecuencias que corresponderían a ciclos de medio y corto plazo.
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.49\linewidth]{cpi_antifft_pre1900.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_antifft_post1900.png}}
-	\caption{Residuos (en azul) luego de quitar las bajas frecuencias} 	
-	\label{fig:cpi_cntr_antifft}
-\end{figure}
-
-%\subsection{PBI real}
-Como se observó anteriormente, a pesar de la gran capacidad explicativa de la tendencia lineal sobre el logaritmo de la serie del PBI real, hay zonas en las que el residuo resultante del ajuste es estrictamente positivo o negativo, dando lugar a una estructura no lineal de los residuos que pueden analizarse en busca de componentes cíclicos. Por ello aplicamos la transformada de Fourier sobre dichos residuos, obteniendo frecuencias bajas de gran amplitud respecto de frecuencias más altas (ver anexo). Tomando la antitransformada de Fourier a frecuencias bajas logramos el ajuste buscado a los datos. Esto se puede observar en \ref{fig:PBI_cntr_antifft}
-
-\begin{figure}[H]
-	\centering
-    \subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado_antifft.png}}
-	\caption{Serie original y antitransformada de las frecuencias más bajas} 
-	\label{fig:PBI_cntr_antifft}
-\end{figure}
-
-La estructura que queda por explicar en los residuos dado por ciclos de más baja frecuencia es relativamente pequeña pero permite ahondar en ciclos aún más cortos, aunque nuevamente nos encontramos con un coeficiente de determinación elevado, del 86,24\% de varianza explicada de los residuos de la tendencia lineal.
 
 \section{Wavelets}
 
@@ -415,81 +316,6 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 \appendix
 
 \section{Anexo I: Figuras complementarias}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\linewidth]{ir_diff.png}
-	\includegraphics[width=0.75\linewidth]{ir_diff_acf.png}
-	\caption{Diferencias (arriba) y autocorrelación de las diferencias (abajo) de las tasas de interes.} 	
-	\label{fig:ir_diff_acf}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{ir_fft.png}
-	\caption{Transformada de Fourier de la tasa de interés} 	
-	\label{fig:ir_fft}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{ir_resid_acf.png}
-	\caption{Autocorrelación de la parte no explicada por la descomposición de las frecuencias más bajas} 	
-	\label{fig:ir_resid_acf}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{cpi_log10_tend.png}
-	\caption{Log 10 y tendencias ajustadas antes y después del año 1900} 	
-	\label{fig:cpi_log10_tend}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_pre.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_log10_cntr_post.png}}
-	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
-	\label{fig:cpi_log10_cntr}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_pre1900.png}	}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_fft_post1900.png}}
-	\caption{IPC log10 centrado por tendencia lineal antes (izquierda) y después (derecha) de 1900} 	
-	\label{fig:cpi_log10_cntr_fft}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_pre1900.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{cpi_acf_post1900.png}}
-	\caption{Autocorrelación de los residuos}
-	\label{fig:cpi_cntr_acf}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado.png}}
-	\caption{PBI centrado por la tendencia lineal} 	
-	\label{fig:PBI_cntr}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.8\linewidth]{PBI_centrado_fft.png}}
-	\caption{Transformada de Fourier del PBI centrado} 	
-	\label{fig:PBI_cntr_fft}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_fft_resid.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{PBI_resid_acf.png}}
-	\caption{PBI centrado con residuos en azul (izquierda) y ACF de los residuos (derecha)}
-	\label{fig:PBI_fft_resid}
-\end{figure}
-
 
 
 \begin{figure}[H]
