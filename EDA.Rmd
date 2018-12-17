@@ -5,7 +5,7 @@ output: html_notebook
 
 ## load
 
-```{r}
+```{r setup}
 library(tidyverse)
 library(lubridate)
 library(forecast)
@@ -24,6 +24,10 @@ sap <- read_csv("data/SAP_1871-2018.csv", skip=1)
 cpi <- read_csv("data/USCPI_1774-2018.csv", skip=4)
 gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
 wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+gdp_uk <-  read_csv("data/UKGDP_1700-2017.csv", skip=1)
+
+brit_gold <- read_csv("data/GOLD_brit_1257-1945.csv", skip=1)
+gold_london <- read_csv("data/GOLD_london_1718-2017.csv", skip = 1)
 ```
 
 
@@ -332,6 +336,106 @@ Se ven los mismos tres períodos. Pero a diferencia del GDP, el período 1980-20
  
 
 ¿ Si quisieramos comparar ingrsos con algún revenue tendríamos usar S&P o DJA?
+
+
+
+
+
+#### UK
+
+```{r}
+oro <- full_join(brit_gold,gold_london)
+
+names(oro)
+
+```
+
+
+```{r}
+
+# de http://fx.sauder.ubc.ca/data.html
+tc <- read_csv("data/ex_rate.csv")
+
+library(lubridate)
+
+tc <- tc %>% mutate(date = parse_date_time(`MMM YYYY`,"my"),
+              Year = year(date)) %>% 
+  group_by(Year) %>% 
+  summarise(gbp_usd = mean(`GBP/USD`))
+
+
+# de http://fx.sauder.ubc.ca/etc/USDpages.pdf
+
+tc_1950_1970 <- data_frame(Year=1950:1970, gbp_usd = 0.35714) %>% 
+  mutate(gbp_usd = case_when(Year ==1967 ~ 0.36210,
+                             Year >1967 ~ 0.41667,
+                             TRUE ~ gbp_usd))
+
+tc <- bind_rows(tc_1950_1970,tc)
+tc
+```
+
+
+
+expreso al oro siempre en pounds
+
+```{r}
+tail(oro)
+
+
+oro$`London Market Price (British &pound; [1718-1949] or U.S. $ [1950-2011] per fine ounce)`
+
+oro <- oro %>% 
+  filter(Year %in% c(1700:2017)) %>% 
+  mutate(serie_unificada = case_when(Year < 1718 ~ `British Official Price (British pounds per fine ounce end of year)`,
+                                     Year >=1718 ~`London Market Price (British &pound; [1718-1949] or U.S. $ [1950-2011] per fine ounce)`))
+
+## Tengo que pasar todo a libras, desde 1950 al serie esta en dólares
+
+oro <- oro %>% 
+  left_join(tc) %>% 
+  mutate(serie_unificada = case_when(Year>1950 ~ serie_unificada*gbp_usd,
+                                     TRUE ~ serie_unificada))
+  
+ggplot(oro, aes(Year, serie_unificada))+
+  geom_line()
+
+```
+
+
+## PBI uk en oro
+
+
+```{r}
+
+gdp_uk <- gdp_uk %>% 
+  left_join(oro) %>% 
+  mutate(gdp_in_gold = `Nominal GDP (million of pounds)`/serie_unificada)
+
+
+crisis <- gdp_uk %>% 
+  filter(Year %in% c(1700:1900)) %>% 
+  mutate(crisis =gdp_in_gold) %>% 
+  filter(Year %in% c(1794,1803, 1812, 1822,1833,1842,1850, 1858, 1868,1879, 1885, 1893))
+
+gdp_uk %>% 
+  filter(Year %in% c(1700:1900)) %>% 
+ggplot(., aes(Year, gdp_in_gold))+
+  geom_line(size=1)+
+  geom_text_repel(data = crisis, aes(Year, crisis,label=Year),nudge_x = 5, nudge_y = -20,force=12,size=4)+
+  theme_minimal()+
+  labs(y="PBI en oro", x="Año")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/uk_gdp.png",scale = 1)
+```
+
+
+```{r}
+gdp_uk %>% 
+  write_csv("data/gdp_uk_gold.csv")
+```
 
 
 

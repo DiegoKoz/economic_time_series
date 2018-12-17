@@ -4,7 +4,7 @@ output: html_notebook
 ---
 
 
-```{r}
+```{r setup}
 library(WaveletComp)
 library(tidyverse)
 library(lubridate)
@@ -242,6 +242,29 @@ dev.off()
 
 ### PBI
 
+
+```{r}
+gdp_vars <- gdp_in_gold %>% 
+  mutate(var = ((value-lag(value))/lag(value))) %>% 
+  filter(!is.na(var))
+
+
+gdp_wavelet <- analyze.wavelet(my.data = gdp_vars,
+                                my.series = "var",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE,
+         main = "Espectograma vars PBI en oro")
+```
+
+
+
+
+
+
 ```{r}
 
 gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
@@ -390,4 +413,107 @@ wt.image(ipc_wavelet,color.key = "q", show.date = TRUE,
 
 
 ```
+
+
+
+### UK
+
+```{r}
+
+uk_gdp <- read_csv("data/gdp_uk_gold.csv")
+
+names(uk_gdp)
+
+uk_gdp <- uk_gdp %>% 
+  mutate(date = parse_date_time(Year,"y"),
+         log_gdp = log(gdp_in_gold)) 
+
+
+uk_gdp_filt <- uk_gdp %>% 
+  filter(Year %in% c(1700:1900))
+
+gdp_wavelet <- analyze.wavelet(my.data = uk_gdp_filt,
+                                my.series = "gdp_in_gold",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+png("plots/espectograma_gdp_uk.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE,
+         main = "Espectograma PBI UK en oro")
+dev.off()
+```
+
+```{r}
+gdp_wavelet <- analyze.wavelet(my.data = uk_gdp_filt,
+                                my.series = "log_gdp",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+png("plots/espectograma_log_gdp_uk.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE,
+         main = "Espectograma log(PBI UK en oro)")
+dev.off()
+```
+
+
+serie centrada
+
+```{r}
+
+gdp_var <- uk_gdp %>% 
+  select(Year, real_gdp, gdp_in_gold,date) %>%
+  # filter(Year<1950) %>% 
+  mutate(variacion = ((gdp_in_gold - lag(gdp_in_gold))/lag(gdp_in_gold))) %>%
+  filter(!is.na(variacion))
+
+
+gdp_wavelet <- analyze.wavelet(my.data = gdp_var,
+                                my.series = "variacion",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+# png("plots/espectograma_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE,
+         main = "Espectograma variaciones PBI en oro")
+# dev.off()
+
+
+```
+
+
+
+### oro
+
+
+```{r}
+gold <- gold %>% 
+  mutate(date = parse_date_time(Year, "y"),
+         value= `New York Market Price (U.S. dollars per fine ounce)`)
+
+gold_wavelet <- analyze.wavelet(my.data = gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+# png("plots/espectograma_gdp.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gold_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE,
+         main = "Espectograma oro")
+
+```
+
+
+
+
 

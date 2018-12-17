@@ -64,14 +64,15 @@
 
 \begin{abstract}
 	
-	El desenvolvimiento cíclico económico es un tema de recurrente debate en la bibliografía especializada. Tanto desde el punto de vista conceptual como en el reconocimiento empírico, no existe un consenso generalizado respecto de las causas y formas concretas de esta característica de la economía. En particular, son fuente de debate las afirmaciones respecto a la existencia de ciclos definidos en períodos largos, propuestos por diferentes autores de principios del siglo XX. En el presente trabajo se propone una revisión empírica de series tradicionalmente utilizada en el análisis económico, como lo son las tasas de interés, Producto, salarios, precios y oro, para Estados Unidos, desde el siglo XIX a la actualidad, mediante diferentes técnicas recuperadas de la teoría de análisis de señales, para buscar nuevas evidencias respecto a la presencia de un ciclo bien definido en períodos largos de la historia económica. Para esto, se utiliza el análisis de Wavelets en busca de señales de baja frecuencia, o períodos largos. Los resultados muestran evidencia favorable a la existencia de tres ciclos bien definidos, uno de los cuales sería de una amplitud en torno a los 50 años.
+	El desenvolvimiento cíclico económico es un tema de recurrente debate en la bibliografía especializada. Tanto desde el punto de vista conceptual como en el reconocimiento empírico, no existe un consenso generalizado respecto de las causas y formas concretas de esta característica de la economía. En particular, son fuente de debate las afirmaciones respecto a la existencia de ciclos definidos en períodos largos, propuestos por diferentes autores de principios del siglo XX. En el presente trabajo se propone una revisión empírica de series tradicionalmente utilizada en el análisis económico, como lo son el producto, salario y oro, para Estados Unidos y el Reino Unido, desde el siglo XVIII a la actualidad, mediante una técnica originalmente desarrollada para el área de análisis de señales. El objetivo es buscar nuevas evidencias respecto a la presencia de un ciclo bien definido en períodos largos de la historia económica. Para esto, se utiliza el análisis de Wavelets en busca de señales de baja frecuencia, o períodos largos. Los resultados muestran evidencia favorable a la existencia de tres ciclos bien definidos, uno de los cuales sería de una amplitud en torno a los 50 años.
+	
 \end{abstract}
 
 \section{Introducción}
 
 En la teoría económica no existe una posición inequívoca respecto de las formas de existencia cíclicas del desenvolvimiento económico. Las ondas largas propuestas por \cite{kondratieff1979long} de aproximadamente 50 años de duración y las ondas medias propuestas por \cite{kuznets1930secular} han sido fruto de polémica a lo largo del siglo XX. En buena medida este debate se debe a que no existe una expresión unívoca de lo que se denomina \textit{desenvolvimiento económico}. En primer lugar, no existe una única variable que permita reconocer dicho concepto en su integridad, sino que sólo se puede representar de forma fragmentaria en variables como el Producto Bruto Interno (PBI), el Nivel de Salarios, o la Tasa de Interés. Pero incluso si existiera una variable que nos permitiera reconocer este fenómeno en su totalidad desde el punto de vista de la medición de agregados económicos, queda pendiente aún la delimitación nacional de las mediciones. Esto último viene a cuenta de que aquello que se considera como el ciclo económico refiere a una característica fundamental de la economía, que no necesariamente se encuentra mediada por las divisiones nacionales. Es decir, es un fenómeno propio del capitalismo como sistema, y no necesariamente se reproduce de forma plena al interior de cada país. 
 
-Estas complejidades para la medición del ciclo dificultan su comprensión. El objetivo del presente trabajo es hacer uso de nuevas herramientas cuantitativas del análisis de series de tiempo, para revisar la evidencia empírica respecto de la existencia del ciclo económico. Dadas las limitaciones arriba mencionadas, se optó por utilizar series de Estados Unidos por ser un país que por su envergadura logra, a partir del siglo XX, representar, cuanto menos parcialmente, las tendencias generales de la economía. Por cuestiones metodológicas, es necesario que la información utilizada se remonte al siglo XIX, siglo en el cual no es claro que la generalidad de las características del desenvolvimiento económico se expresen al interior de este país. 
+Estas complejidades para la medición del ciclo dificultan su comprensión. El objetivo del presente trabajo es hacer uso de nuevas herramientas cuantitativas del análisis de series de tiempo, para revisar la evidencia empírica respecto de la existencia del ciclo económico. Dadas las limitaciones arriba mencionadas, se optó por utilizar series de Estados Unidos por ser un país que por su envergadura logra, a partir del siglo XX, representar, cuanto menos parcialmente, las tendencias generales de la economía. Por cuestiones metodológicas, es necesario que la información utilizada se remonte al siglo XIX, siglo en el cual no es claro que la generalidad de las características del desenvolvimiento económico se expresen al interior de este país. Es por ello que para los siglos XVIII y XIX se complementa el estudio con la serie del producto para el Reino Unido. 
 
 El trabajo se estructura de la siguiente manera: Luego de esta introducción se presenta una síntesis de los principales debates respecto al ciclo económico acaecidos durante el siglo XX. En la tercer sección se realiza un análisis exploratorio de datos, donde se observa las diferentes series utilizadas en el resto del trabajo, así como las características de la serie del precio del oro y los efectos sobre las demás, y finalmente se contrastan algunas de las series con las crisis conocidas en la historiografía económica para Estados Unidos en el siglo XX. En la cuarta sección se propone la utilización de la técnica de wavelets para modelizar el ciclo económico y se observan los resultados de aplicar esta metodología a las series del PBI y el Salario. Finalmente, en la quinta y última sección se presentan las conclusiones y futuras líneas de investigación.
 
@@ -101,6 +102,9 @@ Para el Producto Bruto Interno, para los datos desde 1929 al presente se utiliz�
 Para la serie anual del salario horario nominal de los obreros de la producción, se utilizó \citep{officer2009two}, complementado por \citep{Roesch2018}. En la actualidad esta serie se corresponde con la serie del \textit{Bureau of Labour Statistics} de Estados Unidos, con el rubro \textit{Employer Costs for Employee Compensation, Total Compensation, Manufacturing, Private Industry}.
 
 La serie anual del precio del oro en el mercado de Nueva York entre 1791 y 2017 se basa en \cite{officer2018gold}
+
+
+Para analizar el período precedente a 1900, se utilizó la serie del PBI del reino unido, expresado en oro. Para ello, se tomó la serie del PBI nominal entre 1700 y 1900 de \cite{Williamson2018uk} y el precio del oro en el mercado londinense para el período 1718-1900, y el precio oficial británico para el período 1700-1718, ambos recuperados de \cite{officer2018gold} 
 
 
 \subsection{Series originales}
@@ -161,8 +165,18 @@ De acuerdo con lo anterior, la figura \ref{fig:PBI} muestra la serie de el PBI d
 
 En primer lugar lo que se observa es la similitud de ambas series, en términos generales. Ambas muestran tres picos, durante los 20', en 1970 y el 2000, seguidos de caídas profundas. La normalización por el precio del oro permite ver un gran ciclo con tres oscilaciones, por lo menos de manera aparente, durante el siglo XX. Las crisis revisadas por la literatura de historia económica parecen tener su correlato en los movimientos observados en ambas series. Por su parte, también es interesante resaltar que el tercer movimiento ascendente, cuyo punto álgido se encuentra en el año 2000, lleva a un valor similar al del movimiento oscilatorio previo para el caso del PBI, pero no para el salario. Esto expresa que la distribución del PBI en salario y ganancia se modificó en el último período. 
 
-En las siguiente sección se utilizaran las series descriptas como insumos para una técnica provenientes del campo de procesamientos de señales, los Wavelets, que permiten destacar de forma automática las amplitudes cíclicas más importantes de la serie.
+Para complementar el análisis de la serie de Estados Unidos, resulta interesante observar el movimiento del producto en Reino Unido para los centenios precedentes. Durante los siglos XVIII y XIX este país se parapetó como el eje de la acumulación mundial. En ese sentido, en la figura \ref{fig:uk_gdp} se observa el PBI del Reino Unido, entre 1700 y el 1900. El mismo se encuentra normalizado por el precio del oro en el mercado Londinense. A su vez se destacan los años de caída del PBI en términos de capacidad de compra de oro a partir de 1800.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\linewidth]{uk_gdp.png}
+	\caption{Producto Bruto Interno Reino Unido. Millones de onzas de oro. 1700-1900} \label{fig:uk_gdp}
+\end{figure}
+
+Lo que se observa es un movimiento ascendente más suave que el visto para el siglo XX. Vale mencionar que el movimiento del producto en Reino Unido durante el siglo XX conserva una semejanza importante con lo visto para el caso de Estados Unidos. En el caso de la figura \ref{fig:uk_gdp} se observan sin embargo un movimiento cíclico en torno a los 10 años de extensión. Durante el siglo XIX se puede observar que en cada 7-11 años existe una caída del producto en términos de su capacidad de compra oro. Así como el siglo XX da cuenta de tres grandes oscilaciones, el siglo XIX marca con claridad las oscilaciones más cortas, en torno a los 10 años, mientras que el siglo XVIII en términos relativos expresa una mayor estabilidad. 
+
+
+En las siguiente sección se utilizaran las series descriptas como insumos para una técnica provenientes del campo de procesamientos de señales, los Wavelets, que permiten destacar de forma automática las amplitudes cíclicas más importantes de la serie.
 
 \section{Wavelets}
 
@@ -288,18 +302,32 @@ las figuras \ref{fig:espect_wg} muestran los espectogramas de la serie del salar
 \end{figure}
 
 
+En la figura \ref{fig:espect_uk} se muestra la serie del PBI expresado en oro para el Reino Unido entre 1700 y 1900. Al igual que en las series anteriores se expresa la serie sin transformaciones adicionales en \ref{fig:espect_uk_a} y expresada en logaritmo en \ref{fig:espect_uk_b}. A diferencia de la serie de Estados Unidos, aquí se puede observar con más claridad el ciclo corto, en torno a los 10 años. 
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure[PBI UK]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_uk.png}
+		\label{fig:espect_uk_a}}
+	\subfigure[$log(PBI UK)$]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_uk.png}
+		\label{fig:espect_uk_b}}
+	\caption{Espectograma PBI Reino Unido} \label{fig:espect_uk}
+\end{figure}
+
+A su vez, otra diferencia que destaca es que en las figuras de Reino Unido el efecto de la transformación logarítmica es mayor que en las series anteriores. La tendencia ascendente observada previamente en la figura \ref{fig:uk_gdp} pareciera tener un mayor efecto en la serie del país europeo, y la expresión de la misma en términos logarítmicos pareciera echar más luz sobre el fenómeno. De esta forma, en \ref{fig:espect_uk_b}] se puede observar una multiplicidad de ciclos que destacan como influyentes. En particular, el más corto pareciera estar en torno a los cuatro años de duración, particularmente presente al principio de la serie y en el entorno del 1800. Luego destaca el ciclo en torno a los 8 años de duración, asociado en la descripción realizada en el Análisis Exploratorio de Datos con lo que se marcaba como un ciclo de 10 años. De mayor extensión temporal se intercala un ciclo en torno a los 20 años, al principio de la serie y en el entorno del 1800, junto con un ciclo de 30-35 años en los períodos restantes. Finalmente, vuelve a registrarse un ciclo largo, en torno a los  64 años de extensión. 
+
 
 \section{Conclusiones}
 
-En el presente trabajo se realizó un recorrido por las principales aproximaciones teóricas respecto al ciclo económico, y se planteó la importancia de un análisis empírico respecto a dicho fenómeno. Para ello, se utilizaron las series de PBI y Salario de Estados Unidos entre 1790 y 2017, expresadas en oro, por los efectos distorsivos que podría generar dicha variable. 
+En el presente trabajo se realizó un recorrido por las principales aproximaciones teóricas respecto al ciclo económico, y se planteó la importancia de un análisis empírico respecto a dicho fenómeno. Para ello, se utilizaron las series de PBI y Salario de Estados Unidos entre 1790 y 2017, expresadas en oro, por los efectos distorsivos que podría generar dicha variable. También se utilizó la serie del PBI para el Reino Unido, entre 1700 y 1900
 
-En el análisis exploratorio de datos se encontró una fuerte correspondencia entre los quiebres de estas series, y las crisis conocidas por la historiografía económica, así como un movimiento oscilatorio aparente que pareciera corresponderse con las ondas largas de Kondratieff, junto con las particularidades que exhiben las distintas series según el período de tiempo considerado.
+En el análisis exploratorio de datos se encontró una fuerte correspondencia entre los quiebres de estas series, y las crisis conocidas por la historiografía económica, así como un movimiento oscilatorio aparente que pareciera corresponderse con las ondas largas de Kondratieff para el siglo XX, junto con las particularidades que exhiben las distintas series según el período de tiempo considerado. Por su parte, el siglo XIX en Reino Unido pareciera resaltar las crisis en torno a los 10 años de duración.
 
-Como se pueden observar ciclos en muchas de las variables macroeconómicas se procedió a continuar con un análisis usando transformaciones de Fourier para descubrir frecuencias bajas de gran amplitud como ciclos de largo plazo en dichas variables, pudiendo también observar series de más corto plazo en los residuos de la descomposición de las series por las ondas largas. Allí se demuestra la utilidad de esta técnica como forma de descomponer las series centradas alrededor de tendencias no cíclicas. Como punto particular para avanzar con la investigación es la continuación de la descomposición de los residuos no explicados hallados de la descomposición con ondas más cortas.
+Luego se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite definir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
 
-Luego se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite decir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
+Es interesante remarcar el siguiente punto: el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900. Es por ello que el análisis de las series estadounidenses se complementó con las series de Reino Unido para los dos siglos precedentes. 
 
-Es interesante remarcar el siguiente punto: el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900.
+Como conclusión, la utilización de esta técnica para el estudio de series históricas, ampliamente estudiadas por la bibliografía especializada, pareciera ser útil para obtener nueva información de los datos utilizados. Los resultados apuntan a la confirmación de la existencia de series de media y larga duración, si bien la regularidad empírica no es suficiente para determinar con exactitud la frecuencia de dichos ciclos. En otros términos, si bien la intuición de \cite{kuznets1930secular} y \cite{kondratieff1979long} se confirma, los resultados son menos promisorios respecto de la posibilidad de definir con precisión el fenómenos. Incluso más, la evidencia pareciera apuntar a que la frecuencia de los ciclos de media y larga duración podría variar parcialmente a lo largo de la historia. 
 
 El presente trabajo plantea sendas lineas de investigación, especialmente respecto de la utilización de la técnica Wavelets en nuevas series, tanto para series de variables financieras, como series de PBI y salario de otros países.
 
@@ -307,25 +335,25 @@ El presente trabajo plantea sendas lineas de investigación, especialmente respe
 \bibliography{bibliography.bib}
 
 
-
-
-\renewcommand{\appendixname}{Anexos}
-\renewcommand{\appendixtocname}{Anexos}
-\renewcommand{\appendixpagename}{Anexos}
-
-\appendix
-
-\section{Anexo I: Figuras complementarias}
-
-
-\begin{figure}[H]
-	\centering
-	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_ipc.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_ir.png}}
-	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_real_gdp.png}}
-	\caption{Espectogramas indice de precios, tasa de interés y PBI real per cápita}
-	\label{fig:spectogram_IPC_IR_real_GDP}
-\end{figure}
+%
+%
+%\renewcommand{\appendixname}{Anexos}
+%\renewcommand{\appendixtocname}{Anexos}
+%\renewcommand{\appendixpagename}{Anexos}
+%
+%\appendix
+%
+%\section{Anexo I: Figuras complementarias}
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_ipc.png}}
+%	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_ir.png}}
+%	\subfigure{\includegraphics[width=0.49\linewidth]{espectograma_real_gdp.png}}
+%	\caption{Espectogramas indice de precios, tasa de interés y PBI real per cápita}
+%	\label{fig:spectogram_IPC_IR_real_GDP}
+%\end{figure}
 
 
 
