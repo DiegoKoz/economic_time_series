@@ -143,8 +143,9 @@ gold %>%
   geom_vline(xintercept = 1971, color = "red")+
   geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10,size=7)+
   theme_minimal()+
-  labs(y="Dólares por onza de oro", x="Año")+
+  labs(y="Dólares por onza de oro", x="Año", title="Precios del oro por onza en el mercado de Nueva York")+
   theme(text = element_text(size = 20))
+
 
 ggsave("plots/oro.png", dpi=300, width = 10, height = 7, scale=1)
 ```
@@ -271,8 +272,10 @@ geom_rect(data= crisis_largas,
   geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
   geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
   scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+  
-  theme_minimal()
-
+  theme_minimal()+
+  labs(x="", y="PBI en oro", title="PBI Estados Unidos",
+       subtitle= "Millones de onzas de oro, 1900-2017")+
+  theme(text = element_text(size = 20))
 
 ggsave("plots/gdp_in_gold_eda.PNG", dpi = 300, width = 10,height = 6)
 ```
@@ -325,7 +328,10 @@ geom_rect(data= crisis_largas,
   geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
   geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
   scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
-  theme_minimal()
+  theme_minimal()+  
+  labs(x="", y="Salario en oro", title="Salario horario Estados Unidos",
+       subtitle="Onzas de oro, 1900-2017")+
+  theme(text = element_text(size = 20))
 
 
 ggsave("plots/wg_in_gold_eda.PNG", dpi = 300, width = 10,height = 6)
@@ -424,7 +430,8 @@ ggplot(., aes(Year, gdp_in_gold))+
   geom_line(size=1)+
   geom_text_repel(data = crisis, aes(Year, crisis,label=Year),nudge_x = 5, nudge_y = -20,force=12,size=4)+
   theme_minimal()+
-  labs(y="PBI en oro", x="Año")+
+  labs(y="PBI en oro", x="Año", title= "Producto Bruto Interno Reino Unido", 
+       subtitle="Millones de onzas de oro. 1700-1900")+
   theme(text = element_text(size = 20))
 
 
@@ -436,6 +443,10 @@ ggsave("plots/uk_gdp.png",scale = 1)
 gdp_uk %>% 
   write_csv("data/gdp_uk_gold.csv")
 ```
+
+
+
+
 
 
 
