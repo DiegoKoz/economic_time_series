@@ -1,0 +1,148 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Castro and Castro(1995)]{castro1995wavelets}
+Liliana~Raquel Castro and Silvia~Mabel Castro.
+\newblock {Wavelets y sus Aplicaciones}.
+\newblock In \emph{I Congreso Argentino de Ciencias de la Computaci{\'{o}}n},
+  1995.
+
+\bibitem[{Cleveland, William S and Grosse, E and Shyu}(1992)]{Shyu1992}
+WM~{Cleveland, William S and Grosse, E and Shyu}.
+\newblock {Local regression models}.
+\newblock In \emph{Statistical models in S, edited by John M. Chambers and
+  Trevor J. Hastie}, pages 309--376. 1992.
+
+\bibitem[Conraria and Soares(2011)]{conraria2011continuous}
+Lu{\'{i}}s~Aguiar Conraria and Maria~J Soares.
+\newblock {The continuous wavelet transform: A primer}.
+\newblock \emph{NIPE Working Paper}, 16:\penalty0 1--43, 2011.
+
+\bibitem[Hamilton(1989)]{hamilton1989new}
+James~D Hamilton.
+\newblock {A new approach to the economic analysis of nonstationary time series
+  and the business cycle}.
+\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
+  357--384, 1989.
+
+\bibitem[Harrod(1936)]{harrod1936trade}
+Roy~Forbes Harrod.
+\newblock \emph{{The trade cycle}}.
+\newblock Clarendon Press, 1936.
+
+\bibitem[Hayek(1933)]{hayek1933}
+Friedrich Hayek.
+\newblock \emph{{Monetary Theory and the Trade Cyle}}.
+\newblock 1933.
+
+\bibitem[Kaiser and Maravall(2012)]{kaiser2012measuring}
+Regina Kaiser and Agust{\'{i}}n Maravall.
+\newblock \emph{{Measuring business cycles in economic time series}}, volume
+  154.
+\newblock Springer Science {\&} Business Media, 2012.
+
+\bibitem[Kaldor(1940)]{kaldor1940model}
+Nicholas Kaldor.
+\newblock {A model of the trade cycle}.
+\newblock \emph{The Economic Journal}, pages 78--92, 1940.
+
+\bibitem[Kalecki(2013)]{kalecki2013essays}
+Michal Kalecki.
+\newblock \emph{{Essays in the theory of economic fluctuations}}.
+\newblock Routledge, 2013.
+
+\bibitem[Keynes(2018)]{keynes2018general}
+John~Maynard Keynes.
+\newblock \emph{{The general theory of employment, interest, and money}}.
+\newblock Springer, 2018.
+
+\bibitem[Kondratieff(1935)]{kondratieff1979long}
+Nikolai~D Kondratieff.
+\newblock {The long waves in economic life}.
+\newblock \emph{The Review of Economics and Statistics}, 17\penalty0
+  (6):\penalty0 105--115, 1935.
+\newblock URL \url{http://www.jstor.org/stable/1928486}.
+
+\bibitem[Kuznets(1930)]{kuznets1930secular}
+Simon~S Kuznets.
+\newblock \emph{{Secular movement in production and prices: Their nature and
+  their bearing upon cyclical fluctuations}}.
+\newblock Houghton Mifflin and company, Boston, 1930.
+
+\bibitem[Kydland and Prescott(1982)]{kydland1982time}
+Finn~E Kydland and Edward~C Prescott.
+\newblock {Time to build and aggregate fluctuations}.
+\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
+  1345--1370, 1982.
+
+\bibitem[{Lawrence H.} and {Samuel H.}(2018)]{officer2018gold}
+Officer {Lawrence H.} and Williamson {Samuel H.}
+\newblock {The Price of Gold, 1257- Present}.
+\newblock \emph{MeasuringWorth}, 2018.
+
+\bibitem[Louis and {Samuel H.}(2018)]{johnston2018us}
+Johnston Louis and Williamson {Samuel H.}
+\newblock {What was the US GDP then?}
+\newblock \emph{MeasuringWorth}, 2018.
+
+\bibitem[{Lucas Jr}(1975)]{lucas1975equilibrium}
+Robert~E {Lucas Jr}.
+\newblock {An equilibrium model of the business cycle}.
+\newblock \emph{Journal of political economy}, 83\penalty0 (6):\penalty0
+  1113--1144, 1975.
+
+\bibitem[Officer(2009)]{officer2009two}
+Lawrence Officer.
+\newblock \emph{{Two centuries of compensation for US production workers in
+  manufacturing}}.
+\newblock Springer, 2009.
+
+\bibitem[Plosser(1989)]{plosser1989understanding}
+Charles~I Plosser.
+\newblock {Understanding real business cycles}.
+\newblock \emph{Journal of Economic Perspectives}, 3\penalty0 (3):\penalty0
+  51--77, 1989.
+
+\bibitem[Roesch and Schmidbauer(2018)]{Roesch2018}
+Angi Roesch and Harald Schmidbauer.
+\newblock \emph{{WaveletComp: Computational Wavelet Analysis}}, 2018.
+\newblock URL \url{https://cran.r-project.org/package=WaveletComp}.
+
+\bibitem[Ryland and Williamson(2018)]{Williamson2018uk}
+Thomas Ryland and Samuel~H Williamson.
+\newblock {What Was the U.K. GDP Then?}
+\newblock \emph{MeasuringWorth}, 2018.
+
+\bibitem[Samuelson(1939)]{samuelson1939synthesis}
+Paul~A Samuelson.
+\newblock {A Synthesis of the Principle of Acceleration and the Multiplier}.
+\newblock \emph{Journal of Political Economy}, 47\penalty0 (6):\penalty0
+  786--797, 1939.
+
+\bibitem[Schumpeter(1939)]{schumpeter1939business}
+Joseph~Alois Schumpeter.
+\newblock \emph{{Business cycles}}, volume~1.
+\newblock McGraw-Hill New York, 1939.
+
+\bibitem[Soares and Others(2011)]{soares2011business}
+Maria~Joana Soares and Others.
+\newblock {Business cycle synchronization and the Euro: A wavelet analysis}.
+\newblock \emph{Journal of Macroeconomics}, 33\penalty0 (3):\penalty0 477--489,
+  2011.
+
+\bibitem[von Mises(1943)]{von1943elastic}
+Ludwig von Mises.
+\newblock {" Elastic Expectations" and the Austrian Theory of the Trade Cycle}.
+\newblock \emph{Economica}, 10\penalty0 (39):\penalty0 251--252, 1943.
+
+\bibitem[Yogo(2008)]{yogo2008measuring}
+Motohiro Yogo.
+\newblock {Measuring business cycles: A wavelet analysis of economic time
+  series}.
+\newblock \emph{Economics Letters}, 100\penalty0 (2):\penalty0 208--212, 2008.
+
+\end{thebibliography}
