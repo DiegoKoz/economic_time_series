@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.26)  26 DEC 2018 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.26)  27 DEC 2018 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -768,883 +768,314 @@ LaTeX Info: Redefining \% on input line 82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-)
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 88.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 88.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 88.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 88.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 88.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 88.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 91.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 91.
- [1
+) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 103.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 103.
- [2]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 111.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 111.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 111.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 111.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 111.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 111.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 114.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 114.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 114.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 114.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 114.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 114.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 119.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 119.
- [3]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 127.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 127.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 127.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 127.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 127.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 127.
-<../plots/oro.png, id=127, 722.7pt x 505.89pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+<../plots/oro.png, id=126, 722.7pt x 505.89pt>
 File: ../plots/oro.png Graphic file (type png)
 <use ../plots/oro.png>
-Package pdftex.def Info: ../plots/oro.png  used on input line 133.
+Package pdftex.def Info: ../plots/oro.png  used on input line 135.
 (pdftex.def)             Requested size: 258.75pt x 181.12447pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 136.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 136.
- [4]
-<../plots/gdp_in_gold_eda.PNG, id=143, 722.7pt x 433.62pt>
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.140 
+       <../plots/oro.png (PNG copy)>]
+
+LaTeX Warning: Reference `fig:salary' on page 5 undefined on input line 144.
+
+<../plots/gdp_in_gold_eda.PNG, id=138, 722.7pt x 433.62pt>
 File: ../plots/gdp_in_gold_eda.PNG Graphic file (type png)
 <use ../plots/gdp_in_gold_eda.PNG>
-Package pdftex.def Info: ../plots/gdp_in_gold_eda.PNG  used on input line 151.
+Package pdftex.def Info: ../plots/gdp_in_gold_eda.PNG  used on input line 152.
 (pdftex.def)             Requested size: 258.75pt x 155.24954pt.
-<../plots/wg_in_gold_eda.PNG, id=144, 722.7pt x 433.62pt>
+<../plots/wg_in_gold_eda.PNG, id=139, 722.7pt x 433.62pt>
 File: ../plots/wg_in_gold_eda.PNG Graphic file (type png)
 <use ../plots/wg_in_gold_eda.PNG>
-Package pdftex.def Info: ../plots/wg_in_gold_eda.PNG  used on input line 153.
+Package pdftex.def Info: ../plots/wg_in_gold_eda.PNG  used on input line 154.
 (pdftex.def)             Requested size: 258.75pt x 155.24954pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 156.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 156.
- [5pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.156 
-       <../plots/oro.png (PNG copy)>]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 184.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 184.
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.184 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.1
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.184 
-       <../plots/gdp_in_gold_eda.PNG (PNG copy)> <../plots/wg_in_gold_eda.PNG (
-PNG copy)>]
-<../plots/uk_gdp.png, id=159, 526.8483pt x 325.215pt>
-File: ../plots/uk_gdp.png Graphic file (type png)
-<use ../plots/uk_gdp.png>
-Package pdftex.def Info: ../plots/uk_gdp.png  used on input line 189.
-(pdftex.def)             Requested size: 258.75pt x 159.719pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 198.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 198.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 198.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 198.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 198.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 198.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 201.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 201.
- [7pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.201 
-       <../plots/uk_gdp.png>]
-<../plots/ciclo.png, id=169, 526.8483pt x 325.215pt>
-File: ../plots/ciclo.png Graphic file (type png)
-<use ../plots/ciclo.png>
-Package pdftex.def Info: ../plots/ciclo.png  used on input line 204.
-(pdftex.def)             Requested size: 224.2479pt x 138.42545pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
-
- []
-
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 222.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 222.
-[8pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) 
+[5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
 has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.222 $$
-         <../plots/ciclo.png (PNG copy)>]
+l.185 
+       <../plots/gdp_in_gold_eda.PNG (PNG copy)> <../plots/wg_in_gold_eda.PNG (
+PNG copy)>]
+<../plots/uk_gdp.png, id=149, 526.8483pt x 325.215pt>
+File: ../plots/uk_gdp.png Graphic file (type png)
+<use ../plots/uk_gdp.png>
+Package pdftex.def Info: ../plots/uk_gdp.png  used on input line 190.
+(pdftex.def)             Requested size: 258.75pt x 159.719pt.
+ [6pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.197 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.197 
+       <../plots/uk_gdp.png>]
+<../plots/ciclo.png, id=158, 526.8483pt x 325.215pt>
+File: ../plots/ciclo.png Graphic file (type png)
+<use ../plots/ciclo.png>
+Package pdftex.def Info: ../plots/ciclo.png  used on input line 206.
+(pdftex.def)             Requested size: 224.2479pt x 138.42545pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
+ []
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) 
+has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.213 
+       <../plots/ciclo.png (PNG copy)>] [8]
 <../plots/morelt.png, id=189, 526.8483pt x 325.215pt>
 File: ../plots/morelt.png Graphic file (type png)
 <use ../plots/morelt.png>
-Package pdftex.def Info: ../plots/morelt.png  used on input line 244.
+Package pdftex.def Info: ../plots/morelt.png  used on input line 246.
 (pdftex.def)             Requested size: 345.0pt x 212.96031pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 247.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 247.
- [9]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 266.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
+ has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.263 	\item \textbf
+                    {ruido}: Ruido generado a partir de una distribución no...
+ <../plots/morelt.png (PNG copy)>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 268.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 274.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 274.
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.5}
-) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.274 serie_
-            compuesta = impulso + tendencia + corto + medio + largo + ruido <..
-/plots/morelt.png (PNG copy)>]
-Overfull \hbox (46.13828pt too wide) in paragraph at lines 274--275
+Overfull \hbox (46.13828pt too wide) in paragraph at lines 276--277
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<../plots/serie_teorica.PNG, id=213, 526.8483pt x 325.215pt>
+<../plots/serie_teorica.PNG, id=198, 526.8483pt x 325.215pt>
 File: ../plots/serie_teorica.PNG Graphic file (type png)
 <use ../plots/serie_teorica.PNG>
-Package pdftex.def Info: ../plots/serie_teorica.PNG  used on input line 280.
+Package pdftex.def Info: ../plots/serie_teorica.PNG  used on input line 282.
 (pdftex.def)             Requested size: 345.0pt x 212.96031pt.
-<../plots/espectograma_teorico_impulso.png, id=215, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_impulso.png, id=200, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_impulso.png Graphic file (type png)
 <use ../plots/espectograma_teorico_impulso.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_impulso.png  used on inp
-ut line 288.
+ut line 290.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_tendencia.png, id=216, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_tendencia.png, id=201, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_tendencia.png Graphic file (type png)
 <use ../plots/espectograma_teorico_tendencia.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_tendencia.png  used on i
-nput line 290.
+nput line 292.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_3.png, id=217, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ciclo_3.png, id=202, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_3.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_3.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_3.png  used on inp
-ut line 292.
+ut line 294.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_10.png, id=218, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ciclo_10.png, id=203, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_10.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_10.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_10.png  used on in
-put line 294.
+put line 296.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_50.png, id=219, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ciclo_50.png, id=204, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_50.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_50.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_50.png  used on in
-put line 296.
+put line 298.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ruido.png, id=220, 1606.0pt x 1003.75pt>
+<../plots/espectograma_teorico_ruido.png, id=205, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ruido.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ruido.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ruido.png  used on input
- line 298.
+ line 300.
 (pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_composicion_series.png, id=221, 1606.0pt x 1003.
+<../plots/espectograma_teorico_composicion_series.png, id=206, 1606.0pt x 1003.
 75pt>
 File: ../plots/espectograma_teorico_composicion_series.png Graphic file (type p
 ng)
 <use ../plots/espectograma_teorico_composicion_series.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_composicion_series.png  
-used on input line 300.
+used on input line 302.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 303.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 303.
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+[10pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.303 
-       <../plots/serie_teorica.PNG>]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 305.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 305.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
-) has been already used, duplicate ignored
+l.305 
+       <../plots/serie_teorica.PNG>] [11pdfTeX warning (ext4): destination with
+ the same identifier (name{figure.7}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.305 
+l.307 
        <../plots/espectograma_teorico_impulso.png (PNG copy)> <../plots/especto
 grama_teorico_tendencia.png (PNG copy)> <../plots/espectograma_teorico_ciclo_3.
 png (PNG copy)> <../plots/espectograma_teorico_ciclo_10.png (PNG copy)> <../plo
 ts/espectograma_teorico_ciclo_50.png (PNG copy)> <../plots/espectograma_teorico
 _ruido.png (PNG copy)> <../plots/espectograma_teorico_composicion_series.png (P
 NG copy)>]
-<../plots/espectograma_gdp.png, id=253, 1606.0pt x 1003.75pt>
+<../plots/espectograma_gdp.png, id=244, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp.png Graphic file (type png)
 <use ../plots/espectograma_gdp.png>
-Package pdftex.def Info: ../plots/espectograma_gdp.png  used on input line 319.
+Package pdftex.def Info: ../plots/espectograma_gdp.png  used on input line 321.
 
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_gdp.png, id=254, 1606.0pt x 1003.75pt>
+<../plots/espectograma_log_gdp.png, id=245, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_gdp.png Graphic file (type png)
 <use ../plots/espectograma_log_gdp.png>
 Package pdftex.def Info: ../plots/espectograma_log_gdp.png  used on input line 
-321.
+323.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 324.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 324.
- [13]
-<../plots/espectograma_wg.png, id=266, 1606.0pt x 1003.75pt>
+ [12]
+<../plots/espectograma_wg.png, id=256, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_wg.png Graphic file (type png)
 <use ../plots/espectograma_wg.png>
-Package pdftex.def Info: ../plots/espectograma_wg.png  used on input line 330.
+Package pdftex.def Info: ../plots/espectograma_wg.png  used on input line 332.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_wg.png, id=267, 1606.0pt x 1003.75pt>
+<../plots/espectograma_log_wg.png, id=257, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_wg.png Graphic file (type png)
 <use ../plots/espectograma_log_wg.png>
 Package pdftex.def Info: ../plots/espectograma_log_wg.png  used on input line 3
-32.
+34.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 335.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 335.
- [14pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
 ) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.335 
+l.337 
        <../plots/espectograma_gdp.png (PNG copy)> <../plots/espectograma_log_gd
 p.png (PNG copy)>]
-<../plots/espectograma_gdp_uk.png, id=281, 1606.0pt x 1003.75pt>
+<../plots/espectograma_gdp_uk.png, id=272, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_uk.png Graphic file (type png)
 <use ../plots/espectograma_gdp_uk.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_uk.png  used on input line 3
-43.
+45.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_gdp_uk.png, id=282, 1606.0pt x 1003.75pt>
+<../plots/espectograma_log_gdp_uk.png, id=273, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_gdp_uk.png Graphic file (type png)
 <use ../plots/espectograma_log_gdp_uk.png>
 Package pdftex.def Info: ../plots/espectograma_log_gdp_uk.png  used on input li
-ne 345.
+ne 347.
 (pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 348.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 348.
- [15pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
+ [14pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
 ) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.348 
+l.350 
        <../plots/espectograma_wg.png (PNG copy)> <../plots/espectograma_log_wg.
-png (PNG copy)>]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 354.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 354.
- [16pdfTeX warning (ext4): destination with the same identifier (name{figure.10
-}) has been already used, duplicate ignored
+png (PNG copy)>] [15pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.10}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.354 
-       <../plots/espectograma_gdp_uk.png (PNG copy)> <../plots/espectograma_log
-_gdp_uk.png (PNG copy)>]
-<../plots/pbi_uk_tendencias.png, id=305, 526.8483pt x 325.215pt>
+l.355 E
+       n efecto, en la figura \ref{fig:espectograma_gdp_uk_Tend} se observa ...
+ <../plots/espectograma_gdp_uk.png (PNG copy)> <../plots/espectograma_log_gdp_u
+k.png (PNG copy)>]
+<../plots/pbi_uk_tendencias.png, id=296, 526.8483pt x 325.215pt>
 File: ../plots/pbi_uk_tendencias.png Graphic file (type png)
 <use ../plots/pbi_uk_tendencias.png>
-Package pdftex.def Info: ../plots/pbi_uk_tendencias.png  used on input line 358
+Package pdftex.def Info: ../plots/pbi_uk_tendencias.png  used on input line 360
 .
 (pdftex.def)             Requested size: 258.75pt x 159.719pt.
-<../plots/espectograma_gdp_uk_Tend.png, id=306, 1606.0pt x 1003.75pt>
+<../plots/espectograma_gdp_uk_Tend.png, id=297, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_uk_Tend.png Graphic file (type png)
 <use ../plots/espectograma_gdp_uk_Tend.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_uk_Tend.png  used on input l
-ine 360.
+ine 362.
 (pdftex.def)             Requested size: 165.59853pt x 103.49002pt.
-<../plots/espectograma_gdp_uk_sinTend.png, id=307, 1606.0pt x 1003.75pt>
+<../plots/espectograma_gdp_uk_sinTend.png, id=298, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_uk_sinTend.png Graphic file (type png)
 <use ../plots/espectograma_gdp_uk_sinTend.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_uk_sinTend.png  used on inpu
-t line 362.
+t line 364.
 (pdftex.def)             Requested size: 165.59853pt x 103.49002pt.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 371.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 371.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 371.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 371.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 371.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 371.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 376.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 376.
- [17pdfTeX warning (ext4): destination with the same identifier (name{figure.11
+ [16pdfTeX warning (ext4): destination with the same identifier (name{figure.11
 }) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.376 
+l.378 
        <../plots/pbi_uk_tendencias.png (PNG copy)> <../plots/espectograma_gdp_u
 k_Tend.png (PNG copy)> <../plots/espectograma_gdp_uk_sinTend.png (PNG copy)>]
-(./series_ciclo_eng.bbl
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 19.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 19.
- [18]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 126.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 126.
- [19])
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 390.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 390.
- [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 390.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 390.
+(./series_ciclo_eng.bbl [17]
+Underfull \hbox (badness 1910) in paragraph at lines 111--114
+[]\T1/cmr/m/n/10 Angi Roesch and Har-ald Schmid-bauer.  \T1/cmr/m/it/10 Wavelet
+-Comp: Com-pu-ta-tional
+ []
+
+[18]) [19]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 392.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
  (./series_ciclo_eng.aux
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
 LaTeX Info: Redefining \. on input line 28.
 LaTeX Info: Redefining \% on input line 28.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 390.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 390.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 392.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 392.
+Package rerunfilecheck Info: File `series_ciclo_eng.out' has not changed.
+(rerunfilecheck)             Checksum: E58E3C54FC2CA9A3E997080638B8D0A8;397.
 
 
-Package rerunfilecheck Warning: File `series_ciclo_eng.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: Checksums for `series_ciclo_eng.out':
-(rerunfilecheck)             Before: 19DC2D493DC4DEC4A14519B4A8CE522E;421
-(rerunfilecheck)             After:  FC1156DB1D5501B9FB6A84AEB2147924;418.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 390.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 392.
  ) 
 Here is how much of TeX's memory you used:
- 21630 strings out of 494524
- 377174 string characters out of 6175863
- 587648 words of memory out of 5000000
- 24774 multiletter control sequences out of 15000+600000
- 21229 words of font info for 50 fonts, out of 8000000 for 9000
+ 21610 strings out of 494524
+ 376869 string characters out of 6175863
+ 588648 words of memory out of 5000000
+ 24757 multiletter control sequences out of 15000+600000
+ 19695 words of font info for 48 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 62i,8n,72p,1351b,2508s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600
-pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.60
-0pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.6
-00pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.
-600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200
-.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti100
-0.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx14
-40.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1
-000.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
-1000.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ect
-i0900.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
-rm0600.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm0800.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm1200.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec
-/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy7.pfb>
-Output written on series_ciclo_eng.pdf (20 pages, 2938237 bytes).
+ 62i,8n,72p,1351b,1744s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600
+pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.60
+0pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.6
+00pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.
+600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440
+.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm100
+0.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx10
+00.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0
+900.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+0600.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecr
+m0800.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
+rm1200.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+crm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy7.pfb>
+Output written on series_ciclo_eng.pdf (19 pages, 2934933 bytes).
 PDF statistics:
- 814 PDF objects out of 1000 (max. 8388607)
- 381 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
+ 790 PDF objects out of 1000 (max. 8388607)
+ 366 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
  184 words of extra memory for PDF output out of 10000 (max. 10000000)
 

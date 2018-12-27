@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.26)  26 DEC 2018 18:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.26)  27 DEC 2018 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1025,12 +1025,12 @@ Package rerunfilecheck Info: File `series_ciclo.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 370.
  ) 
 Here is how much of TeX's memory you used:
- 21038 strings out of 494586
- 369554 string characters out of 6177801
- 481561 words of memory out of 5000000
- 24181 multiletter control sequences out of 15000+600000
+ 21038 strings out of 494524
+ 369554 string characters out of 6175863
+ 481701 words of memory out of 5000000
+ 24189 multiletter control sequences out of 15000+600000
  20471 words of font info for 49 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 40 hyphenation exceptions out of 8191
  62i,8n,72p,1374b,2493s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600
 pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.60
@@ -1058,7 +1058,7 @@ e1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy7.pfb>
-Output written on series_ciclo.pdf (19 pages, 2950269 bytes).
+Output written on series_ciclo.pdf (19 pages, 2950266 bytes).
 PDF statistics:
  857 PDF objects out of 1000 (max. 8388607)
  377 compressed objects within 4 object streams
