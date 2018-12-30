@@ -109,7 +109,7 @@ Finally, there is the neoclassical theory of the cycle, which emerges from Lucas
 
 From the point of view of the empirical analysis, there are multiple authors who have found evidence, either through the detailed study of different series \citep{kuznets1930secular, kondratieff1979long, schumpeter1939business}; or using autoregressive models, of moving averages and ARIMA \citep {hamilton1989new, kaiser2012measuring}; or more recently by using wavelets \citep {yogo2008measuring, soares2011business}. Notwithstanding the latter, the use of new empirical techniques for cycle analysis remains a fertile ground for research.
 
-\section{Exploratory Data Analysis}
+\section{Exploratory Data Analysis}\label{EDA}
 
 In the present section we will carry out a brief exploratory analysis of data to observe the general characteristics of the series.
 
@@ -199,83 +199,90 @@ In the following section, the described series will be used as inputs for a tech
 
 \section{Wavelets}
 
-Si bien en la econometría es extendido el uso de modelos autoregresivos y de medias móviles para el análisis de series de tiempo, existe en la literatura de análisis de señales otras técnicas de amplia difusión que aún no son de uso generalizado en el estudio de series económicas. Un ejemplo clásico en este sentido son las series de Fourier. En este campo de estudio se analiza como cualquier serie de tiempo se puede pensar como una composición de funciones periódicas, es decir como la suma de senos y cosenos. De esta forma, se construye un espacio de \textit{frecuencia} ($1/periodo$) donde se definen las funciones periódicas en función de su frecuencia (o extensión en el tiempo, movimiento horizontal) y amplitud (movimiento vertical). En la figura \ref{fig:ciclo} se puede observar estas definiciones.
+Although in econometrics the use of autoregressive models and moving averages for the analysis of time series is extended, there are other widely disseminated techniques in the literature of signal analysis that are not yet extensively used in the study of economic series. A classic example in this sense are the Fourier series. This technique analyze how any time series can be thought of as a composition of periodic functions, that is, as the sum of sines and cosines. In this way, a space of \textit{frequency} ($1/period$) is constructed where the periodic functions are defined according to their frequency (or extension in time, horizontal movement) and amplitude (vertical movement). Figure \ref{fig:ciclo} exemplify these definitions.
+
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.65\linewidth]{ciclo.png}
-	\caption{período y amplitud} \label{fig:ciclo}
+	\caption{period and amplitude} \label{fig:ciclo}
 \end{figure}
 
-La descomposición de Fourier se basa en una transformación del dominio de la serie, desde el dominio del tiempo, al dominio de la frecuencia.\\
+The Fourier decomposition is based on a transformation of domain of series, from the time domain, to the frequency domain.
+\\
 
-Las wavelets también son un tipo de transformación sobre la serie original que puede pensarse como una rotación de un espacio de funciones a un dominio diferente. Pero a diferencia de la transformada de fourier que tiene como base de funciones los senos y cosenos, la transformada Wavelet tiene como base de funciones una tipo particular, denominadas Wavelets \cite{castro1995wavelets}. Una base de este tipo se construye a partir de una función madre, que es una onda corta, de duración finita. Es decir, a diferencia de las funciones seno y coseno que se extienden infinitamente, los wavelets tienen \textit{soporte compacto}, es decir que utilizan como base funciones que no se extienden infinitamente en el dominio del tiempo. Otra característica de las funciones wavelet es que el área debajo de la curva debe ser igual a cero, es decir que esta centrada en cero. Esta función madre se traslada y dilata para construir una base ortonormal. 
+Wavelets are also a type of transformation on the original series that can be thought of as a rotation of a space of functions to a different domain. But unlike the Fourier transform that has sines and cosines as the basis of functions, the Wavelet transform has a particular type of base function, called \textit{Wavelets} \cite{castro1995wavelets}. A base of this type is constructed from a mother function, which is a short wave, of finite duration. That is to say, unlike the sine and cosine functions that extend infinitely across the domain, the wavelets have \textit{compact support}, this means that they use as a base functions that do not extend infinitely in the time domain. Another characteristic of wavelet functions is that the area under the curve must be zero, they are centered at zero. This mother function moves and dilates to build an orthonormal basis.
 
-Mientras que una transformación de Fourier de una serie desde el dominio del tiempo hacia el dominio de la \textit{frecuencia} toma la forma de:
+Whereas a Fourier transformation of a series from the time domain to the domain of the \textit{frequency} takes the form of:
 
 $$
 X(F)=\int_{-\infty}^{\infty} x(t) e^{-j2\pi Ft}dt
 $$
 
-La transformada wavelet lleva del dominio del tiempo al dominio de \textit{escala} y \textit{traslación}:
+The wavelet transform goes from the domain of time to the domain of \textit{scale} and \textit{translation}:
 
 $$
 X(a,b)=\int_{-\infty}^{\infty} x(t) \psi^*_{a,b}(t)dt
 $$
 
-La escala describe la frecuencia (inversa de la extensión o período) del ciclo, mientras que la traslación describe el movimiento a lo largo de la serie. Dado que las series de baja frecuencia (ciclos más largos) ocupan una porción mayor de la serie, son más difíciles de ubicar en un momento particular del tiempo. Por esto último, la resolución en bajas frecuencias es mala en el dominio del tiempo, pero buena en el dominio de la frecuencia, mientras que los ciclos de alta frecuencia tienen alta resolución en el dominio del tiempo, pero menos resolución en el dominio de la frecuencia.Si lo comparamos con las transformadas de fourier, podríamos pensar que ésta tiene muy alta resolución en el dominio de la frecuencia, pero ninguna resolución en el dominio del tiempo. El wavelet logra definir la presencia de una determinada frecuencia en un determinado momento del tiempo.
- 
+The scale describes the frequency (inverse of the extension or period) of the cycle, while the translation describes the movement along the series. Since low-frequency series (longer cycles) occupy a larger portion of the series, they are harder to locate at a particular moment in time. For the above, the resolution in low frequencies is bad in the time domain, but good in the frequency domain, while the high frequency cycles have high resolution in the time domain, but less resolution in the domain frequency domain. If we compare it with the Fourier transforms, we might think that it has very high resolution in the frequency domain, but no resolution in the time domain. The wavelet manages to define the presence of a certain frequency in a certain moment of time.
 
-También es posible entender a los Wavelets como un análisis de la correlación entre una serie de tiempo, y una cierta función ondulatoria compacta, en un momento del tiempo y una frecuencia determinada. Las traslaciones lo que generan es un corrimiento de la función ondulatoria, y por lo tanto podemos calcular la correlación para todo el rango temporal. El reescalado modifica la frecuencia de la función ondulatoria, lo que permite calcular la correlación para varias frecuencias de onda diferentes. La cantidad de datos disponibles es la que define la capacidad de reescalar la función base, es decir, cuan bajas son las frecuencias mínimas que se puede analizar. Finalmente lo que obtenemos es un valor de la asociación lineal entre la serie original y la función base, para cada valor del tiempo y la frecuencia.  
+It is also possible to understand wavelets as a correlation  analysis between a time series, and some compact wave function at one point of time and a certain frequency. The translations generate a shift of the wave function, and therefore we can calculate the correlation for the entire time range. Rescaling modifies the frequency of the wave function, which allows to calculate the correlation for several different wave frequencies. The amount of available data is what defines the ability to rescale the base function. That is, how low are the minimum frequencies that can be analyzed. Finally, what we obtain is a value of the linear association between the original series and the base function, for each value of time and frequency.
 
-La función base que utilizamos para el presente trabajo es la denominada \textit{Morlet Wavelet}, que tal como se implementa en la librería WaveletComp \citep{Roesch2018} tiene la siguiente forma funcional:
+The base function we use for the present work is called \textit{Morlet Wavelet}, which as implemented in the WaveletComp \citep{Roesch2018} library has the following functional form:
+
 $$
 \psi(t)=\pi^{-\frac{1}{4}}e^{i\omega t}e^{\frac{-t^2}{2}}
 $$
 
-Donde $\omega$ es la frecuencia angular (tasa de rotación en radianes por unidad de tiempo). Esta es una función continua, compleja, frecuentemente utilizada en la literatura \citep{conraria2011continuous}. Por su parte, las base a partir de la traslación, $a$, y el escalado, $b$, implementada es:
+
+Where $\omega$ is the angular frequency (rotation rate in radians per unit of time). This is a continuous, complex function, frequently used in the literature \citep{conraria2011continuous}. The base from the translation, $a$, and the scaling, $b$, implemented is:
 
 $$
 X(a,b)=\sum_{t} x(t)   \frac{1}{b} \psi^*\left(\frac{t-a}{b}\right)dt
 $$
 
-Visualmente, las traslaciones y reescalados de la función base se pueden observar en la figura \ref{fig:morlet}. Allí se aprecia que las traslaciones se definen en el dominio del tiempo, mientras que los reescalados lo hacen en el dominio de la frecuencia. Luego, si se reconstruye el plano tiempo-frecuencia y se calcula la correlación de cada punto del dicho plano con la serie original, se obtiene una nueva dimensión que representa el grado de ajuste de nuestra serie a cada frecuencia, para los distintos momentos del tiempo. 
+Visually, the translations and rescaling of the base function can be seen in the figure \ref{fig:morlet}. There is seen that the translations are defined in the time domain, while rescaled do in the frequency domain. If the time-frequency plane is reconstructed and the correlation of each point with the original series is calculated, a new dimension is obtained that represents the degree of adjustment of our series at each frequency, for the different moments of time.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{morelt.png}
-	\caption{Traslaciones y reescalados de la función base Morlet} \label{fig:morlet}
+	\caption{Translation and rescaling of the Morlet base function} \label{fig:morlet}
 \end{figure}
 
+Finally, the results can be displayed on a \textit{spectrogram}, ie, it can be seen for each frequency at each moment of time, the degree of correlation of the original series with Morlett function.
 
-Finalmente, los resultados los podemos visualizar en un \textit{espectograma}, es decir, podemos ver para cada frecuencia, en cada momento del tiempo, el grado de correlación de la serie original con la función morlett en dicho punto.
 
+To visualize the wavelets in the analysis of the economic cycle it is useful to define a theoretical model of a cyclical economy, with the different components seen separately and in their composition. This way we can observe the characteristics of the spectrogram in this model and then compare it with the real data.
 
-Para visualizar las wavelets en el análisis del ciclo económico es útil definir un modelo teórico de una economía cíclica, con los diferentes componentes vistos por separado y en su composición, para observar las características del espectograma en este modelo,  y luego compararlo con los datos reales. 
-En la figura \ref{fig:serie_teorica} se observan 100 valores de los distintos componentes con los que construiremos la serie, los mismos son:
+In the figure \ref{fig:serie_teorica} 100 values of the different components with which we will build the series are observed, they are:
+
 
 \begin{itemize}
-	\item \textbf{impulso}: Una serie con un valor constante de 50, que en período en particular tomar el valor 100.
-	\item \textbf{Tendencia}: Crece medio punto por período.
-	\item \textbf{ciclo corto}: Un ciclo de amplitud y extensión pequeña
-	\item \textbf{ciclo medio}: Un ciclo de amplitud y extensión media
-	\item \textbf{ciclo largo}: Un ciclo de amplitud y extensión grande
-	\item \textbf{ruido}: Ruido generado a partir de una distribución normal, poco significativo respecto a la amplitud de los ciclos y la pendiente de la tendencia.
+	
+	\item \textbf{impulse}: A series with a constant value of 50 in which a particular period takes the value 100.
+	\item \textbf{Trend}: Grows half a point per period.
+	\item \textbf{short cycle}: A cycle of small amplitude and extension
+	\item \textbf{middle cycle}: A cycle of medium amplitude and extension
+	\item \textbf{long cycle}: A cycle of large amplitude and extension
+	\item \textbf{noise}: Noise generated from a normal distribution, not significant with respect to the amplitude of the cycles and the slope of the trend.
 \end{itemize}
 
-En código R, los elementos de la serie teórica se pueden expresar de la siguiente manera:
+the R code which generates those series is as follows:
 
 \begin{lstlisting}
 n = 1000
-impulso= c(rep(50,(n/2-1)),100,rep(50,n/2))
-tendencia = c(1:n)/2
-corto = 10 * sin(( 2 * pi/3 ) * c(1:n))
-medio = 20 * sin(( 2 * pi/10) * c(1:n))
-largo = 30 * sin(( 2 * pi/50) * c(1:n))
-ruido <- rnorm(n)
-serie_compuesta = impulso + tendencia + corto + medio + largo + ruido
+impulse= c(rep(50,(n/2-1)),100,rep(50,n/2))
+trend = c(1:n)/2
+short = 10 * sin(( 2 * pi/3 ) * c(1:n))
+middle = 20 * sin(( 2 * pi/10) * c(1:n))
+long = 30 * sin(( 2 * pi/50) * c(1:n))
+noise <- rnorm(n)
+composite_series = impulse + trend + short + middle + long + noise
 \end{lstlisting}
 
+
+\todo[color=green!40,fancyline]{cambiar los titulos de los graficos}
 
 \begin{figure}[H]
 	\centering
@@ -283,77 +290,82 @@ serie_compuesta = impulso + tendencia + corto + medio + largo + ruido
 	\caption{} \label{fig:serie_teorica}
 \end{figure}
 
-En la figura \ref{fig:espect_teo} se observa el espectograma de cada uno de los elementos mencionados. Dicho gráfico muestra en el eje vertical el período, la inversa de la frecuencia de onda, que corresponde a la distancia entre los valles o picos de un ciclo. La escala cromática (de los azules para los valores más bajos a los rojos en los valores más altos) representa la amplitud del ciclo. el eje horizontal representa el tiempo calendario. Es decir, para cada tiempo calendario podemos observar la amplitud del ciclo en cada una de las posibles frecuencias de onda. 
+In the figure \ref{fig: espect_teo} the spectogram of each one of the mentioned elements is observed. This plots shows on the vertical axis the period, the inverse of the wave frequency, which corresponds to the distance between the valleys or peaks of a cycle. The color scale (Blue for the lowest values to red in the highest values) represents the amplitude of the cycle. the horizontal axis represents the calendar time. That is, for each calendar time we can observe the amplitude of the cycle in each of the possible wave frequencies.
+
 
 \begin{figure}[H]
 	\centering
-	\subfigure[impulso]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_impulso.png}}
+	\subfigure[impulse]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_impulso.png}}
 	    \vspace{0.00mm}
-	\subfigure[tendencia]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_tendencia.png}}
+	\subfigure[trend]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_tendencia.png}}
 	    \vspace{0.00mm}
-	\subfigure[ciclo de 3 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_3.png}}
+	\subfigure[3 year cycle]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_3.png}}
 	    \vspace{0.00mm}
-	\subfigure[ciclo de 10 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_10.png}}
+	\subfigure[10 year cycle]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_10.png}}
 	    \vspace{0.00mm}
-	\subfigure[ciclo de 50 años]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_50.png}}
+	\subfigure[50 year cycle]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ciclo_50.png}}
 	    \vspace{0.00mm}
-	\subfigure[ruido normal]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ruido.png}}
+	\subfigure[normal noise]{\includegraphics[width=0.49\linewidth]{espectograma_teorico_ruido.png}}
 	    \vspace{0.00mm}
-	\subfigure[composición de series]{\includegraphics[width=0.75\linewidth]{espectograma_teorico_composicion_series.png}}
-	\caption{Espectogramas teóricos} \label{fig:espect_teo}
+	\subfigure[composite series]{\includegraphics[width=0.75\linewidth]{espectograma_teorico_composicion_series.png}}
+	\caption{Theoretical spectrograms} \label{fig:espect_teo}
 \end{figure}
 
-Como se observa en la figura \ref{fig:espect_teo} el impulso se presenta como un ciclo de amplitud grande en todas las frecuencias, en el momento correspondiente al salto. La tendencia, por su parte, se presenta básicamente como ruido, dado que es estrictamente un comportamiento no cíclico. Sin embargo, presenta la particularidad de tomar valores de amplitud mayores hacia el final del período para frecuencias bajas, y valores de amplitud particularmente bajos en las frecuencias altas de los primeros momentos.
+As shown in the figure \ref{fig:espect_teo} the impulse is presented as a cycle of large amplitude in all frequencies for the moment corresponding to the jump. The tendency, on the other hand, is basically shown as noise, given that it is strictly a non-cyclical behavior. Nonetheless it has the characteristic of taking higher amplitude values towards the end of the period for low frequencies, and particularly low amplitude values in the high frequencies of the first moments.
 
-Los tres ciclos definidos marcan claramente una línea horizontal en el correspondiente período, que luego se diluye hacia las demás frecuencias. Finalmente, el ruido normal presenta un comportamiento muy particular, mostrando mayores amplitudes, de forma irregular, en las frecuencias altas, y homogeneizándose hacia un valor de amplitud baja en los ciclos más largos. Esto se debe a que el ruido normal se puede parecer a un ciclo de períodos muy cortos debido a una sucesión de subas y bajas, pero dado que es un proceso aleatorio, es cada vez más improbable que se asemeje a ciclos de períodos mayores, siendo que ello implicaría una mayor cantidad de sucesiones de subas y bajas consecutivas. A su vez, tanto en el espectograma del ruido normal como en el de la tendencia se puede apreciar como el gráfico pierde resolución para periodos más largos, como se mencionó anteriormente. 
-
-Por último, en la composición de series se observa como los ciclos de mayor amplitud y frecuencia se expresan en la escala cromática de forma más nítida que los ciclos de menor amplitud y frecuencia. Es importante resaltar que la concordancia entre amplitud y frecuencia es producto de la forma en que construimos las series, dado que esperamos que los ciclos económicos más largos se correspondan también con movimientos de mayor amplitud.
-
-Vale mencionar que la elección para el modelo teórico de estos tres niveles y amplitudes cíclicas no es arbitraria, sino que se corresponde a grandes rasgos con lo considerado por la literatura: \cite{kondratieff1979long} estudia las series largas, de unos 50 años, mientras que \cite{kuznets1930secular} propone movimientos seculares de entre 15 y 25 años. Finalmente el Real business cycle \citep{kydland1982time} considera un ciclo corto.
+The three defined cycles clearly mark a horizontal line in the corresponding period, which is then diluted towards the other frequencies. Finally, normal noise has a very particular behavior, showing greater amplitudes, irregularly, at high frequencies, and homogenizing towards a low amplitude value in longer cycles. This is due to the fact that normal noise can resemble a cycle of very short periods due to a succession of ups and downs, but since it is a random process, it is increasingly unlikely to resemble cycles of longer periods, being that this would imply a greater number of successions of consecutive increases and decreases. In turn, both in the spectrogram of normal noise and in that of the trend, it can be seen how the graph loses resolution for longer periods, as mentioned above.
 
 
+Finally, in the composition of series it is observed how the cycles of greater amplitude and frequency are expressed in the chromatic scale in a sharper way than the cycles of smaller amplitude and frequency. It is important to note that the agreement between amplitude and frequency is a product of the way in which we build the series, since we expect that the longer economic cycles will also correspond to movements of greater amplitude.
 
-Con lo analizado de la figura \ref{fig:espect_teo} podemos observar los resultados de las series originales. En la figura \ref{fig:espect_PBI_a} se puede observar el espectograma correspondiente al PBI de Estados Unidos expresado en oro. Allí se marca claramente la diferencia en la serie antes y después del 1900, y en particular también se marca el quiebre estudiado de los años 70'. No obstante lo cual, para ese período se observan 3 frecuencias donde se registra un comportamiento cíclico, en los períodos aproximados de 8 y 50 años, y un ciclo diferenciado de este último, de aproximadamente 30 años. Dada la heterocedasticidad de las series, en \ref{fig:espect_PBI_b} se propone el espectograma de la misma serie tomada en logaritmo de base 10. De esta forma lo que se observa es que el ciclo de 50 años se extiende más allá en el tiempo, hasta mediados del Siglo XIX. Por su parte, aparece brevemente un ciclo más corto, de aproximadamente tres años, en la década del 70.
+It is worth mentioning that the choice for the theoretical model of these three levels and cyclical amplitudes is not arbitrary, but corresponds roughly to what is considered by the literature: \cite{kondratieff1979long} studies the long series, about 50 years, while \cite {kuznets1930secular} proposes secular movements between 15 and 25 years. Finally the Real business cycle \citep{kydland1982time} considers a short cycle.
+
+With the analysis from the figure \ref{fig:espect_teo} we can now see the results of the original series. In the figure \ref{fig:espect_PBI_a} the spectrogram corresponding to the GDP of the United States expressed in gold can be observed. There the difference in the series is clearly marked before and after 1900, and in particular the studied break of the 70's is also shown. Nevertheless, for that period there are roughly 3 frequencies where a cyclical behavior is registered. In the approximate periods of 8 and 50 years, and a differentiated cycle of the latter, of approximately 30 years. Given the heteroscedasticity of the series, in \ref{fig:espect_PBI_b} the spectogram of the same series taken in logarithm of base 10 is proposed. Here the cycle of 50 years extends beyond the time, until the middle of the 19th century. For its part, a shorter cycle of approximately three years appears briefly in the 70s.
+
+\todo[color=green!40,fancyline]{cambiar los titulos de los graficos}
 
 \begin{figure}[H]
 	\centering
-	\subfigure[PBI]{\includegraphics[width=0.75\linewidth]{espectograma_gdp.png}
+	\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_gdp.png}
 	\label{fig:espect_PBI_a}}
-	\subfigure[$log(PBI)$]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp.png}
+	\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp.png}
 	\label{fig:espect_PBI_b}}
-	\caption{Espectograma PBI en oro} \label{fig:espect_PBI}
+	\caption{US GDP in gold. 1790-2017} \label{fig:espect_PBI}
 \end{figure}
 
-las figuras \ref{fig:espect_wg} muestran los espectogramas de la serie del salario expresado en oro \ref{fig:espect_wg_a} y el mismo tomado en logaritmo en \ref{fig:espect_wg_b}. Para esta serie nuevamente se observa un ciclo largo bien definido en torno a los 50 años, especialmente si se observa la serie tomada en base logarítmica. Este ciclo largo parece oscilar entre las frecuencias de $1/32$ y $1/64$, cayendo en el tiempo. Por su parte, se delimita un segundo ciclo, en torno a los 16 años de extensión, y finalmente un ciclo corto de entre 6 y 8 años.  Al tomar la escala logarítmica, también aparece un ciclo de mayor frecuencia, de unos 3 años de duración. En consecuencia, ambas series parecen arrojar resultados en concordancia, sean o no tomadas en logaritmo. 
+the figure \ref{fig: espect_wg} show the spectrograms of the wage series expressed in gold in \ref{fig: espect_wg_a} and the same taken in log base in \ref{fig: espect_wg_b}. For this series we can again observe a well-defined long cycle around 50 years, especially if we look at the series taken on a logarithmic basis. This long cycle seems to oscillate between the frequencies of $1/32$ and $1/64$, falling in time. On the other hand, it delimits a second cycle of around 16 years of extension, and finally a short cycle of between 6 and 8 years. When taking the logistic scale, also appears a cycle of higher frequency of about 3 years of extension. Consequently, both series seem to yield results in agreement, whether or not they are taken in logarithm.
 
+\todo[color=green!40,fancyline]{cambiar los titulos de los graficos}	
 \begin{figure}[H]
 	\centering
-	\subfigure[Salario]{\includegraphics[width=0.75\linewidth]{espectograma_wg.png}
+	\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_wg.png}
 	\label{fig:espect_wg_a}}
-	\subfigure[$log(Salario)$]{\includegraphics[width=0.75\linewidth]{espectograma_log_wg.png}
+	\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_log_wg.png}
 	\label{fig:espect_wg_b}}
-	\caption{Espectograma Salario en oro} \label{fig:espect_wg}
+	\caption{US wage in gold. 1790-2017} \label{fig:espect_wg}
 \end{figure}
 
+The figure \ref{fig:espect_uk} shows the GDP series expressed in gold for the United Kingdom between 1700 and 1900. As in the previous series, it is expressed without additional transformations in \ref{fig: espect_uk_a} and in log base in \ref{fig:espect_uk_b}. Unlike the US series, here we can see more clearly the short cycle, around 10 years.
 
-En la figura \ref{fig:espect_uk} se muestra la serie del PBI expresado en oro para el Reino Unido entre 1700 y 1900. Al igual que en las series anteriores se expresa la serie sin transformaciones adicionales en \ref{fig:espect_uk_a} y expresada en logaritmo en \ref{fig:espect_uk_b}. A diferencia de la serie de Estados Unidos, aquí se puede observar con más claridad el ciclo corto, en torno a los 10 años. 
-
-
+\todo[color=green!40,fancyline]{cambiar los titulos de los graficos}	
 \begin{figure}[H]
 	\centering
-	\subfigure[PBI UK]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_uk.png}
+	\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_uk.png}
 		\label{fig:espect_uk_a}}
-	\subfigure[$log$(PBI UK)]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_uk.png}
+	\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_uk.png}
 		\label{fig:espect_uk_b}}
-	\caption{Espectograma PBI Reino Unido} \label{fig:espect_uk}
+	\caption{UK GDP in gold. 1700-1900} \label{fig:espect_uk}
 \end{figure}
 
-A su vez, otra diferencia que destaca es que en las figuras de Reino Unido el efecto de la transformación logarítmica es mayor que en las series anteriores. De esta forma, en \ref{fig:espect_uk_b} se puede observar una multiplicidad de ciclos que destacan como influyentes. En particular, el más corto pareciera estar en torno a los cuatro años de duración, especialmente presente al principio de la serie y en el entorno del 1800. Luego destaca el ciclo en torno a los 8 años de duración, asociado en la descripción realizada en el Análisis Exploratorio de Datos con lo que se marcaba como un ciclo de 10 años. De mayor extensión temporal se intercala un ciclo en torno a los 20 años, al principio de la serie y en el entorno del 1800, junto con un ciclo de 30-35 años en los períodos restantes. Finalmente, vuelve a registrarse un ciclo largo, en torno a los  64 años de extensión. 
+Besides, another difference that stands out is that in the plots for UK the effect of the logarithmic transformation is greater than in the previous series. Thus, in \ref {fig:espect_uk_b} we can observe a multiplicity of cycles that stand out as influential. In particular, the shortest one seems to be around the four years of duration, especially present at the beginning of the series and near the 1800. Also highlights the cycle around the 8 years of duration, associated in the description made in Exploratory Data Analysis with what was marked as a 10
 
-Es importante registrar el efecto que produce la tendencia de la serie sobre los espectogramas. En la figura \ref{fig:uk_gdp} se observaba un fuerte efecto tendencial del producto expresado en oro para el Reino Unido durante los siglos XVIII y XIX. Dicha tendencia no pareciera ser lineal y por lo tanto resulta de interés analizar las posibles distorsiones que esto puede generar sobre los espectogramas. en la figura \ref{fig:tendencias} se puede observar el PBI del Reino Unido en oro, junto con un suavizado lineal mediante un modelo de regresiones locales \citep{Shyu1992}, y la serie resultante de eliminar dicha tendencia. 
+-year cycle. Of greater temporal extension a cycle is noted around the 20 years, at the beginning of the series and in the environment of 1800, together with a cycle of 30-35 years in the remaining periods. Finally, a long cycle is again recorded, around 64 years of extension.
 
-En efecto, en la figura \ref{fig:espectograma_gdp_uk_Tend} se observa el espectograma de la tendencia calculada sobre la serie. Allí se destaca el período en torno a los cincuenta años, lo que pareciera indicar que aquello descripto hasta este momento es un simple efecto tendencial oculto en los espectogramas. Sin embargo, en la figura \ref{fig:espectograma_sin_tend} se observa el espectograma de la serie del producto para el Reino Unido, expresado en oro, pero luego de restar la tendencia de la serie. Se puede apreciar que dicho espectograma es casi idéntico al visto anteriormente en la figura \ref{fig:espect_uk_a}. Esto quiere decir que la técnica de wavelets no se ve afectada por la tendencia subyacente de las series analizadas.
+It is important to record the effect produced by the trend of the series on the spectrograms. In section \ref{EDA} the figure \ref{fig:uk_gdp} showed a strong trend effect of the product expressed in gold for the United Kingdom during the eighteenth and nineteenth centuries. This trend did not seem to be linear and therefore it is of our interest to analyze the possible distortions that this can generate on the spectrograms. in the figure \ref{fig:tendencias} we can see the GDP of the United Kingdom in gold, together with a linear smoothing using a local regressions model \citep{Shyu1992}, and the series resulting from eliminating this trend.
 
+In fact, the figure \ref{fig:espectograma_gdp_uk_Tend} shows the spectrogram of the trend calculated on the series. There stands out the period around fifty years, which seems to indicate that what was described before is a simple trend effect hidden in the spectrograms. However, in the figure \ref{fig:espectograma_sin_tend} shows the spectrogram of the series of UK GDP, also expressed in gold but after subtracting the trend. This spectogram is almost identical to that seen previously in the figure \ref{fig:espect_uk_a}. This means that the wavelet technique is not affected by the underlying trend of the series analyzed.
+
+\todo[color=green!40,fancyline]{cambiar los titulos de los graficos}	
 \begin{figure}[H]
 	\centering
 	\subfigure[]{\includegraphics[width=0.75\linewidth]{pbi_uk_tendencias.png}
@@ -362,28 +374,23 @@ En efecto, en la figura \ref{fig:espectograma_gdp_uk_Tend} se observa el especto
 		\label{fig:espectograma_gdp_uk_Tend}}
 	\subfigure[]{\includegraphics[width=0.48\linewidth]{espectograma_gdp_uk_sinTend.png}
 		\label{fig:espectograma_sin_tend}}
-	\caption{Efecto tendencia} \label{fig:espect_tendencias}
+	\caption{Trend effect} \label{fig:espect_tendencias}
 
 \end{figure}
 
+\section{Conclusions}
 
+In this work we made a tour trough the main theoretical approaches with respect to the economic cycle, and highlighted the importance of an empirical analysis. For this latter, we use the GDP and wages of the US between 1790 and 2017, expressed in gold. We also looked at the GDP series for the UK, between 1700 and 1900.
 
+In the Exploratory Data Analysis we found a strong correspondence between the breaks of these series and the crises known by the economic historiography. Also, we marked an apparent oscillatory movement that seemed to correspond with the long waves of Kondratieff. For its part, the nineteenth century in the United Kingdom seemed to highlight the crises around the 10 years of duration.
 
+Then we explore wavelets-analysis, a tool with which its possible to visualize the correspondence of economic series with cycles of different extensions. The results of this technique showed the existence of three well-defined cycles at different frequencies, which correspond to the hypotheses studied on the existence of a short cycle, a medium cycle and a long cycle. It is also important to mention that this tool loses resolution in cycles of very long periods. In this sense, the tool seen does not allow to define exactly the temporal extension of each one of the cycles, but it does provide evidence of their existence.
 
-\section{Conclusiones}
+It is important to note that the objective of this paper is to look for empirical evidence regarding the frequency and amplitude of the cyclical behavior of the economy. The wages and GDP series are taken because they are good approximations of the general economic movement, but they are not the only ones. In turn, statistics have a national base, the GDP is always from a particular country, as well as wages statistics, and so we needed to chose a particular country as expression of the world economy. In this sense, since the United States is the largest national unit of the world's economy during the 20th century, we begin our analysis with its series. However, while the US economy is a good reflection of the movements of the world economy for the twentieth century, the same does not stand for the nineteenth century. In this sense, it is natural that the general determinations of the economy, such as the cycle, are not fully expressed for that century, and we observe evidence only from 1900 onwards. That is why we complemented the analysis with the GDP of UK for the two preceding centuries.
 
-En el presente trabajo se realizó un recorrido por las principales aproximaciones teóricas respecto al ciclo económico, y se planteó la importancia de un análisis empírico respecto a dicho fenómeno. Para ello, se utilizaron las series de PBI y Salario de Estados Unidos entre 1790 y 2017, expresadas en oro, por los efectos distorsivos que podría generar dicha variable. También se utilizó la serie del PBI para el Reino Unido, entre 1700 y 1900
+To conclude, the use of this technique for the study of historical series, widely analyzed by specialized bibliography, seems to be useful to obtain new information from the data used. The results point to the confirmation of the existence of series of medium and long duration, although the empirical regularity is not sufficient to determine with accuracy the frequency of this cycles. In other words, although the intuition of \cite{kuznets1930secular} and \cite{kondratieff1979long} is confirmed, the results are less promising regarding the possibility of precisely defining the phenomena. Even more, the evidence seems to indicate that the frequency of medium and long duration cycles could vary partially throughout history.
 
-En el Análisis Exploratorio de Datos se encontró una fuerte correspondencia entre los quiebres de estas series, y las crisis conocidas por la historiografía económica, así como un movimiento oscilatorio aparente que pareciera corresponderse con las ondas largas de Kondratieff para el siglo XX, junto con las particularidades que exhiben las distintas series según el período de tiempo considerado. Por su parte, el siglo XIX en Reino Unido pareciera resaltar las crisis en torno a los 10 años de duración.
-
-Luego se realizó un análisis en base a \textit{Wavelets}, una herramienta poco utilizada en el análisis económico de las series de tiempo, pero con la cual se puede visualizar la correspondencia de las series económicas con los ciclos a diferentes extensiones. Los resultados de esta técnica muestran la existencia de tres ciclos bien definidos a distintas frecuencias, los cuales se corresponden con las hipótesis estudiadas sobre la existencia de un ciclo corto, uno medio y uno largo. También es importante mencionar que esta herramienta pierde resolución en ciclos de períodos muy largos, y que entre las distintas series analizadas existen ciertas diferencias de nivel en los mismos. En este sentido, la herramienta vista no permite definir con exactitud la extensión temporal de cada uno de los ciclos, sino que simplemente demuestra su existencia.
-
-Es importante remarcar que el objetivo del presente trabajo es buscar evidencia empírica respecto de la frecuencia y amplitud del comportamiento cíclico de la economía. Se toma las series de salario y PBI por ser buenos aproximadores de movimiento económico general, pero no son los únicos. A su vez, como las estadísticas tienen una base nacional, el PBI siempre es de un país en particular, así como las estadísticas del salario, debimos decidir tomar un país particular, como expresión de la economía mundial. En este sentido, al ser Estados Unidos la unidad nacional de la economía mundial de mayor envergadura, optamos por este país como representante de la economía mundial. No obstante, si bien la economía estadounidense es un buen reflejo de los movimientos de la economía mundial durante el siglo XX, lo mismo no se sostiene para el siglo XIX, dado que no se había constituido aún como la primera potencia de la economía mundial. En este sentido, es natural que no se expresen las determinaciones generales de la economía, como el ciclo, para dicho siglo, y observemos evidencia sólo a partir del 1900. Es por ello que el análisis de las series estadounidenses se complementó con las series de Reino Unido para los dos siglos precedentes. 
-
-Como conclusión, la utilización de esta técnica para el estudio de series históricas, ampliamente estudiadas por la bibliografía especializada, pareciera ser útil para obtener nueva información de los datos utilizados. Los resultados apuntan a la confirmación de la existencia de series de media y larga duración, si bien la regularidad empírica no es suficiente para determinar con exactitud la frecuencia de dichos ciclos. En otros términos, si bien la intuición de \cite{kuznets1930secular} y \cite{kondratieff1979long} se confirma, los resultados son menos promisorios respecto de la posibilidad de definir con precisión el fenómenos. Incluso más, la evidencia pareciera apuntar a que la frecuencia de los ciclos de media y larga duración podría variar parcialmente a lo largo de la historia. 
-
-El presente trabajo plantea sendas lineas de investigación, especialmente respecto de la utilización de la técnica Wavelets en nuevas series, tanto para series de variables financieras, como series de PBI y salario de otros países.
-
+The present work proposes multiple lines of research, especially regarding the use of Wavelets technique in new series, both for series of financial variables, as well as GDP and wages series for other countries.
 
 \bibliography{bibliography.bib}
 
