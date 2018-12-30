@@ -18,12 +18,12 @@ library(xtable)
 
 ```{r, message=FALSE}
 dja <- read_csv("data/DJA.csv",skip = 4)
-gold <- read_csv("data/GOLD_1791-2018.csv",skip = 3)
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 2)
 interest_rate <- read_csv("data/INTERESTRATE_1857-2018.csv",skip = 1)
 sap <- read_csv("data/SAP_1871-2018.csv", skip=1)
-cpi <- read_csv("data/USCPI_1774-2018.csv", skip=4)
+cpi <- read_csv("data/USCPI_1774-2018.csv", skip=3)
 gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
-wage <- read_csv("data/USWAGE_1774-2018.csv", skip=3)
+wage <- read_csv("data/USWAGE_1774-2018.csv")
 gdp_uk <-  read_csv("data/UKGDP_1700-2017.csv", skip=1)
 
 brit_gold <- read_csv("data/GOLD_brit_1257-1945.csv", skip=1)
@@ -98,9 +98,9 @@ crisis <- crisis %>%
 
 
 ```{r}
-# tabla <- crisis[[1]] %>% 
-#   filter(Affected %in% c("United States","Global")) %>% 
-#   select(-Region, - Affected) %>% 
+# tabla <- crisis %>%
+#   filter(Affected %in% c("United States","Global")) %>%
+#   select(-Region, - Affected) %>%
 #   xtable(.)
 
 #En la consola
@@ -134,7 +134,7 @@ ggplot()+
 
 Este gráfico me da la sensación de que todo estuviera corrido a la derecha (mirando las crisis puntuales vs los picos)
 
-## Gold
+# Gold
 
 ```{r}
 gold %>% 
@@ -143,12 +143,29 @@ gold %>%
   geom_vline(xintercept = 1971, color = "red")+
   geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="Fin del patrón oro"),nudge_x = -5,force=10,size=7)+
   theme_minimal()+
-  labs(y="Dólares por onza de oro", x="Año", title="Precios del oro por onza en el mercado de Nueva York")+
+  labs(y="Dólares por onza de oro", x="Año", title="Precio Oro Mercado de Nueva York",
+       subtitle = "Precio por onza. 1790-2017")+
   theme(text = element_text(size = 20))
 
 
 ggsave("plots/oro.png", dpi=300, width = 10, height = 7, scale=1)
 ```
+
+```{r}
+gold %>% 
+  ggplot(., aes(Year, `New York Market Price (U.S. dollars per fine ounce)`))+
+  geom_line(size=1)+
+  geom_vline(xintercept = 1971, color = "red")+
+  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="End of the gold standard"),nudge_x = -5,force=10,size=7)+
+  theme_minimal()+
+  labs(y="dollars per fine ounce", x="Year", title="Gold prices New York Market",
+       subtitle = " Price per ounce. 1790-2017")+
+  theme(text = element_text(size = 20))
+
+ggsave("plots/oro_en.png", dpi=300, width = 10, height = 7, scale=1)
+
+```
+
 
 
 ## interest_rate
@@ -254,6 +271,8 @@ A partir del 1900 pareciera que se arman 3 ciclos muy largos
 
 
 Agregando referencias históricas de las crisis conocidas
+# gdp_in_gold_eda.PNG
+
 
 ```{r}
 library(scales) # to access breaks/formatting functions
@@ -271,7 +290,8 @@ geom_rect(data= crisis_largas,
             ,aes(Year, gdp_in_gold))+
   geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
   geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
-  scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+  
+  # scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
   theme_minimal()+
   labs(x="", y="PBI en oro", title="PBI Estados Unidos",
        subtitle= "Millones de onzas de oro, 1900-2017")+
@@ -279,6 +299,33 @@ geom_rect(data= crisis_largas,
 
 ggsave("plots/gdp_in_gold_eda.PNG", dpi = 300, width = 10,height = 6)
 ```
+
+
+```{r}
+ggplot()+
+geom_rect(data= crisis_largas, 
+            aes(xmin=crisis_largas$desde,
+            xmax=crisis_largas$hasta),
+            fill="firebrick", 
+            ymin=-Inf,
+            ymax=Inf,
+            alpha=0.5)+
+  geom_line(size=1,
+    data = gdp %>% 
+              filter(Year>parse_date_time(1900,"y"))
+            ,aes(Year, gdp_in_gold))+
+  geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
+  geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ 
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  # scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+  
+  theme_minimal()+
+  labs(x="", y="GDP in gold", title="US GDP",
+       subtitle= "Millions of ounces of gold, 1900-2017")+
+  theme(text = element_text(size = 20))
+
+ggsave("plots/gdp_in_gold_eda_en.PNG", dpi = 300, width = 10,height = 6)
+```
+
 
 La guerra de sesesión de EEUU fué entre el 12 de abril de 1861 y el 9 de abril de 1865 
 
@@ -305,8 +352,23 @@ wage %>%
 ```
 
 
-El salario real tiene una tendencia creciente hasta el 78' y allí se estanca hasta el 2013
+```{r}
+wage %>% 
+  summary()
+```
 
+Podemos deflactar el salario horario por el CPI
+
+```{r}
+ggplotly(
+wage %>% 
+  left_join(cpi,by="Year") %>% 
+  na.omit() %>% 
+  mutate(salario_horario_real = `Production Workers Hourly Compensation (nominal dollars)`/`U.S. Consumer Price Index *`) %>% 
+  ggplot(.,aes(Year,salario_horario_real))+
+  geom_line() 
+  )
+```
 
 
 ```{r}
@@ -316,6 +378,8 @@ wg_gold <- wage %>%
   mutate(wg_in_gold = `Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
          Year = parse_date_time(Year,"y")) %>% 
   na.omit()  
+
+
 ggplot()+
 geom_rect(data= crisis_largas, 
             aes(xmin=crisis_largas$desde,
@@ -327,7 +391,8 @@ geom_rect(data= crisis_largas,
   geom_line(size=1,data = wg_gold, aes(Year, wg_in_gold))+
   geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
   geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
-  scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  # scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
   theme_minimal()+  
   labs(x="", y="Salario en oro", title="Salario horario Estados Unidos",
        subtitle="Onzas de oro, 1900-2017")+
@@ -338,13 +403,36 @@ ggsave("plots/wg_in_gold_eda.PNG", dpi = 300, width = 10,height = 6)
 
 ```
 
+
+```{r}
+ggplot()+
+geom_rect(data= crisis_largas, 
+            aes(xmin=crisis_largas$desde,
+            xmax=crisis_largas$hasta),
+            fill="firebrick", 
+            ymin=-Inf,
+            ymax=Inf,
+            alpha=0.5)+
+  geom_line(size=1,data = wg_gold, aes(Year, wg_in_gold))+
+  geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
+  geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
+  #scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  theme_minimal()+  
+  labs(x="", y="Wage in gold", title="US Hourly Wage",
+       subtitle="Ounces of gold, 1900-2017")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/wg_in_gold_eda_en.PNG", dpi = 300, width = 10,height = 6)
+
+```
+
+
 Se ven los mismos tres períodos. Pero a diferencia del GDP, el período 1980-2012 tiene un nivel más bajo que el anterior. 
  
 
 ¿ Si quisieramos comparar ingrsos con algún revenue tendríamos usar S&P o DJA?
-
-
-
 
 
 #### UK
@@ -359,7 +447,7 @@ names(oro)
 
 ```{r}
 
-# de http://fx.sauder.ubc.ca/data.html
+#de http://fx.sauder.ubc.ca/data.html
 tc <- read_csv("data/ex_rate.csv")
 
 library(lubridate)
@@ -370,7 +458,7 @@ tc <- tc %>% mutate(date = parse_date_time(`MMM YYYY`,"my"),
   summarise(gbp_usd = mean(`GBP/USD`))
 
 
-# de http://fx.sauder.ubc.ca/etc/USDpages.pdf
+#de http://fx.sauder.ubc.ca/etc/USDpages.pdf
 
 tc_1950_1970 <- data_frame(Year=1950:1970, gbp_usd = 0.35714) %>% 
   mutate(gbp_usd = case_when(Year ==1967 ~ 0.36210,
@@ -437,6 +525,23 @@ ggplot(., aes(Year, gdp_in_gold))+
 
 ggsave("plots/uk_gdp.png",scale = 1)
 ```
+
+```{r}
+gdp_uk %>% 
+  filter(Year %in% c(1700:1900)) %>% 
+ggplot(., aes(Year, gdp_in_gold))+
+  geom_line(size=1)+
+  geom_text_repel(data = crisis, aes(Year, crisis,label=Year),nudge_x = 5, nudge_y = -20,force=12,size=4)+
+  theme_minimal()+
+  labs(y="GDP in gold", x="", title= "UK GDP", 
+       subtitle="Millions of ounces of gold. 1700-1900")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/uk_gdp_en.png",scale = 1)
+```
+
+
 
 
 ```{r}
