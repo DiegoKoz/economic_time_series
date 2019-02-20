@@ -1,6 +1,6 @@
 
-\documentclass[a4paper]{article}
-
+\documentclass[a4paper,10cpi]{article}
+%twoside
 %% Language and font encodings
 \usepackage[english,spanish]{babel}
 \usepackage[utf8x]{inputenc}
@@ -12,6 +12,7 @@
 \usepackage[round]{natbib}
 \bibliographystyle{plainnat}
 %\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
 
 %% Useful packages
 \usepackage{amsmath}
@@ -56,18 +57,63 @@
 {\vfill}
 
 
+% CIMBAGE reqs
+
+% Tipo de letra: Bookman Old Style (10 cpi).
+\usepackage{bookman}
+
+% Párrafo: Justificado e interlineado sencillo con espaciado anterior de 6 puntos.
+\usepackage{setspace}
+\setstretch{1}
+\setlength{\parindent}{6pt}
+
+\usepackage{geometry}
+%Márgenes: 4,3 cm izquierdo y derecho; 2,5 cm superior y 9 cm inferior
+\geometry{left=4.3cm, right=2.5cm, top=2.5cm, bottom=2.3cm}  
+
+% Numeración de las páginas: Superior con alineación exterior.
+% document class : twoside
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand\headrulewidth{0pt}% 
+
+\fancyhead{} % clear all header fields
+\fancyhead[r]{\thepage}
+%\fancyhead[LO]{\nouppercase \rightmark}
+%\fancyhead[RE]{\nouppercase \leftmark}
+
+% Título: mayúscula y negrita (11cpi). \large
+%Títulos de segundo nivel: mayúscula y negrita (10cpi). \normalsize
+%Títulos de tercer nivel: tipo oración y negrita (10cpi).
+
+\renewcommand\bibsection{\uppercase{\textbf{\normalsize{References}}}}
+
+
+\usepackage{titlesec}
+\usepackage{titling}
+%\usepackage{fontspec}
+
+%\newfontfamily{\headingfont}{Times New Roman}
+% CIMBAGE reqs
+
+\usepackage{ragged2e}
+
+
 %% authors
 \usepackage{authblk}
-\title{Old series, new signals \\
-	 {\large The economic cycle in light of wavelet analysis} }
+\title{{\fontfamily{ptm}\selectfont \Large Old series, new signals \\
+	  The economic cycle in light of wavelet analysis }}
 \author[1]{Diego Kozlowski}
-\affil[1]{Master in Data Mining \& Knowledge Discovery, FCEN-UBA\\ diegokoz92@gmail.com}
+\affil[1]{Licenciado en Econom\'{i}a por la FCE-UBA. Maestrando en Data Mining\par
+	Master in Data Mining \& Knowledge Discovery, FCEN-UBA \par
+	Pabell\'{o}n I - Ciudad Universitaria, Buenos Aires, Argentina, cp: 1428 \par 
+	dkozlowski@dc.uba.ar}
 
 \date{}                     %% if you don't need date to appear
 \setcounter{Maxaffil}{0}
 \renewcommand\Affilfont{\itshape\small}
-
-
 
 
 
@@ -81,25 +127,45 @@
 	\begin{abstract}
 		The economic cycle is a subject of recurring debate in the specialized bibliography. Both from the conceptual point of view and its empirical recognition, there is no consensus regarding the causes and concrete forms of this characteristic of the economy. In particular, the statements regarding the existence of a long wave, proposed by different authors of the early twentieth century, are a source of debate. In this work we propose an empirical review of series traditionally used in economic analysis, such as the product, wages, and gold, for the United States and the United Kingdom, from the 18th century to the present, using a technique originally developed in the area of ​​signal analysis. The objective is to seek new evidence regarding the presence of a well-defined cycle in long periods of economic history. For this, we use Wavelets analysis in search of low-frequency signals, or long periods. The results show favorable evidence to the existence of three distinct cycles, one of which would be of amplitude around 50 years.
 	\end{abstract}
+	\textbf{keywords:} Wavelets-Cycle-Wage-GDP
+	\medskip
 	
 	\selectlanguage{spanish}    
+	
+	\centering{{ \fontfamily{ptm}\selectfont \Large Viejas series, nuevas señales
+	
+	El ciclo económico a la luz del análisis de wavelets}} 
+	
+	\justify
+	
 	\begin{abstract}
 		El desenvolvimiento cíclico de la economía es un tema de recurrente debate en la bibliografía especializada. Tanto desde el punto de vista conceptual como en el reconocimiento empírico, no existe un consenso generalizado respecto de las causas y formas concretas de esta característica de la economía. En particular, son fuente de debate las afirmaciones respecto a la existencia de ciclos definidos en períodos largos, propuestos por diferentes autores de principios del siglo XX. En el presente trabajo se propone una revisión empírica de series tradicionalmente utilizadas en el análisis económico, como lo son el producto, salario y oro, para Estados Unidos y el Reino Unido, desde el siglo XVIII a la actualidad, mediante una técnica originalmente desarrollada para el área de análisis de señales. El objetivo es buscar nuevas evidencias respecto a la presencia de un ciclo bien definido en períodos largos de la historia económica. Para esto, se utiliza el análisis de Wavelets en busca de señales de baja frecuencia, o períodos largos. Los resultados muestran evidencia favorable a la existencia de tres ciclos bien definidos, uno de los cuales sería de una amplitud en torno a los 50 años.
 	\end{abstract}
+
+	
+	\textbf{palabras clave:} Wavelets-Ciclo-Salario-PBI
+	
+	\textbf{JEL-Codes:} E32,C20, C10
+	
 	
 	\selectlanguage{english}
 	
-	\section{Introduction}
+	\pagebreak
+	
+%	\uppercase{\textbf{\large{Old series, new signals \\
+%				The economic cycle in light of wavelet analysis}}} 
+	
+	\section{\uppercase{\textbf{\normalsize{Introduction}}}}
 	
 	In economic theory, there is no unequivocal position regarding the cyclical forms of economic development. The long waves proposed by \cite{kondratieff1979long} of approximately 50 years span and the medium waves proposed by \cite{kuznets1930secular} have resulted in controversy throughout the 20th century. To a large extent, this debate is because there is no unambiguous expression of what is called \textit{economic development}. In the first place, it does not exist a single variable that captures this concept as a whole, but it can only be represented fragmentarily in variables such as the Gross Domestic Product (GDP), the Wages, or the Interest Rate. However, even if we could have a single variable that completely measures the economic development, the national delimitation of the measurements is remaining. The latter comes from the fact that the economic cycle refers to a fundamental characteristic of the economic system, which is not necessarily mediated by national divisions. That is to say, it is a phenomenon proper to capitalism as a system, and does not necessarily reproduce itself fully within each country.
 	
 	
-	These complexities for measuring the economic cycle make it difficult to understand it. The goal of this paper is to make use of new quantitative tools for the analysis of time series, to review the empirical evidence regarding the existence of the economic cycle. Given the limitations mentioned above, it was decided to use series from the United States because it is a country that due to its size achieves, from the 20th century, to represent, at least partially, the general tendencies of the economy. For methodological reasons, it is necessary that the information used goes back to the 19th century, a century in which it is not clear that this country expressed the general characteristics of economic development. That is why for the eighteenth and nineteenth centuries the study is complemented with the product series for the United Kingdom.
+	These complexities for measuring the economic cycle make it difficult to understand it. The goal of this paper is to make use of new quantitative tools for the analysis of time series, to review the empirical evidence regarding the existence of the economic cycle. Given the limitations mentioned above, it was decided to use series from the United States bsalaryecause it is a country that due to its size achieves, from the 20th century, to represent, at least partially, the general tendencies of the economy. For methodological reasons, it is necessary that the information used goes back to the 19th century, a century in which it is not clear that this country expressed the general characteristics of economic development. That is why for the eighteenth and nineteenth centuries the study is complemented with the product series for the United Kingdom.
 	
 	The paper is structured as follows: After this introduction, we present a summary of the central debates regarding the economic cycle that took place during the 20th century. In the third section, we carry out an exploratory data analysis where we observe the different series used in the rest of the work, as well as the characteristics of the gold price series and its effects on the rest of the data. Also in section three, we present some of the series along with the known crises in the economic historiography for the United States in the 20th century. The fourth section proposes the use of the wavelet technique to model the economic cycle and observe the results of applying this methodology to the GDP and wages series. Finally, the fifth and final section presents the conclusions and future lines of work.
 	
 	
-	\section{Debates around the economic cycle}
+	\section{\uppercase{\textbf{\normalsize{Debates around the economic cycle}}}}
 	
 	There are not many polemics in the economic literature in which practically all the schools of economic thought tooked position. The discussion around what is the economic cycle and how it originated is for sure one of those controversies.
 	
@@ -112,11 +178,12 @@
 	
 	From the point of view of the empirical analysis, there are multiple authors who have found evidence, either through the detailed study of different series \citep{kuznets1930secular, kondratieff1979long, schumpeter1939business}; or using autoregressive models, of moving averages and ARIMA \citep {hamilton1989new, kaiser2012measuring}; or more recently by using wavelets \citep {yogo2008measuring, soares2011business}. Notwithstanding the latter, the use of new empirical techniques for cycle analysis remains a fertile ground for research.
 	
-	\section{Exploratory Data Analysis}\label{EDA}
+	\section{\uppercase{\textbf{\normalsize{Exploratory Data Analysis}}}}\label{EDA}
 	
 	In the present section, we will carry out a brief exploratory analysis of data to observe the general characteristics of the series.
 	
-	\subsection{Information sources}
+	\paragraph{Information sources}\mbox{} \\
+
 	
 	Given that the objective of this paper is to perform an analysis of the economic cycle that considers Kondratieff's long waves, it is necessary to have information as widely as possible and therefore use different sources.
 	
@@ -129,14 +196,14 @@
 	To analyze the period preceding 1900 we used the UK GDP series expressed in gold. Given the changes in the geopolitical boundaries of the United Kingdom, it was decided to use a series that was consistent intertemporally, the objective being to recognize fluctuations that do not depend on changes in the registration limits. For this, we used the nominal GDP series between 1700 and 1900 of \cite{Williamson2018uk}. The price of gold in the London market for the period 1718-1900 and the official British price for the period 1700-1718 were both recovered from \cite{officer2018gold}
 	
 	
-	\subsection{Original series}
+	\paragraph{Original series}\mbox{}\\
 	
 	The figure \ref{fig:oro} shows the value of an ounce of gold in nominal dollars in the New York market, between 1791 and 2017. There, we marked the exit from the gold standard of the world economy in 1971. After the second world war and until that year, the global monetary structure based on parity with the dollar and the \textit{nominal anchor} of the same with the gold reserves of the Federal Reserve Board (FED). Because of this, the United States could not issue dollars that were not backed by their gold equivalent in the reserves of the central bank of that country. Therefore, the dollar-gold ratio remained practically unchanged until 1971. After eliminating this anchor, the capacity of issuance without backup in gold allowed the FED to issue above the reserves it had, and in general, over gold in circulation. This latter has led to an increase in the price of gold expressed in dollars, or equivalently, a fall in the US dollar expressed in gold.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\linewidth]{oro_en.png}
-		\caption{}\label{fig:oro}
+		\caption{Gold prices New York Market. Price per ounce. 1790-2017}\label{fig:oro}
 	\end{figure}
 	
 	Given that what we sought in this paper is a long-term analysis of the economic cycle, this nominal disturbance obscures the underlying phenomenon. That is why we choose to normalize the nominal GDP series and the nominal wage by the price of gold. In this sense, we can read the series as the product and wage expressed in its capacity to purchase gold.
@@ -144,16 +211,16 @@
 	
 	Since gold is a refuge of value in crisis periods, its price is counter-cyclical, a difference from what happens with the Consumer Price Index (CPI). Therefore normalizing by gold instead of CPI gives a better comprehension of the cycle in the series and facilitate the empirical analysis.
 	
-	According to the above, the figure \ref{fig:PBI} shows the series of the United States GDP between 1900 and 2017, expressed in gold. Meanwhile, the figure \ref{fig:salary} shows the series of the hourly wage of a worker of production in the United States between 1900 and 2017, also expressed in gold.
+	According to the above, the figure \ref{fig:PBI} shows the series of the United States GDP between 1900 and 2017, expressed in gold. Meanwhile, the figure \ref{fig:salario} shows the series of the hourly wage of a worker of production in the United States between 1900 and 2017, also expressed in gold.
 	
 	In both cases, the periods of economic distress known by the literature are highlighted in red, and in punctuated lines those specific crises that occurred in a particular year. The table \ref{tabla_crisis} marks the detail of these.
 	
 	
 	\begin{figure}[H]
 		\centering
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{gdp_in_gold_eda_en.PNG}
+		\subfigure[US GDP. Millions of ounces of gold, 1900-2017]{\includegraphics[width=0.75\linewidth]{gdp_in_gold_eda_en.PNG}
 			\label{fig:PBI}}
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{wg_in_gold_eda_en.PNG}
+		\subfigure[US Hourly Wage. Ounces of gold, 1900-2017]{\includegraphics[width=0.75\linewidth]{wg_in_gold_eda_en.PNG}
 			\label{fig:salario}}
 		\caption{GDP and Wage. US. Crisis highlighted} \label{fig:series_crisis}
 	\end{figure}
@@ -190,7 +257,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\linewidth]{uk_gdp_en.png}
-		\caption{} 
+		\caption{UK GDP. Millions of ounces of gold. 1700-1900} 
 		\label{fig:uk_gdp}
 	\end{figure}
 	
@@ -199,7 +266,7 @@
 	
 	In the following section, we will use the described series will as inputs for a technique coming from the field of signal processing, Wavelets, which allows automatic highlighting of the essential cyclic amplitudes of the series.
 	
-	\section{Wavelets}
+	\section{\uppercase{\textbf{\normalsize{Wavelets}}}}
 	
 	Although in econometrics the use of autoregressive models and moving averages for the analysis of time series is extended, there are other widely disseminated techniques in the literature of signal analysis that is not yet extensively used in the study of economic series. A classic example in this sense is the Fourier series. This technique analyzes how any time series can is a composition of periodic functions, that is, as the sum of sines and cosines. In this way, we can construct a space of \textit{frequency} ($1/period$) where we define the periodic functions according to their frequency (or extension in time, horizontal movement) and amplitude (vertical movement). Figure \ref{fig:ciclo} exemplify these definitions.
 	
@@ -287,10 +354,10 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\linewidth]{serie_teorica_en.PNG}
-		\caption{} \label{fig:serie_teorica}
+		\caption{Elements of theoretical series} \label{fig:serie_teorica}
 	\end{figure}
 	
-	We can see the spectrogram of each one of the mentioned elements in the figure \ref{fig: espect_teo}. These plots show on the vertical axis the period, the inverse of the wave frequency, which corresponds to the distance between the valleys or peaks of a cycle. The color scale (Blue for the lowest values to red in the highest values) represents the amplitude of the cycle. The horizontal axis represents the calendar time. That is, for each calendar time we can observe the amplitude of the cycle in each of the possible wave frequencies.
+	We can see the spectrogram of each one of the mentioned elements in the figure \ref{fig:espect_teo}. These plots show on the vertical axis the period, the inverse of the wave frequency, which corresponds to the distance between the valleys or peaks of a cycle. The color scale (Blue for the lowest values to red in the highest values) represents the amplitude of the cycle. The horizontal axis represents the calendar time. That is, for each calendar time we can observe the amplitude of the cycle in each of the possible wave frequencies.
 	
 	
 	\begin{figure}[H]
@@ -324,32 +391,32 @@
 	
 	\begin{figure}[H]
 		\centering
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_en.png}
+		\subfigure[US GDP spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_en.png}
 			\label{fig:espect_PBI_a}}
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_en.png}
+		\subfigure[US log(GDP) spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_en.png}
 			\label{fig:espect_PBI_b}}
 		\caption{US GDP in gold. 1790-2017} \label{fig:espect_PBI}
 	\end{figure}
 	
-	the figure \ref{fig: espect_wg} show the spectrograms of the wage series expressed in gold in \ref{fig: espect_wg_a} and the same taken in log base in \ref{fig: espect_wg_b}. For this series, we can again observe a well-defined long cycle around 50 years, especially if we look at the series taken on a logarithmic basis. This long cycle seems to oscillate between the frequencies of $1/32$ and $1/64$, falling in time. On the other hand, it delimits the second cycle of around sixteen years of extension, and finally a short cycle of between six and eight years. When taking the logistic scale, also appears a cycle of a higher frequency of about three years extension. Consequently, both series seem to yield results in agreement, whether or not they are in the logarithmic base.
+	the figure \ref{fig:espect_wg} show the spectrograms of the wage series expressed in gold in \ref{fig:espect_wg_a} and the same taken in log base in \ref{fig:espect_wg_b}. For this series, we can again observe a well-defined long cycle around 50 years, especially if we look at the series taken on a logarithmic basis. This long cycle seems to oscillate between the frequencies of $1/32$ and $1/64$, falling in time. On the other hand, it delimits the second cycle of around sixteen years of extension, and finally a short cycle of between six and eight years. When taking the logistic scale, also appears a cycle of a higher frequency of about three years extension. Consequently, both series seem to yield results in agreement, whether or not they are in the logarithmic base.
 	
 	
 	\begin{figure}[H]
 		\centering
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_wg_en.png}
+		\subfigure[Wage spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_wg_en.png}
 			\label{fig:espect_wg_a}}
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_log_wg_en.png}
+		\subfigure[log(wage) spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_log_wg_en.png}
 			\label{fig:espect_wg_b}}
 		\caption{US wage in gold. 1790-2017} \label{fig:espect_wg}
 	\end{figure}
 	
-	The figure \ref{fig:espect_uk} shows the GDP series expressed in gold for the United Kingdom between 1700 and 1900. As in the previous series, it is expressed without additional transformations in \ref{fig: espect_uk_a} and in log base in \ref{fig:espect_uk_b}. Unlike the US series, here we can see more clearly the short cycle, around ten years.
+	The figure \ref{fig:espect_uk} shows the GDP series expressed in gold for the United Kingdom between 1700 and 1900. As in the previous series, it is expressed without additional transformations in \ref{fig:espect_uk_a} and in log base in \ref{fig:espect_uk_b}. Unlike the US series, here we can see more clearly the short cycle, around ten years.
 	
 	\begin{figure}[H]
 		\centering
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_uk_en.png}
+		\subfigure[UK GDP spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_gdp_uk_en.png}
 			\label{fig:espect_uk_a}}
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_uk_en.png}
+		\subfigure[UK log(GDP) spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_log_gdp_uk_en.png}
 			\label{fig:espect_uk_b}}
 		\caption{UK GDP in gold. 1700-1900} \label{fig:espect_uk}
 	\end{figure}
@@ -362,17 +429,17 @@
 	
 	\begin{figure}[H]
 		\centering
-		\subfigure[]{\includegraphics[width=0.75\linewidth]{pbi_uk_tendencias_en.png}
+		\subfigure[UK GDP. Millions of ounces of gold, 1700-1900. Trend]{\includegraphics[width=0.75\linewidth]{pbi_uk_tendencias_en.png}
 			\label{fig:tendencias}}
-		\subfigure[]{\includegraphics[width=0.48\linewidth]{espectograma_gdp_uk_Tend_en.png}
+		\subfigure[UK GDP spectrogram, trend]{\includegraphics[width=0.48\linewidth]{espectograma_gdp_uk_Tend_en.png}
 			\label{fig:espectograma_gdp_uk_Tend}}
-		\subfigure[]{\includegraphics[width=0.48\linewidth]{espectograma_gdp_uk_sinTend_en.png}
+		\subfigure[UK GDP spectrogram, detrended]{\includegraphics[width=0.48\linewidth]{espectograma_gdp_uk_sinTend_en.png}
 			\label{fig:espectograma_sin_tend}}
 		\caption{Trend effect} \label{fig:espect_tendencias}
 		
 	\end{figure}
 	
-	\section{Conclusions}
+	\section{\uppercase{\textbf{\normalsize{Conclusions}}}}
 	
 	In this work, we made a tour through the main theoretical approaches concerning the economic cycle and highlighted the importance of empirical analysis. For this latter, we use the GDP and wages of the US between 1790 and 2017, expressed in gold. We also looked at the GDP series for the UK, between 1700 and 1900.
 	
@@ -385,6 +452,8 @@
 	To conclude, the use of this technique for the study of historical series, widely analyzed by specialized bibliography, seems to be useful to obtain new information from the data used. The results point to the confirmation of the existence of a series of medium and long duration, although the empirical regularity is not sufficient to determine with accuracy the frequency of these cycles. In other words, although the intuition of \cite{kuznets1930secular} and \cite{kondratieff1979long} is confirmed, the results are less promising regarding the possibility of precisely defining the phenomena. Even more, the evidence seems to indicate that the frequency of medium and long duration cycles could vary partially throughout history.
 	
 	The present work proposes multiple lines of research, especially regarding the use of Wavelets technique in new series, both for series of financial variables, as well as GDP and wages series for other countries.
+	
+	\mbox{}\\
 	
 	\bibliography{bibliography.bib}
 	

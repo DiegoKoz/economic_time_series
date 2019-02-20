@@ -1,0 +1,354 @@
+---
+title: "Wavelets"
+output: html_notebook
+---
+
+
+```{r setup}
+library(WaveletComp)
+library(tidyverse)
+library(lubridate)
+library(glue)
+library(ggthemes)
+library(cowplot)
+library(scales) # to access breaks/formatting functions
+
+```
+
+
+## datos
+```{r message=FALSE, warning=FALSE}
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 2)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv")
+ir <- read_csv("data/INTERESTRATE_1857-2018.csv", skip=1)
+ipc <- read_csv("data/USCPI_1774-2018.csv", skip=3)
+
+uk_gdp <- read_csv("data/gdp_uk_gold.csv")
+```
+
+
+```{r}
+nn = 1000
+#cambio_nivel
+impulso= c(rep(50,(nn/2-1)),100,rep(50,nn/2))
+x0 = ts(c(1:nn)/2)
+x3 = ts(10*sin((2*pi/3)*c(1:nn)))
+x10 = ts(20*sin((2*pi/10)*c(1:nn)))
+x50 = ts(30*sin((2*pi/50)*c(1:nn)))
+ruido <- rnorm(nn)
+x = impulso+ x0+  x3 + x10 + x50+ruido
+
+```
+
+
+### Fig 4 
+```{r}
+df <- data_frame(period=1:nn,impulse=impulso,trend=x0, short=x3,middle=x10, long=x50,noise=ruido, composite_series=x)
+
+df %>% 
+  filter(period %in% 0:100) %>% 
+ggplot(.,aes(x=period, as.numeric(long)))+
+  geom_line()+
+  geom_segment(aes(x=25, xend=75, y=0, yend=0,color = "period"))+
+  geom_text(aes(x=60, y=2, label="period", color="period"), size=6)+
+  geom_segment(aes(x=13, xend=13, y=-30, yend=30,color = "amplitude"))+
+  geom_text(aes(x=10, y=2, label="amplitude", color="amplitude"),angle=90, size=6)+
+  scale_color_gdocs()+
+  theme_void()+
+  theme(legend.position = "none")
+
+# ggsave("plots/ciclo_en.png")
+```
+
+
+# fig 5
+
+```{r}
+
+ejemplo_1 = Rwave::morlet(300,150,10,w0 = 2*pi) %>% Re(.)
+ejemplo_2 = Rwave::morlet(300,150,20,w0 = 2*pi) %>% Re(.)
+ejemplo_3 = Rwave::morlet(300,150,50,w0 = 2*pi) %>% Re(.)
+
+ejemplo_escala =  data.frame(ejemplo_1,ejemplo_2,ejemplo_3, time =1:length(ejemplo_1)) %>%
+  gather(wavelet,value,1:3) %>% 
+  ggplot(.,aes(time,value, color=wavelet))+
+  geom_line(size=1)+
+  theme_minimal()+
+    facet_grid(.~wavelet)+
+  labs(title= "Scale transformations", x="Time", y="")+
+  theme(legend.position = "none",
+        strip.text = element_blank())
+
+
+ejemplo_1 = Rwave::morlet(300,50,15,w0 = 2*pi) %>% Re(.)
+ejemplo_2 = Rwave::morlet(300,150,15,w0 = 2*pi) %>% Re(.)
+ejemplo_3 = Rwave::morlet(300,250,15,w0 = 2*pi) %>% Re(.)
+
+ejemplo_traslacion= data.frame(ejemplo_1,ejemplo_2,ejemplo_3, time =1:length(ejemplo_1)) %>%
+  gather(wavelet,value,1:3) %>% 
+  ggplot(.,aes(time,value, color=wavelet))+
+  geom_line(size=1)+
+  theme_minimal()+
+  labs(title= "Translations", x="Time", y="")+
+      facet_grid(wavelet~.)+
+ theme(legend.position = "none",
+        strip.text = element_blank())
+
+plot_grid(ejemplo_traslacion,ejemplo_escala,ncol=1)
+
+# ggsave("plots/morelt_en.png",dpi = 300)
+```
+
+
+# fig 6
+
+
+```{r}
+df <- data_frame(period=1:nn,impulse=impulso,trend=x0, short=x3,middle=x10, long=x50,noise=ruido, composite_series=x)
+
+df %>%
+  filter(period %in% c(450:550)) %>% 
+  gather(componente,valor,2:8,factor_key=T) %>% 
+  ggplot(.,aes(period,valor))+
+  geom_line()+
+  labs(y='value')+
+  facet_wrap(~componente, scales="free")+
+  theme_minimal()
+
+# ggsave("plots/serie_teorica_en.PNG")
+
+```
+
+
+
+# fig 7
+
+```{r message=FALSE, warning=FALSE, eval = FALSE}
+analyze_and_save <- function(var, save = T, lang='es' ){
+  
+stopifnot(lang %in% c('es','en'))
+  if (lang=='es') {
+    periodlab = "Largo del ciclo"
+    timelab = "Tiempo calendario"
+    filename=glue("plots/espectograma_teorico_{var}.png")
+  }
+  if (lang=='en') {
+    periodlab = "Length of the cycle"
+    timelab = "Calendar time"
+    filename=glue("plots/espectograma_teorico_{var}_en.png")
+  }
+  if (save) {
+    png(filename, width = 1600, height = 1000, units = "p", pointsize = 40)
+  }
+  analyze.wavelet(my.data = df,
+                my.series = var,
+                verbose = F) %>%
+  wt.image(.,color.key = "q",periodlab = periodlab ,timelab = timelab,
+           plot.legend = FALSE,
+           graphics.reset = FALSE)
+  if (save) {
+    dev.off()
+  }
+}
+
+df <- data_frame(periodo=1:nn,impulso=impulso,tendencia=x0, ciclo_3=x3,ciclo_10=x10, ciclo_50=x50,ruido, composicion_series=x)
+
+variables <- c("impulso","tendencia", "ciclo_3","ciclo_10", "ciclo_50","ruido", "composicion_series")
+
+for (var in variables) {
+  analyze_and_save(var, lang = 'en')
+}
+
+```
+
+
+# fig 8
+
+```{r}
+
+gdp_in_gold <- left_join(gold, gdp, by = "Year") %>% 
+  transmute(value = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         date = parse_date_time(Year,"y")) 
+
+gdp_wavelet <- analyze.wavelet(my.data = gdp_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+
+# png("plots/espectograma_gdp_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE)
+# dev.off()
+
+
+gdp_wavelet <- gdp_in_gold %>%
+  mutate(logvalue = log(value,base = 10)) %>% 
+  analyze.wavelet(my.data = .,
+                  my.series = "logvalue",
+                  date.format = "%Y-%m-%d",
+                  date.tz = "UTC")  
+
+
+# png("plots/espectograma_log_gdp_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+
+wt.image(gdp_wavelet,color.key = "q",
+         label.period.axis =TRUE,
+         plot.legend = FALSE,
+         spec.period.axis = list(at = c(3,7,20,50), labels = TRUE),
+         n.levels = 100,
+         show.date = TRUE,
+         label.time.axis = TRUE)
+# dev.off()
+
+```
+
+# fig 9
+
+```{r message=FALSE, warning=FALSE}
+
+wg_in_gold <- wage %>% 
+  # filter(Year>=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  transmute(value =`Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+            date = parse_date_time(Year,"y")) %>%
+  na.omit()
+
+wage_wavelet <- analyze.wavelet(my.data = wg_in_gold,
+                                my.series = "value",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC", verbose = F)
+
+
+# png("plots/espectograma_wg_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE)
+
+# dev.off()
+
+wage_wavelet <- wg_in_gold %>% 
+  mutate(logvalue = log(value,base = 10)) %>% 
+  analyze.wavelet(my.data = .,
+                  my.series = "logvalue",
+                  date.format = "%Y-%m-%d",
+                  date.tz = "UTC", verbose = F)
+
+
+# png("plots/espectograma_log_wg_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+
+wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
+         label.time.axis = TRUE,
+         plot.legend = FALSE)
+
+# dev.off()
+```
+
+
+# fig 10
+
+```{r}
+uk_gdp <- uk_gdp %>% 
+  mutate(date = parse_date_time(Year,"y"),
+         log_gdp = log(gdp_in_gold)) 
+
+
+uk_gdp_filt <- uk_gdp %>% 
+  filter(Year %in% c(1700:1900))
+
+gdp_wavelet <- analyze.wavelet(my.data = uk_gdp_filt,
+                                my.series = "gdp_in_gold",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+
+# png("plots/espectograma_gdp_uk_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE)
+# dev.off()
+
+gdp_wavelet <- analyze.wavelet(my.data = uk_gdp_filt,
+                                my.series = "log_gdp",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+
+png("plots/espectograma_log_gdp_uk_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE)
+dev.off()
+```
+
+
+# fig 11
+
+## a
+
+```{r}
+
+uk_gdp_filt$index <- 1:nrow(uk_gdp_filt)
+loess_gdp <- loess(gdp_in_gold~index, data = uk_gdp_filt, span = 0.75)
+
+uk_gdp_filt <- uk_gdp_filt %>% 
+  mutate(trend = predict(loess_gdp),
+         gdp_detrend = gdp_in_gold -trend)
+
+
+ggplot(uk_gdp_filt, aes(x=date ))+
+  geom_line(aes(y= gdp_in_gold, color = "original series"), size=1)+
+  geom_line(aes(y=trend, color = "loess trend"), size=1)+
+  geom_line(aes(y= gdp_detrend, color = "detrend"), size=1)+
+  theme_minimal()+
+  labs(x="", y="GDP in gold")+
+  theme(text = element_text(size = 20),
+        legend.position = "bottom",
+        legend.title = element_blank())
+
+# ggsave("plots/pbi_uk_tendencias_en.png", scale=1)
+```
+
+## b
+
+```{r}
+# sin tendencia
+
+gdp_wavelet <- analyze.wavelet(my.data = uk_gdp_filt,
+                                my.series = "gdp_detrend",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+
+# png("plots/espectograma_gdp_uk_sinTend_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE)
+# dev.off()
+```
+
+## c
+
+```{r}
+# tendencia
+gdp_wavelet <- analyze.wavelet(my.data = uk_gdp_filt,
+                                my.series = "trend",
+                                date.format = "%Y-%m-%d",
+                                date.tz = "UTC")
+
+# png("plots/espectograma_gdp_uk_Tend_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+
+wt.image(gdp_wavelet,color.key = "q",
+         show.date = TRUE,
+         plot.legend = FALSE,
+         label.time.axis = TRUE)
+# dev.off()
+```
+

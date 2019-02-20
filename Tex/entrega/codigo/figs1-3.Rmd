@@ -1,0 +1,207 @@
+---
+title: "Exploratory Data Analysis"
+output: html_notebook
+---
+
+## load
+
+```{r setup}
+library(tidyverse)
+library(lubridate)
+library(forecast)
+library(ggrepel)
+library(rvest)
+library(plotly)
+library(xtable)
+library(scales) 
+
+```
+
+
+```{r, message=FALSE}
+dja <- read_csv("data/DJA.csv",skip = 4)
+gold <- read_csv("data/GOLD_1791-2018.csv",skip = 2)
+interest_rate <- read_csv("data/INTERESTRATE_1857-2018.csv",skip = 1)
+sap <- read_csv("data/SAP_1871-2018.csv", skip=1)
+cpi <- read_csv("data/USCPI_1774-2018.csv", skip=3)
+gdp <- read_csv("data/USGDP_1790-2018.csv", skip=2)
+wage <- read_csv("data/USWAGE_1774-2018.csv")
+gdp_uk <-  read_csv("data/UKGDP_1700-2017.csv", skip=1)
+
+brit_gold <- read_csv("data/GOLD_brit_1257-1945.csv", skip=1)
+gold_london <- read_csv("data/GOLD_london_1718-2017.csv", skip = 1)
+```
+
+# Figure 1
+
+
+```{r}
+gold %>% 
+  ggplot(., aes(Year, `New York Market Price (U.S. dollars per fine ounce)`))+
+  geom_line(size=1)+
+  geom_vline(xintercept = 1971, color = "red")+
+  geom_label_repel(data=data_frame(),aes(x=1971,y=1000,label="End of the gold standard"),nudge_x = -5,force=10,size=7)+
+  theme_minimal()+
+  labs(y="dollars per fine ounce", x="Year")+
+  theme(text = element_text(size = 20))
+
+# ggsave("plots/oro_en.png", dpi=300, width = 10, height = 7, scale=1)
+
+```
+
+# Fig 2
+
+## a
+
+```{r}
+
+url <- "https://www.caproasia.com/2016/04/12/economic-crisis-since-1900-2015/"
+crisis <- url %>%
+  read_html() %>% 
+  html_nodes(css = 'table') %>% 
+  html_table(header = T)
+
+crisis <- crisis[[1]] %>% 
+  filter(Affected %in% c("United States","Global")) %>% 
+  separate(Period,c("desde","hasta")," – ") %>% 
+  mutate(hasta = parse_date_time(case_when(desde=="1970s"~"1979",
+                           desde=="1980s"~"1982",
+                           desde == "1990s"~"1991",
+                           TRUE~hasta),"y"),
+         desde = parse_date_time(case_when(desde=="1970s"~"1973",
+                           desde=="1980s"~"1981",
+                           desde=="1990s"~"1990",
+                           TRUE~desde),"y"))
+
+crisis_largas <- na.omit(crisis)
+crisis_puntuales <- crisis %>% 
+  filter(is.na(hasta))
+
+
+gdp <- left_join(gold, gdp, by = "Year") %>% 
+  mutate(gdp_in_gold = `Nominal GDP per capita (current dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         Year = parse_date_time(Year,"y")) 
+
+ggplot()+
+geom_rect(data= crisis_largas, 
+            aes(xmin=crisis_largas$desde,
+            xmax=crisis_largas$hasta),
+            fill="firebrick", 
+            ymin=-Inf,
+            ymax=Inf,
+            alpha=0.5)+
+  geom_line(size=1,
+    data = gdp %>% 
+              filter(Year>parse_date_time(1900,"y"))
+            ,aes(Year, gdp_in_gold))+
+  geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
+  geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ 
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  # scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+  
+  theme_minimal()+
+  labs(x="", y="GDP in gold")+
+  theme(text = element_text(size = 20))
+
+# ggsave("plots/gdp_in_gold_eda_en.PNG", dpi = 300, width = 10,height = 6)
+```
+
+## b
+
+
+```{r}
+wg_gold <- wage %>% 
+  filter(Year>=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  mutate(wg_in_gold = `Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         Year = parse_date_time(Year,"y")) %>% 
+  na.omit()  
+
+ggplot()+
+geom_rect(data= crisis_largas, 
+            aes(xmin=crisis_largas$desde,
+            xmax=crisis_largas$hasta),
+            fill="firebrick", 
+            ymin=-Inf,
+            ymax=Inf,
+            alpha=0.5)+
+  geom_line(size=1,data = wg_gold, aes(Year, wg_in_gold))+
+  geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
+  geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ #fin del patron oro
+  #scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  theme_minimal()+  
+  labs(x="", y="Wage in gold")+
+  theme(text = element_text(size = 20))
+
+
+# ggsave("plots/wg_in_gold_eda_en.PNG", dpi = 300, width = 10,height = 6)
+
+```
+
+
+
+# Fig 3
+
+
+```{r}
+oro <- full_join(brit_gold,gold_london)
+
+names(oro)
+#de http://fx.sauder.ubc.ca/data.html
+tc <- read_csv("data/ex_rate.csv")
+
+
+tc <- tc %>% mutate(date = parse_date_time(`MMM YYYY`,"my"),
+              Year = year(date)) %>% 
+  group_by(Year) %>% 
+  summarise(gbp_usd = mean(`GBP/USD`))
+
+
+#de http://fx.sauder.ubc.ca/etc/USDpages.pdf
+
+tc_1950_1970 <- data_frame(Year=1950:1970, gbp_usd = 0.35714) %>% 
+  mutate(gbp_usd = case_when(Year ==1967 ~ 0.36210,
+                             Year >1967 ~ 0.41667,
+                             TRUE ~ gbp_usd))
+
+tc <- bind_rows(tc_1950_1970,tc)
+
+oro <- oro %>% 
+  filter(Year %in% c(1700:2017)) %>% 
+  mutate(serie_unificada = case_when(Year < 1718 ~ `British Official Price (British pounds per fine ounce end of year)`,
+                                     Year >=1718 ~`London Market Price (British &pound; [1718-1949] or U.S. $ [1950-2011] per fine ounce)`))
+
+## Tengo que pasar todo a libras, desde 1950 al serie esta en dólares
+
+oro <- oro %>% 
+  left_join(tc) %>% 
+  mutate(serie_unificada = case_when(Year>1950 ~ serie_unificada*gbp_usd,
+                                     TRUE ~ serie_unificada))
+  
+gdp_uk <- gdp_uk %>% 
+  left_join(oro) %>% 
+  mutate(gdp_in_gold = `Nominal GDP (million of pounds)`/serie_unificada)
+
+
+crisis <- gdp_uk %>% 
+  filter(Year %in% c(1700:1900)) %>% 
+  mutate(crisis =gdp_in_gold) %>% 
+  filter(Year %in% c(1794,1803, 1812, 1822,1833,1842,1850, 1858, 1868,1879, 1885, 1893))
+
+gdp_uk %>% 
+  filter(Year %in% c(1700:1900)) %>% 
+ggplot(., aes(Year, gdp_in_gold))+
+  geom_line(size=1)+
+  geom_text_repel(data = crisis, aes(Year, crisis,label=Year),nudge_x = 5, nudge_y = -20,force=12,size=4)+
+  theme_minimal()+
+  labs(y="GDP in gold", x="")+
+  theme(text = element_text(size = 20))
+# ggsave("plots/uk_gdp_en.png",scale = 1)
+
+```
+
+
+
+
+
+

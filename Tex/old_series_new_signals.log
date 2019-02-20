@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.26)  21 JAN 2019 13:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.1.24)  19 FEB 2019 21:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -672,55 +672,139 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/bookman.sty
+Package: bookman 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+\Gm@cnth=\count156
+\Gm@cntv=\count157
+\c@Gm@tempcnt=\count158
+\Gm@bindingoffset=\dimen173
+\Gm@wd@mp=\dimen174
+\Gm@odd@mp=\dimen175
+\Gm@even@mp=\dimen176
+\Gm@layoutwidth=\dimen177
+\Gm@layoutheight=\dimen178
+\Gm@layouthoffset=\dimen179
+\Gm@layoutvoffset=\dimen180
+\Gm@dimlist=\toks45
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip58
+\f@nch@O@elh=\skip59
+\f@nch@O@erh=\skip60
+\f@nch@O@olh=\skip61
+\f@nch@O@orh=\skip62
+\f@nch@O@elf=\skip63
+\f@nch@O@erf=\skip64
+\f@nch@O@olf=\skip65
+\f@nch@O@orf=\skip66
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box43
+\beforetitleunit=\skip67
+\aftertitleunit=\skip68
+\ttl@plus=\dimen181
+\ttl@minus=\dimen182
+\ttl@toksa=\toks46
+\titlewidth=\dimen183
+\titlewidthlast=\dimen184
+\titlewidthfirst=\dimen185
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titling/titling.sty
+Package: titling 2009/09/04 v2.1d maketitle typesetting
+\thanksmarkwidth=\skip69
+\thanksmargin=\skip70
+\droptitle=\skip71
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip72
+\RaggedLeftLeftskip=\skip73
+\RaggedRightLeftskip=\skip74
+\CenteringRightskip=\skip75
+\RaggedLeftRightskip=\skip76
+\RaggedRightRightskip=\skip77
+\CenteringParfillskip=\skip78
+\RaggedLeftParfillskip=\skip79
+\RaggedRightParfillskip=\skip80
+\JustifyingParfillskip=\skip81
+\CenteringParindent=\skip82
+\RaggedLeftParindent=\skip83
+\RaggedRightParindent=\skip84
+\JustifyingParindent=\skip85
+)
 (/usr/share/texlive/texmf-dist/tex/latex/preprint/authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
-\affilsep=\skip58
-\@affilsep=\skip59
-\c@Maxaffil=\count156
-\c@authors=\count157
-\c@affil=\count158
+\affilsep=\skip86
+\@affilsep=\skip87
+\c@Maxaffil=\count159
+\c@authors=\count160
+\c@affil=\count161
 )
+
+LaTeX Warning: Unused global option(s):
+    [10cpi].
+
 (./old_series_new_signals.aux
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
-LaTeX Info: Redefining \. on input line 28.
-LaTeX Info: Redefining \% on input line 28.
 )
 \openout1 = `old_series_new_signals.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Info: Redefining \. on input line 74.
-LaTeX Info: Redefining \% on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Try loading font information for T1+pbk on input line 120.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pbk.fd
+File: t1pbk.fd 2001/06/04 font definitions for T1/pbk.
+)
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <10> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 120.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count159
-\scratchdimen=\dimen173
-\scratchbox=\box43
-\nofMPsegments=\count160
-\nofMParguments=\count161
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count162
-\MPscratchDim=\dimen174
-\MPnumerator=\count163
-\makeMPintoPDFobject=\count164
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count162
+\scratchdimen=\dimen186
+\scratchbox=\box44
+\nofMPsegments=\count163
+\nofMParguments=\count164
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count165
+\MPscratchDim=\dimen187
+\MPnumerator=\count166
+\makeMPintoPDFobject=\count167
+\everyMPtoPDFconversion=\toks48
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -739,8 +823,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box44
-Package hyperref Info: Link coloring ON on input line 74.
+\AtBeginShipoutBox=\box45
+Package hyperref Info: Link coloring ON on input line 120.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -748,90 +832,185 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count165
+\c@section@level=\count168
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
-LaTeX Info: Redefining \nameref on input line 74.
+LaTeX Info: Redefining \ref on input line 120.
+LaTeX Info: Redefining \pageref on input line 120.
+LaTeX Info: Redefining \nameref on input line 120.
 
 (./old_series_new_signals.out) (./old_series_new_signals.out)
 \@outlinefile=\write4
 \openout4 = `old_series_new_signals.out'.
 
-\c@lstlisting=\count166
+\c@lstlisting=\count169
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(122.34692pt, 404.02907pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 708.47354pt, 65.44142pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=404.02907pt
+* \textheight=708.47354pt
+* \oddsidemargin=50.07693pt
+* \evensidemargin=50.07693pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 120.
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <17.28> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 123.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 123.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <12> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 123.
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <8> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 123.
+LaTeX Font Info:    Font shape `T1/pbk/m/it' in size <12> not available
+(Font)              Font shape `T1/pbk/l/it' tried instead on input line 123.
+LaTeX Font Info:    Font shape `T1/pbk/m/it' in size <9> not available
+(Font)              Font shape `T1/pbk/l/it' tried instead on input line 123.
+LaTeX Font Info:    Font shape `T1/pbk/m/it' in size <6> not available
+(Font)              Font shape `T1/pbk/l/it' tried instead on input line 123.
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <6> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 123.
+LaTeX Font Info:    Font shape `T1/pbk/bx/n' in size <10> not available
+(Font)              Font shape `T1/pbk/b/n' tried instead on input line 127.
+LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <10> not available
+(Font)              Font shape `T1/pbk/db/n' tried instead on input line 127.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-LaTeX Info: Redefining \. on input line 85.
-LaTeX Info: Redefining \% on input line 85.
+LaTeX Info: Redefining \. on input line 133.
+LaTeX Info: Redefining \% on input line 133.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<../plots/oro_en.png, id=128, 722.7pt x 505.89pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 158.
+LaTeX Font Info:    Font shape `T1/pbk/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/pbk/b/n' tried instead on input line 158.
+LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
+(Font)              Font shape `T1/pbk/db/n' tried instead on input line 158.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\uppercase' on input line 158.
+
+LaTeX Font Info:    Font shape `T1/pbk/m/it' in size <10> not available
+(Font)              Font shape `T1/pbk/l/it' tried instead on input line 160.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\uppercase' on input line 168.
+
+[2]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\uppercase' on input line 181.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+[3]
+<../plots/oro_en.png, id=119, 722.7pt x 505.89pt>
 File: ../plots/oro_en.png Graphic file (type png)
 <use ../plots/oro_en.png>
-Package pdftex.def Info: ../plots/oro_en.png  used on input line 138.
-(pdftex.def)             Requested size: 258.75pt x 181.12447pt.
+Package pdftex.def Info: ../plots/oro_en.png  used on input line 205.
+(pdftex.def)             Requested size: 303.02179pt x 212.11725pt.
+<../plots/gdp_in_gold_eda_en.PNG, id=123, 722.7pt x 433.62pt>
+File: ../plots/gdp_in_gold_eda_en.PNG Graphic file (type png)
+<use ../plots/gdp_in_gold_eda_en.PNG>
+Package pdftex.def Info: ../plots/gdp_in_gold_eda_en.PNG  used on input line 22
+2.
+(pdftex.def)             Requested size: 303.02179pt x 181.81479pt.
+<../plots/wg_in_gold_eda_en.PNG, id=124, 722.7pt x 433.62pt>
+File: ../plots/wg_in_gold_eda_en.PNG Graphic file (type png)
+<use ../plots/wg_in_gold_eda_en.PNG>
+Package pdftex.def Info: ../plots/wg_in_gold_eda_en.PNG  used on input line 224
+.
+(pdftex.def)             Requested size: 303.02179pt x 181.81479pt.
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.145 	S
-        ince gold is a refuge of value in crisis periods, its price is count...
- <../plots/oro_en.png (PNG copy)>]
-
-LaTeX Warning: Reference `fig:salary' on page 5 undefined on input line 147.
-
-<../plots/gdp_in_gold_eda_en.PNG, id=138, 722.7pt x 433.62pt>
-File: ../plots/gdp_in_gold_eda_en.PNG Graphic file (type png)
-<use ../plots/gdp_in_gold_eda_en.PNG>
-Package pdftex.def Info: ../plots/gdp_in_gold_eda_en.PNG  used on input line 15
-5.
-(pdftex.def)             Requested size: 258.75pt x 155.24954pt.
-<../plots/wg_in_gold_eda_en.PNG, id=139, 722.7pt x 433.62pt>
-File: ../plots/wg_in_gold_eda_en.PNG Graphic file (type png)
-<use ../plots/wg_in_gold_eda_en.PNG>
-Package pdftex.def Info: ../plots/wg_in_gold_eda_en.PNG  used on input line 157
-.
-(pdftex.def)             Requested size: 258.75pt x 155.24954pt.
-[5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
-has been already used, duplicate ignored
+l.227 	
+        <../plots/oro_en.png (PNG copy)>] [5pdfTeX warning (ext4): destination 
+with the same identifier (name{figure.2}) has been already used, duplicate igno
+red
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.187 	
-        <../plots/gdp_in_gold_eda_en.PNG (PNG copy)> <../plots/wg_in_gold_eda_e
-n.PNG (PNG copy)>]
-<../plots/uk_gdp_en.png, id=149, 510.9489pt x 315.3381pt>
+l.255 	A
+        s a complement of the United States's series is interesting to obser...
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.255 	A
+        s a complement of the United States's series is interesting to obser...
+ <../plots/gdp_in_gold_eda_en.PNG (PNG copy)> <../plots/wg_in_gold_eda_en.PNG (
+PNG copy)>]
+<../plots/uk_gdp_en.png, id=138, 462.7689pt x 285.9483pt>
 File: ../plots/uk_gdp_en.png Graphic file (type png)
 <use ../plots/uk_gdp_en.png>
-Package pdftex.def Info: ../plots/uk_gdp_en.png  used on input line 192.
-(pdftex.def)             Requested size: 258.75pt x 159.68956pt.
- [6pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+Package pdftex.def Info: ../plots/uk_gdp_en.png  used on input line 259.
+(pdftex.def)             Requested size: 303.02179pt x 187.24295pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\uppercase' on input line 269.
+
+<../plots/ciclo_en.png, id=141, 526.8483pt x 325.215pt>
+File: ../plots/ciclo_en.png Graphic file (type png)
+<use ../plots/ciclo_en.png>
+Package pdftex.def Info: ../plots/ciclo_en.png  used on input line 276.
+(pdftex.def)             Requested size: 262.61642pt x 162.1059pt.
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
 has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.199 	
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.3}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.199 	
+l.279 	
         <../plots/uk_gdp_en.png>]
-<../plots/ciclo_en.png, id=158, 526.8483pt x 325.215pt>
-File: ../plots/ciclo_en.png Graphic file (type png)
-<use ../plots/ciclo_en.png>
-Package pdftex.def Info: ../plots/ciclo_en.png  used on input line 209.
-(pdftex.def)             Requested size: 224.2479pt x 138.42545pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--215
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
 
  []
 
@@ -840,267 +1019,237 @@ has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.217 	
-        <../plots/ciclo_en.png (PNG copy)>] [8]
-<../plots/morelt_en.png, id=191, 515.526pt x 318.2289pt>
+l.301 	T
+        he base function we use for the present work is called \textit{Morle...
+ <../plots/ciclo_en.png (PNG copy)>]
+<../plots/morelt_en.png, id=169, 515.526pt x 318.2289pt>
 File: ../plots/morelt_en.png Graphic file (type png)
 <use ../plots/morelt_en.png>
-Package pdftex.def Info: ../plots/morelt_en.png  used on input line 251.
-(pdftex.def)             Requested size: 345.0pt x 212.9743pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 275.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [9pdfTeX warning (ext4): destination with the same identifier (name{figure.5}
-) has been already used, duplicate ignored
+Package pdftex.def Info: ../plots/morelt_en.png  used on input line 318.
+(pdftex.def)             Requested size: 404.02907pt x 249.41205pt.
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
+ has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.279 	short 
-             = 10 * sin(( 2 * pi/3 ) * c(1:n)) <../plots/morelt_en.png (PNG cop
-y)>]
-Overfull \hbox (74.48163pt too wide) in paragraph at lines 283--284
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+l.336 		\item \textbf
+                     {long cycle}: A cycle of large amplitude and extension <..
+/plots/morelt_en.png (PNG copy)>]
+LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <9> not available
+(Font)              Font shape `T1/pbk/l/n' tried instead on input line 342.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 342.
 
-<../plots/serie_teorica_en.PNG, id=198, 526.8483pt x 325.215pt>
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+<../plots/serie_teorica_en.PNG, id=183, 462.7689pt x 285.9483pt>
 File: ../plots/serie_teorica_en.PNG Graphic file (type png)
 <use ../plots/serie_teorica_en.PNG>
-Package pdftex.def Info: ../plots/serie_teorica_en.PNG  used on input line 289.
+Package pdftex.def Info: ../plots/serie_teorica_en.PNG  used on input line 356.
 
-(pdftex.def)             Requested size: 345.0pt x 212.96031pt.
-
-LaTeX Warning: Reference `fig: espect_teo' on page 10 undefined on input line 2
-93.
-
-<../plots/espectograma_teorico_impulso_en.png, id=199, 1606.0pt x 1003.75pt>
+(pdftex.def)             Requested size: 404.02907pt x 249.65872pt.
+<../plots/espectograma_teorico_impulso_en.png, id=185, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_impulso_en.png Graphic file (type png)
 <use ../plots/espectograma_teorico_impulso_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_impulso_en.png  used on 
-input line 298.
-(pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_tendencia_en.png, id=200, 1606.0pt x 1003.75pt>
+input line 365.
+(pdftex.def)             Requested size: 197.97646pt x 123.72241pt.
+<../plots/espectograma_teorico_tendencia_en.png, id=186, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_tendencia_en.png Graphic file (type png)
 <use ../plots/espectograma_teorico_tendencia_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_tendencia_en.png  used o
-n input line 300.
-(pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_3_en.png, id=201, 1606.0pt x 1003.75pt>
+n input line 367.
+(pdftex.def)             Requested size: 197.97646pt x 123.72241pt.
+<../plots/espectograma_teorico_ciclo_3_en.png, id=187, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_3_en.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_3_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_3_en.png  used on 
-input line 302.
-(pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_10_en.png, id=202, 1606.0pt x 1003.75pt>
+input line 369.
+(pdftex.def)             Requested size: 197.97646pt x 123.72241pt.
+<../plots/espectograma_teorico_ciclo_10_en.png, id=188, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_10_en.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_10_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_10_en.png  used on
- input line 304.
-(pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ciclo_50_en.png, id=203, 1606.0pt x 1003.75pt>
+ input line 371.
+(pdftex.def)             Requested size: 197.97646pt x 123.72241pt.
+<../plots/espectograma_teorico_ciclo_50_en.png, id=189, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ciclo_50_en.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ciclo_50_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_50_en.png  used on
- input line 306.
-(pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_ruido_en.png, id=204, 1606.0pt x 1003.75pt>
+ input line 373.
+(pdftex.def)             Requested size: 197.97646pt x 123.72241pt.
+<../plots/espectograma_teorico_ruido_en.png, id=190, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_teorico_ruido_en.png Graphic file (type png)
 <use ../plots/espectograma_teorico_ruido_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_ruido_en.png  used on in
-put line 308.
-(pdftex.def)             Requested size: 169.0519pt x 105.64957pt.
-<../plots/espectograma_teorico_composicion_series_en.png, id=205, 1606.0pt x 10
+put line 375.
+(pdftex.def)             Requested size: 197.97646pt x 123.72241pt.
+<../plots/espectograma_teorico_composicion_series_en.png, id=191, 1606.0pt x 10
 03.75pt>
 File: ../plots/espectograma_teorico_composicion_series_en.png Graphic file (typ
 e png)
 <use ../plots/espectograma_teorico_composicion_series_en.png>
 Package pdftex.def Info: ../plots/espectograma_teorico_composicion_series_en.pn
-g  used on input line 310.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-[10pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+g  used on input line 377.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.313 	
-        <../plots/serie_teorica_en.PNG>] [11pdfTeX warning (ext4): destination 
+l.380 	
+        <../plots/serie_teorica_en.PNG>] [10pdfTeX warning (ext4): destination 
 with the same identifier (name{figure.7}) has been already used, duplicate igno
 red
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.316 	T
-        he three defined cycles mark a horizontal line in the corresponding ...
- <../plots/espectograma_teorico_impulso_en.png (PNG copy)> <../plots/espectogra
-ma_teorico_tendencia_en.png (PNG copy)> <../plots/espectograma_teorico_ciclo_3_
-en.png (PNG copy)> <../plots/espectograma_teorico_ciclo_10_en.png (PNG copy)> <
-../plots/espectograma_teorico_ciclo_50_en.png (PNG copy)> <../plots/espectogram
-a_teorico_ruido_en.png (PNG copy)> <../plots/espectograma_teorico_composicion_s
-eries_en.png (PNG copy)>]
-<../plots/espectograma_gdp_en.png, id=243, 1606.0pt x 1003.75pt>
+l.384 	
+        <../plots/espectograma_teorico_impulso_en.png (PNG copy)> <../plots/esp
+ectograma_teorico_tendencia_en.png (PNG copy)> <../plots/espectograma_teorico_c
+iclo_3_en.png (PNG copy)> <../plots/espectograma_teorico_ciclo_10_en.png (PNG c
+opy)> <../plots/espectograma_teorico_ciclo_50_en.png (PNG copy)> <../plots/espe
+ctograma_teorico_ruido_en.png (PNG copy)> <../plots/espectograma_teorico_compos
+icion_series_en.png (PNG copy)>]
+<../plots/espectograma_gdp_en.png, id=229, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_en.png Graphic file (type png)
 <use ../plots/espectograma_gdp_en.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_en.png  used on input line 3
-28.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_gdp_en.png, id=244, 1606.0pt x 1003.75pt>
+95.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+<../plots/espectograma_log_gdp_en.png, id=230, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_gdp_en.png Graphic file (type png)
 <use ../plots/espectograma_log_gdp_en.png>
 Package pdftex.def Info: ../plots/espectograma_log_gdp_en.png  used on input li
-ne 330.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
- [12]
-
-LaTeX Warning: Reference `fig: espect_wg' on page 13 undefined on input line 33
-4.
-
-
-LaTeX Warning: Reference `fig: espect_wg_a' on page 13 undefined on input line 
-334.
-
-
-LaTeX Warning: Reference `fig: espect_wg_b' on page 13 undefined on input line 
-334.
-
-<../plots/espectograma_wg_en.png, id=252, 1606.0pt x 1003.75pt>
+ne 397.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+ [11]
+<../plots/espectograma_wg_en.png, id=241, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_wg_en.png Graphic file (type png)
 <use ../plots/espectograma_wg_en.png>
-Package pdftex.def Info: ../plots/espectograma_wg_en.png  used on input line 34
-0.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_wg_en.png, id=253, 1606.0pt x 1003.75pt>
+Package pdftex.def Info: ../plots/espectograma_wg_en.png  used on input line 40
+7.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+<../plots/espectograma_log_wg_en.png, id=242, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_wg_en.png Graphic file (type png)
 <use ../plots/espectograma_log_wg_en.png>
 Package pdftex.def Info: ../plots/espectograma_log_wg_en.png  used on input lin
-e 342.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-[13pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
- has been already used, duplicate ignored
+e 409.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+ [12pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
+) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.345 	
+l.412 	
         <../plots/espectograma_gdp_en.png (PNG copy)> <../plots/espectograma_lo
 g_gdp_en.png (PNG copy)>]
-
-LaTeX Warning: Reference `fig: espect_uk_a' on page 14 undefined on input line 
-346.
-
-<../plots/espectograma_gdp_uk_en.png, id=262, 1606.0pt x 1003.75pt>
+<../plots/espectograma_gdp_uk_en.png, id=254, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_uk_en.png Graphic file (type png)
 <use ../plots/espectograma_gdp_uk_en.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_uk_en.png  used on input lin
-e 351.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-<../plots/espectograma_log_gdp_uk_en.png, id=263, 1606.0pt x 1003.75pt>
+e 418.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+<../plots/espectograma_log_gdp_uk_en.png, id=255, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_log_gdp_uk_en.png Graphic file (type png)
 <use ../plots/espectograma_log_gdp_uk_en.png>
 Package pdftex.def Info: ../plots/espectograma_log_gdp_uk_en.png  used on input
- line 353.
-(pdftex.def)             Requested size: 258.75pt x 161.72134pt.
-[14pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
- has been already used, duplicate ignored
+ line 420.
+(pdftex.def)             Requested size: 303.02179pt x 189.38199pt.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
+) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.356 	
+l.423 	
         <../plots/espectograma_wg_en.png (PNG copy)> <../plots/espectograma_log
-_wg_en.png (PNG copy)>] [15pdfTeX warning (ext4): destination with the same ide
-ntifier (name{figure.10}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.361 	T
-        he figure \ref{fig:espectograma_gdp_uk_Tend} shows the spectrogram o...
- <../plots/espectograma_gdp_uk_en.png (PNG copy)> <../plots/espectograma_log_gd
-p_uk_en.png (PNG copy)>]
-<../plots/pbi_uk_tendencias_en.png, id=289, 515.526pt x 318.2289pt>
+_wg_en.png (PNG copy)>]
+<../plots/pbi_uk_tendencias_en.png, id=273, 462.7689pt x 285.9483pt>
 File: ../plots/pbi_uk_tendencias_en.png Graphic file (type png)
 <use ../plots/pbi_uk_tendencias_en.png>
 Package pdftex.def Info: ../plots/pbi_uk_tendencias_en.png  used on input line 
-366.
-(pdftex.def)             Requested size: 258.75pt x 159.73073pt.
-<../plots/espectograma_gdp_uk_Tend_en.png, id=290, 1606.0pt x 1003.75pt>
+433.
+(pdftex.def)             Requested size: 303.02179pt x 187.24295pt.
+<../plots/espectograma_gdp_uk_Tend_en.png, id=274, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_uk_Tend_en.png Graphic file (type png)
 <use ../plots/espectograma_gdp_uk_Tend_en.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_uk_Tend_en.png  used on inpu
-t line 368.
-(pdftex.def)             Requested size: 165.59853pt x 103.49002pt.
-<../plots/espectograma_gdp_uk_sinTend_en.png, id=291, 1606.0pt x 1003.75pt>
+t line 435.
+(pdftex.def)             Requested size: 193.93222pt x 121.19528pt.
+<../plots/espectograma_gdp_uk_sinTend_en.png, id=275, 1606.0pt x 1003.75pt>
 File: ../plots/espectograma_gdp_uk_sinTend_en.png Graphic file (type png)
 <use ../plots/espectograma_gdp_uk_sinTend_en.png>
 Package pdftex.def Info: ../plots/espectograma_gdp_uk_sinTend_en.png  used on i
-nput line 370.
-(pdftex.def)             Requested size: 165.59853pt x 103.49002pt.
- [16pdfTeX warning (ext4): destination with the same identifier (name{figure.11
+nput line 437.
+(pdftex.def)             Requested size: 193.93222pt x 121.19528pt.
+ [14pdfTeX warning (ext4): destination with the same identifier (name{figure.10
 }) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.382 	
+l.440 	\end{figure}
+                    <../plots/espectograma_gdp_uk_en.png (PNG copy)> <../plots/
+espectograma_log_gdp_uk_en.png (PNG copy)>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\uppercase' on input line 442.
+
+[15pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.451 	
         <../plots/pbi_uk_tendencias_en.png (PNG copy)> <../plots/espectograma_g
 dp_uk_Tend_en.png (PNG copy)> <../plots/espectograma_gdp_uk_sinTend_en.png (PNG
- copy)>] (./old_series_new_signals.bbl [17]
-Underfull \hbox (badness 1910) in paragraph at lines 111--114
-[]\T1/cmr/m/n/10 Angi Roesch and Har-ald Schmid-bauer.  \T1/cmr/m/it/10 Wavelet
--Comp: Com-pu-ta-tional
+ copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
+
  []
 
-[18]) [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 393.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 393.
+(./old_series_new_signals.bbl [16]) [17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 462.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 462.
  (./old_series_new_signals.aux
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
-LaTeX Info: Redefining \. on input line 28.
-LaTeX Info: Redefining \% on input line 28.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 462.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 462.
 Package rerunfilecheck Info: File `old_series_new_signals.out' has not changed.
 
-(rerunfilecheck)             Checksum: B6E76FA7702937101B408E52ED84B9E2;396.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 393.
+(rerunfilecheck)             Checksum: AF6F49BB4D8BF1D275715CA16A5E7295;264.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 462.
  ) 
 Here is how much of TeX's memory you used:
- 21616 strings out of 494524
- 377393 string characters out of 6175863
- 588648 words of memory out of 5000000
- 24763 multiletter control sequences out of 15000+600000
- 19695 words of font info for 48 fonts, out of 8000000 for 9000
+ 22693 strings out of 494517
+ 392506 string characters out of 6175533
+ 589703 words of memory out of 5000000
+ 25809 multiletter control sequences out of 15000+600000
+ 33018 words of font info for 62 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 62i,8n,72p,1357b,2495s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600
-pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.60
-0pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.6
-00pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.
-600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440
-.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm100
-0.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx10
-00.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0
-900.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
-0600.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecr
-m0800.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
-rm1200.600pk> </home/diego/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy7.pfb>
-Output written on old_series_new_signals.pdf (19 pages, 2905670 bytes).
+ 62i,12n,72p,1273b,1746s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/bookman/ubkl8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/bookman/ubkli8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb>
+Output written on old_series_new_signals.pdf (17 pages, 2699148 bytes).
 PDF statistics:
- 772 PDF objects out of 1000 (max. 8388607)
- 355 compressed objects within 4 object streams
- 92 named destinations out of 1000 (max. 500000)
- 184 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 376 PDF objects out of 1000 (max. 8388607)
+ 313 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -74,12 +74,13 @@ ggsave("plots/serie_teorica.PNG")
 
 ```{r}
 df <- data_frame(period=1:nn,impulse=impulso,trend=x0, short=x3,middle=x10, long=x50,noise=ruido, composite_series=x)
+
 df %>%
   filter(period %in% c(450:550)) %>% 
   gather(componente,valor,2:8,factor_key=T) %>% 
   ggplot(.,aes(period,valor))+
   geom_line()+
-  labs(y='value',title= "Elements of theoretical series")+
+  labs(y='value')+
   facet_wrap(~componente, scales="free")+
   theme_minimal()
 
@@ -336,13 +337,12 @@ wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
 ```
 
 ```{r}
-# png("plots/espectograma_wg_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
+png("plots/espectograma_wg_en.png", width = 1600, height = 1000, units = "p", pointsize = 40)
 wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
          label.time.axis = TRUE,
-         plot.legend = FALSE,
-         main = "Wage spectrogram")
+         plot.legend = FALSE)
 
-# dev.off()
+dev.off()
 ```
 
 
@@ -374,8 +374,7 @@ png("plots/espectograma_log_wg_en.png", width = 1600, height = 1000, units = "p"
 
 wt.image(wage_wavelet,color.key = "q", show.date = TRUE,
          label.time.axis = TRUE,
-         plot.legend = FALSE,
-         main = 'log(wage) spectrogram')
+         plot.legend = FALSE)
 
 dev.off()
 ```
@@ -422,8 +421,7 @@ png("plots/espectograma_gdp_en.png", width = 1600, height = 1000, units = "p", p
 wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
          plot.legend = FALSE,
-         label.time.axis = TRUE,
-         main = "US GDP spectrogram")
+         label.time.axis = TRUE)
 dev.off()
 
 ```
@@ -464,8 +462,7 @@ wt.image(gdp_wavelet,color.key = "q",
          spec.period.axis = list(at = c(3,7,20,50), labels = TRUE),
          n.levels = 100,
          show.date = TRUE,
-         label.time.axis = TRUE, 
-         main = "US log(GDP) spectrogram")
+         label.time.axis = TRUE)
 dev.off()
 
 ```
@@ -595,8 +592,7 @@ png("plots/espectograma_gdp_uk_en.png", width = 1600, height = 1000, units = "p"
 wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
          plot.legend = FALSE,
-         label.time.axis = TRUE,
-         main = "UK GDP spectrogram")
+         label.time.axis = TRUE)
 dev.off()
 ```
 
@@ -623,8 +619,7 @@ png("plots/espectograma_log_gdp_uk_en.png", width = 1600, height = 1000, units =
 wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
          plot.legend = FALSE,
-         label.time.axis = TRUE,
-         main = "UK log(GDP) spectrogram")
+         label.time.axis = TRUE)
 dev.off()
 ```
 
@@ -689,8 +684,7 @@ ggplot(uk_gdp_filt, aes(x=date ))+
   geom_line(aes(y=trend, color = "loess trend"), size=1)+
   geom_line(aes(y= gdp_detrend, color = "detrend"), size=1)+
   theme_minimal()+
-  labs(x="", y="GDP in gold", title= "UK GDP",
-       subtitle= "Millions of ounces of gold, 1700-1900. Trend")+
+  labs(x="", y="GDP in gold")+
   theme(text = element_text(size = 20),
         legend.position = "bottom",
         legend.title = element_blank())
@@ -724,8 +718,7 @@ png("plots/espectograma_gdp_uk_sinTend_en.png", width = 1600, height = 1000, uni
 wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
          plot.legend = FALSE,
-         label.time.axis = TRUE,
-         main = "UK GDP spectrogram, detrended")
+         label.time.axis = TRUE)
 dev.off()
 ```
 
@@ -754,8 +747,7 @@ png("plots/espectograma_gdp_uk_Tend_en.png", width = 1600, height = 1000, units 
 wt.image(gdp_wavelet,color.key = "q",
          show.date = TRUE,
          plot.legend = FALSE,
-         label.time.axis = TRUE,
-         main = "UK GDP spectrogram, trend")
+         label.time.axis = TRUE)
 dev.off()
 ```
 
