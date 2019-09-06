@@ -329,6 +329,37 @@ La guerra de sesesión de EEUU fué entre el 12 de abril de 1861 y el 9 de abril
 
 A partir de ahí el pbi en oro crece hasta el fin del patron oro.
 
+
+## GDP complementario
+
+```{r}
+
+
+
+crisis <- gdp %>% 
+  filter(Year<parse_date_time(1900,"y")) %>% 
+  mutate(crisis =gdp_in_gold,
+         year_dbl = year(Year)) %>%
+  select(year_dbl, Year, crisis) %>% 
+  filter(year_dbl %in% c(1802,1824,1843,1864, 1869,1875, 1885, 1894))
+
+
+gdp %>% 
+  filter(Year<parse_date_time(1900,"y")) %>% 
+ggplot(., aes(Year, gdp_in_gold))+
+  geom_line(size=1)+
+  geom_text_repel(data = crisis, aes(Year, crisis,label=year_dbl),nudge_x = 5, nudge_y = -1,force=5,size=4)+
+  theme_minimal()+
+  labs(y="GDP in gold", x="Year")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/gdp_us_complement.png", dpi=300, width = 10, height = 7, scale=1)
+
+```
+
+
+
 ## wage
 
 ```{r}
@@ -432,6 +463,42 @@ Se ven los mismos tres períodos. Pero a diferencia del GDP, el período 1980-20
 ¿ Si quisieramos comparar ingrsos con algún revenue tendríamos usar S&P o DJA?
 
 
+#### Complementario
+
+```{r}
+
+wg_gold_old <- wage %>% 
+  filter(Year<=1900) %>% 
+  left_join(gold, gdp, by = "Year") %>% 
+  mutate(wg_in_gold = `Production Workers Hourly Compensation (nominal dollars)`/`New York Market Price (U.S. dollars per fine ounce)`,
+         Year = parse_date_time(Year,"y")) %>% 
+  na.omit()  
+
+crisis <- wg_gold_old %>% 
+  filter(Year<parse_date_time(1900,"y")) %>% 
+  mutate(crisis =wg_in_gold,
+         year_dbl = year(Year)) %>%
+  select(year_dbl, Year, crisis) %>% 
+  filter(year_dbl %in% c(1802,1824,1843,1864, 1869,1875, 1885, 1894))
+
+ggplot(wg_gold_old, aes(Year, wg_in_gold))+
+  geom_line(size=1)+
+  geom_text_repel(data = crisis, aes(Year, crisis,label=year_dbl),nudge_x = 5, nudge_y = -.001,force=5,size=4)+
+  theme_minimal()+
+  labs(y="GDP in gold", x="Year")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/wage_us_complement.png", dpi=300, width = 10, height = 7, scale=1)
+
+
+
+
+```
+
+
+
+
 #### UK
 
 ```{r}
@@ -488,10 +555,24 @@ oro <- oro %>%
   mutate(serie_unificada = case_when(Year>1950 ~ serie_unificada*gbp_usd,
                                      TRUE ~ serie_unificada))
   
-ggplot(oro, aes(Year, serie_unificada))+
-  geom_line()
-
 ```
+
+Gráfico Oro
+```{r}
+  oro %>% 
+  filter(Year<=1900) %>% 
+  ggplot(., aes(Year,serie_unificada))+
+  geom_line(size=1)+
+  scale_y_continuous(limits = c(2,6))+
+  theme_minimal()+
+  labs(y="British pounds per fine ounce", x="Year")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/oro_uk.png", dpi=300, width = 10, height = 7, scale=1)
+```
+
+
 
 
 ## PBI uk en oro
@@ -555,6 +636,72 @@ gdp_uk %>%
 
 
 
+
+
+##### complemento UK
+
+```{r}
+ggplot()+
+geom_rect(data= crisis_largas, 
+            aes(xmin=crisis_largas$desde,
+            xmax=crisis_largas$hasta),
+            fill="firebrick", 
+            ymin=-Inf,
+            ymax=Inf,
+            alpha=0.5)+
+  geom_line(size=1,
+    data = gdp_uk %>%
+      mutate(Year=parse_date_time(Year,"y")) %>% 
+              filter(Year>parse_date_time(1900,"y"))
+            ,aes(Year, gdp_in_gold))+
+  geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
+  geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ 
+  scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  # scale_x_datetime(date_breaks = "15 years",labels = date_format("%Y") )+  
+  theme_minimal()+
+  labs(x="", y="GDP in gold")+
+  theme(text = element_text(size = 20))
+
+ggsave("plots/gdp_uk_complement.png", dpi=300, width = 10, height = 7, scale=1)
+
+```
+
+
+##### PBI mundial
+
+```{r}
+library(readxl)
+mpd_2013_01 <- read_excel("data/mpd_2013-01.xlsx", 
+    sheet = "PerCapitaGDPUpdate", skip = 2)
+
+gdp_global <- mpd_2013_01 %>% 
+  select(year = ...1, global_gdp = `Total World`) %>% 
+  na.omit() %>% 
+  mutate(Year = parse_date_time(year, "y"))
+
+
+ggplot()+
+geom_rect(data= crisis_largas, 
+            aes(xmin=crisis_largas$desde,
+            xmax=crisis_largas$hasta),
+            fill="firebrick", 
+            ymin=-Inf,
+            ymax=Inf,
+            alpha=0.5)+
+  geom_line(size=1,
+    data = gdp_global ,aes(Year, global_gdp))+
+  geom_vline(data=crisis_puntuales, aes(xintercept=desde), color = "red", linetype="dashed")+
+  geom_vline(xintercept = parse_date_time(1971,"y"),color = "gold")+ 
+  # scale_x_datetime(breaks = parse_date_time(seq(1900,2017, 15),'y'), labels = date_format("%Y"))+
+  theme_minimal()+
+  labs(x="", y="GDP per capita")+
+  theme(text = element_text(size = 20))
+
+
+ggsave("plots/global_gdp.png", dpi=300, width = 10, height = 7, scale=1)
+
+
+```
 
 
 

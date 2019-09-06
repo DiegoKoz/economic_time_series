@@ -1,148 +1,176 @@
-\begin{thebibliography}{25}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{}
 
-\bibitem[Castro and Castro(1995)]{castro1995wavelets}
-Liliana~Raquel Castro and Silvia~Mabel Castro.
+\bibitem[\protect\astroncite{Arrighi}{1994}]{arrighi1994long}
+Arrighi, G. (1994).
+\newblock {\em {The long twentieth century: Money, power, and the origins of
+  our times}}.
+\newblock verso.
+
+\bibitem[\protect\astroncite{Bolt and van Zanden}{2014}]{bolt2014}
+Bolt, J. and van Zanden, J.~L. (2014).
+\newblock {The Maddison Project: collaborative research on historical national
+  accounts}.
+\newblock {\em The Economic History Review}, 67(3):627--651.
+
+\bibitem[\protect\astroncite{Castro and Castro}{1995}]{castro1995wavelets}
+Castro, L.~R. and Castro, S.~M. (1995).
 \newblock {Wavelets y sus Aplicaciones}.
-\newblock In \emph{I Congreso Argentino de Ciencias de la Computaci{\'{o}}n},
-  1995.
+\newblock In {\em I Congreso Argentino de Ciencias de la Computaci{\'{o}}n}.
 
-\bibitem[{Cleveland, William S and Grosse, E and Shyu}(1992)]{Shyu1992}
-WM~{Cleveland, William S and Grosse, E and Shyu}.
+\bibitem[\protect\astroncite{{Cleveland, William S and Grosse, E and
+  Shyu}}{1992}]{Shyu1992}
+{Cleveland, William S and Grosse, E and Shyu}, W. (1992).
 \newblock {Local regression models}.
-\newblock In \emph{Statistical models in S, edited by John M. Chambers and
-  Trevor J. Hastie}, pages 309--376. 1992.
+\newblock In {\em Statistical models in S, edited by John M. Chambers and
+  Trevor J. Hastie}, pages 309--376.
 
-\bibitem[Conraria and Soares(2011)]{conraria2011continuous}
-Lu{\'{i}}s~Aguiar Conraria and Maria~J Soares.
+\bibitem[\protect\astroncite{Conraria and
+  Soares}{2011}]{conraria2011continuous}
+Conraria, L.~A. and Soares, M.~J. (2011).
 \newblock {The continuous wavelet transform: A primer}.
-\newblock \emph{NIPE Working Paper}, 16:\penalty0 1--43, 2011.
+\newblock {\em NIPE Working Paper}, 16:1--43.
 
-\bibitem[Hamilton(1989)]{hamilton1989new}
-James~D Hamilton.
+\bibitem[\protect\astroncite{Hamilton}{1989}]{hamilton1989new}
+Hamilton, J.~D. (1989).
 \newblock {A new approach to the economic analysis of nonstationary time series
   and the business cycle}.
-\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
-  357--384, 1989.
+\newblock {\em Econometrica: Journal of the Econometric Society}, pages
+  357--384.
 
-\bibitem[Harrod(1936)]{harrod1936trade}
-Roy~Forbes Harrod.
-\newblock \emph{{The trade cycle}}.
-\newblock Clarendon Press, 1936.
+\bibitem[\protect\astroncite{Harrod}{1936}]{harrod1936trade}
+Harrod, R.~F. (1936).
+\newblock {\em {The trade cycle}}.
+\newblock Clarendon Press.
 
-\bibitem[Hayek(1933)]{hayek1933}
-Friedrich Hayek.
-\newblock \emph{{Monetary Theory and the Trade Cyle}}.
-\newblock 1933.
+\bibitem[\protect\astroncite{Hayek}{1933}]{hayek1933}
+Hayek, F. (1933).
+\newblock {\em {Monetary Theory and the Trade Cyle}}.
 
-\bibitem[Kaiser and Maravall(2012)]{kaiser2012measuring}
-Regina Kaiser and Agust{\'{i}}n Maravall.
-\newblock \emph{{Measuring business cycles in economic time series}}, volume
+\bibitem[\protect\astroncite{Horn et~al.}{2010}]{horn2010reconceptualizing}
+Horn, J., Rosenband, L.~N., and Smith, M.~R. (2010).
+\newblock {\em {Reconceptualizing the industrial revolution}}.
+\newblock MIT Press.
+
+\bibitem[\protect\astroncite{Juglar}{2014}]{juglar2014crises}
+Juglar, C. (2014).
+\newblock {\em {Des crises commerciales et de leur retour p{\'{e}}riodique}}.
+\newblock ENS {\'{e}}ditions.
+
+\bibitem[\protect\astroncite{Kaiser and Maravall}{2012}]{kaiser2012measuring}
+Kaiser, R. and Maravall, A. (2012).
+\newblock {\em {Measuring business cycles in economic time series}}, volume
   154.
-\newblock Springer Science {\&} Business Media, 2012.
+\newblock Springer Science {\&} Business Media.
 
-\bibitem[Kaldor(1940)]{kaldor1940model}
-Nicholas Kaldor.
+\bibitem[\protect\astroncite{Kaldor}{1940}]{kaldor1940model}
+Kaldor, N. (1940).
 \newblock {A model of the trade cycle}.
-\newblock \emph{The Economic Journal}, pages 78--92, 1940.
+\newblock {\em The Economic Journal}, pages 78--92.
 
-\bibitem[Kalecki(2013)]{kalecki2013essays}
-Michal Kalecki.
-\newblock \emph{{Essays in the theory of economic fluctuations}}.
-\newblock Routledge, 2013.
+\bibitem[\protect\astroncite{Kalecki}{2013}]{kalecki2013essays}
+Kalecki, M. (2013).
+\newblock {\em {Essays in the theory of economic fluctuations}}.
+\newblock Routledge.
 
-\bibitem[Keynes(2018)]{keynes2018general}
-John~Maynard Keynes.
-\newblock \emph{{The general theory of employment, interest, and money}}.
-\newblock Springer, 2018.
+\bibitem[\protect\astroncite{Keynes}{2018}]{keynes2018general}
+Keynes, J.~M. (2018).
+\newblock {\em {The general theory of employment, interest, and money}}.
+\newblock Springer.
 
-\bibitem[Kondratieff(1935)]{kondratieff1979long}
-Nikolai~D Kondratieff.
+\bibitem[\protect\astroncite{Kitchin}{1923}]{kitchin1923cycles}
+Kitchin, J. (1923).
+\newblock {Cycles and trends in economic factors}.
+\newblock {\em The Review of economic statistics}, pages 10--16.
+
+\bibitem[\protect\astroncite{Kondratieff}{1935}]{kondratieff1979long}
+Kondratieff, N.~D. (1935).
 \newblock {The long waves in economic life}.
-\newblock \emph{The Review of Economics and Statistics}, 17\penalty0
-  (6):\penalty0 105--115, 1935.
-\newblock URL \url{http://www.jstor.org/stable/1928486}.
+\newblock {\em The Review of Economics and Statistics}, 17(6):105--115.
 
-\bibitem[Kuznets(1930)]{kuznets1930secular}
-Simon~S Kuznets.
-\newblock \emph{{Secular movement in production and prices: Their nature and
+\bibitem[\protect\astroncite{Korotayev and
+  Tsirel}{2010}]{korotayev2010spectral}
+Korotayev, A.~V. and Tsirel, S.~V. (2010).
+\newblock {A spectral analysis of world GDP dynamics: Kondratieff waves,
+  Kuznets swings, Juglar and Kitchin cycles in global economic development, and
+  the 2008--2009 economic crisis}.
+\newblock {\em Structure and Dynamics}, 4(1).
+
+\bibitem[\protect\astroncite{Kuznets}{1930}]{kuznets1930secular}
+Kuznets, S.~S. (1930).
+\newblock {\em {Secular movement in production and prices: Their nature and
   their bearing upon cyclical fluctuations}}.
-\newblock Houghton Mifflin and company, Boston, 1930.
+\newblock Houghton Mifflin and company, Boston.
 
-\bibitem[Kydland and Prescott(1982)]{kydland1982time}
-Finn~E Kydland and Edward~C Prescott.
+\bibitem[\protect\astroncite{Kydland and Prescott}{1982}]{kydland1982time}
+Kydland, F.~E. and Prescott, E.~C. (1982).
 \newblock {Time to build and aggregate fluctuations}.
-\newblock \emph{Econometrica: Journal of the Econometric Society}, pages
-  1345--1370, 1982.
+\newblock {\em Econometrica: Journal of the Econometric Society}, pages
+  1345--1370.
 
-\bibitem[{Lawrence H.} and {Samuel H.}(2018)]{officer2018gold}
-Officer {Lawrence H.} and Williamson {Samuel H.}
+\bibitem[\protect\astroncite{{Lawrence H.} and {Samuel
+  H.}}{2018}]{officer2018gold}
+{Lawrence H.}, O. and {Samuel H.}, W. (2018).
 \newblock {The Price of Gold, 1257- Present}.
-\newblock \emph{MeasuringWorth}, 2018.
 
-\bibitem[Louis and {Samuel H.}(2018)]{johnston2018us}
-Johnston Louis and Williamson {Samuel H.}
+\bibitem[\protect\astroncite{Louis and {Samuel H.}}{2018}]{johnston2018us}
+Louis, J. and {Samuel H.}, W. (2018).
 \newblock {What was the US GDP then?}
-\newblock \emph{MeasuringWorth}, 2018.
+\newblock {\em MeasuringWorth}.
 
-\bibitem[{Lucas Jr}(1975)]{lucas1975equilibrium}
-Robert~E {Lucas Jr}.
+\bibitem[\protect\astroncite{{Lucas Jr}}{1975}]{lucas1975equilibrium}
+{Lucas Jr}, R.~E. (1975).
 \newblock {An equilibrium model of the business cycle}.
-\newblock \emph{Journal of political economy}, 83\penalty0 (6):\penalty0
-  1113--1144, 1975.
+\newblock {\em Journal of political economy}, 83(6):1113--1144.
 
-\bibitem[Officer(2009)]{officer2009two}
-Lawrence Officer.
-\newblock \emph{{Two centuries of compensation for US production workers in
+\bibitem[\protect\astroncite{Officer}{2009}]{officer2009two}
+Officer, L. (2009).
+\newblock {\em {Two centuries of compensation for US production workers in
   manufacturing}}.
-\newblock Springer, 2009.
+\newblock Springer.
 
-\bibitem[Plosser(1989)]{plosser1989understanding}
-Charles~I Plosser.
+\bibitem[\protect\astroncite{Plosser}{1989}]{plosser1989understanding}
+Plosser, C.~I. (1989).
 \newblock {Understanding real business cycles}.
-\newblock \emph{Journal of Economic Perspectives}, 3\penalty0 (3):\penalty0
-  51--77, 1989.
+\newblock {\em Journal of Economic Perspectives}, 3(3):51--77.
 
-\bibitem[Roesch and Schmidbauer(2018)]{Roesch2018}
-Angi Roesch and Harald Schmidbauer.
-\newblock \emph{{WaveletComp: Computational Wavelet Analysis}}, 2018.
-\newblock URL \url{https://cran.r-project.org/package=WaveletComp}.
+\bibitem[\protect\astroncite{Roesch and Schmidbauer}{2018}]{Roesch2018}
+Roesch, A. and Schmidbauer, H. (2018).
+\newblock {WaveletComp: Computational Wavelet Analysis}.
 
-\bibitem[Ryland and Williamson(2018)]{Williamson2018uk}
-Thomas Ryland and Samuel~H Williamson.
+\bibitem[\protect\astroncite{Ryland and Williamson}{2018}]{Williamson2018uk}
+Ryland, T. and Williamson, S.~H. (2018).
 \newblock {What Was the U.K. GDP Then?}
-\newblock \emph{MeasuringWorth}, 2018.
+\newblock {\em MeasuringWorth}.
 
-\bibitem[Samuelson(1939)]{samuelson1939synthesis}
-Paul~A Samuelson.
+\bibitem[\protect\astroncite{Samuelson}{1939}]{samuelson1939synthesis}
+Samuelson, P.~A. (1939).
 \newblock {A Synthesis of the Principle of Acceleration and the Multiplier}.
-\newblock \emph{Journal of Political Economy}, 47\penalty0 (6):\penalty0
-  786--797, 1939.
+\newblock {\em Journal of Political Economy}, 47(6):786--797.
 
-\bibitem[Schumpeter(1939)]{schumpeter1939business}
-Joseph~Alois Schumpeter.
-\newblock \emph{{Business cycles}}, volume~1.
-\newblock McGraw-Hill New York, 1939.
+\bibitem[\protect\astroncite{Schumpeter}{1939}]{schumpeter1939business}
+Schumpeter, J.~A. (1939).
+\newblock {\em {Business cycles}}, volume~1.
+\newblock McGraw-Hill New York.
 
-\bibitem[Soares and Others(2011)]{soares2011business}
-Maria~Joana Soares and Others.
+\bibitem[\protect\astroncite{Silberling}{1919}]{silberling1919british}
+Silberling, N.~J. (1919).
+\newblock {British financial experience 1790-1830}.
+\newblock {\em Review of Economic Statistics}, 1(4):282--297.
+
+\bibitem[\protect\astroncite{Soares and Others}{2011}]{soares2011business}
+Soares, M.~J. and Others (2011).
 \newblock {Business cycle synchronization and the Euro: A wavelet analysis}.
-\newblock \emph{Journal of Macroeconomics}, 33\penalty0 (3):\penalty0 477--489,
-  2011.
+\newblock {\em Journal of Macroeconomics}, 33(3):477--489.
 
-\bibitem[von Mises(1943)]{von1943elastic}
-Ludwig von Mises.
+\bibitem[\protect\astroncite{von Mises}{1943}]{von1943elastic}
+von Mises, L. (1943).
 \newblock {" Elastic Expectations" and the Austrian Theory of the Trade Cycle}.
-\newblock \emph{Economica}, 10\penalty0 (39):\penalty0 251--252, 1943.
+\newblock {\em Economica}, 10(39):251--252.
 
-\bibitem[Yogo(2008)]{yogo2008measuring}
-Motohiro Yogo.
+\bibitem[\protect\astroncite{Yogo}{2008}]{yogo2008measuring}
+Yogo, M. (2008).
 \newblock {Measuring business cycles: A wavelet analysis of economic time
   series}.
-\newblock \emph{Economics Letters}, 100\penalty0 (2):\penalty0 208--212, 2008.
+\newblock {\em Economics Letters}, 100(2):208--212.
 
 \end{thebibliography}

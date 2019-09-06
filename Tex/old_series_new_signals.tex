@@ -161,26 +161,34 @@
 	
 	\section{\uppercase{\textbf{\normalsize{Introduction}}}}
 	
-	In economic theory, there is no unequivocal position regarding the cyclical forms of economic development. The long waves proposed by \cite{kondratieff1979long} of approximately 50 years span and the medium waves proposed by \cite{kuznets1930secular} have resulted in controversy throughout the 20th century. To a large extent, this debate is because there is no unambiguous expression of what is called \textit{economic development}. In the first place, it does not exist a single variable that captures this concept as a whole, but it can only be represented fragmentarily in variables such as the Gross Domestic Product (GDP), the Wages, or the Interest Rate. However, even if we could have a single variable that completely measures the economic development, the national delimitation of the measurements is remaining. The latter comes from the fact that the economic cycle refers to a fundamental characteristic of the economic system, which is not necessarily mediated by national divisions. That is to say, it is a phenomenon proper to capitalism as a system, and does not necessarily reproduce itself fully within each country.
+	In economic theory there is no unequivocal position regarding the cyclical forms of economic development. The long waves proposed by \cite{kondratieff1979long} of approximately 50 years span and the medium waves proposed by \cite{kuznets1930secular} have resulted in controversy throughout the 20th century. To a large extent, this debate is because there is no unambiguous expression of what is called \textit{economic development}. In the first place, it does not exist a single variable that captures this concept as a whole, but it can only be represented fragmentarily in variables such as the Gross Domestic Product (GDP), the Wages, or the Interest Rate. However, even if we could have a single variable that completely measures the economic development, the national delimitation of the measurements is remaining. The latter comes from the fact that the economic cycle refers to a fundamental characteristic of the economic system, which is not necessarily mediated by national divisions. That is to say, it is a phenomenon proper to capitalism as a system, and does not necessarily reproduce itself fully within each country.
 	
 	
-	These complexities for measuring the economic cycle make it difficult to understand it. The goal of this paper is to make use of new quantitative tools for the analysis of time series, to review the empirical evidence regarding the existence of the economic cycle. Given the limitations mentioned above, it was decided to use series from the United States bsalaryecause it is a country that due to its size achieves, from the 20th century, to represent, at least partially, the general tendencies of the economy. For methodological reasons, it is necessary that the information used goes back to the 19th century, a century in which it is not clear that this country expressed the general characteristics of economic development. That is why for the eighteenth and nineteenth centuries the study is complemented with the product series for the United Kingdom.
+	These complexities for measuring the economic cycle make it difficult to understand. The goal of this paper is to make use of new quantitative tools for the analysis of time series, to review the empirical evidence regarding the existence of the economic cycle. Given the limitations mentioned above, it was decided to use series from the United States because it is a country that due to its size achieves, from the 20th century, to represent, at least partially, the general tendencies of the economy. For methodological reasons, it is necessary that the information used goes back to the 19th century, a century in which it is not clear that this country expressed the general characteristics of economic development. That is why for the eighteenth and nineteenth centuries the study is complemented with the product series for the United Kingdom.
 	
 	The paper is structured as follows: After this introduction, we present a summary of the central debates regarding the economic cycle that took place during the 20th century. In the third section, we carry out an exploratory data analysis where we observe the different series used in the rest of the work, as well as the characteristics of the gold price series and its effects on the rest of the data. Also in section three, we present some of the series along with the known crises in the economic historiography for the United States in the 20th century. The fourth section proposes the use of the wavelet technique to model the economic cycle and observe the results of applying this methodology to the GDP and wages series. Finally, the fifth and final section presents the conclusions and future lines of work.
 	
 	
 	\section{\uppercase{\textbf{\normalsize{Debates around the economic cycle}}}}
 	
-	There are not many polemics in the economic literature in which practically all the schools of economic thought tooked position. The discussion around what is the economic cycle and how it originated is for sure one of those controversies.
+	There are not many polemics in the economic literature in which practically all the schools of economic thought have taken a stand. The discussion around what is the economic cycle and how it was originated is for sure one of those controversies.
 	
-	All schools of economic thought sought explanations to these questions. On the one hand, we find the explanations that focus on the role of demand, particularly investment goods, as the starting point of the economic cycle. There, in the work of \cite{kalecki2013essays} the cycle arises by the particular dynamics of the demand for investment goods. The temporary differences between the decisions of demand and the set in motion of these goods generate the cycle. Then \cite{keynes2018general} argues that \textit{animal spirits} dominate the scene, with the marginal efficiency of capital guiding the cycle path. Also belong to this school \cite {harrod1936trade}, \cite{kaldor1940model} and \cite{samuelson1939synthesis}, who propose models where there is an interaction between the Keynesian multiplier and the acceleration principle. That is, where the product defines the demand for consumption goods, and this determines the demand for investment goods, which then operate on the product, generating a spiral of over-determinations that end up producing a cycle.
+	All schools of economic thought sought explanations to these questions. On the one hand, we find the explanations that focus on the role of demand, particularly investment goods, as the starting point of the economic cycle. There, in the work of \cite{kalecki2013essays} the cycle arises by the particular dynamics of the demand for investment goods. The temporary differences between the decisions of demand and the set in motion of these goods generate the cycle. Then \cite{keynes2018general} argues that \textit{animal spirits} dominate the scene, with the marginal efficiency of capital guiding the cycle path. Also belong to this school \cite {harrod1936trade}, \cite{kaldor1940model} and \cite{samuelson1939synthesis}, who propose models where there is an interaction between the Keynesian multiplier and the acceleration principle. That is, where the product defines the demand for consumption goods, and this determines the demand for investment goods, which then operate on the product, generating a spiral of over-determinations that ends up producing a cycle.
 	
 	From a different school of thought \cite{schumpeter1939business} begins with the role of innovative entrepreneurs to reach a "tricyclic model" where a superposition of short, medium and long waves operates.
 	The Austrian theory of the cycle, headed by \cite{hayek1933} and \cite{von1943elastic}, considers a purely monetary origin, based on the endogenous creation of purchasing power and changes in relative prices.
 	
-	Finally, there is the neoclassical theory of the cycle, which emerges from Lucas's critique of Keynesian macroeconomics. This kind of models prioritized the micro-foundations of behavioral assumptions. Individuals are rational agents and that at all times there are competitive equilibriums. These models divided between those proposed by \cite{lucas1975equilibrium} where the initial shock is monetary, and the models of the real business cycle \citep{plosser1989understanding} where random changes in technology give the original impulse.
+	Finally, there is the neoclassical theory of the cycle, which emerges from Lucas's critique of Keynesian macroeconomics. This kind of models prioritized the micro-foundations of behavioral assumptions. Individuals are rational agents and that at all times there are competitive equilibriums. These models are divided between those proposed by \cite{lucas1975equilibrium} where the initial shock is monetary, and the models of the real business cycle \citep{plosser1989understanding} where random changes in technology give the original impulse.
 	
-	From the point of view of the empirical analysis, there are multiple authors who have found evidence, either through the detailed study of different series \citep{kuznets1930secular, kondratieff1979long, schumpeter1939business}; or using autoregressive models, of moving averages and ARIMA \citep {hamilton1989new, kaiser2012measuring}; or more recently by using wavelets \citep {yogo2008measuring, soares2011business}. Notwithstanding the latter, the use of new empirical techniques for cycle analysis remains a fertile ground for research.
+	From the point of view of the empirical analysis there has been also plenty of work on this matter. 
+	In 1862 \cite{juglar2014crises} makes a seminal work on the economic cycle analysis in a combination of statistical theoretical and historical work. He states that the moment of crisis is embedded in the times of prosperity, and propose a regular cycle of 7-11 years. 
+	\cite{kitchin1923cycles} detected a short cycle of around 40 month, based on prices, clearings and interest rate series, and he stated that the causes where due to problems in the information flow of the economy.
+	\cite{kuznets1930secular} studied the dynamics of population, national income data, construction industry performance, among other series, and founded a medium-sized cycles of economic activity which last 15-25 years, which is a middle point between Kondratieff long waves and the business cycles. 
+	 \cite{kondratieff1979long} proposed the long waves of 40-60 years of duration after studying the wholesale prices of UK France and the United States, the interest rates of France and UK, the wages of cotton and miner workers, among other series. 
+
+	
+	Besides these seminal analysis, more recent studies have been done on the empirical side. Using autoregressive models, of moving averages and ARIMA \citep {hamilton1989new, kaiser2012measuring}; or more recently by using wavelets \citep {yogo2008measuring, soares2011business}. \cite{korotayev2010spectral} work on a spectral analysis where they find new evidence on the existence of a long wave. Notwithstanding the latter, the use of new empirical techniques for cycle analysis remains a fertile ground for research.
+	
 	
 	\section{\uppercase{\textbf{\normalsize{Exploratory Data Analysis}}}}\label{EDA}
 	
@@ -191,9 +199,13 @@
 	
 	Given that the objective of this paper is to perform an analysis of the economic cycle that considers Kondratieff's long waves, it is necessary to have information as widely as possible and therefore use different sources.
 	
+	Also, as it was stated in the introduction, the economic development, subject of the cycle, is not directly observable, but rather some partial expressions of it, like the GDP, wages, interest rate, or other series. Also, this article starts from considering that capitalism is a global system, mediated by national divisions. For this, and given that the statistical information is produced by the countries, the proposed analysis is centered on those countries that we consider better reflect the general development of the economy at some point of time. This is because using global information can suffer from many compatibilization problems. Nonetheless, the global GDP series built by the Maddison Project \citep{bolt2014} is presented on the exploratory data analysis, as a reference. For the period that goes from the 1700 to the 1900 we understand that the motor of the capitalist development can be identified in England  \citep{horn2010reconceptualizing}. For the twentieth century, we understand there is a shift in that position toward the United States \citep{arrighi1994long}
+	
+	
 	For the United States GDP, the data from 1929 to the present comes from the information provided by the \textit{Bureau of Economic Analysis} of that country. For the data from 1790 to 1929 the series elaborated by \cite{johnston2018us} was used.
 	
-	For the annual series of the nominal hourly wage of production workers in the United States, the information found in \cite{officer2009two} and complemented by \cite{Roesch2018} was used. Nowadays this series corresponds to the item \textit{Employer Costs for Employee Compensation, Total Compensation, Manufacturing, Private Industry} from the series of the \textit{Bureau of Labor Statistics} of the United States.
+	For the annual series of the nominal hourly wage of production workers in the United States, the information found in \cite{officer2009two} and complemented by \cite{Roesch2018} was used. Nowadays this series corresponds to the item \textit{Employer Costs for Employee Compensation, Total Compensation, Manufacturing, Private Industry} from the series of the \textit{Bureau of Labor Statistics} of the United States. Given that due sources limitations we cannot fully reproduce this wages information for the UK analysis, this data will only be considered in the exploratory data analysis, but not in the wavelet analysis proposal, for consistency.
+	
 	
 	The annual series of gold prices in the New York market between 1791 and 2017 based on \cite{officer2018gold}
 	
@@ -202,13 +214,23 @@
 	
 	\paragraph{Original series}\mbox{}\\
 	
-	The figure \ref{fig:oro} shows the value of an ounce of gold in nominal dollars in the New York market, between 1791 and 2017. There, we marked the exit from the gold standard of the world economy in 1971. After the second world war and until that year, the global monetary structure based on parity with the dollar and the \textit{nominal anchor} of the same with the gold reserves of the Federal Reserve Board (FED). Because of this, the United States could not issue dollars that were not backed by their gold equivalent in the reserves of the central bank of that country. Therefore, the dollar-gold ratio remained practically unchanged until 1971. After eliminating this anchor, the capacity of issuance without backup in gold allowed the FED to issue above the reserves it had, and in general, over gold in circulation. This latter has led to an increase in the price of gold expressed in dollars, or equivalently, a fall in the US dollar expressed in gold.
-	
+	The figure \ref{fig:oro} shows the value of an ounce of gold in nominal dollars in the New York market, between 1791 and 2017 in \ref{fig:oro_us}, and the price in the London Market, of pounds per ounce for the period 1700-1900 in \ref{fig:oro_uk}. For US, we marked the exit from the gold standard of the world economy in 1971. After the second world war and until that year, the global monetary structure based on parity with the dollar and the \textit{nominal anchor} of the same with the gold reserves of the Federal Reserve Board (FED). Because of this, the United States could not issue dollars that were not backed by their gold equivalent in the reserves of the central bank of that country. Therefore, the dollar-gold ratio remained practically unchanged until 1971. After eliminating this anchor, the capacity of issuance without backup in gold allowed the FED to issue above the reserves it had, and in general, over gold in circulation. This latter has led to an increase in the price of gold expressed in dollars, or equivalently, a fall in the US dollar expressed in gold. In figure \ref{fig:oro_uk} we can see that the price in the London Market remains stable slightly above 4 pounds per ounce, except for the year 1813, where the UK economy experienced a high inflation \citep{silberling1919british}.
+ 	
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=0.75\linewidth]{oro_en.png}
+%		\caption{Gold prices New York Market. Price per ounce. 1790-2017}\label{fig:oro}
+%	\end{figure}
+
+
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.75\linewidth]{oro_en.png}
-		\caption{Gold prices New York Market. Price per ounce. 1790-2017}\label{fig:oro}
-	\end{figure}
+	\centering
+	\subfigure[New York Market. Price per ounce. 1790-2017]{\includegraphics[width=0.75\linewidth]{oro_en.PNG}
+		\label{fig:oro_us}}
+	\subfigure[London Market. British pounds per ounce. 1700-1900]{\includegraphics[width=0.75\linewidth]{oro_uk.PNG}
+		\label{fig:oro_uk}}
+	\caption{Gold prices.} \label{fig:oro}
+\end{figure}
 	
 	Given that what we sought in this paper is a long-term analysis of the economic cycle, this nominal disturbance obscures the underlying phenomenon. That is why we choose to normalize the nominal GDP series and the nominal wage by the price of gold. In this sense, we can read the series as the product and wage expressed in its capacity to purchase gold.
 	
@@ -267,6 +289,38 @@
 	
 	
 	We can see a softer upward movement than that seen in the 20th century. It is worth mentioning that the movement of the product in the United Kingdom during the twentieth century retains an essential similarity with that seen in the case of the United States. In the figure \ref{fig:uk_gdp}, however, a cyclic movement is observed of around ten years extension. During the nineteenth century, every seven to eleven years there is a fall in the product regarding its ability to buy gold. Just as the twentieth century accounts for three large oscillations, the nineteenth century marks the shorter oscillations, around ten years. For its part, The eighteenth century seems to be more stable.
+	
+	For completeness, we also show the available information for US and UK on the remaining periods. In figure \ref{fig:us_complement} we present the GDP and wages for US in gold, for the available period of 1791-1900. Here we can see that although both series share a similar trend, the detected crisis points in the GDP don't seem to be reflected, for the most of the cases, in the wages data. Also, we can see in \ref{fig:PBI_us_comp} that at the beginning of the period the crisis seemed to appear every twenty years, and from 1864, the inflection point appear every 5-10 years. 
+	
+	\begin{figure}[H]
+		\centering
+		\subfigure[US GDP. Millions of ounces of gold]{\includegraphics[width=0.75\linewidth]{gdp_us_complement.PNG}
+			\label{fig:PBI_us_comp}}
+		\subfigure[US Hourly Wage. Ounces of gold]{\includegraphics[width=0.75\linewidth]{wage_us_complement.PNG}
+			\label{fig:salario_us_comp}}
+		\caption{GDP and Wage. US. 1791-1900} \label{fig:us_complement}
+	\end{figure}
+	
+	 
+	 Also for completeness, in figure \ref{fig:uk_gdp_complement} we show the UK GDP between 1900-2017. There we highlight the same periods as in figure \ref{fig:series_crisis}. We can recognize a similar pattern to the ones in US, with the difference that the growth between 1940-1975 is slower, and the growth after the eighties seems to be higher. 
+	 
+	 \begin{figure}[H]
+	 	\centering
+	 	\includegraphics[width=0.75\linewidth]{gdp_uk_complement.png}
+	 	\caption{UK GDP. Millions of ounces of gold. 1700-1900} 
+	 	\label{fig:uk_gdp_complement}
+	 \end{figure}
+	 
+	 	
+	Finally, for comparison, we show the Maddison Project \citep{bolt2014} data for the global GDP per capita. Unfortunately this information has only yearly data starting in 1950, and so cannot be used in the wavelet analysis. In figure \ref{fig:global_gdp} we can see that the aggregated data to a global scale does not how the same fluctuations that we could see on UK and US data, that also had a correspondence with the literature about the main crisis during the twentieth century. For this, we consider that the best available information for the following analysis is the GDP in terms of gold, both for UK and US in the defined periods. 	
+
+	 \begin{figure}[H]
+		\centering
+		\includegraphics[width=0.75\linewidth]{global_gdp.png}
+		\caption{Global GDP per capita. 1820-2010} 
+		\label{fig:global_gdp}
+	\end{figure}
+	
 	
 	In the following section, we will use the described series will as inputs for a technique coming from the field of signal processing, Wavelets, which allows automatic highlighting of the essential cyclic amplitudes of the series.
 	
@@ -391,6 +445,9 @@
 	
 	It is worth mentioning that the choice for the theoretical model of these three levels and cyclical amplitudes is not arbitrary, but corresponds roughly to what is considered by the literature: \cite{kondratieff1979long} studies the long series, about 50 years, while \cite {kuznets1930secular} proposes secular movements between 15 and 25 years. Finally, the Real business cycle \citep{kydland1982time} considers a short cycle.
 	
+	This preamble on the simulated data was intended to build an intuition on what we should look for on the plots with real data. The wavelet analysis has a strong point on this spectrograms because they allow us to see the most prominent cycles present in our data. The point of this article is, therefore, to bring a new tool, with a new type of graphical representation for economists, in order to bring new light in the analysis of information long studied in the preceding literature.
+	
+	
 	With the analysis from the figure \ref{fig:espect_teo} we can now see the results of the original series. In the figure \ref{fig:espect_PBI_a} the spectrogram corresponding to the GDP of the United States expressed in gold can be observed. There the difference in the series is marked before and after 1900, and in particular, we can see the studied break of the '70s. Nevertheless, for that period there are roughly three frequencies where a cyclical behavior is registered. These three cycles are approximately in eight years, one in thirty years and finally at the period of fifty years. Given the heteroscedasticity of the series, we can see in \ref{fig:espect_PBI_b} the spectrogram of the same series taken in the logarithm of base ten. Here the cycle of fifty years extends beyond the time, until the middle of the 19th century. For its part, a shorter cycle of approximately three years appears briefly in the '70s.
 	
 	\begin{figure}[H]
@@ -402,17 +459,17 @@
 		\caption{US GDP in gold. 1790-2017} \label{fig:espect_PBI}
 	\end{figure}
 	
-	the figure \ref{fig:espect_wg} show the spectrograms of the wage series expressed in gold in \ref{fig:espect_wg_a} and the same taken in log base in \ref{fig:espect_wg_b}. For this series, we can again observe a well-defined long cycle around 50 years, especially if we look at the series taken on a logarithmic basis. This long cycle seems to oscillate between the frequencies of $1/32$ and $1/64$, falling in time. On the other hand, it delimits the second cycle of around sixteen years of extension, and finally a short cycle of between six and eight years. When taking the logistic scale, also appears a cycle of a higher frequency of about three years extension. Consequently, both series seem to yield results in agreement, whether or not they are in the logarithmic base.
+%	the figure \ref{fig:espect_wg} show the spectrograms of the wage series expressed in gold in \ref{fig:espect_wg_a} and the same taken in log base in \ref{fig:espect_wg_b}. For this series, we can again observe a well-defined long cycle around 50 years, especially if we look at the series taken on a logarithmic basis. This long cycle seems to oscillate between the frequencies of $1/32$ and $1/64$, falling in time. On the other hand, it delimits the second cycle of around sixteen years of extension, and finally a short cycle of between six and eight years. When taking the logistic scale, also appears a cycle of a higher frequency of about three years extension. Consequently, both series seem to yield results in agreement, whether or not they are in the logarithmic base.
 	
 	
-	\begin{figure}[H]
-		\centering
-		\subfigure[Wage spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_wg_en.png}
-			\label{fig:espect_wg_a}}
-		\subfigure[log(wage) spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_log_wg_en.png}
-			\label{fig:espect_wg_b}}
-		\caption{US wage in gold. 1790-2017} \label{fig:espect_wg}
-	\end{figure}
+%	\begin{figure}[H]
+%		\centering
+%		\subfigure[Wage spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_wg_en.png}
+%			\label{fig:espect_wg_a}}
+%		\subfigure[log(wage) spectrogram]{\includegraphics[width=0.75\linewidth]{espectograma_log_wg_en.png}
+%			\label{fig:espect_wg_b}}
+%		\caption{US wage in gold. 1790-2017} \label{fig:espect_wg}
+%	\end{figure}
 	
 	The figure \ref{fig:espect_uk} shows the GDP series expressed in gold for the United Kingdom between 1700 and 1900. As in the previous series, it is expressed without additional transformations in \ref{fig:espect_uk_a} and in log base in \ref{fig:espect_uk_b}. Unlike the US series, here we can see more clearly the short cycle, around ten years.
 	
