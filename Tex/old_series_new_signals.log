@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.4.20)  6 SEP 2019 16:26
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.4.20)  15 SEP 2019 11:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -36,7 +36,8 @@ File: babel.def 2018/11/13 3.27 Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/xebabel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 \bbl@dirlevel=\count89
 )
 \l@british = a dialect from \language\l@english 
@@ -59,26 +60,20 @@ Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def
-File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-))
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
-Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def
-File: uni-global.def 2013/05/13 UCS: Unicode global data
-)
-\uc@secondtry=\count91
-\uc@combtoks=\toks17
-\uc@combtoksb=\toks18
-\uc@temptokena=\toks19
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 105.
+
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -86,17 +81,17 @@ Package: expl3 2019-02-15 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 Package: expl3 2019-02-15 L3 programming layer (code)
-\c_max_int=\count92
-\l_tmpa_int=\count93
-\l_tmpb_int=\count94
-\g_tmpa_int=\count95
-\g_tmpb_int=\count96
-\g__kernel_prg_map_int=\count97
-\c_log_iow=\count98
-\l_iow_line_count_int=\count99
-\l__iow_line_target_int=\count100
-\l__iow_one_indent_int=\count101
-\l__iow_indent_int=\count102
+\c_max_int=\count91
+\l_tmpa_int=\count92
+\l_tmpb_int=\count93
+\g_tmpa_int=\count94
+\g_tmpb_int=\count95
+\g__kernel_prg_map_int=\count96
+\c_log_iow=\count97
+\l_iow_line_count_int=\count98
+\l__iow_line_target_int=\count99
+\l__iow_one_indent_int=\count100
+\l__iow_indent_int=\count101
 \c_zero_dim=\dimen104
 \c_max_dim=\dimen105
 \l_tmpa_dim=\dimen106
@@ -115,78 +110,75 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l_tmpb_muskip=\muskip13
 \g_tmpa_muskip=\muskip14
 \g_tmpb_muskip=\muskip15
-\l_keys_choice_int=\count103
-\l__intarray_loop_int=\count104
+\l_keys_choice_int=\count102
+\l__intarray_loop_int=\count103
 \c__intarray_sp_dim=\dimen110
-\g__intarray_font_int=\count105
-\c__fp_leading_shift_int=\count106
-\c__fp_middle_shift_int=\count107
-\c__fp_trailing_shift_int=\count108
-\c__fp_big_leading_shift_int=\count109
-\c__fp_big_middle_shift_int=\count110
-\c__fp_big_trailing_shift_int=\count111
-\c__fp_Bigg_leading_shift_int=\count112
-\c__fp_Bigg_middle_shift_int=\count113
-\c__fp_Bigg_trailing_shift_int=\count114
-\c__kernel_randint_max_int=\count115
-\g__fp_array_int=\count116
-\l__fp_array_loop_int=\count117
-\l__sort_length_int=\count118
-\l__sort_min_int=\count119
-\l__sort_top_int=\count120
-\l__sort_max_int=\count121
-\l__sort_true_max_int=\count122
-\l__sort_block_int=\count123
-\l__sort_begin_int=\count124
-\l__sort_end_int=\count125
-\l__sort_A_int=\count126
-\l__sort_B_int=\count127
-\l__sort_C_int=\count128
-\l__tl_analysis_normal_int=\count129
-\l__tl_analysis_index_int=\count130
-\l__tl_analysis_nesting_int=\count131
-\l__tl_analysis_type_int=\count132
-\l__regex_internal_a_int=\count133
-\l__regex_internal_b_int=\count134
-\l__regex_internal_c_int=\count135
-\l__regex_balance_int=\count136
-\l__regex_group_level_int=\count137
-\l__regex_mode_int=\count138
-\c__regex_cs_in_class_mode_int=\count139
-\c__regex_cs_mode_int=\count140
-\l__regex_catcodes_int=\count141
-\l__regex_default_catcodes_int=\count142
-\c__regex_catcode_D_int=\count143
-\c__regex_catcode_S_int=\count144
-\c__regex_catcode_L_int=\count145
-\c__regex_catcode_O_int=\count146
-\c__regex_catcode_A_int=\count147
-\c__regex_all_catcodes_int=\count148
-\l__regex_show_lines_int=\count149
-\l__regex_min_state_int=\count150
-\l__regex_max_state_int=\count151
-\l__regex_left_state_int=\count152
-\l__regex_right_state_int=\count153
-\l__regex_capturing_group_int=\count154
-\l__regex_min_pos_int=\count155
-\l__regex_max_pos_int=\count156
-\l__regex_curr_pos_int=\count157
-\l__regex_start_pos_int=\count158
-\l__regex_success_pos_int=\count159
-\l__regex_curr_char_int=\count160
-\l__regex_curr_catcode_int=\count161
-\l__regex_last_char_int=\count162
-\l__regex_case_changed_char_int=\count163
-\l__regex_curr_state_int=\count164
-\l__regex_step_int=\count165
-\l__regex_min_active_int=\count166
-\l__regex_max_active_int=\count167
-\l__regex_replacement_csnames_int=\count168
-\l__regex_match_count_int=\count169
-\l__regex_min_submatch_int=\count170
-\l__regex_submatch_int=\count171
-\l__regex_zeroth_submatch_int=\count172
-\g__regex_trace_regex_int=\count173
+\g__intarray_font_int=\count104
+\c__fp_leading_shift_int=\count105
+\c__fp_middle_shift_int=\count106
+\c__fp_trailing_shift_int=\count107
+\c__fp_big_leading_shift_int=\count108
+\c__fp_big_middle_shift_int=\count109
+\c__fp_big_trailing_shift_int=\count110
+\c__fp_Bigg_leading_shift_int=\count111
+\c__fp_Bigg_middle_shift_int=\count112
+\c__fp_Bigg_trailing_shift_int=\count113
+\g__fp_array_int=\count114
+\l__fp_array_loop_int=\count115
+\l__sort_length_int=\count116
+\l__sort_min_int=\count117
+\l__sort_top_int=\count118
+\l__sort_max_int=\count119
+\l__sort_true_max_int=\count120
+\l__sort_block_int=\count121
+\l__sort_begin_int=\count122
+\l__sort_end_int=\count123
+\l__sort_A_int=\count124
+\l__sort_B_int=\count125
+\l__sort_C_int=\count126
+\l__tl_analysis_normal_int=\count127
+\l__tl_analysis_index_int=\count128
+\l__tl_analysis_nesting_int=\count129
+\l__tl_analysis_type_int=\count130
+\l__regex_internal_a_int=\count131
+\l__regex_internal_b_int=\count132
+\l__regex_internal_c_int=\count133
+\l__regex_balance_int=\count134
+\l__regex_group_level_int=\count135
+\l__regex_mode_int=\count136
+\c__regex_cs_in_class_mode_int=\count137
+\c__regex_cs_mode_int=\count138
+\l__regex_catcodes_int=\count139
+\l__regex_default_catcodes_int=\count140
+\c__regex_catcode_L_int=\count141
+\c__regex_catcode_O_int=\count142
+\c__regex_catcode_A_int=\count143
+\c__regex_all_catcodes_int=\count144
+\l__regex_show_lines_int=\count145
+\l__regex_min_state_int=\count146
+\l__regex_max_state_int=\count147
+\l__regex_left_state_int=\count148
+\l__regex_right_state_int=\count149
+\l__regex_capturing_group_int=\count150
+\l__regex_min_pos_int=\count151
+\l__regex_max_pos_int=\count152
+\l__regex_curr_pos_int=\count153
+\l__regex_start_pos_int=\count154
+\l__regex_success_pos_int=\count155
+\l__regex_curr_char_int=\count156
+\l__regex_curr_catcode_int=\count157
+\l__regex_last_char_int=\count158
+\l__regex_case_changed_char_int=\count159
+\l__regex_curr_state_int=\count160
+\l__regex_step_int=\count161
+\l__regex_min_active_int=\count162
+\l__regex_max_active_int=\count163
+\l__regex_replacement_csnames_int=\count164
+\l__regex_match_count_int=\count165
+\l__regex_min_submatch_int=\count166
+\l__regex_submatch_int=\count167
+\l__regex_zeroth_submatch_int=\count168
+\g__regex_trace_regex_int=\count169
 \c_empty_box=\box27
 \l_tmpa_box=\box28
 \l_tmpb_box=\box29
@@ -231,20 +223,21 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l__coffin_top_corner_dim=\dimen133
 \l__coffin_scaled_total_height_dim=\dimen134
 \l__coffin_scaled_width_dim=\dimen135
-\l__seq_internal_a_int=\count174
-\l__seq_internal_b_int=\count175
+\l__seq_internal_a_int=\count170
+\l__seq_internal_b_int=\count171
 )
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-File: l3pdfmode.def 2019-02-15 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count176
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
+File: l3xdvipdfmx.def 2019-02-15 v L3 Experimental driver: xdvipdfmx
+\g__driver_image_int=\count172
+\g__driver_pdf_object_int=\count173
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2018-10-17 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count177
-\g__xparse_grabber_int=\count178
-\l__xparse_m_args_int=\count179
-\l__xparse_mandatory_args_int=\count180
-\l__xparse_v_nesting_int=\count181
+\l__xparse_current_arg_int=\count174
+\g__xparse_grabber_int=\count175
+\l__xparse_m_args_int=\count176
+\l__xparse_mandatory_args_int=\count177
+\l__xparse_v_nesting_int=\count178
 )
 Package: lipsum 2019/01/02 v2.2 150 paragraphs of Lorem Ipsum dummy text
 
@@ -256,7 +249,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip49
 \bibsep=\skip50
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count182
+\c@NAT@ctr=\count179
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
@@ -268,7 +261,7 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks20
+\@emptytoks=\toks17
 \ex@=\dimen136
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -278,13 +271,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count183
+\inf@bad=\count180
 LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count184
-\leftroot@=\count185
+\uproot@=\count181
+\leftroot@=\count182
 LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count186
-\DOTSCASE@=\count187
+\classnum@=\count183
+\DOTSCASE@=\count184
 LaTeX Info: Redefining \ldots on input line 482.
 LaTeX Info: Redefining \dots on input line 485.
 LaTeX Info: Redefining \cdots on input line 606.
@@ -293,26 +286,26 @@ LaTeX Info: Redefining \cdots on input line 606.
 \big@size=\dimen138
 LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count188
-\c@MaxMatrixCols=\count189
+\macc@depth=\count185
+\c@MaxMatrixCols=\count186
 \dotsspace@=\muskip16
-\c@parentequation=\count190
-\dspbrk@lvl=\count191
-\tag@help=\toks21
-\row@=\count192
-\column@=\count193
-\maxfields@=\count194
-\andhelp@=\toks22
+\c@parentequation=\count187
+\dspbrk@lvl=\count188
+\tag@help=\toks18
+\row@=\count189
+\column@=\count190
+\maxfields@=\count191
+\andhelp@=\toks19
 \eqnshift@=\dimen139
 \alignsep@=\dimen140
 \tagshift@=\dimen141
 \tagwidth@=\dimen142
 \totwidth@=\dimen143
 \lineht@=\dimen144
-\@envbody=\toks23
+\@envbody=\toks20
 \multlinegap=\skip52
 \multlinetaggap=\skip53
-\mathdisplay@stack=\toks24
+\mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
@@ -321,7 +314,7 @@ Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks25
+\KV@toks@=\toks22
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
@@ -332,10 +325,10 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: xetex.def on input line 99.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen145
 \Gin@req@width=\dimen146
@@ -352,10 +345,10 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks26
-\XKV@tempa@toks=\toks27
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
 )
-\XKV@depth=\count195
+\XKV@depth=\count192
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -364,9 +357,8 @@ Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Driver file: xetex.def on input line 225.
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
 Package xcolor Info: Model `RGB' extended on input line 1364.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
@@ -379,7 +371,7 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks28
+\pgfutil@everybye=\toks25
 \pgfutil@tempdima=\dimen147
 \pgfutil@tempdimb=\dimen148
 
@@ -401,12 +393,12 @@ Package: pgf 2019/02/02 v3.1.1 (3.1.1)
 Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks29
-\pgfkeys@temptoks=\toks30
+\pgfkeys@pathtoks=\toks26
+\pgfkeys@temptoks=\toks27
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
 ex
-\pgfkeys@tmptoks=\toks31
+\pgfkeys@tmptoks=\toks28
 ))
 \pgf@x=\dimen149
 \pgf@y=\dimen150
@@ -418,31 +410,36 @@ ex
 \pgf@yc=\dimen156
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count196
-\c@pgf@countb=\count197
-\c@pgf@countc=\count198
-\c@pgf@countd=\count199
-\t@pgf@toka=\toks32
-\t@pgf@tokb=\toks33
-\t@pgf@tokc=\toks34
-\pgf@sys@id@count=\count266
+\c@pgf@counta=\count193
+\c@pgf@countb=\count194
+\c@pgf@countc=\count195
+\c@pgf@countd=\count196
+\t@pgf@toka=\toks29
+\t@pgf@tokb=\toks30
+\t@pgf@tokc=\toks31
+\pgf@sys@id@count=\count197
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2019/02/02 v3.1.1 (3.1.1)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-xetex.def
 
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2019/02/02 v3.1.1 (3.1.1)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2019/02/02 v3.1.1 (3.1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2019/02/02 v3.1.1 (3.1.1)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f
 File: pgfsys-common-pdf.def 2019/02/02 v3.1.1 (3.1.1)
+)
+\pgfsys@objnum=\count198
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfsyssoftpath@smallbuffer@items=\count267
-\pgfsyssoftpath@bigbuffer@items=\count268
+\pgfsyssoftpath@smallbuffer@items=\count199
+\pgfsyssoftpath@bigbuffer@items=\count266
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -456,11 +453,11 @@ Package: pgfcore 2019/02/02 v3.1.1 (3.1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen157
-\pgfmath@count=\count269
+\pgfmath@count=\count267
 \pgfmath@box=\box48
-\pgfmath@toks=\toks35
-\pgfmath@stack@operand=\toks36
-\pgfmath@stack@operation=\toks37
+\pgfmath@toks=\toks32
+\pgfmath@stack@operand=\toks33
+\pgfmath@stack@operation=\toks34
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
@@ -480,7 +477,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count270
+\c@pgfmathroundto@lastzeros=\count268
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
@@ -518,7 +515,7 @@ File: pgfcorescopes.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \pgfpic=\box49
 \pgf@hbox=\box50
 \pgf@layerbox@main=\box51
-\pgf@picture@serial@count=\count271
+\pgf@picture@serial@count=\count269
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -551,7 +548,7 @@ File: pgfcorearrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \pgf@max=\dimen181
-\pgf@sys@shading@range@num=\count272
+\pgf@sys@shading@range@num=\count270
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2019/02/02 v3.1.1 (3.1.1)
@@ -602,8 +599,8 @@ Package: pgffor 2019/02/02 v3.1.1 (3.1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen184
 \pgffor@skip=\dimen185
-\pgffor@stack=\toks38
-\pgffor@toks=\toks39
+\pgffor@stack=\toks35
+\pgffor@toks=\toks36
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2019/02/02 v3.1.1 (3.1.1)
@@ -611,7 +608,7 @@ Package: tikz 2019/02/02 v3.1.1 (3.1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@plot@mark@count=\count273
+\pgf@plot@mark@count=\count271
 \pgfplotmarksize=\dimen186
 )
 \tikz@lastx=\dimen187
@@ -624,18 +621,18 @@ File: pgflibraryplothandlers.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \tikz@figbox@bg=\box55
 \tikz@tempbox=\box56
 \tikz@tempbox@bg=\box57
-\tikztreelevel=\count274
-\tikznumberofchildren=\count275
-\tikznumberofcurrentchild=\count276
-\tikz@fig@count=\count277
+\tikztreelevel=\count272
+\tikznumberofchildren=\count273
+\tikznumberofcurrentchild=\count274
+\tikz@fig@count=\count275
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfmatrixcurrentrow=\count278
-\pgfmatrixcurrentcolumn=\count279
-\pgf@matrix@numberofcolumns=\count280
+\pgfmatrixcurrentrow=\count276
+\pgfmatrixcurrentcolumn=\count277
+\pgf@matrix@numberofcolumns=\count278
 )
-\tikz@expandcount=\count281
+\tikz@expandcount=\count279
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -658,18 +655,18 @@ File: tikzlibraryfadings.code.tex 2019/02/02 v3.1.1 (3.1.1)
 File: pgflibraryfadings.code.tex 2019/02/02 v3.1.1 (3.1.1)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count282
-\calc@Bcount=\count283
+\calc@Acount=\count280
+\calc@Bcount=\count281
 \calc@Adimen=\dimen193
 \calc@Bdimen=\dimen194
 \calc@Askip=\skip54
 \calc@Bskip=\skip55
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count284
+\calc@Ccount=\count282
 \calc@Cskip=\skip56
 )
-\c@@todonotes@numberoftodonotes=\count285
+\c@@todonotes@numberoftodonotes=\count283
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
@@ -695,9 +692,10 @@ Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode not found.
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
@@ -724,13 +722,13 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen195
-\Hy@linkcounter=\count286
-\Hy@pagecounter=\count287
+\Hy@linkcounter=\count284
+\Hy@pagecounter=\count285
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count288
+\Hy@SavedSpaceFactor=\count286
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -743,7 +741,7 @@ Package hyperref Info: Plain pages OFF on input line 4534.
 Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count289
+\c@Hy@tempcnt=\count287
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
@@ -751,7 +749,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen196
-\Fld@menulength=\count290
+\Fld@menulength=\count288
 \Field@Width=\dimen197
 \Fld@charsize=\dimen198
 Package hyperref Info: Hyper figures OFF on input line 6380.
@@ -763,14 +761,25 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6405.
 Package hyperref Info: PDF/A mode OFF on input line 6410.
 LaTeX Info: Redefining \ref on input line 6450.
 LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count291
-\c@Item=\count292
-\c@Hfootnote=\count293
+\Hy@abspage=\count289
+\c@Item=\count290
+\c@Hfootnote=\count291
 )
-Package hyperref Info: Driver (autodetected): hpdftex.
+Package hyperref Info: Driver (autodetected): hxetex.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2018/11/30 v6.88e Hyperref driver for XeTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box58
+\c@Hy@AnnotLevel=\count292
+\HyField@AnnotCount=\count293
 \Fld@listcount=\count294
 \c@bookmark@seq@number=\count295
 
@@ -804,15 +813,15 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count300
-\float@exts=\toks40
-\float@box=\box58
-\@float@everytoks=\toks41
-\@floatcapt=\box59
+\float@exts=\toks37
+\float@box=\box59
+\@float@everytoks=\toks38
+\@floatcapt=\box60
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks42
-\verbatim@line=\toks43
+\every@verbatim=\toks39
+\verbatim@line=\toks40
 \verbatim@in@stream=\read3
 )
 (/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
@@ -823,8 +832,8 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count304
-\lst@gtempboxa=\box60
-\lst@token=\toks44
+\lst@gtempboxa=\box61
+\lst@token=\toks41
 \lst@length=\count305
 \lst@currlwidth=\dimen257
 \lst@column=\count306
@@ -839,7 +848,7 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
 \c@lstnumber=\count310
 \lst@skipnumbers=\count311
-\lst@framebox=\box61
+\lst@framebox=\box62
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2018/09/02 1.7 listings configuration
@@ -874,7 +883,7 @@ Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@layoutheight=\dimen266
 \Gm@layouthoffset=\dimen267
 \Gm@layoutvoffset=\dimen268
-\Gm@dimlist=\toks45
+\Gm@dimlist=\toks42
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
@@ -891,12 +900,12 @@ s
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box62
+\ttl@box=\box63
 \beforetitleunit=\skip73
 \aftertitleunit=\skip74
 \ttl@plus=\dimen269
 \ttl@minus=\dimen270
-\ttl@toksa=\toks46
+\ttl@toksa=\toks43
 \titlewidth=\dimen271
 \titlewidthlast=\dimen272
 \titlewidthfirst=\dimen273
@@ -956,11 +965,15 @@ LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Try loading font information for T1+pbk on input line 121.
 
@@ -972,39 +985,6 @@ LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <10> not available
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
 
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
-File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
-)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count318
-\scratchdimen=\dimen274
-\scratchbox=\box63
-\nofMPsegments=\count319
-\nofMParguments=\count320
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count321
-\MPscratchDim=\dimen275
-\MPnumerator=\count322
-\makeMPintoPDFobject=\count323
-\everyMPtoPDFconversion=\toks48
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box64
 Package hyperref Info: Link coloring ON on input line 121.
@@ -1015,7 +995,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count324
+\c@section@level=\count318
 )
 LaTeX Info: Redefining \ref on input line 121.
 LaTeX Info: Redefining \pageref on input line 121.
@@ -1025,12 +1005,15 @@ LaTeX Info: Redefining \nameref on input line 121.
 \@outlinefile=\write4
 \openout4 = `old_series_new_signals.out'.
 
-\c@lstlisting=\count325
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+\c@lstlisting=\count319
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -1086,18 +1069,19 @@ LaTeX Font Info:    Font shape `T1/pbk/bx/n' in size <10> not available
 (Font)              Font shape `T1/pbk/b/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <10> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 129.
+Missing character: There is no ​ in font pbkl8t!
+Missing character: There is no ​ in font pbkl8t!
 
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
-File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-) [1
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
+File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+)
+[1
+
+]
 LaTeX Info: Redefining \. on input line 137.
 LaTeX Info: Redefining \% on input line 137.
-
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
-File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-) [2]
+ [2]
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 162.
 LaTeX Font Info:    Font shape `T1/pbk/bx/n' in size <14.4> not available
@@ -1106,18 +1090,18 @@ LaTeX Font Info:    Font shape `T1/pbk/b/n' in size <14.4> not available
 (Font)              Font shape `T1/pbk/db/n' tried instead on input line 162.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\uppercase' on input line 162.
 
 LaTeX Font Info:    Font shape `T1/pbk/m/it' in size <10> not available
 (Font)              Font shape `T1/pbk/l/it' tried instead on input line 164.
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\uppercase' on input line 172.
 
 [3] [4]
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\uppercase' on input line 193.
 
 
@@ -1131,295 +1115,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--216
  []
 
 [6]
-<../plots/oro_en.PNG, id=180, 722.7pt x 505.89pt>
-File: ../plots/oro_en.PNG Graphic file (type png)
-<use ../plots/oro_en.PNG>
-Package pdftex.def Info: ../plots/oro_en.PNG  used on input line 229.
-(pdftex.def)             Requested size: 264.61052pt x 185.22339pt.
-<../plots/oro_uk.PNG, id=181, 722.7pt x 505.89pt>
-File: ../plots/oro_uk.PNG Graphic file (type png)
-<use ../plots/oro_uk.PNG>
-Package pdftex.def Info: ../plots/oro_uk.PNG  used on input line 231.
-(pdftex.def)             Requested size: 264.61052pt x 185.22339pt.
- [7pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.236 	
-        <../plots/oro_en.png (PNG copy)> <../plots/oro_uk.png>]
-<../plots/gdp_in_gold_eda_en.PNG, id=192, 722.7pt x 433.62pt>
-File: ../plots/gdp_in_gold_eda_en.PNG Graphic file (type png)
-<use ../plots/gdp_in_gold_eda_en.PNG>
-Package pdftex.def Info: ../plots/gdp_in_gold_eda_en.PNG  used on input line 24
-8.
-(pdftex.def)             Requested size: 264.61052pt x 158.76291pt.
-<../plots/wg_in_gold_eda_en.PNG, id=193, 722.7pt x 433.62pt>
-File: ../plots/wg_in_gold_eda_en.PNG Graphic file (type png)
-<use ../plots/wg_in_gold_eda_en.PNG>
-Package pdftex.def Info: ../plots/wg_in_gold_eda_en.PNG  used on input line 250
-.
-(pdftex.def)             Requested size: 264.61052pt x 158.76291pt.
- [8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure
-.2}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.282 	
-        <../plots/gdp_in_gold_eda_en.PNG (PNG copy)> <../plots/wg_in_gold_eda_e
-n.PNG (PNG copy)>]
-<../plots/uk_gdp_en.png, id=207, 462.7689pt x 285.9483pt>
-File: ../plots/uk_gdp_en.png Graphic file (type png)
-<use ../plots/uk_gdp_en.png>
-Package pdftex.def Info: ../plots/uk_gdp_en.png  used on input line 285.
-(pdftex.def)             Requested size: 264.61052pt x 163.50706pt.
- [10pdfTeX warning (ext4): destination with the same identifier (name{table.1})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.292 	
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.3}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.292 	
-        <../plots/uk_gdp_en.png>]
-<../plots/gdp_us_complement.PNG, id=217, 722.7pt x 505.89pt>
-File: ../plots/gdp_us_complement.PNG Graphic file (type png)
-<use ../plots/gdp_us_complement.PNG>
-Package pdftex.def Info: ../plots/gdp_us_complement.PNG  used on input line 298
-.
-(pdftex.def)             Requested size: 264.61052pt x 185.22339pt.
-<../plots/wage_us_complement.PNG, id=218, 722.7pt x 505.89pt>
-File: ../plots/wage_us_complement.PNG Graphic file (type png)
-<use ../plots/wage_us_complement.PNG>
-Package pdftex.def Info: ../plots/wage_us_complement.PNG  used on input line 30
-0.
-(pdftex.def)             Requested size: 264.61052pt x 185.22339pt.
+File: ../plots/oro_en.PNG Graphic file (type bmp)
+<../plots/oro_en.PNG>
+File: ../plots/oro_uk.PNG Graphic file (type bmp)
+<../plots/oro_uk.PNG>
+ [7]
+File: ../plots/gdp_in_gold_eda_en.PNG Graphic file (type bmp)
+<../plots/gdp_in_gold_eda_en.PNG>
+File: ../plots/wg_in_gold_eda_en.PNG Graphic file (type bmp)
+<../plots/wg_in_gold_eda_en.PNG>
+ [8]
+Missing character: There is no – in font pbkl8t!
+Missing character: There is no – in font pbkl8t!
+Missing character: There is no – in font pbkl8t!
+ [9]
+File: ../plots/uk_gdp_en.png Graphic file (type bmp)
+<../plots/uk_gdp_en.png>
+ [10]
+File: ../plots/gdp_us_complement.PNG Graphic file (type bmp)
+<../plots/gdp_us_complement.PNG>
+File: ../plots/wage_us_complement.PNG Graphic file (type bmp)
+<../plots/wage_us_complement.PNG>
  [11]
-<../plots/gdp_uk_complement.png, id=227, 722.7pt x 505.89pt>
-File: ../plots/gdp_uk_complement.png Graphic file (type png)
-<use ../plots/gdp_uk_complement.png>
-Package pdftex.def Info: ../plots/gdp_uk_complement.png  used on input line 309
-.
-(pdftex.def)             Requested size: 264.61052pt x 185.22339pt.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.4}
-) has been already used, duplicate ignored
+File: ../plots/gdp_uk_complement.png Graphic file (type bmp)
+<../plots/gdp_uk_complement.png>
+ [12]
+File: ../plots/global_gdp.png Graphic file (type bmp)
+<../plots/global_gdp.png>
+ [13]
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.313 	
-        <../plots/gdp_us_complement.png> <../plots/wage_us_complement.png>]
-<../plots/global_gdp.png, id=239, 722.7pt x 505.89pt>
-File: ../plots/global_gdp.png Graphic file (type png)
-<use ../plots/global_gdp.png>
-Package pdftex.def Info: ../plots/global_gdp.png  used on input line 319.
-(pdftex.def)             Requested size: 264.61052pt x 185.22339pt.
-
-[13pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.323 	
-        <../plots/gdp_uk_complement.png (PNG copy)>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\uppercase' on input line 327.
 
-<../plots/ciclo_en.png, id=248, 526.8483pt x 325.215pt>
-File: ../plots/ciclo_en.png Graphic file (type png)
-<use ../plots/ciclo_en.png>
-Package pdftex.def Info: ../plots/ciclo_en.png  used on input line 334.
-(pdftex.def)             Requested size: 229.32695pt x 141.5567pt.
-[14pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.337 	
-        <../plots/global_gdp.png (PNG copy)>]
+File: ../plots/ciclo_en.png Graphic file (type bmp)
+<../plots/ciclo_en.png>
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 338--340
 
  []
 
-[15pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.356 	
-        <../plots/ciclo_en.png (PNG copy)>]
-<../plots/morelt_en.png, id=272, 515.526pt x 318.2289pt>
-File: ../plots/morelt_en.png Graphic file (type png)
-<use ../plots/morelt_en.png>
-Package pdftex.def Info: ../plots/morelt_en.png  used on input line 376.
-(pdftex.def)             Requested size: 352.81403pt x 217.7961pt.
- [16] [17pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.8}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.396 	\end{itemize}
-                     <../plots/morelt_en.png (PNG copy)>]
+[15]
+File: ../plots/morelt_en.png Graphic file (type bmp)
+<../plots/morelt_en.png>
+ [16] [17]
 LaTeX Font Info:    Font shape `T1/pbk/m/n' in size <9> not available
 (Font)              Font shape `T1/pbk/l/n' tried instead on input line 400.
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 400.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 Overfull \hbox (46.79004pt too wide) in paragraph at lines 408--409
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<../plots/serie_teorica_en.PNG, id=289, 462.7689pt x 285.9483pt>
-File: ../plots/serie_teorica_en.PNG Graphic file (type png)
-<use ../plots/serie_teorica_en.PNG>
-Package pdftex.def Info: ../plots/serie_teorica_en.PNG  used on input line 414.
-
-(pdftex.def)             Requested size: 352.81403pt x 218.01234pt.
-[18pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
- has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.419 	
-        <../plots/serie_teorica_en.PNG>]
-<../plots/espectograma_teorico_impulso_en.png, id=307, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_teorico_impulso_en.png Graphic file (type png)
-<use ../plots/espectograma_teorico_impulso_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_impulso_en.png  used on 
-input line 423.
-(pdftex.def)             Requested size: 172.8808pt x 108.03886pt.
-<../plots/espectograma_teorico_tendencia_en.png, id=308, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_teorico_tendencia_en.png Graphic file (type png)
-<use ../plots/espectograma_teorico_tendencia_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_tendencia_en.png  used o
-n input line 425.
-(pdftex.def)             Requested size: 172.8808pt x 108.03886pt.
-<../plots/espectograma_teorico_ciclo_3_en.png, id=309, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_teorico_ciclo_3_en.png Graphic file (type png)
-<use ../plots/espectograma_teorico_ciclo_3_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_3_en.png  used on 
-input line 427.
-(pdftex.def)             Requested size: 172.8808pt x 108.03886pt.
-<../plots/espectograma_teorico_ciclo_10_en.png, id=310, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_teorico_ciclo_10_en.png Graphic file (type png)
-<use ../plots/espectograma_teorico_ciclo_10_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_10_en.png  used on
- input line 429.
-(pdftex.def)             Requested size: 172.8808pt x 108.03886pt.
-<../plots/espectograma_teorico_ciclo_50_en.png, id=311, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_teorico_ciclo_50_en.png Graphic file (type png)
-<use ../plots/espectograma_teorico_ciclo_50_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_ciclo_50_en.png  used on
- input line 431.
-(pdftex.def)             Requested size: 172.8808pt x 108.03886pt.
-<../plots/espectograma_teorico_ruido_en.png, id=312, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_teorico_ruido_en.png Graphic file (type png)
-<use ../plots/espectograma_teorico_ruido_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_ruido_en.png  used on in
-put line 433.
-(pdftex.def)             Requested size: 172.8808pt x 108.03886pt.
-<../plots/espectograma_teorico_composicion_series_en.png, id=313, 1606.0pt x 10
-03.75pt>
+File: ../plots/serie_teorica_en.PNG Graphic file (type bmp)
+<../plots/serie_teorica_en.PNG>
+[18]
+File: ../plots/espectograma_teorico_impulso_en.png Graphic file (type bmp)
+<../plots/espectograma_teorico_impulso_en.png>
+File: ../plots/espectograma_teorico_tendencia_en.png Graphic file (type bmp)
+<../plots/espectograma_teorico_tendencia_en.png>
+File: ../plots/espectograma_teorico_ciclo_3_en.png Graphic file (type bmp)
+<../plots/espectograma_teorico_ciclo_3_en.png>
+File: ../plots/espectograma_teorico_ciclo_10_en.png Graphic file (type bmp)
+<../plots/espectograma_teorico_ciclo_10_en.png>
+File: ../plots/espectograma_teorico_ciclo_50_en.png Graphic file (type bmp)
+<../plots/espectograma_teorico_ciclo_50_en.png>
+File: ../plots/espectograma_teorico_ruido_en.png Graphic file (type bmp)
+<../plots/espectograma_teorico_ruido_en.png>
 File: ../plots/espectograma_teorico_composicion_series_en.png Graphic file (typ
-e png)
-<use ../plots/espectograma_teorico_composicion_series_en.png>
-Package pdftex.def Info: ../plots/espectograma_teorico_composicion_series_en.pn
-g  used on input line 435.
-(pdftex.def)             Requested size: 264.61052pt x 165.38187pt.
+e bmp)
+<../plots/espectograma_teorico_composicion_series_en.png>
  [19]
 Overfull \vbox (19.1282pt too high) has occurred while \output is active []
 
 
-[20pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
-) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.438 	
-        <../plots/espectograma_teorico_impulso_en.png (PNG copy)> <../plots/esp
-ectograma_teorico_tendencia_en.png (PNG copy)> <../plots/espectograma_teorico_c
-iclo_3_en.png (PNG copy)> <../plots/espectograma_teorico_ciclo_10_en.png (PNG c
-opy)> <../plots/espectograma_teorico_ciclo_50_en.png (PNG copy)> <../plots/espe
-ctograma_teorico_ruido_en.png (PNG copy)> <../plots/espectograma_teorico_compos
-icion_series_en.png (PNG copy)>] [21]
-<../plots/espectograma_gdp_en.png, id=347, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_gdp_en.png Graphic file (type png)
-<use ../plots/espectograma_gdp_en.png>
-Package pdftex.def Info: ../plots/espectograma_gdp_en.png  used on input line 4
-56.
-(pdftex.def)             Requested size: 264.61052pt x 165.38187pt.
-<../plots/espectograma_log_gdp_en.png, id=348, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_log_gdp_en.png Graphic file (type png)
-<use ../plots/espectograma_log_gdp_en.png>
-Package pdftex.def Info: ../plots/espectograma_log_gdp_en.png  used on input li
-ne 458.
-(pdftex.def)             Requested size: 264.61052pt x 165.38187pt.
- [22pdfTeX warning (ext4): destination with the same identifier (name{figure.11
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.475 	
-        <../plots/espectograma_gdp_en.png (PNG copy)> <../plots/espectograma_lo
-g_gdp_en.png (PNG copy)>]
-<../plots/espectograma_gdp_uk_en.png, id=360, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_gdp_uk_en.png Graphic file (type png)
-<use ../plots/espectograma_gdp_uk_en.png>
-Package pdftex.def Info: ../plots/espectograma_gdp_uk_en.png  used on input lin
-e 479.
-(pdftex.def)             Requested size: 264.61052pt x 165.38187pt.
-<../plots/espectograma_log_gdp_uk_en.png, id=361, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_log_gdp_uk_en.png Graphic file (type png)
-<use ../plots/espectograma_log_gdp_uk_en.png>
-Package pdftex.def Info: ../plots/espectograma_log_gdp_uk_en.png  used on input
- line 481.
-(pdftex.def)             Requested size: 264.61052pt x 165.38187pt.
- [23pdfTeX warning (ext4): destination with the same identifier (name{figure.12
-}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.486 	
-        <../plots/espectograma_gdp_uk_en.png (PNG copy)> <../plots/espectograma
-_log_gdp_uk_en.png (PNG copy)>]
-<../plots/pbi_uk_tendencias_en.png, id=376, 462.7689pt x 285.9483pt>
-File: ../plots/pbi_uk_tendencias_en.png Graphic file (type png)
-<use ../plots/pbi_uk_tendencias_en.png>
-Package pdftex.def Info: ../plots/pbi_uk_tendencias_en.png  used on input line 
-494.
-(pdftex.def)             Requested size: 264.61052pt x 163.50706pt.
-<../plots/espectograma_gdp_uk_Tend_en.png, id=377, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_gdp_uk_Tend_en.png Graphic file (type png)
-<use ../plots/espectograma_gdp_uk_Tend_en.png>
-Package pdftex.def Info: ../plots/espectograma_gdp_uk_Tend_en.png  used on inpu
-t line 496.
-(pdftex.def)             Requested size: 169.34921pt x 105.83336pt.
-<../plots/espectograma_gdp_uk_sinTend_en.png, id=378, 1606.0pt x 1003.75pt>
-File: ../plots/espectograma_gdp_uk_sinTend_en.png Graphic file (type png)
-<use ../plots/espectograma_gdp_uk_sinTend_en.png>
-Package pdftex.def Info: ../plots/espectograma_gdp_uk_sinTend_en.png  used on i
-nput line 498.
-(pdftex.def)             Requested size: 169.34921pt x 105.83336pt.
+[20] [21]
+File: ../plots/espectograma_gdp_en.png Graphic file (type bmp)
+<../plots/espectograma_gdp_en.png>
+File: ../plots/espectograma_log_gdp_en.png Graphic file (type bmp)
+<../plots/espectograma_log_gdp_en.png>
+ [22]
+File: ../plots/espectograma_gdp_uk_en.png Graphic file (type bmp)
+<../plots/espectograma_gdp_uk_en.png>
+File: ../plots/espectograma_log_gdp_uk_en.png Graphic file (type bmp)
+<../plots/espectograma_log_gdp_uk_en.png>
+ [23]
+File: ../plots/pbi_uk_tendencias_en.png Graphic file (type bmp)
+<../plots/pbi_uk_tendencias_en.png>
+File: ../plots/espectograma_gdp_uk_Tend_en.png Graphic file (type bmp)
+<../plots/espectograma_gdp_uk_Tend_en.png>
+File: ../plots/espectograma_gdp_uk_sinTend_en.png Graphic file (type bmp)
+<../plots/espectograma_gdp_uk_sinTend_en.png>
  [24]
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\uppercase' on input line 503.
 
-[25pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
-) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.510 	
-        <../plots/pbi_uk_tendencias_en.png (PNG copy)> <../plots/espectograma_g
-dp_uk_Tend_en.png (PNG copy)> <../plots/espectograma_gdp_uk_sinTend_en.png (PNG
- copy)>]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 517--518
 
  []
@@ -1433,40 +1226,26 @@ LaTeX Info: Redefining \% on input line 24.
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 523.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 523.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 523.
-Package rerunfilecheck Info: File `old_series_new_signals.out' has not changed.
 
-(rerunfilecheck)             Checksum: AF6F49BB4D8BF1D275715CA16A5E7295;264.
+
+Package rerunfilecheck Warning: File `old_series_new_signals.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `old_series_new_signals.out':
+(rerunfilecheck)             Before: AF6F49BB4D8BF1D275715CA16A5E7295
+(rerunfilecheck)             After:  5259832844CE8D5EE3E9C44E3C91FB3C.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 523.
  ) 
 Here is how much of TeX's memory you used:
- 32500 strings out of 494492
- 590709 string characters out of 6175185
- 883685 words of memory out of 5000000
- 35580 multiletter control sequences out of 15000+600000
- 561095 words of font info for 70 fonts, out of 8000000 for 9000
+ 33720 strings out of 494835
+ 608399 string characters out of 6175179
+ 904104 words of memory out of 5000000
+ 37187 multiletter control sequences out of 15000+600000
+ 557165 words of font info for 62 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 62i,12n,81p,1371b,1741s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/bookman/ubkl8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/bookman/ubkli8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a
-.pfb>
-Output written on old_series_new_signals.pdf (28 pages, 3079852 bytes).
-PDF statistics:
- 486 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 109 named destinations out of 1000 (max. 500000)
- 279 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 62i,12n,81p,1371b,1614s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+Output written on old_series_new_signals.pdf (28 pages).

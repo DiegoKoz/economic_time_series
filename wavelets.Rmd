@@ -679,6 +679,14 @@ ggsave("plots/pbi_uk_tendencias.png", scale=1)
 ```
 
 ```{r}
+
+# uk_gdp$index<- 1:nrow(uk_gdp)
+# loess_gdp <- loess(gdp_in_gold~index, data = uk_gdp, span = 0.75)
+# uk_gdp %>% 
+#   mutate(trend = predict(loess_gdp),
+#          gdp_detrend = gdp_in_gold -trend) %>% 
+
+# ggplot(., aes(x=date ))+
 ggplot(uk_gdp_filt, aes(x=date ))+
   geom_line(aes(y= gdp_in_gold, color = "original series"), size=1)+
   geom_line(aes(y=trend, color = "loess trend"), size=1)+
