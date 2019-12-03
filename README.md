@@ -1,8 +1,5 @@
-# economic_time_series
-Repo for analysis of long term economic time series, like the price of gold, GDP , CPI and intereset rate in USA, from 1850 to present
+# Old Series, New Signals.
 
+Repo for the paper:
 
-Data sources:
-
-
-All information used belongs to Louis Johnston and Samuel H. Williamson, https://www.measuringworth.com/datasets/
+Kozlowski, D. (2019). VIEJAS SERIES, NUEVAS SEÑALES EL CICLO ECONÓMICO A LA LUZ DEL ANÁLISIS DE WAVELETS. Cuadernos Del CIMBAGE, 2(21). Recuperado a partir de https://ojs.econ.uba.ar/index.php/CIMBAGE/article/view/1587
